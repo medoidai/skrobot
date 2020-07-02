@@ -30,7 +30,7 @@ Many examples can be found in the [examples](examples) directory.
 
 ### Why does exists?
 
-It can help a Data Scientist / Machine Learning Engineer:
+It can help Data Scientists and Machine Learning Engineers:
 
 * to keep track of his/her modelling experiments / tasks
 * to automate the repetitive (and boring) stuff when designing modelling pipelines
