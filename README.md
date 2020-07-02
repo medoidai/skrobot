@@ -26,7 +26,7 @@ $ pip install sand
 
 ### How do I use it?
 
-Many examples example can be found in the [examples](examples) directory.
+Many examples can be found in the [examples](examples) directory.
 
 ### Why does exists?
 
