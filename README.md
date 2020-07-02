@@ -29,7 +29,11 @@ Many examples example can be found in the [examples](examples) directory.
 
 ### Why does exists?
 
-It can help a Machine Learning Engineer to keep track of his/her basic experiments / tasks, automate the repetitive (boring) stuff when designing modelling pipelines and spend more time on the important decisions.
+It can help a Data Scientist / Machine Learning Engineer:
+
+* to keep track of his/her modelling experiments / tasks
+* to automate the repetitive (and boring) stuff when designing modelling pipelines
+* and to spend more time on the things that truly matter for solving the problem
 
 ### The people behind it
 
