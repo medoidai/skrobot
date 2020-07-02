@@ -27,6 +27,10 @@ Add your text...
 
 Many examples example can be found in the [examples](examples) directory.
 
+### Why does exists?
+
+It can help a Machine Learning Engineer to keep track of his/her basic experiments / tasks, automate the repetitive (boring) stuff when designing modelling pipelines and spend more time on the important decisions.
+
 ### The people behind it
 
 The following members of our team were involved in developing the initial release of this app:
