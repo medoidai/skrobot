@@ -16,7 +16,7 @@ setup(
      long_description=readme,
      platforms=['any'],
      long_description_content_type='text/markdown',
-     url="https://github.com/medoidai/sand.git",
+     url="https://github.com/medoidai/sand",
      python_requires='>=3.6',
      install_requires=requirements,
      packages=find_packages(),
