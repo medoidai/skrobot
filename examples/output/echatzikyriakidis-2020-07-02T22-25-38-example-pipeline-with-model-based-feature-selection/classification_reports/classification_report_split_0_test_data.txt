@@ -1,0 +1,6 @@
+Classification report for split 0 test data (Threshold = 0.22)
+
+             precision  recall    f1  support
+0            0.78       0.80    0.79  110    
+1            0.67       0.64    0.65  69     
+avg / total  0.74       0.74    0.74  179    

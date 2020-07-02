@@ -1,0 +1,19 @@
+False negatives report for split 2 test data (Threshold = 0.3)
+
+21
+78
+81
+125
+183
+187
+220
+248
+283
+286
+301
+569
+604
+632
+755
+762
+788

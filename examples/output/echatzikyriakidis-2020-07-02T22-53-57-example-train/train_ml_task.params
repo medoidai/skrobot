@@ -1,0 +1,10 @@
+{
+ "type": "train_ml_task",
+ "estimator_template": "LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,\n                   intercept_scaling=1, l1_ratio=None, max_iter=100,\n                   multi_class='warn', n_jobs=None, penalty='l2',\n                   random_state=42, solver='liblinear', tol=0.0001, verbose=0,\n                   warm_start=False)",
+ "data_set_file_path": "data/data.csv",
+ "estimator_params": null,
+ "feature_columns": "all",
+ "id_column": "id",
+ "label_column": "label",
+ "random_seed": 42
+}

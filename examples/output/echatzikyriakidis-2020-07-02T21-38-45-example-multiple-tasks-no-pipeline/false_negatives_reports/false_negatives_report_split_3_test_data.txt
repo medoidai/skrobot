@@ -1,0 +1,11 @@
+False negatives report for split 3 test data (Threshold = 0.51)
+
+2481491
+3022465
+7391690
+8037832
+6338862
+4819722
+6103907
+7156567
+6101555
