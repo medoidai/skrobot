@@ -1,25 +1,15 @@
 <br /><p align="center"><a href="https://www.medoid.ai/" target="_blank"><img src="https://www.medoid.ai/wp-content/uploads/2020/05/medoid-ai-logo-2.png" width="300px;" /></a></p>
 
-## Project Name
+## Sand
 
 ### What is it about?
 
-Add your text...
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
+Sand is a Python module for designing, running and tracking Machine Learning experiments / tasks. It is built on top of scikit-learn framework.
 
 ### How do I install it?
 
-Add your text...
-
-To install it, simply run:
-
 ```sh
-$ command 1
-$ command 2
-$ command 3
+$ pip install sand
 ```
 
 ### Which are the main features?
@@ -35,48 +25,18 @@ Add your text...
 
 ### How do I use it?
 
-Add your text...
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
-
-### Why does exists?
-
-Add your text...
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
+Many examples example can be found in the [examples](examples) directory.
 
 ### The people behind it
 
-Currently the core team consists of:
+The following members of our team were involved in developing the initial release of this app:
 
-* [Team Member 1](https://github.com/username-1)
-* [Team Member 2](https://github.com/username-2)
-* [Team Member 3](https://github.com/username-3)
+* [Efstathios Chatzikyriakidis](https://github.com/echatzikyriakidis)
 
 ### Can I contribute?
 
-Add your text...
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
-
-### Where can I learn more?
-
-Add your text...
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
+Of course, the project is [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) and you can contribute to it!
 
 ### What license do you use?
 
 See our [LICENSE](LICENSE) for more details.
-
-## Frequently Asked Questions
-
-See our [FAQ](FAQ.md) for more details.
