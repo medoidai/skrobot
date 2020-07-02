@@ -24,6 +24,7 @@ setup(
          "Programming Language :: Python",
          'Intended Audience :: Developers',
          "Operating System :: OS Independent",
-         'License :: OSI Approved'
+         'License :: OSI Approved',
+         'Topic :: Scientific/Engineering'
      ]
 )
