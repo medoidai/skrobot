@@ -4,7 +4,7 @@
 
 ### What is it about?
 
-Sand is a Python module for designing, running and tracking Machine Learning experiments / tasks. It is built on top of scikit-learn framework.
+Sand is a Python module for designing, running and tracking Machine Learning experiments / tasks. It is built on top of [scikit-learn](https://scikit-learn.org/) framework.
 
 ### How do I install it?
 
