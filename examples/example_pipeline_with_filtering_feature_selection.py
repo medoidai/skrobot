@@ -20,11 +20,11 @@ experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis'
 
 data_set_file_path = path.join('data', 'titanic.csv')
 
-pd.read_csv('http://bit.ly/kaggletrain', usecols=['Embarked', 'Sex', 'Age', 'Fare', 'Survived']).reset_index().to_csv(data_set_file_path, index=False)
+pd.read_csv('http://bit.ly/kaggletrain', usecols=['PassengerId', 'Embarked', 'Sex', 'Age', 'Fare', 'Survived']).to_csv(data_set_file_path, index=False)
 
 random_seed = 42
 
-id_column = 'index'
+id_column = 'PassengerId'
 
 label_column = 'Survived'
 
