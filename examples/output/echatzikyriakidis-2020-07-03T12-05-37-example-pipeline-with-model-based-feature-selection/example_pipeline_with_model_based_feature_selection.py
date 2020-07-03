@@ -56,6 +56,7 @@ search_params = {
 features_columns = experiment.run(FeatureSelectionCrossValidationMlTask (estimator_template=classifier,
                                                                          data_set_file_path=data_set_file_path,
                                                                          preprocessor_template=preprocessor,
+                                                                         min_features_to_select=3,
                                                                          id_column=id_column,
                                                                          label_column=label_column,
                                                                          random_seed=random_seed).stratified_folds(total_folds=5, shuffle=True))
