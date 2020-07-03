@@ -132,17 +132,19 @@ class EvaluateCrossValidationMlTask(BaseCrossValidationMlTask):
     if self.export_also_for_train_folds: self.build_classification_reports(splits_y_and_y_hat_train, output_directory, self.train_text, labels)
 
   def build_classification_reports(self, splits_y_and_y_hat, output_directory, data_split, labels):
-    round_precision = 2
+    truncate_precision = 3
 
     for split_index, (y, y_hat, _) in enumerate(splits_y_and_y_hat):
-      self.build_classification_report(y, y_hat, output_directory, f'for split {split_index} {data_split} data', f'split_{split_index}_{data_split}_data', labels, round_precision)
+      self.build_classification_report(y, y_hat, output_directory, f'for split {split_index} {data_split} data', f'split_{split_index}_{data_split}_data', labels, truncate_precision)
 
     y = reduce(lambda x, y: np.concatenate((x, y)), map(lambda x: x[0], splits_y_and_y_hat))
     y_hat = reduce(lambda x, y: np.concatenate((x, y)), map(lambda x: x[1], splits_y_and_y_hat))
 
-    self.build_classification_report(y, y_hat, output_directory, f'for all {data_split} data', f'all_{data_split}_data', labels, round_precision)
+    self.build_classification_report(y, y_hat, output_directory, f'for all {data_split} data', f'all_{data_split}_data', labels, truncate_precision)
 
-  def build_classification_report(self, y, y_hat, output_directory, title_part_text, file_part_text, labels, round_precision):
+  def build_classification_report(self, y, y_hat, output_directory, title_part_text, file_part_text, labels, truncate_precision):
+    from math import floor
+
     from sklearn.metrics import precision_recall_fscore_support
 
     summary_metrics = list(precision_recall_fscore_support(y_true=y, y_pred=y_hat, labels=labels, beta=self.fscore_beta))
@@ -161,9 +163,9 @@ class EvaluateCrossValidationMlTask(BaseCrossValidationMlTask):
 
     classification_report = classification_report.T
 
-    classification_report['support'] = classification_report['support'].map(int)
+    classification_report = classification_report.applymap(lambda o: floor(o * 10 ** truncate_precision) / 10 ** truncate_precision)
 
-    classification_report = classification_report.round(round_precision)
+    classification_report['support'] = classification_report['support'].map(int)
 
     with open(os.path.join(output_directory, f'classification_report_{file_part_text}.txt'), "w") as f: f.write(f"Classification report {title_part_text} (Threshold = {self.threshold})" + '\n'*2 + f"{classification_report}")
 
@@ -296,6 +298,8 @@ class EvaluateCrossValidationMlTask(BaseCrossValidationMlTask):
     threshold_values_to_remove = rows_with_nulls['threshold'].unique()
 
     rows_without_nulls = dataframe.loc[~dataframe['threshold'].isin(threshold_values_to_remove)]
+
+    if rows_without_nulls.empty: raise Exception("The summary of threshold metrics cannot be generated!")
 
     rows_without_nulls = rows_without_nulls.drop(columns='cv_split')
 
