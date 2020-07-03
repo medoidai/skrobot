@@ -5,6 +5,7 @@
  "estimator_params": null,
  "preprocessor_template": null,
  "preprocessor_params": null,
+ "min_features_to_select": 1,
  "scoring": "f1",
  "feature_columns": "all",
  "id_column": "id",
