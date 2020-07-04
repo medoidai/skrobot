@@ -14,7 +14,7 @@ random_seed = 42
 estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 features_columns = experiment.run(FeatureSelectionCrossValidationMlTask (estimator_template=estimator,
-                                                                         data_set_file_path=path.join('data','data.csv'),
-                                                                         random_seed=random_seed).custom_folds(folds_file_path=path.join('data','folds.csv')))
+                                                                         data_set_file_path=path.join('data','dataset-1.csv'),
+                                                                         random_seed=random_seed).custom_folds(folds_file_path=path.join('data','folds-1.csv')))
 
 print(features_columns)

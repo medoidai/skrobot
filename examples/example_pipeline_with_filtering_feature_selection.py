@@ -1,6 +1,13 @@
 from os import path
 
-import pandas as pd
+from sand.experiment import Experiment
+from sand.train_ml_task import TrainMlTask
+from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
+from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
+
+experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
+
+######### Experiment
 
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -9,18 +16,7 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
 
-from sand.experiment import Experiment
-from sand.train_ml_task import TrainMlTask
-from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
-from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
-
-experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
-
-######### Experiments
-
-data_set_file_path = path.join('data', 'titanic.csv')
-
-pd.read_csv('http://bit.ly/kaggletrain', usecols=['PassengerId', 'Embarked', 'Sex', 'Age', 'Fare', 'Survived']).to_csv(data_set_file_path, index=False)
+data_set_file_path = path.join('data', 'dataset-2.csv')
 
 random_seed = 42
 

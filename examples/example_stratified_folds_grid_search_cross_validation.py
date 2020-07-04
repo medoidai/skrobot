@@ -15,7 +15,7 @@ estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator_template=estimator,
                                                                      search_params={ "C" : [1.e-01, 1.e+00, 1.e+01], "penalty" : [ "l1", "l2" ] },
-                                                                     data_set_file_path=path.join('data','data.csv'),
+                                                                     data_set_file_path=path.join('data','dataset-1.csv'),
                                                                      random_seed=random_seed).grid_search().stratified_folds())
 
 print(results['best_estimator'])

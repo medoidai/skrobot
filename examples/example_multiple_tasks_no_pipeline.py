@@ -1,7 +1,6 @@
 from os import path
 
 from sand.experiment import Experiment
-
 from sand.train_ml_task import TrainMlTask
 from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
 from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
@@ -9,12 +8,12 @@ from sand.hyperparameters_search_cross_validation_ml_task import HyperParameters
 
 experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
 
-######### Experiments
+######### Experiment
 
 from sklearn.linear_model import LogisticRegression
 
-folds_file_path = path.join('data', 'folds.csv')
-data_set_file_path = path.join('data', 'data.csv')
+data_set_file_path = path.join('data', 'dataset-1.csv')
+folds_file_path = path.join('data', 'folds-1.csv')
 
 random_seed = 42
 

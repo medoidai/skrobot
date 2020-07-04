@@ -1,13 +1,5 @@
 from os import path
 
-import pandas as pd
-
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.linear_model import LogisticRegression
-
 from sand.experiment import Experiment
 from sand.train_ml_task import TrainMlTask
 from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
@@ -17,11 +9,15 @@ from sand.feature_selection.column_selector import ColumnSelector
 
 experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
 
-######### Experiments
+######### Experiment
 
-data_set_file_path = path.join('data', 'titanic.csv')
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.linear_model import LogisticRegression
 
-pd.read_csv('http://bit.ly/kaggletrain', usecols=['PassengerId', 'Embarked', 'Sex', 'Age', 'Fare', 'Survived']).to_csv(data_set_file_path, index=False)
+data_set_file_path = path.join('data', 'dataset-2.csv')
 
 random_seed = 42
 
