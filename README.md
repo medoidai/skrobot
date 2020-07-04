@@ -81,7 +81,7 @@ $ pip install sand
 
 * The search can be either randomized or grid-based
 
-* The search results as well as the best estimator found with its related hyperparameters and score are returned as result
+* The search results as well as the best estimator found with its related hyperparameters and score are returned as a result
 
 * The search results are stored as a static HTML table
 
