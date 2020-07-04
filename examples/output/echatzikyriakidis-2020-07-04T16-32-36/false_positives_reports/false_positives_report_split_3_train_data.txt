@@ -1,0 +1,12 @@
+False positives report for split 3 train data (Threshold = 0.64)
+
+2124939
+1886022
+2686745
+3087719
+4244665
+2001165
+2843216
+5584010
+4562234
+3184102

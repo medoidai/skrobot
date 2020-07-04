@@ -1,0 +1,17 @@
+False positives report for split 3 test data (Threshold = 0.3)
+
+50
+206
+247
+378
+397
+416
+420
+424
+439
+535
+639
+643
+793
+814
+864

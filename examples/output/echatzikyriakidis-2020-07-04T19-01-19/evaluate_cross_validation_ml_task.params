@@ -1,0 +1,34 @@
+{
+ "type": "evaluate_cross_validation_ml_task",
+ "estimator_template": "Pipeline(memory=None,\n         steps=[('preprocessor',\n                 ColumnTransformer(n_jobs=None, remainder='drop',\n                                   sparse_threshold=0.3,\n                                   transformer_weights=None,\n                                   transformers=[('numerical',\n                                                  Pipeline(memory=None,\n                                                           steps=[('imputer',\n                                                                   SimpleImputer(add_indicator=False,\n                                                                                 copy=True,\n                                                                                 fill_value=None,\n                                                                                 missing_values=nan,\n                                                                                 strategy='mean',\n                                                                                 verbose=0)),\n                                                                  ('scaler',\n                                                                   StandardScaler(copy=True,\n                                                                                  with_...\n                                   verbose=False)),\n                ('selection',\n                 SelectKBest(k=10,\n                             score_func=<function f_classif at 0x7f92e8d73dd0>)),\n                ('classifier',\n                 LogisticRegression(C=1.0, class_weight=None, dual=False,\n                                    fit_intercept=True, intercept_scaling=1,\n                                    l1_ratio=None, max_iter=100,\n                                    multi_class='warn', n_jobs=None,\n                                    penalty='l2', random_state=42,\n                                    solver='liblinear', tol=0.0001, verbose=0,\n                                    warm_start=False))],\n         verbose=False)",
+ "data_set_file_path": "data/dataset-2.csv",
+ "estimator_params": {
+  "selection__k": 5,
+  "preprocessor__numerical__imputer__strategy": "mean",
+  "classifier__penalty": "l1",
+  "classifier__C": 0.1
+ },
+ "feature_columns": "all",
+ "id_column": "PassengerId",
+ "label_column": "Survived",
+ "random_seed": 42,
+ "threshold": "best",
+ "threshold_tuning_range": [
+  0.01,
+  1.0,
+  0.01
+ ],
+ "export_classification_reports": true,
+ "export_confusion_matrixes": true,
+ "export_roc_curves": true,
+ "export_pr_curves": true,
+ "export_false_positives_reports": true,
+ "export_false_negatives_reports": true,
+ "export_also_for_train_folds": true,
+ "fscore_beta": 1,
+ "fold_options": {
+  "total_folds": 5,
+  "shuffle": true
+ },
+ "fold_method": "stratified"
+}
