@@ -83,7 +83,7 @@ $ pip install sand
 
 * The search results as well as the best estimator found with its related hyperparameters and score are returned as a result
 
-* The search results are stored as a static HTML table
+* The search results are stored in a file as a static HTML table
 
 #### Experiments Runner
 
