@@ -57,7 +57,7 @@ $ pip install sand
 
 * Along with the provided estimator a preprocessor can also be provided to preprocess the data before feature selection runs
 
-* The provided estimator and preprocessor are not affected and are used only as a templates
+* The provided estimator and preprocessor are not affected and are used only as templates
 
 * The selected features can be either column names (from the original data) or column indexes (from the preprocessed data) depending on whether a preprocessor was used or not
 
