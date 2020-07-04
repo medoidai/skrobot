@@ -103,7 +103,7 @@ $ pip install sand
 
 Many examples can be found in the [examples](examples) directory.
 
-### Example
+### Show me an example
 
 ```python
 from os import path
