@@ -1,6 +1,0 @@
-Classification report for split 1 test data (Threshold = 0.51)
-
-             precision  recall    f1  support
-0            1.00       1.00    1.00  6227   
-1            0.62       0.54    0.58  24     
-avg / total  1.00       1.00    1.00  6251   
