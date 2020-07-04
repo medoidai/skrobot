@@ -47,7 +47,7 @@ $ pip install sand
 
 * The evaluation results can be generated either for a specifc provided threshold or for the best one found from threshold tuning
 
-* The threshold used along with its related performance metrics and summary metrics from all CV splits are returned as result
+* The threshold used along with its related performance metrics and summary metrics from all CV splits are returned as a result
 
 #### Feature Selection ML Task
 
