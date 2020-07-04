@@ -1,6 +1,0 @@
-Classification report for split 2 train data (Threshold = 0.54)
-
-             precision  recall     f1  support
-0            0.997      0.998   0.998  18680  
-1            0.595      0.394   0.474  71     
-avg / total  0.996      0.996   0.996  18751  

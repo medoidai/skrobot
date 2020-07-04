@@ -1,7 +1,0 @@
-False positives report for split 2 train data (Threshold = 0.51)
-
-3194735
-6070517
-5986762
-4499115
-3184102

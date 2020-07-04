@@ -1,7 +1,0 @@
-False positives report for split 3 test data (Threshold = 0.54)
-
-2059195
-2074448
-7174473
-3636701
-3424692
