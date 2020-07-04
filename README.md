@@ -53,13 +53,13 @@ $ pip install sand
 
 * Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
-* The provided estimator is not affected and is used only as a template
-
 * The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
 
 * Along with the provided estimator a preprocessor can also be provided to preprocess the data before feature selection runs
 
-* The selected features can be either column names from the original data or column indexes from the transformed data depending on whether a preprocessor was used or not
+* The provided estimator and preprocessor are not affected and are used only as a templates
+
+* The selected features can be either column names (from the original data) or column indexes (from the preprocessed data) depending on whether a preprocessor was used or not
 
 * The selected features are stored in a text file and also returned as a result
 
