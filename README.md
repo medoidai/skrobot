@@ -95,7 +95,7 @@ $ pip install sand
 
 #### ML Tasks Runner
 
-* It is used just to run ML tasks as well as track the default / overloaded parameters in JSON format
+* It runs the provided ML tasks and saves in a file the default / overloaded parameters in JSON format
 
 * In case of error when running an ML task, a text file will be generated with the related error
 
