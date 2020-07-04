@@ -14,6 +14,8 @@ $ pip install sand
 
 ### Which are the components?
 
+**NOTE** : Currently, binary classification is supported only.
+
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
 | Base ML Task | An ML task is a configurable and reproducible piece of code built on top of scikit-learn that implements a repetitive Machine Learning task |
@@ -23,8 +25,6 @@ $ pip install sand
 | Hyperparameters Search ML Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data |
 | Experiments Runner | The experiments runner runs ML tasks in the context of an experiment |
 | ML Tasks Runner | The ML tasks runner is like the experiments runner but without the "experiment" stuff, thus it can be used in the production world |
-
-**NOTE** : Currently, binary classification is supported only.
 
 #### Evaluation ML Task
 
