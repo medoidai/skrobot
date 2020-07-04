@@ -87,7 +87,7 @@ $ pip install sand
 
 #### Experiments Runner
 
-* Each experiment when it runs it leaves in a unique directory a footprint of metadata (experiment source code, experiment ID, experiment date/time, experimenter name, experiment default / overloaded parameters in JSON format)
+* Each experiment when it runs it leaves in a unique directory a footprint of metadata files (experiment source code, experiment ID, experiment date/time, experimenter name, experiment default / overloaded parameters in JSON format)
 
 * Notifications can be send after running an ML task, through an easy to implement API (it can be useful for teams who need to get notified for the progress of the experiment, eg: in Slack)
 
