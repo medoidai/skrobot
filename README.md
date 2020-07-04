@@ -28,75 +28,76 @@ $ pip install sand
 
 #### Evaluation ML Task
 
-* Cross validation is used with either stratified K folds or custom folds
+* Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
 * The provided estimator is not affected and is used only as a template
 
-* The estimator needs to be able to predict probabilities
+* The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
 
-* The following evaluation information can be generated on demand for train / test folds of CV splits: interactive PR / ROC curve plots, Confusion Matrixes / Classification Reports, False Positives / Negatives and various threshold performance metrics measured
+* The provided estimator needs to be able to predict probabilities
 
-* The task can either perform threshold tuning or can run for a specific threshold
+* The following evaluation results can be generated on-demand for train / test CV folds:
 
-* All the evaluation results are calculated either for the best found threshold on test mean score or for the provided one
+  * PR / ROC Curves (as interactive HTML plots)
+  * Confusion Matrixes (as PNG images)
+  * Classification Reports (as text)
+  * Performance Metrics (as static HTML tables)
+  * False Positives (as text)
+  * False Negatives (as text)
 
-* The best found or provided threshold along with its performance metrics is returned as well as summary metrics from all CV splits
+* The evaluation results can be generated either for a specifc provided threshold or for the best one found from threshold tuning
 
-* The provided estimator can be either a scikit-learn Machine Learning model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The threshold used along with its related performance metrics and summary metrics from all CV splits are returned as result
 
 #### Feature Selection ML Task
 
-* Cross validation is used with either stratified K folds or custom folds
+* Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
 * The provided estimator is not affected and is used only as a template
 
-* Along with the provided estimator a preprocessor can be provided to preprocess the data before feature selection runs
+* The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
 
-* This is useful when in our pipeline we have some feature transformation
+* Along with the provided estimator a preprocessor can also be provided to preprocess the data before feature selection runs
 
-* The selected features are stored in a file in the disk
+* The selected features can be either column names from the original data or column indexes from the transformed data depending on whether a preprocessor was used or not
 
-* In case no preprocessor is provided and feature selection happens on the provided data the features are returned and stored from the column names
-
-* However, in case a preprocessor is provided then the column indexes from the transformed features are returned / stored
+* The selected features are stored in a text file and also returned as a result
 
 #### Train ML Task
 
 * The provided estimator is not affected and is used only as a template
 
-* The fitted estimator is returned as well as it is stored in the disk as a pickle file
+* The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
 
-* The provided estimator can be either a scikit-learn Machine Learning model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The fitted estimator is stored as a pickle file and also returned as a result
 
 #### Hyperparameters Search ML Task
 
-* The search can be either randomized or grid-based
-
-* Cross validation is used with either stratified K folds or custom folds
+* Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
 * The provided estimator is not affected and is used only as a template
 
-* The best estimator is returned (fitted on all data) along with its hyperparameters / score and all the results from the search
+* The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
 
-* The search results are stored also in the disk as an HTML table where the rows are sorted by the on mean test objective score performance across all CV splits
+* The search can be either randomized or grid-based
 
-* The provided estimator can be either a scikit-learn Machine Learning model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The search results as well as the best estimator found with its related hyperparameters and score are returned as result
+
+* The search results are stored as a static HTML table
 
 #### Experiments Runner
 
-* Each experiment when it runs it leaves a footprint of metadata in a directory
+* Each experiment when it runs it leaves in a unique directory a footprint of metadata (experiment source code, experiment ID, experiment date/time, experimenter name, experiment default / overloaded parameters in JSON format)
 
-* For each experiment the source code is kept as well as metadata information such as the experiment ID, the experiment date/time, the experimenter (the user / system that run the experiment), the default / overloaded parameters of the ML tasks in JSON format
+* Notifications can be send after running an ML task, through an easy to implement API (it can be useful for teams who need to get notified as soon as an experiment completes, eg: in Slack)
 
-* In case of error when running an ML task a file will be generated with the error
-
-* The experiment runner can be configured to send notifications after running a task either succesfully or not
+* In case of error when running an ML task, a text file will be generated with the related error
 
 #### ML Tasks Runner
 
-* It is used just to run tasks as well as keep the default / overloaded parameters in JSON format
+* It is used just to run ML tasks as well as track the default / overloaded parameters in JSON format
 
-* In case of error when running a task a file will be generated with the error
+* In case of error when running an ML task, a text file will be generated with the related error
 
 ### How do I use it?
 
