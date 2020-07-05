@@ -107,7 +107,7 @@ Many examples can be found in the [examples](examples) directory.
 
 Below, is an example that uses many of Sand's components to built a machine learning modelling pipeline.
 
-The experiment results can be found in the [example-pipeline-with-model-based-feature-selection](https://github.com/medoidai/sand/tree/master/examples/output/echatzikyriakidis-2020-07-04T19-01-39-example-pipeline-with-model-based-feature-selection) directory.
+The experiment results can be found in the [example-pipeline-with-model-based-feature-selection](https://github.com/medoidai/sand/tree/master/examples/output/echatzikyriakidis-2020-07-05T18-47-54-example-pipeline-with-model-based-feature-selection) directory.
 
 ```python
 from os import path
