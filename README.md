@@ -55,7 +55,7 @@ $ pip install sand
 
 * The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
 
-* The provided estimator needs to provide information about feature importances
+* The provided estimator needs to provide information about feature importance through either a ``coef_`` or a ``feature_importances_`` attribute
 
 * Along with the provided estimator a preprocessor can also be provided to preprocess the data before feature selection runs
 
