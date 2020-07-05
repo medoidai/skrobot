@@ -221,6 +221,38 @@ print(evaluation_results['splits_threshold_metrics_summary'])
 print(train_results['estimator'])
 ```
 
+### Results
+
+![Classification Report 1](static/classification-report-1.png)
+![Classification Report 2](static/classification-report-2.png)
+![Classification Report 2](static/classification-report-3.png)
+![Classification Report 4](static/classification-report-4.png)
+![Consusion Matrix 1](static/confusion-matrix-1.png)
+![Consusion Matrix 2](static/confusion-matrix-2.png)
+![Consusion Matrix 3](static/confusion-matrix-3.png)
+![Consusion Matrix 4](static/confusion-matrix-4.png)
+![False Negatives 1](static/false-negatives-1.png)
+![False Negatives 2](static/false-negatives-2.png)
+![False Positives 1](static/false-positives-1.png)
+![False Positives 2](static/false-positives-2.png)
+![Mean PR Curve 1](static/mean-pr-curve-1.png)
+![Mean PR Curve 2](static/mean-pr-curve-2.png)
+![Mean ROC Curve 1](static/mean-roc-curve-1.png)
+![Mean ROC Curve 2](static/mean-roc-curve-2.png)
+![PR Curve 1](static/pr-curve-1.png)
+![PR Curve 2](static/pr-curve-2.png)
+![ROC Curve 1](static/roc-curve-1.png)
+![ROC Curve 2](static/roc-curve-2.png)
+![Hyperparameters Search Results](static/search-results-optimized-for-f1.png)
+![Threshold Metrics (summary)](static/splits-threshold-metrics-summary.png)
+![Threshold Metrics](static/splits-threshold-metrics.png)
+![Experiment Log](static/experiment-log.png)
+![Features Selected (column indexes)](static/features-selected.png)
+![Feature Selection ML Task Params](static/feature-selection-cross-validation-ml-task-params.png)
+![Hyperparameters Search ML Task Params](static/hyper-parameters-search-cross-validation-ml-task-params.png)
+![Evaluate ML Task Params](static/evaluate-cross-validation-ml-task-params.png)
+![Train ML Task Params](static/train-ml-task-params.png)
+
 ### Why does exists?
 
 It can help Data Scientists and Machine Learning Engineers:
