@@ -118,8 +118,13 @@ from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCros
 from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
 from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
 from sand.feature_selection.column_selector import ColumnSelector
+from sand.notification.base_notifier import BaseNotifier
 
-experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
+class ConsoleNotifier(BaseNotifier):
+    def notify (self, message):
+        print(message)
+
+experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
 
 ######### Experiment
 
@@ -178,7 +183,7 @@ hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValida
                                                                                             data_set_file_path=data_set_file_path,
                                                                                             id_column=id_column,
                                                                                             label_column=label_column,
-                                                                                            random_seed=random_seed).random_search().stratified_folds(total_folds=5, shuffle=True))
+                                                                                            random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
 
 evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator_template=pipe,
                                                                   estimator_params=hyperparameters_search_results['best_params'],
