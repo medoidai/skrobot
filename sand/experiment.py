@@ -2,6 +2,8 @@ import json, os, uuid, datetime, shutil
 
 from numpyencoder import NumpyEncoder
 
+from sand.notification.base_notifier import BaseNotifier
+
 class Experiment:
   def __init__ (self, experiments_repository, source_code_file_path):
     self._experiments_repository = experiments_repository
@@ -12,7 +14,7 @@ class Experiment:
 
     self._notifier = None
 
-  def set_notifier(self, notifier):
+  def set_notifier(self, notifier : BaseNotifier):
     self._notifier = notifier
 
     return self
