@@ -55,6 +55,8 @@ $ pip install sand
 
 * The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
 
+* The provided estimator needs to provide information about feature importances
+
 * Along with the provided estimator a preprocessor can also be provided to preprocess the data before feature selection runs
 
 * The provided estimator and preprocessor are not affected and are used only as templates
