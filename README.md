@@ -34,7 +34,7 @@ $ pip install sand
 
 * The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
 
-* The provided estimator needs to be able to predict probabilities
+* The provided estimator needs to be able to predict probabilities through a ``predict_proba`` method
 
 * The following evaluation results can be generated on-demand for train / test CV folds:
 
