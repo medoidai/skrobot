@@ -51,7 +51,7 @@ $ pip install sand
 
 #### Feature Selection ML Task
 
-* Cross validation runs by default and can ``be`` configured to use either stratified k-folds or custom folds
+* Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
 * The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
 
