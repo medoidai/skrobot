@@ -39,7 +39,7 @@
  },
  "fold_method": "stratified",
  "search_options": {
-  "n_iters": 200
+  "n_iters": 100
  },
  "search_method": "random"
 }

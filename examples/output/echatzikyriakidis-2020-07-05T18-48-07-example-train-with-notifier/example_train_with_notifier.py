@@ -1,9 +1,10 @@
 from os import path
 
 from sand.experiment import Experiment
+from sand.notification.base_notifier import BaseNotifier
 from sand.train_ml_task import TrainMlTask
 
-class ConsoleNotifier:
+class ConsoleNotifier(BaseNotifier):
     def notify (self, message):
         print(message)
 
