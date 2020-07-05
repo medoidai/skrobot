@@ -101,6 +101,30 @@ $ pip install sand
 
 * In case of error when running an ML task, a text file will be generated with the related error
 
+### Why does exists?
+
+It can help Data Scientists and Machine Learning Engineers:
+
+* to keep track of modelling experiments / tasks
+
+* to automate the repetitive (and boring) stuff when designing modelling pipelines
+
+* to spend more time on the things that truly matter when solving a problem
+
+### The people behind it
+
+The following members of our team were involved in developing the initial release of this app:
+
+* [Efstathios Chatzikyriakidis](https://github.com/echatzikyriakidis)
+
+### Can I contribute?
+
+Of course, the project is [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) and you can contribute to it!
+
+### What license do you use?
+
+See our [LICENSE](LICENSE) for more details.
+
 ### How do I use it?
 
 Many examples can be found in the [examples](examples) directory.
@@ -252,27 +276,3 @@ print(train_results['estimator'])
 ![Hyperparameters Search ML Task Params](static/hyper-parameters-search-cross-validation-ml-task-params.png)
 ![Evaluate ML Task Params](static/evaluate-cross-validation-ml-task-params.png)
 ![Train ML Task Params](static/train-ml-task-params.png)
-
-### Why does exists?
-
-It can help Data Scientists and Machine Learning Engineers:
-
-* to keep track of modelling experiments / tasks
-
-* to automate the repetitive (and boring) stuff when designing modelling pipelines
-
-* to spend more time on the things that truly matter when solving a problem
-
-### The people behind it
-
-The following members of our team were involved in developing the initial release of this app:
-
-* [Efstathios Chatzikyriakidis](https://github.com/echatzikyriakidis)
-
-### Can I contribute?
-
-Of course, the project is [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) and you can contribute to it!
-
-### What license do you use?
-
-See our [LICENSE](LICENSE) for more details.
