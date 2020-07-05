@@ -18,7 +18,7 @@ $ pip install sand
 
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
-| Base ML Task | This is the base of all ML tasks. An ML task is a configurable and reproducible piece of code built on top of scikit-learn that implements a repetitive Machine Learning task |
+| Base ML Task | An ML task is a configurable and reproducible piece of code built on top of scikit-learn that implements a repetitive Machine Learning task |
 | Evaluation ML Task | This task can be used to evaluate a scikit-learn estimator on some data |
 | Feature Selection ML Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data |
 | Train ML Task | This task can be used to fit a scikit-learn estimator on some data |
