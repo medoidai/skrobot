@@ -276,3 +276,5 @@ print(train_results['estimator'])
 ![Hyperparameters Search ML Task Params](static/hyper-parameters-search-cross-validation-ml-task-params.png)
 ![Evaluate ML Task Params](static/evaluate-cross-validation-ml-task-params.png)
 ![Train ML Task Params](static/train-ml-task-params.png)
+
+Thank you!
