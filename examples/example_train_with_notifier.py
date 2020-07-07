@@ -18,7 +18,7 @@ random_seed = 42
 
 lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
-results = experiment.run(TrainMlTask(estimator_template=lr_estimator,
+results = experiment.run(TrainMlTask(estimator=lr_estimator,
                                      data_set_file_path=path.join('data','dataset-1.csv'),
                                      random_seed=random_seed))
 

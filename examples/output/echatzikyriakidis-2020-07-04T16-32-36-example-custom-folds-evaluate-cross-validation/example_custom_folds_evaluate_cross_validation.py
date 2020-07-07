@@ -13,7 +13,7 @@ random_seed = 42
 
 lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
-results = experiment.run(EvaluateCrossValidationMlTask(estimator_template=lr_estimator,
+results = experiment.run(EvaluateCrossValidationMlTask(estimator=lr_estimator,
                                                        data_set_file_path=path.join('data','dataset-1.csv'),
                                                        export_classification_reports=True,
                                                        export_confusion_matrixes=True,

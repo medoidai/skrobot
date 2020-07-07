@@ -9,7 +9,7 @@ from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from sand.base_cross_validation_ml_task import BaseCrossValidationMlTask
 
 class HyperParametersSearchCrossValidationMlTask(BaseCrossValidationMlTask):
-  def __init__ (self, estimator_template, search_params, data_set_file_path, estimator_params=None, scorers=['roc_auc', 'average_precision', 'f1', 'precision', 'recall'], feature_columns='all', id_column='id', label_column='label', objective_score='f1', random_seed=123456789, verbose=3, n_jobs=1, return_train_score=True):
+  def __init__ (self, estimator, search_params, data_set_file_path, estimator_params=None, scorers=['roc_auc', 'average_precision', 'f1', 'precision', 'recall'], feature_columns='all', id_column='id', label_column='label', objective_score='f1', random_seed=123456789, verbose=3, n_jobs=1, return_train_score=True):
     super(HyperParametersSearchCrossValidationMlTask, self).__init__(HyperParametersSearchCrossValidationMlTask.__name__, locals())
 
     self.grid_search()
@@ -63,7 +63,7 @@ class HyperParametersSearchCrossValidationMlTask(BaseCrossValidationMlTask):
       return GridSearchCV(self._build_estimator(), self.search_params, cv=cv, scoring=self.scorers, refit=self.objective_score, return_train_score=self.return_train_score, n_jobs=self.n_jobs, verbose=self.verbose)
 
   def _build_estimator (self):
-    estimator = copy.deepcopy(self.estimator_template)
+    estimator = copy.deepcopy(self.estimator)
 
     if self.estimator_params: estimator.set_params(**self.estimator_params)
 

@@ -21,17 +21,17 @@ lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 search_params = { "C" : [1.e-01, 1.e+00, 1.e+01], "penalty" : [ "l1", "l2" ] }
 
-features_columns = experiment.run(FeatureSelectionCrossValidationMlTask (estimator_template=lr_estimator,
+features_columns = experiment.run(FeatureSelectionCrossValidationMlTask (estimator=lr_estimator,
                                                                          data_set_file_path=data_set_file_path,
                                                                          random_seed=random_seed).custom_folds(folds_file_path=folds_file_path))
 
-hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator_template=estimator,
+hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator=estimator,
                                                                                             search_params=search_params,
                                                                                             data_set_file_path=data_set_file_path,
                                                                                             feature_columns=features_columns,
                                                                                             random_seed=random_seed).random_search().custom_folds(folds_file_path=folds_file_path))
 
-evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator_template=lr_estimator,
+evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator=lr_estimator,
                                                                   estimator_params=hyperparameters_search_results['best_params'],
                                                                   data_set_file_path=data_set_file_path,
                                                                   export_classification_reports=True,
@@ -44,7 +44,7 @@ evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator_temp
                                                                   feature_columns=features_columns,
                                                                   random_seed=random_seed).custom_folds(folds_file_path=folds_file_path))
 
-train_results = experiment.run(TrainMlTask(estimator_template=lr_estimator,
+train_results = experiment.run(TrainMlTask(estimator=lr_estimator,
                                            estimator_params=hyperparameters_search_results['best_params'],
                                            data_set_file_path=data_set_file_path,
                                            feature_columns=features_columns,

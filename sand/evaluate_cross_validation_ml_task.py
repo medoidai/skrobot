@@ -13,7 +13,7 @@ from plotly import express
 from sand.base_cross_validation_ml_task import BaseCrossValidationMlTask
 
 class EvaluateCrossValidationMlTask(BaseCrossValidationMlTask):
-  def __init__ (self, estimator_template, data_set_file_path, estimator_params=None, feature_columns='all', id_column='id', label_column='label', random_seed=123456789, threshold='best', threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
+  def __init__ (self, estimator, data_set_file_path, estimator_params=None, feature_columns='all', id_column='id', label_column='label', random_seed=123456789, threshold='best', threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
     super(EvaluateCrossValidationMlTask, self).__init__(EvaluateCrossValidationMlTask.__name__, locals())
 
     pd.set_option('display.max_colwidth', -1)
@@ -245,7 +245,7 @@ class EvaluateCrossValidationMlTask(BaseCrossValidationMlTask):
     return y_hat.astype(int)
 
   def build_estimator (self):
-    estimator = copy.deepcopy(self.estimator_template)
+    estimator = copy.deepcopy(self.estimator)
 
     if self.estimator_params: estimator.set_params(**self.estimator_params)
 

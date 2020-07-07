@@ -11,7 +11,7 @@ from sklearn.pipeline import Pipeline
 from sand.base_cross_validation_ml_task import BaseCrossValidationMlTask
 
 class FeatureSelectionCrossValidationMlTask(BaseCrossValidationMlTask):
-  def __init__ (self, estimator_template, data_set_file_path, estimator_params=None, preprocessor_template=None, preprocessor_params=None, min_features_to_select=1, scoring='f1', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, verbose=3, n_jobs=1):
+  def __init__ (self, estimator, data_set_file_path, estimator_params=None, preprocessor=None, preprocessor_params=None, min_features_to_select=1, scoring='f1', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, verbose=3, n_jobs=1):
     super(FeatureSelectionCrossValidationMlTask, self).__init__(FeatureSelectionCrossValidationMlTask.__name__, locals())
 
   def run(self, output_directory):
@@ -28,12 +28,12 @@ class FeatureSelectionCrossValidationMlTask(BaseCrossValidationMlTask):
 
     model = RFECV(self._build_estimator(), min_features_to_select=self.min_features_to_select, step=1, cv=self._build_cv_splits(X, y), scoring=self.scoring, verbose=self.verbose, n_jobs=self.n_jobs)
 
-    if self.preprocessor_template:
+    if self.preprocessor:
       model = Pipeline(steps=[('preprocessor', self._build_preprocessor()), ('selection', model)])
 
     model.fit(X, y)
 
-    if self.preprocessor_template:
+    if self.preprocessor:
       features_selected = np.nonzero(model.named_steps.selection.support_)[0].tolist()
     else:
       features_selected = X.columns[model.support_].values.tolist()
@@ -43,14 +43,14 @@ class FeatureSelectionCrossValidationMlTask(BaseCrossValidationMlTask):
     return features_selected
 
   def _build_preprocessor (self):
-    preprocessor = copy.deepcopy(self.preprocessor_template)
+    preprocessor = copy.deepcopy(self.preprocessor)
 
     if self.preprocessor_params: preprocessor.set_params(**self.preprocessor_params)
 
     return preprocessor
 
   def _build_estimator (self):
-    estimator = copy.deepcopy(self.estimator_template)
+    estimator = copy.deepcopy(self.estimator)
 
     if self.estimator_params: estimator.set_params(**self.estimator_params)
 

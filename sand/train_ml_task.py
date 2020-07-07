@@ -7,7 +7,7 @@ import numpy as np
 from sand.base_ml_task import BaseMlTask
 
 class TrainMlTask(BaseMlTask):
-  def __init__ (self, estimator_template, data_set_file_path, estimator_params=None, feature_columns='all', id_column='id', label_column='label', random_seed=123456789):
+  def __init__ (self, estimator, data_set_file_path, estimator_params=None, feature_columns='all', id_column='id', label_column='label', random_seed=123456789):
     arguments = copy.deepcopy(locals())
 
     super(TrainMlTask, self).__init__(TrainMlTask.__name__, arguments)
@@ -33,7 +33,7 @@ class TrainMlTask(BaseMlTask):
     return { 'estimator': estimator }
 
   def _build_estimator (self):
-    estimator = copy.deepcopy(self.estimator_template)
+    estimator = copy.deepcopy(self.estimator)
 
     if self.estimator_params: estimator.set_params(**self.estimator_params)
 

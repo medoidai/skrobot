@@ -54,9 +54,9 @@ search_params = {
     "preprocessor__numerical__imputer__strategy" : [ "mean", "median" ]
 }
 
-features_columns = experiment.run(FeatureSelectionCrossValidationMlTask (estimator_template=classifier,
+features_columns = experiment.run(FeatureSelectionCrossValidationMlTask (estimator=classifier,
                                                                          data_set_file_path=data_set_file_path,
-                                                                         preprocessor_template=preprocessor,
+                                                                         preprocessor=preprocessor,
                                                                          min_features_to_select=3,
                                                                          id_column=id_column,
                                                                          label_column=label_column,
@@ -66,14 +66,14 @@ pipe = Pipeline(steps=[('preprocessor', preprocessor),
                        ('selector', ColumnSelector(cols=features_columns)),
                        ('classifier', classifier)])
 
-hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator_template=pipe,
+hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator=pipe,
                                                                                             search_params=search_params,
                                                                                             data_set_file_path=data_set_file_path,
                                                                                             id_column=id_column,
                                                                                             label_column=label_column,
                                                                                             random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
 
-evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator_template=pipe,
+evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator=pipe,
                                                                   estimator_params=hyperparameters_search_results['best_params'],
                                                                   data_set_file_path=data_set_file_path,
                                                                   id_column=id_column,
@@ -87,7 +87,7 @@ evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator_temp
                                                                   export_false_negatives_reports=True,
                                                                   export_also_for_train_folds=True).stratified_folds(total_folds=5, shuffle=True))
 
-train_results = experiment.run(TrainMlTask(estimator_template=pipe,
+train_results = experiment.run(TrainMlTask(estimator=pipe,
                                            estimator_params=hyperparameters_search_results['best_params'],
                                            data_set_file_path=data_set_file_path,
                                            id_column=id_column,
