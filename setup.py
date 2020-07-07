@@ -12,7 +12,7 @@ setup(
      name='sand',
      version='1.0.0',
      author="Medoid AI",
-     description="Sand is a Python module for designing, running and tracking Machine Learning experiments / tasks for binary classification problems. It is built on top of scikit-learn framework.",
+     description="Sand is a Python module for designing, running and tracking Machine Learning experiments / tasks. It is built on top of scikit-learn framework.",
      long_description=readme,
      platforms=['any'],
      long_description_content_type='text/markdown',
