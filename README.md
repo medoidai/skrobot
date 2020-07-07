@@ -14,6 +14,8 @@ $ pip install sand
 
 ### Which are the components?
 
+**NOTE** : Currently, the library can be used only for binary classification problems.
+
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
 | Base ML Task | An ML task is a configurable and reproducible piece of code built on top of scikit-learn that implements a repetitive Machine Learning task |
