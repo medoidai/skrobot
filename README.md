@@ -14,7 +14,7 @@ $ pip install sand
 
 ### Which are the components?
 
-**NOTE** : Currently, the library can be used only for binary classification problems.
+**NOTE** : Currently, Sand can be used only for binary classification problems.
 
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
