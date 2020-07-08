@@ -16,7 +16,7 @@ from sand.hyperparameters_search_cross_validation_ml_task import HyperParameters
 # Build an Experiment
 experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
 
-# Run Evaluation ML Task
+# Run Hyperparameters Search ML Task
 results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator=lr_estimator,
                                                                      search_params={ "C" : [1.e-01, 1.e+00, 1.e+01], "penalty" : [ "l1", "l2" ] },
                                                                      data_set_file_path=path.join('data','dataset-1.csv'),
