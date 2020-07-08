@@ -1,14 +1,6 @@
 from os import path
 
-from sand.experiment import Experiment
-from sand.train_ml_task import TrainMlTask
-from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
-from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
-from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
-
-experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
-
-######### Experiment
+######### Scikit-learn Code
 
 from sklearn.linear_model import LogisticRegression
 
@@ -21,16 +13,31 @@ lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 search_params = { "C" : [1.e-01, 1.e+00, 1.e+01], "penalty" : [ "l1", "l2" ] }
 
+######### Sand Code
+
+from sand.experiment import Experiment
+from sand.train_ml_task import TrainMlTask
+from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
+from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
+from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
+
+# Build an Experiment
+experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
+
+
+# Run Feature Selection ML Task
 features_columns = experiment.run(FeatureSelectionCrossValidationMlTask (estimator=lr_estimator,
                                                                          data_set_file_path=data_set_file_path,
                                                                          random_seed=random_seed).custom_folds(folds_file_path=folds_file_path))
 
+# Run Hyperparameters Search ML Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator=lr_estimator,
                                                                                             search_params=search_params,
                                                                                             data_set_file_path=data_set_file_path,
                                                                                             feature_columns=features_columns,
                                                                                             random_seed=random_seed).random_search().custom_folds(folds_file_path=folds_file_path))
 
+# Run Evaluation ML Task	
 evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator=lr_estimator,
                                                                   estimator_params=hyperparameters_search_results['best_params'],
                                                                   data_set_file_path=data_set_file_path,
@@ -44,12 +51,14 @@ evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator=lr_e
                                                                   feature_columns=features_columns,
                                                                   random_seed=random_seed).custom_folds(folds_file_path=folds_file_path))
 
+# Run Train ML Task
 train_results = experiment.run(TrainMlTask(estimator=lr_estimator,
                                            estimator_params=hyperparameters_search_results['best_params'],
                                            data_set_file_path=data_set_file_path,
                                            feature_columns=features_columns,
                                            random_seed=random_seed))
 
+# Print in-memory results
 print(features_columns)
 
 print(hyperparameters_search_results['best_params'])

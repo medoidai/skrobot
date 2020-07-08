@@ -1,13 +1,6 @@
 from os import path
 
-from sand.experiment import Experiment
-from sand.train_ml_task import TrainMlTask
-from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
-from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
-
-experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
-
-######### Experiment
+######### Scikit-learn Code
 
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -53,6 +46,17 @@ search_params = {
     "selection__k" : [ 5, 6, 7 ]
 }
 
+######### Sand Code
+
+from sand.experiment import Experiment
+from sand.train_ml_task import TrainMlTask
+from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
+from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
+
+# Build an Experiment
+experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
+
+# Run Hyperparameters Search ML Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator=pipe,
                                                                                             search_params=search_params,
                                                                                             data_set_file_path=data_set_file_path,
@@ -60,6 +64,7 @@ hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValida
                                                                                             label_column=label_column,
                                                                                             random_seed=random_seed).random_search().stratified_folds(total_folds=5, shuffle=True))
 
+# Run Evaluation ML Task
 evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator=pipe,
                                                                   estimator_params=hyperparameters_search_results['best_params'],
                                                                   data_set_file_path=data_set_file_path,
@@ -74,6 +79,7 @@ evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator=pipe
                                                                   export_false_negatives_reports=True,
                                                                   export_also_for_train_folds=True).stratified_folds(total_folds=5, shuffle=True))
 
+# Run Train ML Task
 train_results = experiment.run(TrainMlTask(estimator=pipe,
                                            estimator_params=hyperparameters_search_results['best_params'],
                                            data_set_file_path=data_set_file_path,
@@ -81,6 +87,7 @@ train_results = experiment.run(TrainMlTask(estimator=pipe,
                                            label_column=label_column,
                                            random_seed=random_seed))
 
+# Print in-memory results
 print(hyperparameters_search_results['best_params'])
 print(hyperparameters_search_results['best_estimator'])
 print(hyperparameters_search_results['best_score'])
