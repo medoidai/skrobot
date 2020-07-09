@@ -14,6 +14,7 @@
  },
  "data_set_file_path": "data/dataset-1.csv",
  "estimator_params": null,
+ "field_delimiter": ",",
  "scorers": [
   "roc_auc",
   "average_precision",

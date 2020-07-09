@@ -11,13 +11,13 @@ from sklearn.pipeline import Pipeline
 from sand.base_cross_validation_ml_task import BaseCrossValidationMlTask
 
 class FeatureSelectionCrossValidationMlTask(BaseCrossValidationMlTask):
-  def __init__ (self, estimator, data_set_file_path, estimator_params=None, preprocessor=None, preprocessor_params=None, min_features_to_select=1, scoring='f1', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, verbose=3, n_jobs=1):
+  def __init__ (self, estimator, data_set_file_path, estimator_params=None, field_delimiter=',', preprocessor=None, preprocessor_params=None, min_features_to_select=1, scoring='f1', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, verbose=3, n_jobs=1):
     super(FeatureSelectionCrossValidationMlTask, self).__init__(FeatureSelectionCrossValidationMlTask.__name__, locals())
 
   def run(self, output_directory):
     np.random.seed(self.random_seed)
 
-    self.data_set_data_frame = pd.read_csv(self.data_set_file_path)
+    self.data_set_data_frame = pd.read_csv(self.data_set_file_path, delimiter=self.field_delimiter)
 
     y = self.data_set_data_frame[self.label_column]
 

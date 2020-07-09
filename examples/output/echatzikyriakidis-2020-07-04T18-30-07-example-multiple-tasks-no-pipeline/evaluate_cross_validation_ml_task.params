@@ -6,6 +6,7 @@
   "penalty": "l1",
   "C": 1.0
  },
+ "field_delimiter": ",",
  "feature_columns": [
   "f1",
   "f8",

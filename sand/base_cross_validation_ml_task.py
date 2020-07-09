@@ -30,7 +30,7 @@ class BaseCrossValidationMlTask(BaseMlTask):
 
   def _build_cv_splits (self, X, y):
     if self.fold_method == 'custom':
-      folds_data_frame = pd.read_csv(self.fold_options['folds_file_path'])
+      folds_data_frame = pd.read_csv(self.fold_options['folds_file_path'], delimiter=self.field_delimiter)
 
       return self._get_cv_splits(self.data_set_data_frame.merge(folds_data_frame, how='inner', on=self.id_column))
     else:

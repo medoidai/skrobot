@@ -7,6 +7,7 @@
   "classifier__penalty": "l1",
   "classifier__C": 0.1
  },
+ "field_delimiter": ",",
  "feature_columns": "all",
  "id_column": "PassengerId",
  "label_column": "Survived",
