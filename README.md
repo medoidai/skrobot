@@ -18,21 +18,21 @@ $ pip install sand
 
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
-| Base ML Task | An ML task is a configurable and reproducible piece of code built on top of scikit-learn that implements a repetitive Machine Learning task |
-| Evaluation ML Task | This task can be used to evaluate a scikit-learn estimator on some data |
-| Feature Selection ML Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data |
-| Train ML Task | This task can be used to fit a scikit-learn estimator on some data |
-| Hyperparameters Search ML Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data |
-| Experiments Runner | The experiments runner runs ML tasks in the context of an experiment |
-| ML Tasks Runner | The ML tasks runner is like the experiments runner but without the "experiment" stuff, thus it can be used in the production world |
+| Base Task | A task is a configurable and reproducible piece of code built on top of scikit-learn that can be used in machine learning pipelines |
+| Evaluation Task | This task can be used to evaluate a scikit-learn estimator on some data |
+| Feature Selection Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data |
+| Train Task | This task can be used to fit a scikit-learn estimator on some data |
+| Hyperparameters Search Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data |
+| Experiments Runner | The experiments runner runs tasks in the context of an experiment |
+| Tasks Runner | The tasks runner is like the experiments runner but without the "experiment" stuff, thus it can be used in the production world |
 
-#### Evaluation ML Task
+#### Evaluation Task
 
 * Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
 * The provided estimator is not affected and is used only as a template
 
-* The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The provided estimator can be either a scikit-learn machine learning model (eg: LogisticRegression) or a pipeline ending with an estimator
 
 * The provided estimator needs to be able to predict probabilities through a ``predict_proba`` method
 
@@ -49,11 +49,11 @@ $ pip install sand
 
 * The threshold used along with its related performance metrics and summary metrics from all CV splits are returned as a result
 
-#### Feature Selection ML Task
+#### Feature Selection Task
 
 * Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
-* The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The provided estimator can be either a scikit-learn machine learning model (eg: LogisticRegression) or a pipeline ending with an estimator
 
 * The provided estimator needs to provide feature importances through either a ``coef_`` or a ``feature_importances_`` attribute
 
@@ -65,21 +65,21 @@ $ pip install sand
 
 * The selected features are stored in a text file and also returned as a result
 
-#### Train ML Task
+#### Train Task
 
 * The provided estimator is not affected and is used only as a template
 
-* The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The provided estimator can be either a scikit-learn machine learning model (eg: LogisticRegression) or a pipeline ending with an estimator
 
 * The fitted estimator is stored as a pickle file and also returned as a result
 
-#### Hyperparameters Search ML Task
+#### Hyperparameters Search Task
 
 * Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
 * The provided estimator is not affected and is used only as a template
 
-* The provided estimator can be either a scikit-learn ML model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The provided estimator can be either a scikit-learn machine learning model (eg: LogisticRegression) or a pipeline ending with an estimator
 
 * The search can be either randomized or grid-based
 
@@ -91,15 +91,15 @@ $ pip install sand
 
 * Each experiment when it runs it leaves in a unique directory a footprint of metadata files (experiment source code, experiment ID, experiment date/time, experimenter name, experiment default / overloaded parameters in JSON format)
 
-* Notifications can be send after running an ML task, through an easy to implement API (it can be useful for teams who need to get notified for the progress of the experiment, eg: in Slack)
+* Notifications can be send after running a task, through an easy to implement API (it can be useful for teams who need to get notified for the progress of the experiment, eg: in Slack)
 
-* In case of error when running an ML task, a text file will be generated with the related error
+* In case of error when running a task, a text file will be generated with the related error
 
-#### ML Tasks Runner
+#### Tasks Runner
 
-* It runs the provided ML tasks and saves in a file the default / overloaded parameters in JSON format
+* It runs the provided tasks and saves in a file the default / overloaded parameters in JSON format
 
-* In case of error when running an ML task, a text file will be generated with the related error
+* In case of error when running a task, a text file will be generated with the related error
 
 ### Why does exists?
 
@@ -137,10 +137,10 @@ The experiment results can be found in the [example-pipeline-with-model-based-fe
 from os import path
 
 from sand.experiment import Experiment
-from sand.train_ml_task import TrainMlTask
-from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
-from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
-from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
+from sand.tasks import TrainTask
+from sand.tasks import FeatureSelectionCrossValidationTask
+from sand.tasks import EvaluateCrossValidationTask
+from sand.tasks import HyperParametersSearchCrossValidationTask
 from sand.feature_selection.column_selector import ColumnSelector
 from sand.notification.base_notifier import BaseNotifier
 
@@ -190,45 +190,45 @@ search_params = {
     "preprocessor__numerical__imputer__strategy" : [ "mean", "median" ]
 }
 
-features_columns = experiment.run(FeatureSelectionCrossValidationMlTask (estimator=classifier,
-                                                                         data_set_file_path=data_set_file_path,
-                                                                         preprocessor=preprocessor,
-                                                                         min_features_to_select=3,
-                                                                         id_column=id_column,
-                                                                         label_column=label_column,
-                                                                         random_seed=random_seed).stratified_folds(total_folds=5, shuffle=True))
+features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,
+                                                                       data_set_file_path=data_set_file_path,
+                                                                       preprocessor=preprocessor,
+                                                                       min_features_to_select=3,
+                                                                       id_column=id_column,
+                                                                       label_column=label_column,
+                                                                       random_seed=random_seed).stratified_folds(total_folds=5, shuffle=True))
 
 pipe = Pipeline(steps=[('preprocessor', preprocessor),
                        ('selector', ColumnSelector(cols=features_columns)),
                        ('classifier', classifier)])
 
-hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator=pipe,
-                                                                                            search_params=search_params,
-                                                                                            data_set_file_path=data_set_file_path,
-                                                                                            id_column=id_column,
-                                                                                            label_column=label_column,
-                                                                                            random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
+hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
+                                                                                          search_params=search_params,
+                                                                                          data_set_file_path=data_set_file_path,
+                                                                                          id_column=id_column,
+                                                                                          label_column=label_column,
+                                                                                          random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
 
-evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator=pipe,
-                                                                  estimator_params=hyperparameters_search_results['best_params'],
-                                                                  data_set_file_path=data_set_file_path,
-                                                                  id_column=id_column,
-                                                                  label_column=label_column,
-                                                                  random_seed=random_seed,
-                                                                  export_classification_reports=True,
-                                                                  export_confusion_matrixes=True,
-                                                                  export_pr_curves=True,
-                                                                  export_roc_curves=True,
-                                                                  export_false_positives_reports=True,
-                                                                  export_false_negatives_reports=True,
-                                                                  export_also_for_train_folds=True).stratified_folds(total_folds=5, shuffle=True))
+evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
+                                                                estimator_params=hyperparameters_search_results['best_params'],
+                                                                data_set_file_path=data_set_file_path,
+                                                                id_column=id_column,
+                                                                label_column=label_column,
+                                                                random_seed=random_seed,
+                                                                export_classification_reports=True,
+                                                                export_confusion_matrixes=True,
+                                                                export_pr_curves=True,
+                                                                export_roc_curves=True,
+                                                                export_false_positives_reports=True,
+                                                                export_false_negatives_reports=True,
+                                                                export_also_for_train_folds=True).stratified_folds(total_folds=5, shuffle=True))
 
-train_results = experiment.run(TrainMlTask(estimator=pipe,
-                                           estimator_params=hyperparameters_search_results['best_params'],
-                                           data_set_file_path=data_set_file_path,
-                                           id_column=id_column,
-                                           label_column=label_column,
-                                           random_seed=random_seed))
+train_results = experiment.run(TrainTask(estimator=pipe,
+                                         estimator_params=hyperparameters_search_results['best_params'],
+                                         data_set_file_path=data_set_file_path,
+                                         id_column=id_column,
+                                         label_column=label_column,
+                                         random_seed=random_seed))
 
 print(features_columns)
 
@@ -272,9 +272,9 @@ print(train_results['estimator'])
 ![Threshold Metrics 2](static/splits-threshold-metrics-summary.png)
 ![Experiment Log](static/experiment-log.png)
 ![Features Selected](static/features-selected.png)
-![Feature Selection ML Task Params](static/feature-selection-cross-validation-ml-task-params.png)
-![Hyperparameters Search ML Task Params](static/hyper-parameters-search-cross-validation-ml-task-params.png)
-![Evaluate ML Task Params](static/evaluate-cross-validation-ml-task-params.png)
-![Train ML Task Params](static/train-ml-task-params.png)
+![Feature Selection Task Params](static/feature-selection-cross-validation-task-params.png)
+![Hyperparameters Search Task Params](static/hyper-parameters-search-cross-validation-task-params.png)
+![Evaluate Task Params](static/evaluate-cross-validation-task-params.png)
+![Train Task Params](static/train-task-params.png)
 
 Thank you!

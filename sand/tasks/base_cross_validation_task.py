@@ -2,11 +2,11 @@ import pandas as pd
 
 from sklearn.model_selection import StratifiedKFold
 
-from sand.base_ml_task import BaseMlTask
+from .base_task import BaseTask
 
-class BaseCrossValidationMlTask(BaseMlTask):
+class BaseCrossValidationTask(BaseTask):
   def __init__ (self, type_name, args):
-    super(BaseCrossValidationMlTask, self).__init__(type_name, args)
+    super(BaseCrossValidationTask, self).__init__(type_name, args)
 
     self.stratified_folds()
 

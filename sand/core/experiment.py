@@ -2,7 +2,7 @@ import json, os, uuid, datetime, shutil
 
 from numpyencoder import NumpyEncoder
 
-from sand.notification.base_notifier import BaseNotifier
+from ..notification.base_notifier import BaseNotifier
 
 class Experiment:
   def __init__ (self, experiments_repository, source_code_file_path):
@@ -35,13 +35,13 @@ class Experiment:
 
     return self
 
-  def run(self, ml_task):
-    task_type = ml_task.get_type()
+  def run(self, task):
+    task_type = task.get_type()
 
     try:
-      self._save_configuration_file(ml_task.get_configuration(), task_type)
+      self._save_configuration_file(task.get_configuration(), task_type)
 
-      results = ml_task.run(self._experiment_directory_path)
+      results = task.run(self._experiment_directory_path)
       
       self._send_success_notification(task_type)
 
@@ -63,10 +63,10 @@ class Experiment:
     }
 
   def _send_success_notification(self, task_type):
-    self._send_notification(f'The ML task [{task_type}] under experiment [{self._experiment_log["experiment_id"]}] is completed successfully!')
+    self._send_notification(f'The task [{task_type}] under experiment [{self._experiment_log["experiment_id"]}] is completed successfully!')
 
   def _send_failure_notification(self, exception, task_type):
-    self._send_notification(f'The ML task [{task_type}] under experiment [{self._experiment_log["experiment_id"]}] has failed with error:' + '\n'*2 + f'{repr(exception)}')
+    self._send_notification(f'The task [{task_type}] under experiment [{self._experiment_log["experiment_id"]}] has failed with error:' + '\n'*2 + f'{repr(exception)}')
 
   def _send_notification(self, message):
     if self._notifier: self._notifier.notify(message)

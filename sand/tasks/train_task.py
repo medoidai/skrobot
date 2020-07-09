@@ -4,13 +4,13 @@ import pandas as pd
 
 import numpy as np
 
-from sand.base_ml_task import BaseMlTask
+from .base_task import BaseTask
 
-class TrainMlTask(BaseMlTask):
+class TrainTask(BaseTask):
   def __init__ (self, estimator, data_set_file_path, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=123456789):
     arguments = copy.deepcopy(locals())
 
-    super(TrainMlTask, self).__init__(TrainMlTask.__name__, arguments)
+    super(TrainTask, self).__init__(TrainTask.__name__, arguments)
 
   def run(self, output_directory):
     np.random.seed(self.random_seed)

@@ -1,27 +1,12 @@
 {
- "type": "hyper_parameters_search_cross_validation_ml_task",
+ "type": "evaluate_cross_validation_task",
  "estimator": "LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,\n                   intercept_scaling=1, l1_ratio=None, max_iter=100,\n                   multi_class='warn', n_jobs=None, penalty='l2',\n                   random_state=42, solver='liblinear', tol=0.0001, verbose=0,\n                   warm_start=False)",
- "search_params": {
-  "C": [
-   0.1,
-   1.0,
-   10.0
-  ],
-  "penalty": [
-   "l1",
-   "l2"
-  ]
- },
  "data_set_file_path": "data/dataset-1.csv",
- "estimator_params": null,
+ "estimator_params": {
+  "penalty": "l1",
+  "C": 1.0
+ },
  "field_delimiter": ",",
- "scorers": [
-  "roc_auc",
-  "average_precision",
-  "f1",
-  "precision",
-  "recall"
- ],
  "feature_columns": [
   "f1",
   "f8",
@@ -39,18 +24,24 @@
  ],
  "id_column": "id",
  "label_column": "label",
- "objective_score": "f1",
  "random_seed": 42,
- "verbose": 3,
- "n_jobs": 1,
- "return_train_score": true,
+ "threshold": "best",
+ "threshold_tuning_range": [
+  0.01,
+  1.0,
+  0.01
+ ],
+ "export_classification_reports": true,
+ "export_confusion_matrixes": true,
+ "export_roc_curves": true,
+ "export_pr_curves": true,
+ "export_false_positives_reports": true,
+ "export_false_negatives_reports": true,
+ "export_also_for_train_folds": true,
+ "fscore_beta": 1,
  "fold_options": {
   "folds_file_path": "data/folds-1.csv",
   "fold_column": "fold"
  },
- "fold_method": "custom",
- "search_options": {
-  "n_iters": 200
- },
- "search_method": "random"
+ "fold_method": "custom"
 }

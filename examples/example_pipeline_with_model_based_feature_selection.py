@@ -7,10 +7,10 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
 
 from sand.experiment import Experiment
-from sand.train_ml_task import TrainMlTask
-from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
-from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
-from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
+from sand.tasks import TrainTask
+from sand.tasks import FeatureSelectionCrossValidationTask
+from sand.tasks import EvaluateCrossValidationTask
+from sand.tasks import HyperParametersSearchCrossValidationTask
 from sand.feature_selection.column_selector import ColumnSelector
 from sand.notification.base_notifier import BaseNotifier
 
@@ -58,49 +58,49 @@ class ConsoleNotifier(BaseNotifier):
 # Build an Experiment
 experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
 
-# Run Feature Selection ML Task
-features_columns = experiment.run(FeatureSelectionCrossValidationMlTask (estimator=classifier,
-                                                                         data_set_file_path=data_set_file_path,
-                                                                         preprocessor=preprocessor,
-                                                                         min_features_to_select=3,
-                                                                         id_column=id_column,
-                                                                         label_column=label_column,
-                                                                         random_seed=random_seed).stratified_folds(total_folds=5, shuffle=True))
+# Run Feature Selection Task
+features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,
+                                                                       data_set_file_path=data_set_file_path,
+                                                                       preprocessor=preprocessor,
+                                                                       min_features_to_select=3,
+                                                                       id_column=id_column,
+                                                                       label_column=label_column,
+                                                                       random_seed=random_seed).stratified_folds(total_folds=5, shuffle=True))
 
 pipe = Pipeline(steps=[('preprocessor', preprocessor),
                        ('selector', ColumnSelector(cols=features_columns)),
                        ('classifier', classifier)])
 
-# Run Hyperparameters Search ML Task
-hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationMlTask (estimator=pipe,
-                                                                                            search_params=search_params,
-                                                                                            data_set_file_path=data_set_file_path,
-                                                                                            id_column=id_column,
-                                                                                            label_column=label_column,
-                                                                                            random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
+# Run Hyperparameters Search Task
+hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
+                                                                                          search_params=search_params,
+                                                                                          data_set_file_path=data_set_file_path,
+                                                                                          id_column=id_column,
+                                                                                          label_column=label_column,
+                                                                                          random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
 
-# Run Evaluation ML Task
-evaluation_results = experiment.run(EvaluateCrossValidationMlTask(estimator=pipe,
-                                                                  estimator_params=hyperparameters_search_results['best_params'],
-                                                                  data_set_file_path=data_set_file_path,
-                                                                  id_column=id_column,
-                                                                  label_column=label_column,
-                                                                  random_seed=random_seed,
-                                                                  export_classification_reports=True,
-                                                                  export_confusion_matrixes=True,
-                                                                  export_pr_curves=True,
-                                                                  export_roc_curves=True,
-                                                                  export_false_positives_reports=True,
-                                                                  export_false_negatives_reports=True,
-                                                                  export_also_for_train_folds=True).stratified_folds(total_folds=5, shuffle=True))
+# Run Evaluation Task
+evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
+                                                                estimator_params=hyperparameters_search_results['best_params'],
+                                                                data_set_file_path=data_set_file_path,
+                                                                id_column=id_column,
+                                                                label_column=label_column,
+                                                                random_seed=random_seed,
+                                                                export_classification_reports=True,
+                                                                export_confusion_matrixes=True,
+                                                                export_pr_curves=True,
+                                                                export_roc_curves=True,
+                                                                export_false_positives_reports=True,
+                                                                export_false_negatives_reports=True,
+                                                                export_also_for_train_folds=True).stratified_folds(total_folds=5, shuffle=True))
 
-# Run Train ML Task
-train_results = experiment.run(TrainMlTask(estimator=pipe,
-                                           estimator_params=hyperparameters_search_results['best_params'],
-                                           data_set_file_path=data_set_file_path,
-                                           id_column=id_column,
-                                           label_column=label_column,
-                                           random_seed=random_seed))
+# Run Train Task
+train_results = experiment.run(TrainTask(estimator=pipe,
+                                         estimator_params=hyperparameters_search_results['best_params'],
+                                         data_set_file_path=data_set_file_path,
+                                         id_column=id_column,
+                                         label_column=label_column,
+                                         random_seed=random_seed))
 
 # Print in-memory results
 print(features_columns)

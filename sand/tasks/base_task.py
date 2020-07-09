@@ -4,7 +4,7 @@ from stringcase import snakecase
 
 from abc import ABC, abstractmethod
 
-class BaseMlTask(ABC):
+class BaseTask(ABC):
   def __init__ (self, type_name, args):
     self.arguments = {}
 
@@ -12,7 +12,7 @@ class BaseMlTask(ABC):
 
     self.update_arguments(args)
 
-    super(BaseMlTask, self).__init__()
+    super(BaseTask, self).__init__()
 
   def get_type(self):
     return self.type

@@ -2,17 +2,17 @@ import json, os
 
 from numpyencoder import NumpyEncoder
 
-class MlTaskRunner:
+class TaskRunner:
   def __init__ (self, output_directory_path):
     self._output_directory_path = output_directory_path
 
-  def run(self, ml_task):
-    task_type = ml_task.get_type()
+  def run(self, task):
+    task_type = task.get_type()
 
     try:
-      self._save_configuration_file(ml_task.get_configuration(), task_type)
+      self._save_configuration_file(task.get_configuration(), task_type)
 
-      return ml_task.run(self._output_directory_path)
+      return task.run(self._output_directory_path)
     except Exception as exception:
       self._save_errors_file(exception, task_type)
 

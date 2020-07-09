@@ -1,1 +1,3 @@
-__all__ = [ 'column_selector' ]
+from .column_selector import ColumnSelector
+
+__all__ = [ "ColumnSelector" ]
