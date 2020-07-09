@@ -6,7 +6,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
 
-from sand.experiment import Experiment
+from sand.core import Experiment
 from sand.tasks import TrainTask
 from sand.tasks import FeatureSelectionCrossValidationTask
 from sand.tasks import EvaluateCrossValidationTask

@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.feature_selection import SelectPercentile, chi2
 from sklearn.linear_model import SGDClassifier
 
-from sand.experiment import Experiment
+from sand.core import Experiment
 from sand.tasks import TrainTask
 from sand.tasks import EvaluateCrossValidationTask
 from sand.tasks import HyperParametersSearchCrossValidationTask

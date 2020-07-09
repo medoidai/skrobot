@@ -2,7 +2,7 @@ from os import path
 
 from sklearn.linear_model import LogisticRegression
 
-from sand.experiment import Experiment
+from sand.core import Experiment
 from sand.tasks import TrainTask
 from sand.tasks import EvaluateCrossValidationTask
 from sand.tasks import FeatureSelectionCrossValidationTask

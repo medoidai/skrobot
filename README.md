@@ -136,7 +136,7 @@ The experiment results can be found in the [example-pipeline-with-model-based-fe
 ```python
 from os import path
 
-from sand.experiment import Experiment
+from sand.core import Experiment
 from sand.tasks import TrainTask
 from sand.tasks import FeatureSelectionCrossValidationTask
 from sand.tasks import EvaluateCrossValidationTask
