@@ -1,12 +1,20 @@
 from os import path
 
-######### Scikit-learn Code
-
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
+
+from sand.experiment import Experiment
+from sand.train_ml_task import TrainMlTask
+from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
+from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
+from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
+from sand.feature_selection.column_selector import ColumnSelector
+from sand.notification.base_notifier import BaseNotifier
+
+######### Scikit-learn Code
 
 data_set_file_path = path.join('data', 'dataset-2.csv')
 
@@ -41,14 +49,6 @@ search_params = {
 }
 
 ######### Sand Code
-
-from sand.experiment import Experiment
-from sand.train_ml_task import TrainMlTask
-from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
-from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
-from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
-from sand.feature_selection.column_selector import ColumnSelector
-from sand.notification.base_notifier import BaseNotifier
 
 # Define a Notifier (it prints in console)
 class ConsoleNotifier(BaseNotifier):

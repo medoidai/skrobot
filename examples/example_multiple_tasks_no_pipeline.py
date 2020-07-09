@@ -1,8 +1,14 @@
 from os import path
 
-######### Scikit-learn Code
-
 from sklearn.linear_model import LogisticRegression
+
+from sand.experiment import Experiment
+from sand.train_ml_task import TrainMlTask
+from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
+from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
+from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
+
+######### Scikit-learn Code
 
 data_set_file_path = path.join('data', 'dataset-1.csv')
 folds_file_path = path.join('data', 'folds-1.csv')
@@ -14,12 +20,6 @@ lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 search_params = { "C" : [1.e-01, 1.e+00, 1.e+01], "penalty" : [ "l1", "l2" ] }
 
 ######### Sand Code
-
-from sand.experiment import Experiment
-from sand.train_ml_task import TrainMlTask
-from sand.evaluate_cross_validation_ml_task import EvaluateCrossValidationMlTask
-from sand.feature_selection_cross_validation_ml_task import FeatureSelectionCrossValidationMlTask
-from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
 
 # Build an Experiment
 experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()

@@ -1,17 +1,17 @@
 from os import path
 
-######### Scikit-learn Code
-
 from sklearn.linear_model import LogisticRegression
+
+from sand.experiment import Experiment
+from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
+
+######### Scikit-learn Code
 
 random_seed = 42
 
 lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 ######### Sand Code
-
-from sand.experiment import Experiment
-from sand.hyperparameters_search_cross_validation_ml_task import HyperParametersSearchCrossValidationMlTask
 
 # Build an Experiment
 experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()

@@ -1,18 +1,18 @@
 from os import path
 
-######### Scikit-learn Code
-
 from sklearn.linear_model import LogisticRegression
+
+from sand.experiment import Experiment
+from sand.notification.base_notifier import BaseNotifier
+from sand.train_ml_task import TrainMlTask
+
+######### Scikit-learn Code
 
 random_seed = 42
 
 lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 ######### Sand Code
-
-from sand.experiment import Experiment
-from sand.notification.base_notifier import BaseNotifier
-from sand.train_ml_task import TrainMlTask
 
 # Define a Notifier (it prints in console)
 class ConsoleNotifier(BaseNotifier):
