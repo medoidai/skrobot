@@ -4,6 +4,8 @@ import pandas as pd
 
 import numpy as np
 
+from math import floor
+
 from functools import reduce
 
 from plotly.offline import plot
@@ -69,7 +71,7 @@ class EvaluateCrossValidationMlTask(BaseCrossValidationMlTask):
 
     if row.empty: raise Exception(f"The specified threshold [{self.threshold}] cannot be found!")
 
-    return row['threshold'], row.drop('threshold')
+    return self.truncate_number(row['threshold'], 3), row.drop('threshold')
 
   def build_all_false_negatives_reports(self, splits_y_and_y_hat_test, splits_y_and_y_hat_train, output_directory):
     self.build_false_negatives_reports(splits_y_and_y_hat_test, output_directory, self.test_text)
@@ -143,7 +145,7 @@ class EvaluateCrossValidationMlTask(BaseCrossValidationMlTask):
     self.build_classification_report(y, y_hat, output_directory, f'for all {data_split} data', f'all_{data_split}_data', labels, truncate_precision)
 
   def build_classification_report(self, y, y_hat, output_directory, title_part_text, file_part_text, labels, truncate_precision):
-    from math import floor
+    from functools import partial
 
     from sklearn.metrics import precision_recall_fscore_support
 
@@ -163,11 +165,14 @@ class EvaluateCrossValidationMlTask(BaseCrossValidationMlTask):
 
     classification_report = classification_report.T
 
-    classification_report = classification_report.applymap(lambda o: floor(o * 10 ** truncate_precision) / 10 ** truncate_precision)
+    classification_report = classification_report.applymap(partial(self.truncate_number, truncate_precision=truncate_precision))
 
     classification_report['support'] = classification_report['support'].map(int)
 
     with open(os.path.join(output_directory, f'classification_report_{file_part_text}.txt'), "w") as f: f.write(f"Classification report {title_part_text} (Threshold = {self.threshold})" + '\n'*2 + f"{classification_report}")
+
+  def truncate_number(self, number, truncate_precision):
+    return floor(number * 10 ** truncate_precision) / 10 ** truncate_precision
 
   def build_all_precision_recall_curves(self, splits_threshold_metrics, splits_threshold_metrics_summary, output_directory):
     self.build_cv_precision_recall_curves(splits_threshold_metrics[['threshold', 'cv_split', 'test_precision', 'test_recall', f'test_{self.fscore_beta_text}']], output_directory, self.test_text)
