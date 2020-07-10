@@ -50,7 +50,7 @@ search_params = {
 
 ######### Sand Code
 
-# Define a Notifier (This is optional and you can implement any notifier you want, eg: Slack / Jira / Discord)
+# Define a Notifier (This is optional and you can implement any notifier you want, e.g. for Slack / Jira / Discord)
 class ConsoleNotifier(BaseNotifier):
     def notify (self, message):
         print(message)
