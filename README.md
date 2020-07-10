@@ -156,11 +156,12 @@ The experiment results can be found in the [example-pipeline-with-model-based-fe
 ```python
 from os import path
 
-from sand.core import Experiment
 from sand.tasks import TrainTask
 from sand.tasks import FeatureSelectionCrossValidationTask
 from sand.tasks import EvaluateCrossValidationTask
 from sand.tasks import HyperParametersSearchCrossValidationTask
+
+from sand.core import Experiment
 from sand.feature_selection import ColumnSelector
 from sand.notification import BaseNotifier
 
