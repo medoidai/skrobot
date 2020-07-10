@@ -23,13 +23,13 @@ $ pip install sand
 The Sand version on PyPI may always be one step behind; you can install the latest development version from the GitHub repository by executing
 
 ```sh
-pip install git+git://github.com/medoidai/sand.git
+$ pip install git+git://github.com/medoidai/sand.git
 ```
 
 Or, you can fork the GitHub repository from https://github.com/medoidai/sand and install Sand from your local drive via
 
 ```sh
-python setup.py install
+$ python setup.py install
 ```
 
 ### Which are the components?
