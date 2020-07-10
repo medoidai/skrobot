@@ -1,3 +1,7 @@
+![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)
+![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)
+![License](https://img.shields.io/badge/license-mit-blue.svg)
+
 <br /><p align="center"><a href="https://www.medoid.ai/" target="_blank"><img src="https://www.medoid.ai/wp-content/uploads/2020/05/medoid-ai-logo-2.png" width="300px;" /></a></p>
 
 ## Sand
