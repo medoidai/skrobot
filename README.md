@@ -143,7 +143,7 @@ Of course, the project is [Free Software](https://www.gnu.org/philosophy/free-sw
 
 ### What license do you use?
 
-See our [LICENSE](LICENSE.txt) for more details.
+See our [LICENSE.txt](LICENSE.txt) for more details.
 
 ### How do I use it?
 
