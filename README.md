@@ -26,7 +26,7 @@ The Sand version on PyPI may always be one step behind; you can install the late
 $ pip install git+git://github.com/medoidai/sand.git
 ```
 
-Or, you can fork the GitHub repository from https://github.com/medoidai/sand and install Sand from your local drive via
+Or, you can clone the GitHub repository and install Sand from your local drive via
 
 ```sh
 $ python setup.py install
