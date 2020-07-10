@@ -2,7 +2,7 @@ import json, os, uuid, datetime, shutil
 
 from numpyencoder import NumpyEncoder
 
-from ..notification.base_notifier import BaseNotifier
+from ..notification import BaseNotifier
 
 class Experiment:
   def __init__ (self, experiments_repository, source_code_file_path):

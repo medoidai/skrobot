@@ -3,7 +3,7 @@ from os import path
 from sklearn.linear_model import LogisticRegression
 
 from sand.core import Experiment
-from sand.notification.base_notifier import BaseNotifier
+from sand.notification import BaseNotifier
 from sand.tasks import TrainTask
 
 ######### Scikit-learn Code

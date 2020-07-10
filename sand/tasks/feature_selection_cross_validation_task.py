@@ -8,7 +8,7 @@ from sklearn.feature_selection import RFECV
 
 from sklearn.pipeline import Pipeline
 
-from .base_cross_validation_task import BaseCrossValidationTask
+from . import BaseCrossValidationTask
 
 class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
   def __init__ (self, estimator, data_set_file_path, estimator_params=None, field_delimiter=',', preprocessor=None, preprocessor_params=None, min_features_to_select=1, scoring='f1', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, verbose=3, n_jobs=1):

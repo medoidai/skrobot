@@ -11,8 +11,8 @@ from sand.tasks import TrainTask
 from sand.tasks import FeatureSelectionCrossValidationTask
 from sand.tasks import EvaluateCrossValidationTask
 from sand.tasks import HyperParametersSearchCrossValidationTask
-from sand.feature_selection.column_selector import ColumnSelector
-from sand.notification.base_notifier import BaseNotifier
+from sand.feature_selection import ColumnSelector
+from sand.notification import BaseNotifier
 
 ######### Scikit-learn Code
 

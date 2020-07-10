@@ -9,7 +9,7 @@ from sand.core import Experiment
 from sand.tasks import TrainTask
 from sand.tasks import EvaluateCrossValidationTask
 from sand.tasks import HyperParametersSearchCrossValidationTask
-from sand.feature_selection.column_selector import ColumnSelector
+from sand.feature_selection import ColumnSelector
 
 ######### Scikit-learn Code
 

@@ -4,7 +4,7 @@ import pandas as pd
 
 import numpy as np
 
-from .base_task import BaseTask
+from . import BaseTask
 
 class TrainTask(BaseTask):
   def __init__ (self, estimator, data_set_file_path, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=123456789):

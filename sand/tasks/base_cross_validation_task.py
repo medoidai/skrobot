@@ -2,7 +2,7 @@ import pandas as pd
 
 from sklearn.model_selection import StratifiedKFold
 
-from .base_task import BaseTask
+from . import BaseTask
 
 class BaseCrossValidationTask(BaseTask):
   def __init__ (self, type_name, args):
