@@ -156,28 +156,21 @@ The experiment results can be found in the [example-pipeline-with-model-based-fe
 ```python
 from os import path
 
-from sand.tasks import TrainTask
-from sand.tasks import FeatureSelectionCrossValidationTask
-from sand.tasks import EvaluateCrossValidationTask
-from sand.tasks import HyperParametersSearchCrossValidationTask
-
-from sand.core import Experiment
-from sand.feature_selection import ColumnSelector
-from sand.notification import BaseNotifier
-
-class ConsoleNotifier(BaseNotifier):
-    def notify (self, message):
-        print(message)
-
-experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
-
-######### Experiment
-
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
+
+from sand.tasks import TrainTask
+from sand.tasks import FeatureSelectionCrossValidationTask
+from sand.tasks import EvaluateCrossValidationTask
+from sand.tasks import HyperParametersSearchCrossValidationTask
+from sand.core import Experiment
+from sand.feature_selection import ColumnSelector
+from sand.notification import BaseNotifier
+
+######### Scikit-learn Code
 
 data_set_file_path = path.join('data', 'dataset-2.csv')
 
@@ -211,6 +204,17 @@ search_params = {
     "preprocessor__numerical__imputer__strategy" : [ "mean", "median" ]
 }
 
+######### Sand Code
+
+# Define a Notifier (it prints in console)
+class ConsoleNotifier(BaseNotifier):
+    def notify (self, message):
+        print(message)
+
+# Build an Experiment
+experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
+
+# Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,
                                                                        data_set_file_path=data_set_file_path,
                                                                        preprocessor=preprocessor,
@@ -223,6 +227,7 @@ pipe = Pipeline(steps=[('preprocessor', preprocessor),
                        ('selector', ColumnSelector(cols=features_columns)),
                        ('classifier', classifier)])
 
+# Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
                                                                                           search_params=search_params,
                                                                                           data_set_file_path=data_set_file_path,
@@ -230,6 +235,7 @@ hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValida
                                                                                           label_column=label_column,
                                                                                           random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
 
+# Run Evaluation Task
 evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
                                                                 estimator_params=hyperparameters_search_results['best_params'],
                                                                 data_set_file_path=data_set_file_path,
@@ -244,6 +250,7 @@ evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
                                                                 export_false_negatives_reports=True,
                                                                 export_also_for_train_folds=True).stratified_folds(total_folds=5, shuffle=True))
 
+# Run Train Task
 train_results = experiment.run(TrainTask(estimator=pipe,
                                          estimator_params=hyperparameters_search_results['best_params'],
                                          data_set_file_path=data_set_file_path,
@@ -251,6 +258,7 @@ train_results = experiment.run(TrainTask(estimator=pipe,
                                          label_column=label_column,
                                          random_seed=random_seed))
 
+# Print in-memory results
 print(features_columns)
 
 print(hyperparameters_search_results['best_params'])
