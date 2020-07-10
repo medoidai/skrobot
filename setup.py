@@ -4,13 +4,14 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
-with open(path.join(here, 'requirements.txt')) as f: requirements = f.read().splitlines()
-
+with open(path.join(here, 'requirements.txt')) as f: requirements = [o.strip() for o in f]
+     
 with open(path.join(here, 'README.md'), encoding='utf-8') as f: readme = f.read()
 
 setup(
      name='sand',
      version='1.0.0',
+     license='MIT',
      author="Medoid AI",
      description="Sand is a Python module for designing, running and tracking Machine Learning experiments / tasks. It is built on top of scikit-learn framework.",
      long_description=readme,
