@@ -25,28 +25,28 @@ id_column = 'PassengerId'
 
 label_column = 'Survived'
 
-numeric_features = ['Age', 'Fare']
-
-categorical_features = ['Embarked', 'Sex']
-
 numeric_transformer = Pipeline(steps=[
     ('imputer', SimpleImputer()),
     ('scaler', StandardScaler())])
 
-categorical_transformer = Pipeline(steps=[
+sex_transformer = Pipeline(steps=[
+    ('encoder', OneHotEncoder(handle_unknown='ignore'))])
+
+embarked_transformer = Pipeline(steps=[
     ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
     ('encoder', OneHotEncoder(handle_unknown='ignore'))])
 
 preprocessor = ColumnTransformer(transformers=[
-    ('numerical', numeric_transformer, numeric_features),
-    ('categorical', categorical_transformer, categorical_features)])
+    ('numerical_transfomer', numeric_transformer, ['Age', 'Fare']),
+    ('sex_transfomer', sex_transformer, ['Sex']),
+    ('embarked_transfomer', embarked_transformer, ['Embarked'])])
 
 classifier = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 search_params = {
     "classifier__C" : [ 1.e-01, 1.e+00, 1.e+01 ],
     "classifier__penalty" : [ "l1", "l2" ],
-    "preprocessor__numerical__imputer__strategy" : [ "mean", "median" ]
+    "preprocessor__numerical_transfomer__imputer__strategy" : [ "mean", "median" ]
 }
 
 ######### Sand Code
