@@ -50,7 +50,7 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
 
     search.fit(X, y)
 
-    cv_results = pd.DataFrame(search.cv_results_).sort_values(by=f'mean_test_{self.objective_score}', ascending=False)
+    cv_results = pd.DataFrame(search.cv_results_)
 
     cv_results.columns = cv_results.columns.str.replace('_test_', '_validation_')
 
