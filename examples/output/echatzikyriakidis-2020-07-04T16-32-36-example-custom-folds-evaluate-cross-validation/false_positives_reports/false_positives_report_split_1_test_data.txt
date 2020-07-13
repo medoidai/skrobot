@@ -1,4 +1,0 @@
-False positives report for split 1 test data (Threshold = 0.64)
-
-1992702
-1886022

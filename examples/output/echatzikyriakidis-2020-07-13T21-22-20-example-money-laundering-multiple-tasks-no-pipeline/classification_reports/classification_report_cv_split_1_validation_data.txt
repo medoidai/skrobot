@@ -1,0 +1,6 @@
+Classification report for CV split 1 validation data (Threshold = 0.18)
+
+             precision  recall     f1  support
+0            0.998      0.996   0.997  6227   
+1            0.400      0.583   0.474  24     
+avg / total  0.996      0.995   0.995  6251   

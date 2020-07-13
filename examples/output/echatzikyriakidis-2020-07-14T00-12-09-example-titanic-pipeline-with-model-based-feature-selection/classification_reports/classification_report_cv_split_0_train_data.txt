@@ -1,0 +1,6 @@
+Classification report for CV split 0 train data (Threshold = 0.33)
+
+             precision  recall     f1  support
+0            0.835      0.826   0.830  351    
+1            0.725      0.738   0.731  218    
+avg / total  0.793      0.792   0.792  569    

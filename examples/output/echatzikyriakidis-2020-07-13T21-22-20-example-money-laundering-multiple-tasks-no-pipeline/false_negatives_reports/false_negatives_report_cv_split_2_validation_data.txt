@@ -1,0 +1,13 @@
+False negatives report for CV split 2 validation data (Threshold = 0.18)
+
+7176489
+6466465
+4167560
+4060390
+6679685
+4276557
+7536226
+6397697
+2538317
+1907316
+1922394

@@ -1,0 +1,12 @@
+False negatives report for CV split 2 validation data (Threshold = 0.27)
+
+5370
+3864
+2247
+5
+1469
+4298
+2821
+3419
+1460
+2965
