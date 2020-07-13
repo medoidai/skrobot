@@ -7,8 +7,6 @@ from sand.tasks import EvaluateCrossValidationTask
 
 ######### Scikit-learn Code
 
-data_set_file_path = path.join('data','dataset-1.csv')
-
 random_seed = 42
 
 lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
@@ -20,8 +18,8 @@ experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis'
 
 # Run Evaluation Task
 results = experiment.run(EvaluateCrossValidationTask(estimator=lr_estimator,
-                                                     train_data_set_file_path=data_set_file_path,
-                                                     test_data_set_file_path=data_set_file_path,
+                                                     train_data_set_file_path=path.join('data','money-laundering-data-train.csv'),
+                                                     test_data_set_file_path=path.join('data','money-laundering-data-test.csv'),
                                                      export_classification_reports=True,
                                                      export_confusion_matrixes=True,
                                                      export_pr_curves=True,
@@ -29,7 +27,7 @@ results = experiment.run(EvaluateCrossValidationTask(estimator=lr_estimator,
                                                      export_false_positives_reports=True,
                                                      export_false_negatives_reports=True,
                                                      export_also_for_train_folds=True,
-                                                     random_seed=random_seed).custom_folds(folds_file_path=path.join('data','folds-1.csv')))
+                                                     random_seed=random_seed).custom_folds(folds_file_path=path.join('data','money-laundering-folds.csv')))
 
 # Print in-memory results
 print(results['threshold'])

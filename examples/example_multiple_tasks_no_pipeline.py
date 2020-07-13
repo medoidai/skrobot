@@ -10,9 +10,9 @@ from sand.tasks import HyperParametersSearchCrossValidationTask
 
 ######### Scikit-learn Code
 
-data_set_file_path = path.join('data', 'dataset-1.csv')
-
-folds_file_path = path.join('data', 'folds-1.csv')
+train_data_set_file_path = path.join('data','money-laundering-data-train.csv'),
+test_data_set_file_path = path.join('data','money-laundering-data-test.csv'),
+folds_file_path = path.join('data', 'money-laundering-folds.csv')
 
 random_seed = 42
 
@@ -28,21 +28,21 @@ experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis'
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=lr_estimator,
-                                                                       train_data_set_file_path=data_set_file_path,
+                                                                       train_data_set_file_path=train_data_set_file_path,
                                                                        random_seed=random_seed).custom_folds(folds_file_path=folds_file_path))
 
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=lr_estimator,
                                                                                           search_params=search_params,
-                                                                                          train_data_set_file_path=data_set_file_path,
+                                                                                          train_data_set_file_path=train_data_set_file_path,
                                                                                           feature_columns=features_columns,
                                                                                           random_seed=random_seed).random_search().custom_folds(folds_file_path=folds_file_path))
 
 # Run Evaluation Task	
 evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=lr_estimator,
                                                                 estimator_params=hyperparameters_search_results['best_params'],
-                                                                train_data_set_file_path=data_set_file_path,
-                                                                test_data_set_file_path=data_set_file_path,
+                                                                train_data_set_file_path=train_data_set_file_path,
+                                                                test_data_set_file_path=test_data_set_file_path,
                                                                 export_classification_reports=True,
                                                                 export_confusion_matrixes=True,
                                                                 export_pr_curves=True,
@@ -56,7 +56,7 @@ evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=lr_est
 # Run Train Task
 train_results = experiment.run(TrainTask(estimator=lr_estimator,
                                          estimator_params=hyperparameters_search_results['best_params'],
-                                         train_data_set_file_path=data_set_file_path,
+                                         train_data_set_file_path=train_data_set_file_path,
                                          feature_columns=features_columns,
                                          random_seed=random_seed))
 

@@ -16,7 +16,8 @@ from sand.notification import BaseNotifier
 
 ######### Scikit-learn Code
 
-data_set_file_path = path.join('data', 'dataset-2.csv')
+train_data_set_file_path = path.join('data', 'titanic-train.csv')
+test_data_set_file_path = path.join('data', 'titanic-test.csv')
 
 random_seed = 42
 
@@ -60,7 +61,7 @@ experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis'
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,
-                                                                       train_data_set_file_path=data_set_file_path,
+                                                                       train_data_set_file_path=train_data_set_file_path,
                                                                        preprocessor=preprocessor,
                                                                        min_features_to_select=3,
                                                                        id_column=id_column,
@@ -74,7 +75,7 @@ pipe = Pipeline(steps=[('preprocessor', preprocessor),
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
                                                                                           search_params=search_params,
-                                                                                          train_data_set_file_path=data_set_file_path,
+                                                                                          train_data_set_file_path=train_data_set_file_path,
                                                                                           id_column=id_column,
                                                                                           label_column=label_column,
                                                                                           random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
@@ -82,8 +83,8 @@ hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValida
 # Run Evaluation Task
 evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
                                                                 estimator_params=hyperparameters_search_results['best_params'],
-                                                                train_data_set_file_path=data_set_file_path,
-                                                                test_data_set_file_path=data_set_file_path,
+                                                                train_data_set_file_path=train_data_set_file_path,
+                                                                test_data_set_file_path=test_data_set_file_path,
                                                                 id_column=id_column,
                                                                 label_column=label_column,
                                                                 random_seed=random_seed,
@@ -98,7 +99,7 @@ evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
 # Run Train Task
 train_results = experiment.run(TrainTask(estimator=pipe,
                                          estimator_params=hyperparameters_search_results['best_params'],
-                                         train_data_set_file_path=data_set_file_path,
+                                         train_data_set_file_path=train_data_set_file_path,
                                          id_column=id_column,
                                          label_column=label_column,
                                          random_seed=random_seed))

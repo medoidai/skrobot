@@ -17,7 +17,8 @@ random_seed = 42
 
 field_delimiter = '\t'
 
-data_set_file_path = path.join('data', 'dataset-3.tsv')
+train_data_set_file_path = path.join('data', 'sms-spam-ham-train.tsv')
+test_data_set_file_path = path.join('data', 'sms-spam-ham-test.tsv')
 
 pipe = Pipeline(steps=[
     ('column_selection', ColumnSelector(cols=['message'], drop_axis=True)),
@@ -46,15 +47,15 @@ experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis'
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
                                                                                           search_params=search_params,
-                                                                                          train_data_set_file_path=data_set_file_path,
+                                                                                          train_data_set_file_path=train_data_set_file_path,
                                                                                           field_delimiter=field_delimiter,
                                                                                           random_seed=random_seed).random_search().stratified_folds(total_folds=5, shuffle=True))
 
 # Run Evaluation Task
 evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
                                                                 estimator_params=hyperparameters_search_results['best_params'],
-                                                                train_data_set_file_path=data_set_file_path,
-                                                                test_data_set_file_path=data_set_file_path,
+                                                                train_data_set_file_path=train_data_set_file_path,
+                                                                test_data_set_file_path=test_data_set_file_path,
                                                                 field_delimiter=field_delimiter,
                                                                 random_seed=random_seed,
                                                                 export_classification_reports=True,
@@ -68,7 +69,7 @@ evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
 # Run Train Task
 train_results = experiment.run(TrainTask(estimator=pipe,
                                          estimator_params=hyperparameters_search_results['best_params'],
-                                         train_data_set_file_path=data_set_file_path,
+                                         train_data_set_file_path=train_data_set_file_path,
                                          field_delimiter=field_delimiter,
                                          random_seed=random_seed))
 
