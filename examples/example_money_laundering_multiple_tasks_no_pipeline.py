@@ -8,10 +8,12 @@ from sand.tasks import EvaluateCrossValidationTask
 from sand.tasks import FeatureSelectionCrossValidationTask
 from sand.tasks import HyperParametersSearchCrossValidationTask
 
-######### Scikit-learn Code
+######### Initialization Code
 
 train_data_set_file_path = path.join('data','money-laundering-data-train.csv')
+
 test_data_set_file_path = path.join('data','money-laundering-data-test.csv')
+
 folds_file_path = path.join('data', 'money-laundering-folds.csv')
 
 random_seed = 42

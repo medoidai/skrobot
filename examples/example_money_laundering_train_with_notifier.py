@@ -6,7 +6,7 @@ from sand.core import Experiment
 from sand.notification import BaseNotifier
 from sand.tasks import TrainTask
 
-######### Scikit-learn Code
+######### Initialization Code
 
 random_seed = 42
 

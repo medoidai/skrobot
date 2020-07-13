@@ -14,9 +14,10 @@ from sand.tasks import HyperParametersSearchCrossValidationTask
 from sand.feature_selection import ColumnSelector
 from sand.notification import BaseNotifier
 
-######### Scikit-learn Code
+######### Initialization Code
 
 train_data_set_file_path = path.join('data', 'titanic-train.csv')
+
 test_data_set_file_path = path.join('data', 'titanic-test.csv')
 
 random_seed = 42

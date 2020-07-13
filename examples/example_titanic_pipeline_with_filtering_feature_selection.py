@@ -12,9 +12,10 @@ from sand.tasks import TrainTask
 from sand.tasks import EvaluateCrossValidationTask
 from sand.tasks import HyperParametersSearchCrossValidationTask
 
-######### Scikit-learn Code
+######### Initialization Code
 
 train_data_set_file_path = path.join('data', 'titanic-train.csv')
+
 test_data_set_file_path = path.join('data', 'titanic-test.csv')
 
 random_seed = 42

@@ -11,14 +11,15 @@ from sand.tasks import EvaluateCrossValidationTask
 from sand.tasks import HyperParametersSearchCrossValidationTask
 from sand.feature_selection import ColumnSelector
 
-######### Scikit-learn Code
+######### Initialization Code
 
-random_seed = 42
+train_data_set_file_path = path.join('data', 'sms-spam-ham-train.tsv')
+
+test_data_set_file_path = path.join('data', 'sms-spam-ham-test.tsv')
 
 field_delimiter = '\t'
 
-train_data_set_file_path = path.join('data', 'sms-spam-ham-train.tsv')
-test_data_set_file_path = path.join('data', 'sms-spam-ham-test.tsv')
+random_seed = 42
 
 pipe = Pipeline(steps=[
     ('column_selection', ColumnSelector(cols=['message'], drop_axis=True)),

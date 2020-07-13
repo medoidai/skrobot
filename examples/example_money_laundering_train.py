@@ -5,7 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from sand.core import Experiment
 from sand.tasks import TrainTask
 
-######### Scikit-learn Code
+######### Initialization Code
 
 random_seed = 42
 
