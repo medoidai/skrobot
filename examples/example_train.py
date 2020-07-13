@@ -18,7 +18,7 @@ experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis'
 
 # Run Train Task
 results = experiment.run(TrainTask(estimator=lr_estimator,
-                                   data_set_file_path=path.join('data','dataset-1.csv'),
+                                   train_data_set_file_path=path.join('data','dataset-1.csv'),
                                    random_seed=random_seed))
 
 # Print in-memory results

@@ -63,7 +63,7 @@ class Experiment:
     }
 
   def _send_success_notification(self, task_type):
-    self._send_notification(f'The task [{task_type}] under experiment [{self._experiment_log["experiment_id"]}] is completed successfully!')
+    self._send_notification(f'The task [{task_type}] under experiment [{self._experiment_log["experiment_id"]}] is completed successfully.')
 
   def _send_failure_notification(self, exception, task_type):
     self._send_notification(f'The task [{task_type}] under experiment [{self._experiment_log["experiment_id"]}] has failed with error:' + '\n'*2 + f'{repr(exception)}')

@@ -59,7 +59,7 @@ experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis'
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
                                                                                           search_params=search_params,
-                                                                                          data_set_file_path=data_set_file_path,
+                                                                                          train_data_set_file_path=data_set_file_path,
                                                                                           id_column=id_column,
                                                                                           label_column=label_column,
                                                                                           random_seed=random_seed).random_search().stratified_folds(total_folds=5, shuffle=True))
@@ -67,7 +67,8 @@ hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValida
 # Run Evaluation Task
 evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
                                                                 estimator_params=hyperparameters_search_results['best_params'],
-                                                                data_set_file_path=data_set_file_path,
+                                                                train_data_set_file_path=data_set_file_path,
+                                                                test_data_set_file_path=data_set_file_path,
                                                                 id_column=id_column,
                                                                 label_column=label_column,
                                                                 random_seed=random_seed,
@@ -82,7 +83,7 @@ evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
 # Run Train Task
 train_results = experiment.run(TrainTask(estimator=pipe,
                                          estimator_params=hyperparameters_search_results['best_params'],
-                                         data_set_file_path=data_set_file_path,
+                                         train_data_set_file_path=data_set_file_path,
                                          id_column=id_column,
                                          label_column=label_column,
                                          random_seed=random_seed))
@@ -94,8 +95,9 @@ print(hyperparameters_search_results['best_score'])
 print(hyperparameters_search_results['search_results'])
 
 print(evaluation_results['threshold'])
-print(evaluation_results['threshold_metrics'])
-print(evaluation_results['splits_threshold_metrics'])
-print(evaluation_results['splits_threshold_metrics_summary'])
+print(evaluation_results['cv_threshold_metrics'])
+print(evaluation_results['cv_splits_threshold_metrics'])
+print(evaluation_results['cv_splits_threshold_metrics_summary'])
+print(evaluation_results['test_threshold_metrics'])
 
 print(train_results['estimator'])

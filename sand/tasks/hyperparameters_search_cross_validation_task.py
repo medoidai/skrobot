@@ -9,7 +9,7 @@ from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from . import BaseCrossValidationTask
 
 class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
-  def __init__ (self, estimator, search_params, data_set_file_path, estimator_params=None, field_delimiter=',', scorers=['roc_auc', 'average_precision', 'f1', 'precision', 'recall'], feature_columns='all', id_column='id', label_column='label', objective_score='f1', random_seed=123456789, verbose=3, n_jobs=1, return_train_score=True):
+  def __init__ (self, estimator, search_params, train_data_set_file_path, estimator_params=None, field_delimiter=',', scorers=['roc_auc', 'average_precision', 'f1', 'precision', 'recall'], feature_columns='all', id_column='id', label_column='label', objective_score='f1', random_seed=123456789, verbose=3, n_jobs=1, return_train_score=True):
     super(HyperParametersSearchCrossValidationTask, self).__init__(HyperParametersSearchCrossValidationTask.__name__, locals())
 
     self.grid_search()
@@ -35,22 +35,24 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
     return self
 
   def run(self, output_directory):
-    np.random.seed(self.random_seed)
+    self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
 
-    self.data_set_data_frame = pd.read_csv(self.data_set_file_path, delimiter=self.field_delimiter)
+    y = self.train_data_set_data_frame[self.label_column]
 
-    y = self.data_set_data_frame[self.label_column]
-
-    X = self.data_set_data_frame.drop(columns=[self.label_column, self.id_column])
+    X = self.train_data_set_data_frame.drop(columns=[self.label_column, self.id_column])
 
     if self.feature_columns != 'all':
       X = X[self.feature_columns]
+
+    np.random.seed(self.random_seed)
 
     search = self._build_search_method(self._build_cv_splits(X, y))
 
     search.fit(X, y)
 
     cv_results = pd.DataFrame(search.cv_results_).sort_values(by=f'mean_test_{self.objective_score}', ascending=False)
+
+    cv_results.columns = cv_results.columns.str.replace('_test_', '_validation_')
 
     cv_results.to_html(os.path.join(output_directory, f'search_results_optimized_for_{self.objective_score}.html'), index=False)
 

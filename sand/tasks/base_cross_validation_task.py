@@ -32,7 +32,7 @@ class BaseCrossValidationTask(BaseTask):
     if self.fold_method == 'custom':
       folds_data_frame = pd.read_csv(self.fold_options['folds_file_path'], delimiter=self.field_delimiter)
 
-      return self._get_cv_splits(self.data_set_data_frame.merge(folds_data_frame, how='inner', on=self.id_column))
+      return self._get_cv_splits(self.train_data_set_data_frame.merge(folds_data_frame, how='inner', on=self.id_column))
     else:
       return StratifiedKFold(n_splits=self.fold_options['total_folds'], shuffle=self.fold_options['shuffle'], random_state=self.random_seed).split(X, y)
 
@@ -42,8 +42,8 @@ class BaseCrossValidationTask(BaseTask):
     for fold_id in sorted(data_set_data_frame_with_folds[self.fold_options['fold_column']].unique()):
       train_indexes = data_set_data_frame_with_folds[data_set_data_frame_with_folds[self.fold_options['fold_column']] != fold_id].index.values
 
-      test_indexes = data_set_data_frame_with_folds[data_set_data_frame_with_folds[self.fold_options['fold_column']] == fold_id].index.values
+      validation_indexes = data_set_data_frame_with_folds[data_set_data_frame_with_folds[self.fold_options['fold_column']] == fold_id].index.values
 
-      cv.append((train_indexes, test_indexes))
+      cv.append((train_indexes, validation_indexes))
 
     return cv

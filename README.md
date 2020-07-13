@@ -55,7 +55,7 @@ $ python setup.py install
 
 * The provided estimator needs to be able to predict probabilities through a ``predict_proba`` method
 
-* The following evaluation results can be generated on-demand for train / test CV folds:
+* The following evaluation results can be generated on-demand for hold-out test set as well as train / validation CV folds:
 
   * PR / ROC Curves (as interactive HTML plots)
   * Confusion Matrixes (as PNG images)
@@ -66,7 +66,7 @@ $ python setup.py install
 
 * The evaluation results can be generated either for a specifc provided threshold or for the best one found from threshold tuning
 
-* The threshold used along with its related performance metrics and summary metrics from all CV splits are returned as a result
+* The threshold used along with its related performance metrics and summary metrics from all CV splits as well as hold-out test set are returned as a result
 
 #### Feature Selection Task
 
@@ -215,7 +215,7 @@ experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis'
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,
-                                                                       data_set_file_path=data_set_file_path,
+                                                                       train_data_set_file_path=data_set_file_path,
                                                                        preprocessor=preprocessor,
                                                                        min_features_to_select=3,
                                                                        id_column=id_column,
@@ -229,7 +229,7 @@ pipe = Pipeline(steps=[('preprocessor', preprocessor),
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
                                                                                           search_params=search_params,
-                                                                                          data_set_file_path=data_set_file_path,
+                                                                                          train_data_set_file_path=data_set_file_path,
                                                                                           id_column=id_column,
                                                                                           label_column=label_column,
                                                                                           random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
@@ -237,7 +237,8 @@ hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValida
 # Run Evaluation Task
 evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
                                                                 estimator_params=hyperparameters_search_results['best_params'],
-                                                                data_set_file_path=data_set_file_path,
+                                                                train_data_set_file_path=data_set_file_path,
+                                                                test_data_set_file_path=data_set_file_path,
                                                                 id_column=id_column,
                                                                 label_column=label_column,
                                                                 random_seed=random_seed,
@@ -252,7 +253,7 @@ evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
 # Run Train Task
 train_results = experiment.run(TrainTask(estimator=pipe,
                                          estimator_params=hyperparameters_search_results['best_params'],
-                                         data_set_file_path=data_set_file_path,
+                                         train_data_set_file_path=data_set_file_path,
                                          id_column=id_column,
                                          label_column=label_column,
                                          random_seed=random_seed))
@@ -266,9 +267,10 @@ print(hyperparameters_search_results['best_score'])
 print(hyperparameters_search_results['search_results'])
 
 print(evaluation_results['threshold'])
-print(evaluation_results['threshold_metrics'])
-print(evaluation_results['splits_threshold_metrics'])
-print(evaluation_results['splits_threshold_metrics_summary'])
+print(evaluation_results['cv_threshold_metrics'])
+print(evaluation_results['cv_splits_threshold_metrics'])
+print(evaluation_results['cv_splits_threshold_metrics_summary'])
+print(evaluation_results['test_threshold_metrics'])
 
 print(train_results['estimator'])
 ```
