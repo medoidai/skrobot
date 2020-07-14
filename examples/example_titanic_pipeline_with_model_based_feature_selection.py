@@ -26,21 +26,21 @@ id_column = 'PassengerId'
 
 label_column = 'Survived'
 
+numerical_features = ['Age', 'Fare', 'SibSp', 'Parch']
+
+categorical_features = ['Embarked', 'Sex', 'Pclass']
+
 numeric_transformer = Pipeline(steps=[
     ('imputer', SimpleImputer()),
     ('scaler', StandardScaler())])
 
-sex_transformer = Pipeline(steps=[
-    ('encoder', OneHotEncoder(handle_unknown='ignore'))])
-
-embarked_transformer = Pipeline(steps=[
-    ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
+categorical_transformer = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='most_frequent')),
     ('encoder', OneHotEncoder(handle_unknown='ignore'))])
 
 preprocessor = ColumnTransformer(transformers=[
-    ('numerical_transfomer', numeric_transformer, ['Age', 'Fare']),
-    ('sex_transfomer', sex_transformer, ['Sex']),
-    ('embarked_transfomer', embarked_transformer, ['Embarked'])])
+    ('numerical_transfomer', numeric_transformer, numerical_features),
+    ('categorical_transfomer', categorical_transformer, categorical_features)])
 
 classifier = LogisticRegression(solver='liblinear', random_state=random_seed)
 
@@ -64,7 +64,7 @@ experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis'
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,
                                                                        train_data_set_file_path=train_data_set_file_path,
                                                                        preprocessor=preprocessor,
-                                                                       min_features_to_select=3,
+                                                                       min_features_to_select=4,
                                                                        id_column=id_column,
                                                                        label_column=label_column,
                                                                        random_seed=random_seed).stratified_folds(total_folds=5, shuffle=True))

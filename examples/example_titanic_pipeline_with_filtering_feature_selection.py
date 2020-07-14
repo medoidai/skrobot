@@ -24,21 +24,21 @@ id_column = 'PassengerId'
 
 label_column = 'Survived'
 
+numerical_features = ['Age', 'Fare', 'SibSp', 'Parch']
+
+categorical_features = ['Embarked', 'Sex', 'Pclass']
+
 numeric_transformer = Pipeline(steps=[
     ('imputer', SimpleImputer()),
     ('scaler', StandardScaler())])
 
-sex_transformer = Pipeline(steps=[
-    ('encoder', OneHotEncoder(handle_unknown='ignore'))])
-
-embarked_transformer = Pipeline(steps=[
-    ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
+categorical_transformer = Pipeline(steps=[
+    ('imputer', SimpleImputer(strategy='most_frequent')),
     ('encoder', OneHotEncoder(handle_unknown='ignore'))])
 
 preprocessor = ColumnTransformer(transformers=[
-    ('numerical_transfomer', numeric_transformer, ['Age', 'Fare']),
-    ('sex_transfomer', sex_transformer, ['Sex']),
-    ('embarked_transfomer', embarked_transformer, ['Embarked'])])
+    ('numerical_transfomer', numeric_transformer, numerical_features),
+    ('categorical_transfomer', categorical_transformer, categorical_features)])
 
 classifier = LogisticRegression(solver='liblinear', random_state=random_seed)
 
