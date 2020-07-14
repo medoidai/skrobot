@@ -18,7 +18,7 @@ setup(
      platforms=['any'],
      long_description_content_type='text/markdown',
      url="https://github.com/medoidai/sand",
-     python_requires='>=3.6',
+     python_requires='>=3.4',
      install_requires=requirements,
      packages=find_packages(),
      classifiers=[

@@ -1,5 +1,7 @@
-![Python 3.6+](https://img.shields.io/badge/python-3.6+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.4%20%7C%203.5%20%7C%203.6%20%7C%203.7%20%7C%203.8-blue?style=plastic)
+![PyPI](https://img.shields.io/badge/pypi-1.0.0-blue?style=plastic)
+![License](https://img.shields.io/badge/license-MIT-blue.svg?style=plastic)
+![Status](https://img.shields.io/badge/status-stable-blue?style=plastic)
 
 <br /><p align="center"><a href="https://www.medoid.ai/" target="_blank"><img src="https://www.medoid.ai/wp-content/uploads/2020/05/medoid-ai-logo-2.png" width="300px;" /></a></p>
 
@@ -505,6 +507,7 @@ print(train_results['estimator'])
 
 ![Image 27](static/image-27.png)
 ![Image 28](static/image-28.png)
+![Image 38](static/image-38.png)
 
 #### Hyperparameters Search Results
 
