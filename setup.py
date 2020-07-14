@@ -22,12 +22,15 @@ setup(
      install_requires=requirements,
      packages=find_packages(),
      classifiers=[
-         "Programming Language :: Python",
-         'Intended Audience :: Developers',
+         "Development Status :: 5 - Production/Stable",
+         "Intended Audience :: Developers",
+         "Intended Audience :: Education",
+         "Intended Audience :: Science/Research",
          "Operating System :: OS Independent",
-         'License :: OSI Approved :: MIT License',
+         "License :: OSI Approved :: MIT License",
+         "Programming Language :: Python",
          "Programming Language :: Python :: 3.6",
          "Programming Language :: Python :: 3.7",
-         'Topic :: Scientific/Engineering'
-     ]
+         "Topic :: Scientific/Engineering",
+         "Topic :: Scientific/Engineering :: Artificial Intelligence"]
 )
