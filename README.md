@@ -1,5 +1,5 @@
 ![Python](https://img.shields.io/badge/python-3.4%20%7C%203.5%20%7C%203.6%20%7C%203.7%20%7C%203.8-blue?style=plastic)
-![PyPI](https://img.shields.io/badge/pypi-1.0.0-blue?style=plastic&logo=pypi)
+![PyPI](https://img.shields.io/badge/pypi-1.0.0-blue?style=plastic)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Status](https://img.shields.io/badge/status-stable-blue?style=plastic)
 
