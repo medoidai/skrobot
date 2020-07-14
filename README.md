@@ -530,4 +530,4 @@ print(train_results['estimator'])
 
 ![Image 37](static/image-37.png)
 
-Thank you!
+**Thank you!**
