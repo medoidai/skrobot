@@ -66,6 +66,7 @@ train_results = experiment.run(TrainTask(estimator=lr_estimator,
 print(features_columns)
 
 print(hyperparameters_search_results['best_params'])
+print(hyperparameters_search_results['best_index'])
 print(hyperparameters_search_results['best_estimator'])
 print(hyperparameters_search_results['best_score'])
 print(hyperparameters_search_results['search_results'])

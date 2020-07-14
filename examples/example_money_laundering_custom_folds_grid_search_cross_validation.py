@@ -25,5 +25,6 @@ results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=lr_
 # Print in-memory results
 print(results['best_estimator'])
 print(results['best_params'])
+print(results['best_index'])
 print(results['best_score'])
 print(results['search_results'])

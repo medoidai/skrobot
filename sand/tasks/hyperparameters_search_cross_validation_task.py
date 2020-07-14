@@ -50,13 +50,13 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
 
     search.fit(X, y)
 
-    cv_results = pd.DataFrame(search.cv_results_)
+    cv_results = pd.DataFrame(search.cv_results_).reset_index()
 
     cv_results.columns = cv_results.columns.str.replace('_test_', '_validation_')
 
     cv_results.to_html(os.path.join(output_directory, f'search_results_optimized_for_{self.objective_score}.html'), index=False)
 
-    return { 'best_estimator': search.best_estimator_, 'best_params': search.best_params_, 'best_score': search.best_score_, 'search_results': cv_results }
+    return { 'best_estimator': search.best_estimator_, 'best_params': search.best_params_, 'best_index': search.best_index_, 'best_score': search.best_score_, 'search_results': cv_results }
 
   def _build_search_method (self, cv):
     if self.search_method == 'random':
