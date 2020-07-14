@@ -460,16 +460,24 @@ print(train_results['estimator'])
 
 ### Auto-generated results
 
+*Classification Reports*
+
 ![Image 1](static/image-1.png)
 ![Image 2](static/image-2.png)
 ![Image 3](static/image-3.png)
 ![Image 4](static/image-4.png)
 ![Image 5](static/image-5.png)
+
+*Confusion Matrixes*
+
 ![Image 6](static/image-6.png)
 ![Image 7](static/image-7.png)
 ![Image 8](static/image-8.png)
 ![Image 9](static/image-9.png)
 ![Image 10](static/image-10.png)
+
+
+
 ![Image 11](static/image-11.png)
 ![Image 12](static/image-12.png)
 ![Image 13](static/image-13.png)
