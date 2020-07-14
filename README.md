@@ -458,7 +458,7 @@ print(evaluation_results['test_threshold_metrics'])
 print(train_results['estimator'])
 ```
 
-### Auto-generated results
+### Sample of auto-generated results
 
 #### Classification Reports
 
