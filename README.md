@@ -1,5 +1,7 @@
-![Python 3.6+](https://img.shields.io/badge/python-3.6+-blue.svg)
+![Python](https://img.shields.io/badge/python-3.4%20%7C%203.5%20%7C%203.6%20%7C%203.7%20%7C%203.8-blue?style=plastic&logo=python&logoColor=white)
+![PyPI](https://img.shields.io/badge/pypi-1.0.0-blue?style=plastic&logo=pypi&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Status](https://img.shields.io/badge/status-stable-blue?style=plastic)
 
 <br /><p align="center"><a href="https://www.medoid.ai/" target="_blank"><img src="https://www.medoid.ai/wp-content/uploads/2020/05/medoid-ai-logo-2.png" width="300px;" /></a></p>
 
