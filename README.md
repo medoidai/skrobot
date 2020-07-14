@@ -460,7 +460,7 @@ print(train_results['estimator'])
 
 ### Auto-generated results
 
-*Classification Reports*
+#### Classification Reports
 
 ![Image 1](static/image-1.png)
 ![Image 2](static/image-2.png)
@@ -468,7 +468,7 @@ print(train_results['estimator'])
 ![Image 4](static/image-4.png)
 ![Image 5](static/image-5.png)
 
-*Confusion Matrixes*
+#### Confusion Matrixes
 
 ![Image 6](static/image-6.png)
 ![Image 7](static/image-7.png)
@@ -476,14 +476,20 @@ print(train_results['estimator'])
 ![Image 9](static/image-9.png)
 ![Image 10](static/image-10.png)
 
-
+#### False Negatives
 
 ![Image 11](static/image-11.png)
 ![Image 12](static/image-12.png)
 ![Image 13](static/image-13.png)
+
+#### False Positives
+
 ![Image 14](static/image-14.png)
 ![Image 15](static/image-15.png)
 ![Image 16](static/image-16.png)
+
+#### PR / ROC Curves
+
 ![Image 17](static/image-17.png)
 ![Image 18](static/image-18.png)
 ![Image 19](static/image-19.png)
@@ -494,16 +500,34 @@ print(train_results['estimator'])
 ![Image 24](static/image-24.png)
 ![Image 25](static/image-25.png)
 ![Image 26](static/image-26.png)
+
+#### Performance Metrics
+
 ![Image 27](static/image-27.png)
 ![Image 28](static/image-28.png)
+
+#### Hyperparameters Search Results
+
 ![Image 29](static/image-29.png)
+
+#### Task Parameters Logging
+
 ![Image 30](static/image-30.png)
 ![Image 31](static/image-31.png)
 ![Image 32](static/image-32.png)
 ![Image 33](static/image-33.png)
+
+#### Experiment Logging
+
 ![Image 34](static/image-34.png)
+
+#### Features Selected
+
 ![Image 35](static/image-35.png)
 ![Image 36](static/image-36.png)
+
+#### Expreriment Source Code
+
 ![Image 37](static/image-37.png)
 
 Thank you!
