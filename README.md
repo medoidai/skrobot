@@ -39,9 +39,9 @@ $ python setup.py install
 
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
-| Base Task | This is the base of all tasks. A task is a configurable and reproducible piece of code built on top of scikit-learn that can be used in machine learning pipelines. |
-| Base Notifier | This is the base of all notifiers. A notifier can be used to send success / failure notifications for tasks execution. |
-| Base Cross Validation Task | This is the base of all tasks that use cross validation. |
+| Base Task | All tasks inherit from this component. A task is a configurable and reproducible piece of code built on top of scikit-learn that can be used in machine learning pipelines. |
+| Base Notifier | All notifiers inherit from this component. A notifier can be used to send success / failure notifications for tasks execution. |
+| Base Cross Validation Task | All tasks that use cross validation functionality inherit from this component. |
 | Evaluation Cross Validation Task | This task can be used to evaluate a scikit-learn estimator on some data. |
 | Feature Selection Cross Validation Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data. |
 | Train Cross Validation Task | This task can be used to fit a scikit-learn estimator on some data. |
