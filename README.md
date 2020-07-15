@@ -535,7 +535,7 @@ print(train_results['estimator'])
 
 ![Image 35](static/image-35.png)
 
-*The selected feature column names from the original data when a preprocessor is not used:*
+*The selected feature column names from the original data when no preprocessor is used:*
 
 ![Image 36](static/image-36.png)
 
