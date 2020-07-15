@@ -14,9 +14,9 @@ from plotly import express
 
 from . import BaseCrossValidationTask
 
-class EvaluateCrossValidationTask(BaseCrossValidationTask):
+class EvaluationCrossValidationTask(BaseCrossValidationTask):
   def __init__ (self, estimator, train_data_set_file_path, test_data_set_file_path=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, threshold='best', threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
-    super(EvaluateCrossValidationTask, self).__init__(EvaluateCrossValidationTask.__name__, locals())
+    super(EvaluationCrossValidationTask, self).__init__(EvaluationCrossValidationTask.__name__, locals())
 
     pd.set_option('display.max_colwidth', -1)
 

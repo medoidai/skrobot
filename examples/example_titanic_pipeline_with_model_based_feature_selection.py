@@ -9,7 +9,7 @@ from sklearn.linear_model import LogisticRegression
 from sand.core import Experiment
 from sand.tasks import TrainTask
 from sand.tasks import FeatureSelectionCrossValidationTask
-from sand.tasks import EvaluateCrossValidationTask
+from sand.tasks import EvaluationCrossValidationTask
 from sand.tasks import HyperParametersSearchCrossValidationTask
 from sand.feature_selection import ColumnSelector
 from sand.notification import BaseNotifier
@@ -82,20 +82,20 @@ hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValida
                                                                                           random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
 
 # Run Evaluation Task
-evaluation_results = experiment.run(EvaluateCrossValidationTask(estimator=pipe,
-                                                                estimator_params=hyperparameters_search_results['best_params'],
-                                                                train_data_set_file_path=train_data_set_file_path,
-                                                                test_data_set_file_path=test_data_set_file_path,
-                                                                id_column=id_column,
-                                                                label_column=label_column,
-                                                                random_seed=random_seed,
-                                                                export_classification_reports=True,
-                                                                export_confusion_matrixes=True,
-                                                                export_pr_curves=True,
-                                                                export_roc_curves=True,
-                                                                export_false_positives_reports=True,
-                                                                export_false_negatives_reports=True,
-                                                                export_also_for_train_folds=True).stratified_folds(total_folds=5, shuffle=True))
+evaluation_results = experiment.run(EvaluationCrossValidationTask(estimator=pipe,
+                                                                  estimator_params=hyperparameters_search_results['best_params'],
+                                                                  train_data_set_file_path=train_data_set_file_path,
+                                                                  test_data_set_file_path=test_data_set_file_path,
+                                                                  id_column=id_column,
+                                                                  label_column=label_column,
+                                                                  random_seed=random_seed,
+                                                                  export_classification_reports=True,
+                                                                  export_confusion_matrixes=True,
+                                                                  export_pr_curves=True,
+                                                                  export_roc_curves=True,
+                                                                  export_false_positives_reports=True,
+                                                                  export_false_negatives_reports=True,
+                                                                  export_also_for_train_folds=True).stratified_folds(total_folds=5, shuffle=True))
 
 # Run Train Task
 train_results = experiment.run(TrainTask(estimator=pipe,
