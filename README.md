@@ -47,7 +47,7 @@ $ python setup.py install
 | Train Cross Validation Task | This task can be used to fit a scikit-learn estimator on some data. |
 | Hyperparameters Search Cross Validation Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data. |
 | Experiment | This is used to build and run experiments. It can run tasks in the context of an experiment. |
-| Tasks Runner | The tasks runner is like the Experiment component but without the "experiment" stuff, thus it can be used in the production world. |
+| Task Runner | The task runner is like the Experiment component but without the "experiment" stuff, thus it can be used in the production world. |
 
 #### Evaluation Cross Validation Task
 
@@ -118,7 +118,7 @@ $ python setup.py install
 
 * In case of error when running a task, a text file will be generated with the related error
 
-#### Tasks Runner
+#### Task Runner
 
 * It runs the provided tasks and saves in a file the default / overloaded parameters in JSON format
 
