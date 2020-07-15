@@ -144,15 +144,15 @@ Of course, the project is [Free Software](https://www.gnu.org/philosophy/free-sw
 
 ### What license do you use?
 
-See our license ([LICENSE.txt](LICENSE.txt)) for more details.
+See our license ([LICENSE.txt](https://github.com/medoidai/sand/blob/master/LICENSE.txt)) for more details.
 
 ### How do I use it?
 
-Many examples can be found in the [examples](examples) directory.
+Many examples can be found in the [examples](https://github.com/medoidai/sand/blob/master/examples) directory.
 
 Below, are some examples that use many of Sand's components to built a machine learning modelling pipeline.
 
-#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/sand/tree/master/examples/output/echatzikyriakidis-2020-07-14T14-10-24-example-titanic-pipeline-with-model-based-feature-selection))
+#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/sand/blob/master/examples/output/echatzikyriakidis-2020-07-14T14-10-24-example-titanic-pipeline-with-model-based-feature-selection))
 
 ```python
 from os import path
@@ -280,7 +280,7 @@ print(evaluation_results['test_threshold_metrics'])
 print(train_results['estimator'])
 ```
 
-#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/sand/tree/master/examples/output/echatzikyriakidis-2020-07-14T13-02-29-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
+#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/sand/blob/master/examples/output/echatzikyriakidis-2020-07-14T13-02-29-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
 
 ```python
 from os import path
@@ -375,7 +375,7 @@ print(evaluation_results['test_threshold_metrics'])
 print(train_results['estimator'])
 ```
 
-#### Example on Money Laundering Dataset ([auto-generated results](https://github.com/medoidai/sand/tree/master/examples/output/echatzikyriakidis-2020-07-14T12-09-47-example-money-laundering-multiple-tasks-no-pipeline))
+#### Example on Money Laundering Dataset ([auto-generated results](https://github.com/medoidai/sand/blob/master/examples/output/echatzikyriakidis-2020-07-14T12-09-47-example-money-laundering-multiple-tasks-no-pipeline))
 
 ```python
 from os import path
@@ -464,83 +464,83 @@ print(train_results['estimator'])
 
 #### Classification Reports
 
-![Image 1](static/image-1.png)
-![Image 2](static/image-2.png)
-![Image 3](static/image-3.png)
-![Image 4](static/image-4.png)
-![Image 5](static/image-5.png)
+![Image 1](https://github.com/medoidai/sand/blob/master/static/image-1.png)
+![Image 2](https://github.com/medoidai/sand/blob/master/static/image-2.png)
+![Image 3](https://github.com/medoidai/sand/blob/master/static/image-3.png)
+![Image 4](https://github.com/medoidai/sand/blob/master/static/image-4.png)
+![Image 5](https://github.com/medoidai/sand/blob/master/static/image-5.png)
 
 #### Confusion Matrixes
 
-![Image 6](static/image-6.png)
-![Image 7](static/image-7.png)
-![Image 8](static/image-8.png)
-![Image 9](static/image-9.png)
-![Image 10](static/image-10.png)
+![Image 6](https://github.com/medoidai/sand/blob/master/static/image-6.png)
+![Image 7](https://github.com/medoidai/sand/blob/master/static/image-7.png)
+![Image 8](https://github.com/medoidai/sand/blob/master/static/image-8.png)
+![Image 9](https://github.com/medoidai/sand/blob/master/static/image-9.png)
+![Image 10](https://github.com/medoidai/sand/blob/master/static/image-10.png)
 
 #### False Negatives
 
-![Image 11](static/image-11.png)
-![Image 12](static/image-12.png)
-![Image 13](static/image-13.png)
+![Image 11](https://github.com/medoidai/sand/blob/master/static/image-11.png)
+![Image 12](https://github.com/medoidai/sand/blob/master/static/image-12.png)
+![Image 13](https://github.com/medoidai/sand/blob/master/static/image-13.png)
 
 #### False Positives
 
-![Image 14](static/image-14.png)
-![Image 15](static/image-15.png)
-![Image 16](static/image-16.png)
+![Image 14](https://github.com/medoidai/sand/blob/master/static/image-14.png)
+![Image 15](https://github.com/medoidai/sand/blob/master/static/image-15.png)
+![Image 16](https://github.com/medoidai/sand/blob/master/static/image-16.png)
 
 #### PR / ROC Curves
 
-![Image 17](static/image-17.png)
-![Image 18](static/image-18.png)
-![Image 19](static/image-19.png)
-![Image 20](static/image-20.png)
-![Image 21](static/image-21.png)
-![Image 22](static/image-22.png)
-![Image 23](static/image-23.png)
-![Image 24](static/image-24.png)
-![Image 25](static/image-25.png)
-![Image 26](static/image-26.png)
+![Image 17](https://github.com/medoidai/sand/blob/master/static/image-17.png)
+![Image 18](https://github.com/medoidai/sand/blob/master/static/image-18.png)
+![Image 19](https://github.com/medoidai/sand/blob/master/static/image-19.png)
+![Image 20](https://github.com/medoidai/sand/blob/master/static/image-20.png)
+![Image 21](https://github.com/medoidai/sand/blob/master/static/image-21.png)
+![Image 22](https://github.com/medoidai/sand/blob/master/static/image-22.png)
+![Image 23](https://github.com/medoidai/sand/blob/master/static/image-23.png)
+![Image 24](https://github.com/medoidai/sand/blob/master/static/image-24.png)
+![Image 25](https://github.com/medoidai/sand/blob/master/static/image-25.png)
+![Image 26](https://github.com/medoidai/sand/blob/master/static/image-26.png)
 
 #### Performance Metrics
 
 *On train / validation CV folds:*
 
-![Image 27](static/image-27.png)
-![Image 28](static/image-28.png)
+![Image 27](https://github.com/medoidai/sand/blob/master/static/image-27.png)
+![Image 28](https://github.com/medoidai/sand/blob/master/static/image-28.png)
 
 *On hold-out test set:*
 
-![Image 38](static/image-38.png)
+![Image 38](https://github.com/medoidai/sand/blob/master/static/image-38.png)
 
 #### Hyperparameters Search Results
 
-![Image 29](static/image-29.png)
+![Image 29](https://github.com/medoidai/sand/blob/master/static/image-29.png)
 
 #### Task Parameters Logging
 
-![Image 30](static/image-30.png)
-![Image 31](static/image-31.png)
-![Image 32](static/image-32.png)
-![Image 33](static/image-33.png)
+![Image 30](https://github.com/medoidai/sand/blob/master/static/image-30.png)
+![Image 31](https://github.com/medoidai/sand/blob/master/static/image-31.png)
+![Image 32](https://github.com/medoidai/sand/blob/master/static/image-32.png)
+![Image 33](https://github.com/medoidai/sand/blob/master/static/image-33.png)
 
 #### Experiment Logging
 
-![Image 34](static/image-34.png)
+![Image 34](https://github.com/medoidai/sand/blob/master/static/image-34.png)
 
 #### Features Selected
 
 *The selected column indexes from the transformed features (this is generated when a preprocessor is used):*
 
-![Image 35](static/image-35.png)
+![Image 35](https://github.com/medoidai/sand/blob/master/static/image-35.png)
 
 *The selected column names from the original features (this is generated when no preprocessor is used):*
 
-![Image 36](static/image-36.png)
+![Image 36](https://github.com/medoidai/sand/blob/master/static/image-36.png)
 
 #### Expreriment Source Code
 
-![Image 37](static/image-37.png)
+![Image 37](https://github.com/medoidai/sand/blob/master/static/image-37.png)
 
 **Thank you!**
