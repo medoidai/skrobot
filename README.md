@@ -114,7 +114,7 @@ $ python setup.py install
 
 * Each experiment when it runs it leaves in a unique directory a footprint of metadata files (experiment source code, experiment ID, experiment date/time, experimenter name, experiment default / overloaded parameters in JSON format)
 
-* Notifications can be send after running a task, through an easy to implement API (it can be useful for teams who need to get notified for the progress of the experiment, eg: in Slack)
+* Notifications can be send after running a task, through an easy to implement API (it can be useful for teams who need to get notified for the progress of the experiment)
 
 * In case of error when running a task, a text file will be generated with the related error
 
