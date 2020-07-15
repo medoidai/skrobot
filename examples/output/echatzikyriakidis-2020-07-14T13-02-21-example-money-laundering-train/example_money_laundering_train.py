@@ -14,7 +14,7 @@ lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 ######### Sand Code
 
 # Build an Experiment
-experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
+experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()
 
 # Run Train Task
 results = experiment.run(TrainTask(estimator=lr_estimator,

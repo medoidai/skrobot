@@ -25,7 +25,7 @@ search_params = { "C" : [1.e-01, 1.e+00, 1.e+01], "penalty" : [ "l1", "l2" ] }
 ######### Sand Code
 
 # Build an Experiment
-experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
+experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()
 
 
 # Run Feature Selection Task

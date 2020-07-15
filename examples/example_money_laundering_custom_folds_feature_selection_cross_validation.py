@@ -14,7 +14,7 @@ lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 ######### Sand Code
 
 # Build an Experiment
-experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
+experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=lr_estimator,

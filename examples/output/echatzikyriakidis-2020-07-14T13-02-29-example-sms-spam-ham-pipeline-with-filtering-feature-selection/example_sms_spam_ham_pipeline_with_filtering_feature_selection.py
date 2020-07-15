@@ -43,7 +43,7 @@ search_params = {
 ######### Sand Code
 
 # Build an Experiment
-experiment = Experiment('output', __file__).set_experimenter('echatzikyriakidis').build()
+experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()
 
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,

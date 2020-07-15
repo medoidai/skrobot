@@ -6,6 +6,8 @@ class TaskRunner:
   def __init__ (self, output_directory_path):
     self._output_directory_path = output_directory_path
 
+    os.makedirs(self._output_directory_path)
+
   def run(self, task):
     task_type = task.get_type()
 
