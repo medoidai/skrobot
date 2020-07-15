@@ -148,11 +148,11 @@ See our license ([LICENSE.txt](https://github.com/medoidai/sand/blob/master/LICE
 
 ### How do I use it?
 
-Many examples can be found in the [examples](https://github.com/medoidai/sand/blob/master/examples) directory.
+Many examples can be found in the [examples](https://github.com/medoidai/sand/tree/master/examples) directory.
 
 Below, are some examples that use many of Sand's components to built a machine learning modelling pipeline.
 
-#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/sand/blob/master/examples/output/echatzikyriakidis-2020-07-14T14-10-24-example-titanic-pipeline-with-model-based-feature-selection))
+#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/sand/tree/master/examples/output/echatzikyriakidis-2020-07-14T14-10-24-example-titanic-pipeline-with-model-based-feature-selection))
 
 ```python
 from os import path
@@ -280,7 +280,7 @@ print(evaluation_results['test_threshold_metrics'])
 print(train_results['estimator'])
 ```
 
-#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/sand/blob/master/examples/output/echatzikyriakidis-2020-07-14T13-02-29-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
+#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/sand/tree/master/examples/output/echatzikyriakidis-2020-07-14T13-02-29-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
 
 ```python
 from os import path
@@ -375,7 +375,7 @@ print(evaluation_results['test_threshold_metrics'])
 print(train_results['estimator'])
 ```
 
-#### Example on Money Laundering Dataset ([auto-generated results](https://github.com/medoidai/sand/blob/master/examples/output/echatzikyriakidis-2020-07-14T12-09-47-example-money-laundering-multiple-tasks-no-pipeline))
+#### Example on Money Laundering Dataset ([auto-generated results](https://github.com/medoidai/sand/tree/master/examples/output/echatzikyriakidis-2020-07-14T12-09-47-example-money-laundering-multiple-tasks-no-pipeline))
 
 ```python
 from os import path
