@@ -55,7 +55,7 @@ $ python setup.py install
 
 * The provided estimator is not affected and is used only as a template
 
-* The provided estimator can be either a scikit-learn machine learning model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
 
 * The provided estimator needs to be able to predict probabilities through a ``predict_proba`` method
 
@@ -76,7 +76,7 @@ $ python setup.py install
 
 * Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
-* The provided estimator can be either a scikit-learn machine learning model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
 
 * The provided estimator needs to provide feature importances through either a ``coef_`` or a ``feature_importances_`` attribute
 
@@ -92,7 +92,7 @@ $ python setup.py install
 
 * The provided estimator is not affected and is used only as a template
 
-* The provided estimator can be either a scikit-learn machine learning model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
 
 * The fitted estimator is stored as a pickle file and also returned as a result
 
@@ -102,7 +102,7 @@ $ python setup.py install
 
 * The provided estimator is not affected and is used only as a template
 
-* The provided estimator can be either a scikit-learn machine learning model (eg: LogisticRegression) or a pipeline ending with an estimator
+* The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
 
 * The search can be either randomized or grid-based
 
