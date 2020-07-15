@@ -46,8 +46,8 @@ $ python setup.py install
 | Feature Selection Cross Validation Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data. |
 | Train Task | This task can be used to fit a scikit-learn estimator on some data. |
 | Hyperparameters Search Cross Validation Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data. |
-| Experiment | This is used to build and run experiments. It can run tasks in the context of an experiment. |
-| Task Runner | This is like the Experiment component but without the "experiment" stuff. It can be used to run various tasks and glue everything together to complete a pipeline. |
+| Experiment | This is used to build and run experiments. It can run tasks in the context of an experiment and glue everything together to complete a modeling pipeline. |
+| Task Runner | This is like the Experiment component but without the "experiment" stuff. It can be used to run various tasks and glue everything together to complete a modeling pipeline. |
 
 #### Evaluation Cross Validation Task
 
