@@ -59,12 +59,12 @@ $ python setup.py install
 
 * The following evaluation results can be generated on-demand for hold-out test set as well as train / validation CV folds:
 
-  * PR / ROC Curves (as interactive HTML plots)
-  * Confusion Matrixes (as PNG images)
-  * Classification Reports (as text)
-  * Performance Metrics (as static HTML tables)
-  * False Positives (as text)
-  * False Negatives (as text)
+  * PR / ROC Curves
+  * Confusion Matrixes
+  * Classification Reports
+  * Performance Metrics
+  * False Positives
+  * False Negatives
 
 * The evaluation results can be generated either for a specifc provided threshold or for the best one found from threshold tuning
 
