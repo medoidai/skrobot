@@ -46,6 +46,7 @@ $ python setup.py install
 | Hyperparameters Search Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data |
 | Experiments Runner | The experiments runner runs tasks in the context of an experiment |
 | Tasks Runner | The tasks runner is like the experiments runner but without the "experiment" stuff, thus it can be used in the production world |
+| Base Notifier | A notifier can be used to send success / failure notifications for tasks execution |
 
 #### Evaluation Task
 
