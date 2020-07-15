@@ -505,8 +505,13 @@ print(train_results['estimator'])
 
 #### Performance Metrics
 
+**On train / validation CV folds:**
+
 ![Image 27](static/image-27.png)
 ![Image 28](static/image-28.png)
+
+**On hold-out test set:*
+
 ![Image 38](static/image-38.png)
 
 #### Hyperparameters Search Results
