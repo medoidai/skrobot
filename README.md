@@ -531,7 +531,12 @@ print(train_results['estimator'])
 
 #### Features Selected
 
+*The selected feature column indexes from the transformed data when a preprocessor is used:*
+
 ![Image 35](static/image-35.png)
+
+*The selected feature column names from the original data when a preprocessor is not used:*
+
 ![Image 36](static/image-36.png)
 
 #### Expreriment Source Code
