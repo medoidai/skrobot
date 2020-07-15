@@ -39,16 +39,17 @@ $ python setup.py install
 
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
-| Base Task | A task is a configurable and reproducible piece of code built on top of scikit-learn that can be used in machine learning pipelines |
-| Evaluation Task | This task can be used to evaluate a scikit-learn estimator on some data |
-| Feature Selection Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data |
-| Train Task | This task can be used to fit a scikit-learn estimator on some data |
-| Hyperparameters Search Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data |
-| Experiments Runner | The experiments runner runs tasks in the context of an experiment |
-| Tasks Runner | The tasks runner is like the experiments runner but without the "experiment" stuff, thus it can be used in the production world |
-| Base Notifier | A notifier can be used to send success / failure notifications for tasks execution |
+| Base Task | This is the base of all tasks. A task is a configurable and reproducible piece of code built on top of scikit-learn that can be used in machine learning pipelines. |
+| Base Notifier | This is the base of all notifiers. A notifier can be used to send success / failure notifications for tasks execution. |
+| Base Cross Validation Task | This is the base of all tasks that use cross validation. |
+| Evaluation Cross Validation Task | This task can be used to evaluate a scikit-learn estimator on some data. |
+| Feature Selection Cross Validation Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data. |
+| Train Cross Validation Task | This task can be used to fit a scikit-learn estimator on some data. |
+| Hyperparameters Search Cross Validation Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data. |
+| Experiment | This is used to build and run experiments. It can run tasks in the context of an experiment. |
+| Tasks Runner | The tasks runner is like the Experiment component but without the "experiment" stuff, thus it can be used in the production world. |
 
-#### Evaluation Task
+#### Evaluation Cross Validation Task
 
 * Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
@@ -71,7 +72,7 @@ $ python setup.py install
 
 * The threshold used along with its related performance metrics and summary metrics from all CV splits as well as hold-out test set are returned as a result
 
-#### Feature Selection Task
+#### Feature Selection Cross Validation Task
 
 * Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
@@ -87,7 +88,7 @@ $ python setup.py install
 
 * The selected features are stored in a text file and also returned as a result
 
-#### Train Task
+#### Train Cross Validation Task
 
 * The provided estimator is not affected and is used only as a template
 
@@ -95,7 +96,7 @@ $ python setup.py install
 
 * The fitted estimator is stored as a pickle file and also returned as a result
 
-#### Hyperparameters Search Task
+#### Hyperparameters Search Cross Validation Task
 
 * Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
 
@@ -109,7 +110,7 @@ $ python setup.py install
 
 * The search results are stored in a file as a static HTML table
 
-#### Experiments Runner
+#### Experiment
 
 * Each experiment when it runs it leaves in a unique directory a footprint of metadata files (experiment source code, experiment ID, experiment date/time, experimenter name, experiment default / overloaded parameters in JSON format)
 
