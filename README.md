@@ -136,20 +136,6 @@ It can help Data Scientists and Machine Learning Engineers:
 
 * to spend more time on the things that truly matter when solving a problem
 
-### The people behind it
-
-The following members of our team were involved in developing the initial release of this app:
-
-* [Efstathios Chatzikyriakidis](https://github.com/echatzikyriakidis)
-
-### Can I contribute?
-
-Of course, the project is [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) and you can contribute to it!
-
-### What license do you use?
-
-See our license ([LICENSE.txt](https://github.com/medoidai/skrobot/blob/master/LICENSE.txt)) for more details.
-
 ### How do I use it?
 
 Many examples can be found in the [examples](https://github.com/medoidai/skrobot/tree/master/examples) directory.
@@ -462,4 +448,30 @@ print(train_results['estimator'])
 
 ![Image 37](https://github.com/medoidai/skrobot/raw/master/static/image-37.png)
 
-**Thank you!**
+### The people behind it
+
+The following members of our team were involved in developing the initial release of this app:
+
+* [Efstathios Chatzikyriakidis](https://github.com/echatzikyriakidis)
+
+### Next Priorities
+
+* Add support in the library for multiclass and regression problems
+
+* Support Python 3.8
+
+* Build some notifiers (e.g., Slack, Jira and Discord)
+
+* Write documentation (e.g., Read the Docs) for the library components
+
+* Add Bayesian hyperparameter tuning support
+
+* Save on disk the preprocessed training dataset
+
+### Can I contribute?
+
+Of course, the project is [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) and you can contribute to it!
+
+### What license do you use?
+
+See our license ([LICENSE.txt](https://github.com/medoidai/skrobot/blob/master/LICENSE.txt)) for more details.
