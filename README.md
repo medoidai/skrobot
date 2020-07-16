@@ -1,9 +1,7 @@
-<div align="center">
 [![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7-blue?style=plastic)](https://pypi.org/project/skrobot/)
 [![PyPI](https://img.shields.io/badge/pypi_package-1.0.0-blue?style=plastic)](https://pypi.org/project/skrobot/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=plastic)](https://github.com/medoidai/skrobot/blob/master/LICENSE.txt)
 [![Status](https://img.shields.io/badge/status-stable-green?style=plastic)](https://pypi.org/project/skrobot/)
-</div>
 
 <div align="center"><img src="https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png" width="200px;" /></div>
 
