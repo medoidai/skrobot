@@ -7,10 +7,10 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
 
-from sand.core import Experiment
-from sand.tasks import TrainTask
-from sand.tasks import EvaluationCrossValidationTask
-from sand.tasks import HyperParametersSearchCrossValidationTask
+from skrobot.core import Experiment
+from skrobot.tasks import TrainTask
+from skrobot.tasks import EvaluationCrossValidationTask
+from skrobot.tasks import HyperParametersSearchCrossValidationTask
 
 ######### Initialization Code
 
@@ -53,7 +53,7 @@ search_params = {
     "selection__k" : [ 5, 6, 7 ]
 }
 
-######### Sand Code
+######### skrobot Code
 
 # Build an Experiment
 experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()

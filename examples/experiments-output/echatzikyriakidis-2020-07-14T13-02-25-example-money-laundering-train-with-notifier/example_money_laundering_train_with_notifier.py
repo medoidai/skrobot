@@ -2,9 +2,9 @@ from os import path
 
 from sklearn.linear_model import LogisticRegression
 
-from sand.core import Experiment
-from sand.notification import BaseNotifier
-from sand.tasks import TrainTask
+from skrobot.core import Experiment
+from skrobot.notification import BaseNotifier
+from skrobot.tasks import TrainTask
 
 ######### Initialization Code
 
@@ -12,7 +12,7 @@ random_seed = 42
 
 lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
-######### Sand Code
+######### skrobot Code
 
 # Define a Notifier (This is optional and you can implement any notifier you want, e.g. for Slack / Jira / Discord)
 class ConsoleNotifier(BaseNotifier):

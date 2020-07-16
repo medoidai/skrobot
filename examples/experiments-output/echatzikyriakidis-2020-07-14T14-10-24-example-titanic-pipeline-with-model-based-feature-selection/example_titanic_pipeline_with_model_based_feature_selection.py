@@ -6,13 +6,13 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LogisticRegression
 
-from sand.core import Experiment
-from sand.tasks import TrainTask
-from sand.tasks import FeatureSelectionCrossValidationTask
-from sand.tasks import EvaluationCrossValidationTask
-from sand.tasks import HyperParametersSearchCrossValidationTask
-from sand.feature_selection import ColumnSelector
-from sand.notification import BaseNotifier
+from skrobot.core import Experiment
+from skrobot.tasks import TrainTask
+from skrobot.tasks import FeatureSelectionCrossValidationTask
+from skrobot.tasks import EvaluationCrossValidationTask
+from skrobot.tasks import HyperParametersSearchCrossValidationTask
+from skrobot.feature_selection import ColumnSelector
+from skrobot.notification import BaseNotifier
 
 ######### Initialization Code
 
@@ -50,7 +50,7 @@ search_params = {
     "preprocessor__numerical_transfomer__imputer__strategy" : [ "mean", "median" ]
 }
 
-######### Sand Code
+######### skrobot Code
 
 # Define a Notifier (This is optional and you can implement any notifier you want, e.g. for Slack / Jira / Discord)
 class ConsoleNotifier(BaseNotifier):

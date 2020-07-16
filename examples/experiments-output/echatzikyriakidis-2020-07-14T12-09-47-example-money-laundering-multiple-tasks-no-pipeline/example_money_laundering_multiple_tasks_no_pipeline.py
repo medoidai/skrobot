@@ -2,11 +2,11 @@ from os import path
 
 from sklearn.linear_model import LogisticRegression
 
-from sand.core import Experiment
-from sand.tasks import TrainTask
-from sand.tasks import EvaluationCrossValidationTask
-from sand.tasks import FeatureSelectionCrossValidationTask
-from sand.tasks import HyperParametersSearchCrossValidationTask
+from skrobot.core import Experiment
+from skrobot.tasks import TrainTask
+from skrobot.tasks import EvaluationCrossValidationTask
+from skrobot.tasks import FeatureSelectionCrossValidationTask
+from skrobot.tasks import HyperParametersSearchCrossValidationTask
 
 ######### Initialization Code
 
@@ -22,7 +22,7 @@ lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 search_params = { "C" : [1.e-01, 1.e+00, 1.e+01], "penalty" : [ "l1", "l2" ] }
 
-######### Sand Code
+######### skrobot Code
 
 # Build an Experiment
 experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()

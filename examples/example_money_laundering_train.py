@@ -2,8 +2,8 @@ from os import path
 
 from sklearn.linear_model import LogisticRegression
 
-from sand.core import Experiment
-from sand.tasks import TrainTask
+from skrobot.core import Experiment
+from skrobot.tasks import TrainTask
 
 ######### Initialization Code
 
@@ -11,7 +11,7 @@ random_seed = 42
 
 lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 
-######### Sand Code
+######### skrobot Code
 
 # Build an Experiment
 experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()
