@@ -1,0 +1,22 @@
+{
+ "type": "feature_selection_cross_validation_task",
+ "n_jobs": 1,
+ "verbose": 3,
+ "random_seed": 42,
+ "label_column": "label",
+ "id_column": "id",
+ "feature_columns": "all",
+ "scoring": "f1",
+ "min_features_to_select": 1,
+ "preprocessor_params": null,
+ "preprocessor": null,
+ "field_delimiter": ",",
+ "estimator_params": null,
+ "train_data_set_file_path": "data/money-laundering-data-train.csv",
+ "estimator": "LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,\n                   intercept_scaling=1, l1_ratio=None, max_iter=100,\n                   multi_class='warn', n_jobs=None, penalty='l2',\n                   random_state=42, solver='liblinear', tol=0.0001, verbose=0,\n                   warm_start=False)",
+ "fold_options": {
+  "fold_column": "fold",
+  "folds_file_path": "data/money-laundering-folds.csv"
+ },
+ "fold_method": "custom"
+}

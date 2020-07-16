@@ -1,0 +1,24 @@
+{
+ "type": "train_task",
+ "random_seed": 42,
+ "label_column": "label",
+ "id_column": "id",
+ "feature_columns": "all",
+ "field_delimiter": "\t",
+ "estimator_params": {
+  "vectorizer__stop_words": null,
+  "vectorizer__ngram_range": [
+   1,
+   2
+  ],
+  "vectorizer__max_df": 1.0,
+  "tfidf__use_idf": true,
+  "tfidf__norm": "l2",
+  "feature_selection__percentile": 60,
+  "classifier__penalty": "elasticnet",
+  "classifier__max_iter": 80,
+  "classifier__alpha": 1e-06
+ },
+ "train_data_set_file_path": "data/sms-spam-ham-train.tsv",
+ "estimator": "Pipeline(memory=None,\n         steps=[('column_selection',\n                 ColumnSelector(cols=['message'], drop_axis=True)),\n                ('vectorizer',\n                 CountVectorizer(analyzer='word', binary=False,\n                                 decode_error='strict',\n                                 dtype=<class 'numpy.int64'>, encoding='utf-8',\n                                 input='content', lowercase=True, max_df=1.0,\n                                 max_features=None, min_df=1,\n                                 ngram_range=(1, 1), preprocessor=None,\n                                 stop_words=None, strip_a...\n                ('classifier',\n                 SGDClassifier(alpha=0.0001, average=False, class_weight=None,\n                               early_stopping=False, epsilon=0.1, eta0=0.0,\n                               fit_intercept=True, l1_ratio=0.15,\n                               learning_rate='optimal', loss='log',\n                               max_iter=1000, n_iter_no_change=5, n_jobs=None,\n                               penalty='l2', power_t=0.5, random_state=None,\n                               shuffle=True, tol=0.001, validation_fraction=0.1,\n                               verbose=0, warm_start=False))],\n         verbose=False)"
+}
