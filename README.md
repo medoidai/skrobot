@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue?style=plastic)](https://github.com/medoidai/skrobot/blob/master/LICENSE.txt)
 [![Status](https://img.shields.io/badge/status-stable-green?style=plastic)](https://pypi.org/project/skrobot/)
 
-<br /><p align="center"><img src="https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png" width="300px;" /></p>
+<br /><p align="center"><img src="https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png" width="200px;" /></p>
 
 -----------------
 
