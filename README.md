@@ -437,7 +437,7 @@ print(train_results['estimator'])
 
 #### Task Parameters Logging
 
-![Image 30](https://github.com/medoidai/saskrobotnd/raw/master/static/image-30.png)
+![Image 30](https://github.com/medoidai/skrobot/raw/master/static/image-30.png)
 ![Image 31](https://github.com/medoidai/skrobot/raw/master/static/image-31.png)
 ![Image 32](https://github.com/medoidai/skrobot/raw/master/static/image-32.png)
 ![Image 33](https://github.com/medoidai/skrobot/raw/master/static/image-33.png)
