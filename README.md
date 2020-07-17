@@ -419,7 +419,7 @@ print(train_results['estimator'])
 
 #### False Positives
 
-![Image 15](https://github.com/medoidai/skrobot/raw/master/static/image-15.png)
+![Image 15](https://github.com/medoidai/skrobot/raw/master/static/image-14.png)
 ![Image 16](https://github.com/medoidai/skrobot/raw/master/static/image-16.png)
 
 #### PR / ROC Curves
