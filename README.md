@@ -39,7 +39,7 @@ $ python setup.py install
 
 **NOTE** : Currently, skrobot can be used only for binary classification problems.
 
-Below are the components of the module that are ready to be used in code:
+In the table below you can see the components that are ready to be used by the end-developer:
 
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
@@ -50,7 +50,7 @@ Below are the components of the module that are ready to be used in code:
 | Experiment | This is used to build and run experiments. It can run tasks in the context of an experiment and glue everything together to complete a modelling pipeline. |
 | Task Runner | This is like the Experiment component but without the "experiment" stuff. It can be used to run various tasks and glue everything together to complete a modelling pipeline. |
 
-Below are the components that can be used to extend the module to support new tasks and notifiers:
+In the table below you can see the components that can be used to extend the module and support new tasks and/or notifiers:
 
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
