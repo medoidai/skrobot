@@ -175,7 +175,7 @@ See our license ([LICENSE.txt](https://github.com/medoidai/skrobot/blob/master/L
 
 Many examples can be found in the [examples](https://github.com/medoidai/skrobot/tree/master/examples) directory.
 
-Below, are some examples that use many of skrobot's components to built a machine learning modelling pipeline.
+Below, are some examples that use many of skrobot's components to built a machine learning modelling pipeline. Please try them and we would love to have your feedback!
 
 #### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-16T17-56-44-example-titanic-pipeline-with-model-based-feature-selection))
 
