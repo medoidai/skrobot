@@ -4,8 +4,6 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
-with open(path.join(here, 'requirements.txt')) as f: requirements = [o.strip() for o in f]
-
 with open(path.join(here, 'README.md'), encoding='utf-8') as f: readme = f.read()
 
 setup(
@@ -21,7 +19,15 @@ setup(
      long_description_content_type='text/markdown',
      url="https://github.com/medoidai/skrobot",
      python_requires='>=3.6',
-     install_requires=requirements,
+     install_requires=['scikit-learn==0.21.3',
+                       'joblib==0.13.2',
+                       'numpy==1.16.4',
+                       'pandas==0.24.2',
+                       'numpyencoder==0.1.0',
+                       'plotly==4.3.0',
+                       'stringcase==1.2.0',
+                       'scikit-plot==0.3.7',
+                       'matplotlib==3.1.0'],
      packages=find_packages(),
      classifiers=[
          "Development Status :: 5 - Production/Stable",

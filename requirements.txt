@@ -1,9 +1,0 @@
-scikit-learn==0.21.3
-joblib==0.13.2
-numpy==1.16.4
-pandas==0.24.2
-numpyencoder==0.1.0
-plotly==4.3.0
-stringcase==1.2.0
-scikit-plot==0.3.7
-matplotlib==3.1.0
