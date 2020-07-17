@@ -58,6 +58,8 @@ $ python setup.py install
 | Base Cross Validation Task | All tasks that use cross validation functionality inherit from this component. |
 | Base Notifier | All notifiers inherit from this component. A notifier can be used to send success / failure notifications for tasks execution. |
 
+### More details on the components functionality?
+
 #### Evaluation Cross Validation Task
 
 * Cross validation runs by default and can be configured to use either stratified k-folds or custom folds
