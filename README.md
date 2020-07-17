@@ -149,9 +149,15 @@ It can help Data Scientists and Machine Learning Engineers:
 
 ### The people behind it
 
-The following members of our team were involved in developing the initial release of this app:
+Development:
 
 * [Efstathios Chatzikyriakidis](https://github.com/echatzikyriakidis)
+
+Support, testing and feature recommendation:
+
+* [Antonis Markou](https://github.com/anmarkou)
+* [Lefteris Kouloubris](https://github.com/lefteris-kouloubris)
+* [Christina Chrysouli](https://github.com/ChristinaChr)
 
 ### Next Priorities?
 
