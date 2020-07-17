@@ -403,42 +403,32 @@ print(train_results['estimator'])
 #### Classification Reports
 
 ![Image 1](https://github.com/medoidai/skrobot/raw/master/static/image-1.png)
-![Image 2](https://github.com/medoidai/skrobot/raw/master/static/image-2.png)
-![Image 3](https://github.com/medoidai/skrobot/raw/master/static/image-3.png)
 ![Image 4](https://github.com/medoidai/skrobot/raw/master/static/image-4.png)
 ![Image 5](https://github.com/medoidai/skrobot/raw/master/static/image-5.png)
 
 #### Confusion Matrixes
 
-![Image 6](https://github.com/medoidai/skrobot/raw/master/static/image-6.png)
 ![Image 7](https://github.com/medoidai/skrobot/raw/master/static/image-7.png)
 ![Image 8](https://github.com/medoidai/skrobot/raw/master/static/image-8.png)
-![Image 9](https://github.com/medoidai/skrobot/raw/master/static/image-9.png)
 ![Image 10](https://github.com/medoidai/skrobot/raw/master/static/image-10.png)
 
 #### False Negatives
 
 ![Image 11](https://github.com/medoidai/skrobot/raw/master/static/image-11.png)
-![Image 12](https://github.com/medoidai/skrobot/raw/master/static/image-12.png)
 ![Image 13](https://github.com/medoidai/skrobot/raw/master/static/image-13.png)
 
 #### False Positives
 
-![Image 14](https://github.com/medoidai/skrobot/raw/master/static/image-14.png)
 ![Image 15](https://github.com/medoidai/skrobot/raw/master/static/image-15.png)
 ![Image 16](https://github.com/medoidai/skrobot/raw/master/static/image-16.png)
 
 #### PR / ROC Curves
 
-![Image 17](https://github.com/medoidai/skrobot/raw/master/static/image-17.png)
 ![Image 18](https://github.com/medoidai/skrobot/raw/master/static/image-18.png)
-![Image 19](https://github.com/medoidai/skrobot/raw/master/static/image-19.png)
 ![Image 20](https://github.com/medoidai/skrobot/raw/master/static/image-20.png)
 ![Image 21](https://github.com/medoidai/skrobot/raw/master/static/image-21.png)
 ![Image 22](https://github.com/medoidai/skrobot/raw/master/static/image-22.png)
-![Image 23](https://github.com/medoidai/skrobot/raw/master/static/image-23.png)
 ![Image 24](https://github.com/medoidai/skrobot/raw/master/static/image-24.png)
-![Image 25](https://github.com/medoidai/skrobot/raw/master/static/image-25.png)
 ![Image 26](https://github.com/medoidai/skrobot/raw/master/static/image-26.png)
 
 #### Performance Metrics
@@ -446,7 +436,6 @@ print(train_results['estimator'])
 *On train / validation CV folds:*
 
 ![Image 27](https://github.com/medoidai/skrobot/raw/master/static/image-27.png)
-![Image 28](https://github.com/medoidai/skrobot/raw/master/static/image-28.png)
 
 *On hold-out test set:*
 
