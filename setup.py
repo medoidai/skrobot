@@ -16,6 +16,7 @@ setup(
      description="skrobot is a Python module for designing, running and tracking Machine Learning experiments / tasks. It is built on top of scikit-learn framework.",
      long_description=readme,
      platforms=['any'],
+     download_url='https://github.com/medoidai/skrobot/archive/1.0.0.tar.gz',
      long_description_content_type='text/markdown',
      url="https://github.com/medoidai/skrobot",
      python_requires='>=3.6',
