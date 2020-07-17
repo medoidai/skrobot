@@ -422,14 +422,15 @@ print(train_results['estimator'])
 ![Image 15](https://github.com/medoidai/skrobot/raw/master/static/image-14.png)
 ![Image 16](https://github.com/medoidai/skrobot/raw/master/static/image-16.png)
 
-#### PR / ROC Curves
+#### PR Curves
 
 ![Image 18](https://github.com/medoidai/skrobot/raw/master/static/image-18.png)
 ![Image 20](https://github.com/medoidai/skrobot/raw/master/static/image-20.png)
-![Image 21](https://github.com/medoidai/skrobot/raw/master/static/image-21.png)
+
+#### ROC Curves
+
 ![Image 22](https://github.com/medoidai/skrobot/raw/master/static/image-22.png)
 ![Image 24](https://github.com/medoidai/skrobot/raw/master/static/image-24.png)
-![Image 26](https://github.com/medoidai/skrobot/raw/master/static/image-26.png)
 
 #### Performance Metrics
 
