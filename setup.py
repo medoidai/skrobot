@@ -13,6 +13,7 @@ setup(
      version='1.0.0',
      license='MIT',
      author="Medoid AI",
+     author_email="info@medoid.ai",
      description="skrobot is a Python module for designing, running and tracking Machine Learning experiments / tasks. It is built on top of scikit-learn framework.",
      long_description=readme,
      platforms=['any'],
