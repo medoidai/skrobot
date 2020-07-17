@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue?style=plastic)](https://github.com/medoidai/skrobot/blob/master/LICENSE.txt)
 [![Status](https://img.shields.io/badge/status-stable-green?style=plastic)](https://pypi.org/project/skrobot/)
 
-<div align="center"><img src="https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png" width="250px;" /></div>
+<div align="center"><img src="https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png" width="200px;" /></div>
 
 -----------------
 
@@ -146,15 +146,13 @@ The following members of our team were involved in developing the initial releas
 
 * Add support in the library for multiclass and regression problems
 
+* Write documentation (e.g., Read the Docs) for the library components
+
 * Support Python 3.8
 
 * Build some notifiers (e.g., Slack, Jira and Discord)
 
-* Write documentation (e.g., Read the Docs) for the library components
-
 * Add Bayesian hyperparameter tuning support
-
-* Save on disk the preprocessed training dataset
 
 ### Can I contribute?
 
