@@ -153,7 +153,7 @@ Development:
 
 * [Efstathios Chatzikyriakidis](https://github.com/echatzikyriakidis)
 
-Support, testing and feature recommendation:
+Support, testing and features recommendation:
 
 * [Lefteris Kouloubris](https://github.com/lefteris-kouloubris)
 * [Antonis Markou](https://github.com/anmarkou)
