@@ -50,7 +50,7 @@ In the table below you can see the components that are ready to be used by the e
 | Experiment | This is used to build and run experiments. It can run tasks in the context of an experiment and glue everything together to complete a modelling pipeline. |
 | Task Runner | This is like the Experiment component but without the "experiment" stuff. It can be used to run various tasks and glue everything together to complete a modelling pipeline. |
 
-In the table below you can see the components that can be used to extend the module and support new tasks or notifiers:
+In the table below you can see the components that can extend the module and support new tasks or notifiers:
 
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
