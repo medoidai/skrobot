@@ -144,9 +144,9 @@ The following members of our team were involved in developing the initial releas
 
 ### Next Priorities?
 
-* Add support in the library for multiclass and regression problems
+* Write documentation (e.g., Read the Docs) for the library components!
 
-* Write documentation (e.g., Read the Docs) for the library components
+* Add support in the library for multiclass and regression problems
 
 * Support Python 3.8
 
