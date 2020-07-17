@@ -150,7 +150,7 @@ The following members of our team were involved in developing the initial releas
 
 * Support Python 3.8
 
-* Build some notifiers (e.g., Slack, Jira and Discord)
+* Build some notifiers (e.g., Slack, Trello and Discord)
 
 * Add Bayesian hyperparameter tuning support
 
@@ -225,7 +225,7 @@ search_params = {
 
 ######### skrobot Code
 
-# Define a Notifier (This is optional and you can implement any notifier you want, e.g. for Slack / Jira / Discord)
+# Define a Notifier (This is optional and you can implement any notifier you want, e.g. for Slack / Trello / Discord)
 class ConsoleNotifier(BaseNotifier):
     def notify (self, message):
         print(message)
