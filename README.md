@@ -155,8 +155,8 @@ Development:
 
 Support, testing and feature recommendation:
 
-* [Antonis Markou](https://github.com/anmarkou)
 * [Lefteris Kouloubris](https://github.com/lefteris-kouloubris)
+* [Antonis Markou](https://github.com/anmarkou)
 * [Christina Chrysouli](https://github.com/ChristinaChr)
 
 ### Next Priorities?
