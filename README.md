@@ -154,8 +154,6 @@ The following members of our team were involved in developing the initial releas
 
 * Add Bayesian hyperparameter tuning support
 
-* Save on disk the preprocessed training dataset
-
 ### Can I contribute?
 
 Of course, the project is [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) and you can contribute to it!
