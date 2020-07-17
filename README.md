@@ -146,11 +146,11 @@ The following members of our team were involved in developing the initial releas
 
 * Add support in the library for multiclass and regression problems
 
+* Write documentation (e.g., Read the Docs) for the library components
+
 * Support Python 3.8
 
 * Build some notifiers (e.g., Slack, Jira and Discord)
-
-* Write documentation (e.g., Read the Docs) for the library components
 
 * Add Bayesian hyperparameter tuning support
 
