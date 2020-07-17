@@ -55,8 +55,8 @@ In the table below you can see the components that can be used to extend the mod
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
 | Base Task | All tasks inherit from this component. A task is a configurable and reproducible piece of code built on top of scikit-learn that can be used in machine learning pipelines. |
-| Base Notifier | All notifiers inherit from this component. A notifier can be used to send success / failure notifications for tasks execution. |
 | Base Cross Validation Task | All tasks that use cross validation functionality inherit from this component. |
+| Base Notifier | All notifiers inherit from this component. A notifier can be used to send success / failure notifications for tasks execution. |
 
 #### Evaluation Cross Validation Task
 
