@@ -39,17 +39,24 @@ $ python setup.py install
 
 **NOTE** : Currently, skrobot can be used only for binary classification problems.
 
+Below, are the components of the module that are ready to be used in code:
+
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
-| Base Task | All tasks inherit from this component. A task is a configurable and reproducible piece of code built on top of scikit-learn that can be used in machine learning pipelines. |
-| Base Notifier | All notifiers inherit from this component. A notifier can be used to send success / failure notifications for tasks execution. |
-| Base Cross Validation Task | All tasks that use cross validation functionality inherit from this component. |
 | Train Task | This task can be used to fit a scikit-learn estimator on some data. |
 | Evaluation Cross Validation Task | This task can be used to evaluate a scikit-learn estimator on some data. |
 | Feature Selection Cross Validation Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data. |
 | Hyperparameters Search Cross Validation Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data. |
 | Experiment | This is used to build and run experiments. It can run tasks in the context of an experiment and glue everything together to complete a modelling pipeline. |
 | Task Runner | This is like the Experiment component but without the "experiment" stuff. It can be used to run various tasks and glue everything together to complete a modelling pipeline. |
+
+Below, are the components that can be used to extend the module to support new tasks and notifiers:
+
+| Component                      | What is this?                    |
+|--------------------------------|----------------------------------|
+| Base Task | All tasks inherit from this component. A task is a configurable and reproducible piece of code built on top of scikit-learn that can be used in machine learning pipelines. |
+| Base Notifier | All notifiers inherit from this component. A notifier can be used to send success / failure notifications for tasks execution. |
+| Base Cross Validation Task | All tasks that use cross validation functionality inherit from this component. |
 
 #### Evaluation Cross Validation Task
 
