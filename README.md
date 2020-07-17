@@ -126,7 +126,7 @@ $ python setup.py install
 
 * In case of error when running a task, a text file will be generated with the related error
 
-### Why does exists?
+### Why does it exists?
 
 It can help Data Scientists and Machine Learning Engineers:
 
