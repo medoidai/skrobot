@@ -39,7 +39,7 @@ $ python setup.py install
 
 ### Which are the components?
 
-**NOTE 1** : Currently, skrobot can be used only for binary classification problems. Multiclass, regression and multitarget extensions are project priorities (please check below).
+**NOTE 1** : Currently, skrobot can be used only for binary classification problems. Multiclass, regression and multitarget extensions are project priorities ([please see below](#next-priorities-?)).
 
 **NOTE 2** : A proper module documentation is on the making after the first public release and testing!
 
@@ -165,7 +165,7 @@ Support, testing and features recommendation:
 
 * Write documentation (e.g., Read the Docs) for the module!
 
-* Add support in the module for multiclass and regression problems
+* Add support in the module for multiclass, regression and multitarget problems
 
 * Support Python 3.8
 
