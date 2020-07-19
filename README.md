@@ -70,6 +70,8 @@ $ python setup.py install
 
 * The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
 
+* The provided train / test dataset file paths can be either URLs or disk file paths
+
 * The provided estimator needs to be able to predict probabilities through a ``predict_proba`` method
 
 * The following evaluation results can be generated on-demand for hold-out test set as well as train / validation CV folds:
@@ -91,6 +93,8 @@ $ python setup.py install
 
 * The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
 
+* The provided train dataset file path can be either a URL or a disk file path
+
 * The provided estimator needs to provide feature importances through either a ``coef_`` or a ``feature_importances_`` attribute
 
 * Along with the provided estimator a preprocessor can also be provided to preprocess the data before feature selection runs
@@ -107,6 +111,8 @@ $ python setup.py install
 
 * The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
 
+* The provided train dataset file path can be either a URL or a disk file path
+
 * The fitted estimator is stored as a pickle file and also returned as a result
 
 #### Hyperparameters Search Cross Validation Task
@@ -116,6 +122,8 @@ $ python setup.py install
 * The provided estimator is not affected and is used only as a template
 
 * The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
+
+* The provided train dataset file path can be either a URL or a disk file path
 
 * The search can be either randomized or grid-based
 
@@ -188,8 +196,6 @@ Below, are some examples that use many of skrobot's components to built a machin
 #### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-16T17-56-44-example-titanic-pipeline-with-model-based-feature-selection))
 
 ```python
-from os import path
-
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -206,9 +212,9 @@ from skrobot.notification import BaseNotifier
 
 ######### Initialization Code
 
-train_data_set_file_path = path.join('data', 'titanic-train.csv')
+train_data_set_file_path = 'https://bit.ly/titanic-data-train'
 
-test_data_set_file_path = path.join('data', 'titanic-test.csv')
+test_data_set_file_path = 'https://bit.ly/titanic-data-test'
 
 random_seed = 42
 
@@ -316,8 +322,6 @@ print(train_results['estimator'])
 #### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-16T17-43-51-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
 
 ```python
-from os import path
-
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.feature_selection import SelectPercentile, chi2
@@ -331,9 +335,9 @@ from skrobot.feature_selection import ColumnSelector
 
 ######### Initialization Code
 
-train_data_set_file_path = path.join('data', 'sms-spam-ham-train.tsv')
+train_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-train'
 
-test_data_set_file_path = path.join('data', 'sms-spam-ham-test.tsv')
+test_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-test'
 
 field_delimiter = '\t'
 

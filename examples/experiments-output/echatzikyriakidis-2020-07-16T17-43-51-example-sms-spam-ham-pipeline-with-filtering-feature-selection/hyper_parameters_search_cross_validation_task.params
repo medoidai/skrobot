@@ -17,7 +17,7 @@
  ],
  "field_delimiter": "\t",
  "estimator_params": null,
- "train_data_set_file_path": "data/sms-spam-ham-train.tsv",
+ "train_data_set_file_path": "https://bit.ly/sms-spam-ham-data-train",
  "search_params": {
   "classifier__max_iter": [
    20,

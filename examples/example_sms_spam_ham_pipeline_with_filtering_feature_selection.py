@@ -1,5 +1,3 @@
-from os import path
-
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.feature_selection import SelectPercentile, chi2
@@ -13,9 +11,9 @@ from skrobot.feature_selection import ColumnSelector
 
 ######### Initialization Code
 
-train_data_set_file_path = path.join('data', 'sms-spam-ham-train.tsv')
+train_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-train'
 
-test_data_set_file_path = path.join('data', 'sms-spam-ham-test.tsv')
+test_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-test'
 
 field_delimiter = '\t'
 

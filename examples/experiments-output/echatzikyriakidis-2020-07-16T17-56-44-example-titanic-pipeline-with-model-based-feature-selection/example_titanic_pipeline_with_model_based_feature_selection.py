@@ -1,5 +1,3 @@
-from os import path
-
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -16,9 +14,9 @@ from skrobot.notification import BaseNotifier
 
 ######### Initialization Code
 
-train_data_set_file_path = path.join('data', 'titanic-train.csv')
+train_data_set_file_path = 'https://bit.ly/titanic-data-train'
 
-test_data_set_file_path = path.join('data', 'titanic-test.csv')
+test_data_set_file_path = 'https://bit.ly/titanic-data-test'
 
 random_seed = 42
 
