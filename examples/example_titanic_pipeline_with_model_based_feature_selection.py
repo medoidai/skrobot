@@ -56,7 +56,7 @@ class ConsoleNotifier(BaseNotifier):
         print(message)
 
 # Build an Experiment
-experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
+experiment = Experiment('experiments-output').set_source_code_file_path(__file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,

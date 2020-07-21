@@ -56,7 +56,7 @@ search_params = {
 ######### skrobot Code
 
 # Build an Experiment
-experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()
+experiment = Experiment('experiments-output').set_source_code_file_path(__file__).set_experimenter('echatzikyriakidis').build()
 
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,

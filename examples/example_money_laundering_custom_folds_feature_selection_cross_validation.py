@@ -14,7 +14,7 @@ lr_estimator = LogisticRegression(solver='liblinear', random_state=random_seed)
 ######### skrobot Code
 
 # Build an Experiment
-experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()
+experiment = Experiment('experiments-output').set_source_code_file_path(__file__).set_experimenter('echatzikyriakidis').build()
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=lr_estimator,
