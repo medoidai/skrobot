@@ -46,6 +46,7 @@ $ python setup.py install
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
 | Train Task | This task can be used to fit a scikit-learn estimator on some data. |
+| Prediction Task | This task can be used to predict the class labels of some data using a scikit-learn estimator. |
 | Evaluation Cross Validation Task | This task can be used to evaluate a scikit-learn estimator on some data. |
 | Feature Selection Cross Validation Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data. |
 | Hyperparameters Search Cross Validation Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data. |
@@ -114,6 +115,14 @@ $ python setup.py install
 * The provided train dataset file path can be either a URL or a disk file path
 
 * The fitted estimator is stored as a pickle file and also returned as a result
+
+#### Prediction Task
+
+* The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
+
+* The provided dataset file path can be either a URL or a disk file path
+
+* The predictions are stored in a CSV file and also returned as a result
 
 #### Hyperparameters Search Cross Validation Task
 
