@@ -1,4 +1,4 @@
-from os import path
+import os, datetime
 
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -15,9 +15,9 @@ from skrobot.feature_selection import ColumnSelector
 
 ######### Initialization Code
 
-train_data_set_file_path = path.join('data', 'titanic-train.csv')
+train_data_set_file_path = os.path.join('data', 'titanic-train.csv')
 
-test_data_set_file_path = path.join('data', 'titanic-test.csv')
+test_data_set_file_path = os.path.join('data', 'titanic-test.csv')
 
 random_seed = 42
 
@@ -52,7 +52,7 @@ search_params = {
 ######### skrobot Code
 
 # Create a Task Runner
-task_runner = TaskRunner('task-runner-output')
+task_runner = TaskRunner(f'task-runner-output-{datetime.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")}')
 
 # Run Feature Selection Task
 features_columns = task_runner.run(FeatureSelectionCrossValidationTask (estimator=classifier,
