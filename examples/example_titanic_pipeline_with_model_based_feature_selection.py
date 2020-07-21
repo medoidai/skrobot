@@ -37,15 +37,15 @@ categorical_transformer = Pipeline(steps=[
     ('encoder', OneHotEncoder(handle_unknown='ignore'))])
 
 preprocessor = ColumnTransformer(transformers=[
-    ('numerical_transfomer', numeric_transformer, numerical_features),
-    ('categorical_transfomer', categorical_transformer, categorical_features)])
+    ('numerical_transformer', numeric_transformer, numerical_features),
+    ('categorical_transformer', categorical_transformer, categorical_features)])
 
 classifier = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 search_params = {
     "classifier__C" : [ 1.e-01, 1.e+00, 1.e+01 ],
     "classifier__penalty" : [ "l1", "l2" ],
-    "preprocessor__numerical_transfomer__imputer__strategy" : [ "mean", "median" ]
+    "preprocessor__numerical_transformer__imputer__strategy" : [ "mean", "median" ]
 }
 
 ######### skrobot Code
