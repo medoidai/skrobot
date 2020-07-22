@@ -1,0 +1,35 @@
+{
+ "type": "evaluation_cross_validation_task",
+ "estimator": "Pipeline(memory=None,\n         steps=[('preprocessor',\n                 ColumnTransformer(n_jobs=None, remainder='drop',\n                                   sparse_threshold=0.3,\n                                   transformer_weights=None,\n                                   transformers=[('numerical_transformer',\n                                                  Pipeline(memory=None,\n                                                           steps=[('imputer',\n                                                                   SimpleImputer(add_indicator=False,\n                                                                                 copy=True,\n                                                                                 fill_value=None,\n                                                                                 missing_values=nan,\n                                                                                 strategy='mean',\n                                                                                 verbose=0)),\n                                                                  ('scaler',\n                                                                   StandardScaler(cop...\n                                   verbose=False)),\n                ('selector',\n                 ColumnSelector(cols=[0, 1, 2, 4, 6, 7, 8, 9, 11],\n                                drop_axis=False)),\n                ('classifier',\n                 LogisticRegression(C=1.0, class_weight=None, dual=False,\n                                    fit_intercept=True, intercept_scaling=1,\n                                    l1_ratio=None, max_iter=100,\n                                    multi_class='warn', n_jobs=None,\n                                    penalty='l2', random_state=42,\n                                    solver='liblinear', tol=0.0001, verbose=0,\n                                    warm_start=False))],\n         verbose=False)",
+ "train_data_set_file_path": "data/titanic-train.csv",
+ "test_data_set_file_path": "data/titanic-test.csv",
+ "estimator_params": {
+  "preprocessor__numerical_transformer__imputer__strategy": "mean",
+  "classifier__penalty": "l2",
+  "classifier__C": 0.1
+ },
+ "field_delimiter": ",",
+ "feature_columns": "all",
+ "id_column": "PassengerId",
+ "label_column": "Survived",
+ "random_seed": 42,
+ "threshold": "best",
+ "threshold_tuning_range": [
+  0.01,
+  1.0,
+  0.01
+ ],
+ "export_classification_reports": true,
+ "export_confusion_matrixes": true,
+ "export_roc_curves": true,
+ "export_pr_curves": true,
+ "export_false_positives_reports": true,
+ "export_false_negatives_reports": true,
+ "export_also_for_train_folds": true,
+ "fscore_beta": 1,
+ "fold_options": {
+  "total_folds": 5,
+  "shuffle": true
+ },
+ "fold_method": "stratified"
+}

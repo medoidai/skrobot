@@ -1,0 +1,9 @@
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
+530,2,"Hocking, Mr. Richard George",male,23.0,2,1,29104,11.5,,S
+760,1,"Rothes, the Countess. of (Lucy Noel Martha Dyer-Edwards)",female,33.0,0,0,110152,86.5,B77,S
+532,3,"Toufik, Mr. Nakli",male,,0,0,2641,7.2292,,C
+227,2,"Mellors, Mr. William John",male,19.0,0,0,SW/PP 751,10.5,,S
+884,2,"Banfield, Mr. Frederick James",male,28.0,0,0,C.A./SOTON 34068,10.5,,S
+637,3,"Leinonen, Mr. Antti Gustaf",male,32.0,0,0,STON/O 2. 3101292,7.925,,S
+718,2,"Troutt, Miss. Edwina Celia ""Winnie""",female,27.0,0,0,34218,10.5,E101,S
+278,2,"Parkes, Mr. Francis ""Frank""",male,,0,0,239853,0.0,,S

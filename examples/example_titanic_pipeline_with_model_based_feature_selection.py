@@ -6,6 +6,7 @@ from sklearn.linear_model import LogisticRegression
 
 from skrobot.core import Experiment
 from skrobot.tasks import TrainTask
+from skrobot.tasks import PredictionTask
 from skrobot.tasks import FeatureSelectionCrossValidationTask
 from skrobot.tasks import EvaluationCrossValidationTask
 from skrobot.tasks import HyperParametersSearchCrossValidationTask
@@ -17,6 +18,8 @@ from skrobot.notification import BaseNotifier
 train_data_set_file_path = 'https://bit.ly/titanic-data-train'
 
 test_data_set_file_path = 'https://bit.ly/titanic-data-test'
+
+new_data_set_file_path = 'https://bit.ly/titanic-data-new'
 
 random_seed = 42
 
@@ -37,15 +40,15 @@ categorical_transformer = Pipeline(steps=[
     ('encoder', OneHotEncoder(handle_unknown='ignore'))])
 
 preprocessor = ColumnTransformer(transformers=[
-    ('numerical_transfomer', numeric_transformer, numerical_features),
-    ('categorical_transfomer', categorical_transformer, categorical_features)])
+    ('numerical_transformer', numeric_transformer, numerical_features),
+    ('categorical_transformer', categorical_transformer, categorical_features)])
 
 classifier = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 search_params = {
     "classifier__C" : [ 1.e-01, 1.e+00, 1.e+01 ],
     "classifier__penalty" : [ "l1", "l2" ],
-    "preprocessor__numerical_transfomer__imputer__strategy" : [ "mean", "median" ]
+    "preprocessor__numerical_transformer__imputer__strategy" : [ "mean", "median" ]
 }
 
 ######### skrobot Code
@@ -56,7 +59,7 @@ class ConsoleNotifier(BaseNotifier):
         print(message)
 
 # Build an Experiment
-experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
+experiment = Experiment('experiments-output').set_source_code_file_path(__file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,
@@ -103,6 +106,12 @@ train_results = experiment.run(TrainTask(estimator=pipe,
                                          label_column=label_column,
                                          random_seed=random_seed))
 
+# Run Prediction Task
+predictions = task_runner.run(PredictionTask(estimator=train_results['estimator'],
+                                             data_set_file_path=new_data_set_file_path,
+                                             id_column=id_column,
+                                             prediction_column=label_column))
+
 # Print in-memory results
 print(features_columns)
 
@@ -119,3 +128,5 @@ print(evaluation_results['cv_splits_threshold_metrics_summary'])
 print(evaluation_results['test_threshold_metrics'])
 
 print(train_results['estimator'])
+
+print(predictions)
