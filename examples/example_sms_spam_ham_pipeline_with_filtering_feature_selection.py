@@ -5,6 +5,7 @@ from sklearn.linear_model import SGDClassifier
 
 from skrobot.core import Experiment
 from skrobot.tasks import TrainTask
+from skrobot.tasks import PredictionTask
 from skrobot.tasks import EvaluationCrossValidationTask
 from skrobot.tasks import HyperParametersSearchCrossValidationTask
 from skrobot.feature_selection import ColumnSelector
@@ -14,6 +15,8 @@ from skrobot.feature_selection import ColumnSelector
 train_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-train'
 
 test_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-test'
+
+new_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-new'
 
 field_delimiter = '\t'
 
@@ -72,6 +75,11 @@ train_results = experiment.run(TrainTask(estimator=pipe,
                                          field_delimiter=field_delimiter,
                                          random_seed=random_seed))
 
+# Run Prediction Task
+predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
+                                            data_set_file_path=new_data_set_file_path,
+                                            field_delimiter=field_delimiter))
+
 # Print in-memory results
 print(hyperparameters_search_results['best_params'])
 print(hyperparameters_search_results['best_index'])
@@ -86,3 +94,5 @@ print(evaluation_results['cv_splits_threshold_metrics_summary'])
 print(evaluation_results['test_threshold_metrics'])
 
 print(train_results['estimator'])
+
+print(predictions)

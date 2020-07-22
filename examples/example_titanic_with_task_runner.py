@@ -8,6 +8,7 @@ from sklearn.linear_model import LogisticRegression
 
 from skrobot.core import TaskRunner
 from skrobot.tasks import TrainTask
+from skrobot.tasks import PredictionTask
 from skrobot.tasks import FeatureSelectionCrossValidationTask
 from skrobot.tasks import EvaluationCrossValidationTask
 from skrobot.tasks import HyperParametersSearchCrossValidationTask
@@ -18,6 +19,8 @@ from skrobot.feature_selection import ColumnSelector
 train_data_set_file_path = os.path.join('data', 'titanic-train.csv')
 
 test_data_set_file_path = os.path.join('data', 'titanic-test.csv')
+
+new_data_set_file_path = os.path.join('data', 'titanic-new.csv')
 
 random_seed = 42
 
@@ -99,6 +102,12 @@ train_results = task_runner.run(TrainTask(estimator=pipe,
                                           label_column=label_column,
                                           random_seed=random_seed))
 
+# Run Prediction Task
+predictions = task_runner.run(PredictionTask(estimator=train_results['estimator'],
+                                             data_set_file_path=new_data_set_file_path,
+                                             id_column=id_column,
+                                             prediction_column=label_column))
+
 # Print in-memory results
 print(features_columns)
 
@@ -115,3 +124,5 @@ print(evaluation_results['cv_splits_threshold_metrics_summary'])
 print(evaluation_results['test_threshold_metrics'])
 
 print(train_results['estimator'])
+
+print(predictions)

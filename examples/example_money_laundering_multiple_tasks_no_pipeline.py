@@ -4,6 +4,7 @@ from sklearn.linear_model import LogisticRegression
 
 from skrobot.core import Experiment
 from skrobot.tasks import TrainTask
+from skrobot.tasks import PredictionTask
 from skrobot.tasks import EvaluationCrossValidationTask
 from skrobot.tasks import FeatureSelectionCrossValidationTask
 from skrobot.tasks import HyperParametersSearchCrossValidationTask
@@ -13,6 +14,8 @@ from skrobot.tasks import HyperParametersSearchCrossValidationTask
 train_data_set_file_path = path.join('data','money-laundering-data-train.csv')
 
 test_data_set_file_path = path.join('data','money-laundering-data-test.csv')
+
+new_data_set_file_path = path.join('data','money-laundering-data-new.csv')
 
 folds_file_path = path.join('data', 'money-laundering-folds.csv')
 
@@ -62,6 +65,11 @@ train_results = experiment.run(TrainTask(estimator=lr_estimator,
                                          feature_columns=features_columns,
                                          random_seed=random_seed))
 
+# Run Prediction Task
+predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
+                                            data_set_file_path=new_data_set_file_path,
+                                            feature_columns=features_columns))
+
 # Print in-memory results
 print(features_columns)
 
@@ -78,3 +86,5 @@ print(evaluation_results['cv_splits_threshold_metrics_summary'])
 print(evaluation_results['test_threshold_metrics'])
 
 print(train_results['estimator'])
+
+print(predictions)
