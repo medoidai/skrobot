@@ -202,7 +202,7 @@ Many examples can be found in the [examples](https://github.com/medoidai/skrobot
 
 Below, are some examples that use many of skrobot's components to built a machine learning modelling pipeline. Please try them and we would love to have your feedback!
 
-#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-16T17-56-44-example-titanic-pipeline-with-model-based-feature-selection))
+#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-21T19-32-29-example-titanic-pipeline-with-model-based-feature-selection))
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -328,7 +328,7 @@ print(evaluation_results['test_threshold_metrics'])
 print(train_results['estimator'])
 ```
 
-#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-16T17-43-51-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
+#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-21T18-46-50-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
 
 ```python
 from sklearn.pipeline import Pipeline
