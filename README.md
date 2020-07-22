@@ -447,72 +447,77 @@ print(predictions)
 #### Classification Reports
 
 ![Image 1](https://github.com/medoidai/skrobot/raw/master/static/image-1.png)
-![Image 4](https://github.com/medoidai/skrobot/raw/master/static/image-4.png)
-![Image 5](https://github.com/medoidai/skrobot/raw/master/static/image-5.png)
+![Image 2](https://github.com/medoidai/skrobot/raw/master/static/image-2.png)
+![Image 3](https://github.com/medoidai/skrobot/raw/master/static/image-3.png)
 
 #### Confusion Matrixes
 
-![Image 7](https://github.com/medoidai/skrobot/raw/master/static/image-7.png)
-![Image 8](https://github.com/medoidai/skrobot/raw/master/static/image-8.png)
-![Image 10](https://github.com/medoidai/skrobot/raw/master/static/image-10.png)
+![Image 4](https://github.com/medoidai/skrobot/raw/master/static/image-4.png)
+![Image 5](https://github.com/medoidai/skrobot/raw/master/static/image-5.png)
+![Image 6](https://github.com/medoidai/skrobot/raw/master/static/image-6.png)
 
 #### False Negatives
 
-![Image 11](https://github.com/medoidai/skrobot/raw/master/static/image-11.png)
-![Image 13](https://github.com/medoidai/skrobot/raw/master/static/image-13.png)
+![Image 7](https://github.com/medoidai/skrobot/raw/master/static/image-7.png)
+![Image 8](https://github.com/medoidai/skrobot/raw/master/static/image-8.png)
 
 #### False Positives
 
-![Image 14](https://github.com/medoidai/skrobot/raw/master/static/image-14.png)
-![Image 16](https://github.com/medoidai/skrobot/raw/master/static/image-16.png)
+![Image 9](https://github.com/medoidai/skrobot/raw/master/static/image-9.png)
+![Image 10](https://github.com/medoidai/skrobot/raw/master/static/image-10.png)
 
 #### PR Curves
 
-![Image 18](https://github.com/medoidai/skrobot/raw/master/static/image-18.png)
-![Image 20](https://github.com/medoidai/skrobot/raw/master/static/image-20.png)
+![Image 11](https://github.com/medoidai/skrobot/raw/master/static/image-11.png)
+![Image 12](https://github.com/medoidai/skrobot/raw/master/static/image-12.png)
 
 #### ROC Curves
 
-![Image 22](https://github.com/medoidai/skrobot/raw/master/static/image-22.png)
-![Image 24](https://github.com/medoidai/skrobot/raw/master/static/image-24.png)
+![Image 13](https://github.com/medoidai/skrobot/raw/master/static/image-13.png)
+![Image 14](https://github.com/medoidai/skrobot/raw/master/static/image-14.png)
 
 #### Performance Metrics
 
 *On train / validation CV folds:*
 
-![Image 27](https://github.com/medoidai/skrobot/raw/master/static/image-27.png)
+![Image 15](https://github.com/medoidai/skrobot/raw/master/static/image-15.png)
 
 *On hold-out test set:*
 
-![Image 38](https://github.com/medoidai/skrobot/raw/master/static/image-38.png)
+![Image 16](https://github.com/medoidai/skrobot/raw/master/static/image-16.png)
 
 #### Hyperparameters Search Results
 
-![Image 29](https://github.com/medoidai/skrobot/raw/master/static/image-29.png)
+![Image 17](https://github.com/medoidai/skrobot/raw/master/static/image-17.png)
 
 #### Task Parameters Logging
 
-![Image 30](https://github.com/medoidai/skrobot/raw/master/static/image-30.png)
-![Image 31](https://github.com/medoidai/skrobot/raw/master/static/image-31.png)
-![Image 32](https://github.com/medoidai/skrobot/raw/master/static/image-32.png)
-![Image 33](https://github.com/medoidai/skrobot/raw/master/static/image-33.png)
+![Image 18](https://github.com/medoidai/skrobot/raw/master/static/image-18.png)
+![Image 19](https://github.com/medoidai/skrobot/raw/master/static/image-19.png)
+![Image 20](https://github.com/medoidai/skrobot/raw/master/static/image-20.png)
+![Image 21](https://github.com/medoidai/skrobot/raw/master/static/image-21.png)
+![Image 22](https://github.com/medoidai/skrobot/raw/master/static/image-22.png)
 
 #### Experiment Logging
 
-![Image 34](https://github.com/medoidai/skrobot/raw/master/static/image-34.png)
+![Image 23](https://github.com/medoidai/skrobot/raw/master/static/image-23.png)
 
 #### Features Selected
 
 *The selected column indexes from the transformed features (this is generated when a preprocessor is used):*
 
-![Image 35](https://github.com/medoidai/skrobot/raw/master/static/image-35.png)
+![Image 24](https://github.com/medoidai/skrobot/raw/master/static/image-24.png)
 
 *The selected column names from the original features (this is generated when no preprocessor is used):*
 
-![Image 36](https://github.com/medoidai/skrobot/raw/master/static/image-36.png)
+![Image 25](https://github.com/medoidai/skrobot/raw/master/static/image-25.png)
 
 #### Expreriment Source Code
 
-![Image 37](https://github.com/medoidai/skrobot/raw/master/static/image-37.png)
+![Image 26](https://github.com/medoidai/skrobot/raw/master/static/image-26.png)
+
+#### Predictions
+
+![Image 27](https://github.com/medoidai/skrobot/raw/master/static/image-27.png)
 
 **Thank you!**
