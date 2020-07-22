@@ -107,10 +107,10 @@ train_results = experiment.run(TrainTask(estimator=pipe,
                                          random_seed=random_seed))
 
 # Run Prediction Task
-predictions = task_runner.run(PredictionTask(estimator=train_results['estimator'],
-                                             data_set_file_path=new_data_set_file_path,
-                                             id_column=id_column,
-                                             prediction_column=label_column))
+predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
+                                            data_set_file_path=new_data_set_file_path,
+                                            id_column=id_column,
+                                            prediction_column=label_column))
 
 # Print in-memory results
 print(features_columns)
