@@ -5,17 +5,22 @@ from numpyencoder import NumpyEncoder
 from ..notification import BaseNotifier
 
 class Experiment:
-  def __init__ (self, experiments_repository, source_code_file_path):
+  def __init__ (self, experiments_repository):
     self._experiments_repository = experiments_repository
 
-    self._source_code_file_path = source_code_file_path
-
     self._experimenter = 'anonymous'
+
+    self._source_code_file_path = None
 
     self._notifier = None
 
   def set_notifier(self, notifier : BaseNotifier):
     self._notifier = notifier
+
+    return self
+
+  def set_source_code_file_path(self, source_code_file_path):
+    self._source_code_file_path = source_code_file_path
 
     return self
 
@@ -80,7 +85,7 @@ class Experiment:
     self._save_dictionary_as_json_file(self._experiment_log, os.path.join(self._experiment_directory_path, 'experiment.log'))
 
   def _save_source_code_file(self):
-    shutil.copy(self._source_code_file_path, self._experiment_directory_path)
+    if self._source_code_file_path: shutil.copy(self._source_code_file_path, self._experiment_directory_path)
 
   def _save_errors_file(self, exception, task_type):
     with open(os.path.join(self._experiment_directory_path, f'{task_type}.errors'), 'w') as f: f.write(repr(exception))

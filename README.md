@@ -46,6 +46,7 @@ $ python setup.py install
 | Component                      | What is this?                    |
 |--------------------------------|----------------------------------|
 | Train Task | This task can be used to fit a scikit-learn estimator on some data. |
+| Prediction Task | This task can be used to predict new data using a scikit-learn estimator. |
 | Evaluation Cross Validation Task | This task can be used to evaluate a scikit-learn estimator on some data. |
 | Feature Selection Cross Validation Task | This task can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data. |
 | Hyperparameters Search Cross Validation Task | This task can be used to search the best hyperparameters of a scikit-learn estimator on some data. |
@@ -114,6 +115,14 @@ $ python setup.py install
 * The provided train dataset file path can be either a URL or a disk file path
 
 * The fitted estimator is stored as a pickle file and also returned as a result
+
+#### Prediction Task
+
+* The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator
+
+* The provided dataset file path can be either a URL or a disk file path
+
+* The predictions are stored in a CSV file and also returned as a result
 
 #### Hyperparameters Search Cross Validation Task
 
@@ -193,7 +202,7 @@ Many examples can be found in the [examples](https://github.com/medoidai/skrobot
 
 Below, are some examples that use many of skrobot's components to built a machine learning modelling pipeline. Please try them and we would love to have your feedback!
 
-#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-16T17-56-44-example-titanic-pipeline-with-model-based-feature-selection))
+#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-21T19-32-29-example-titanic-pipeline-with-model-based-feature-selection))
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -204,6 +213,7 @@ from sklearn.linear_model import LogisticRegression
 
 from skrobot.core import Experiment
 from skrobot.tasks import TrainTask
+from skrobot.tasks import PredictionTask
 from skrobot.tasks import FeatureSelectionCrossValidationTask
 from skrobot.tasks import EvaluationCrossValidationTask
 from skrobot.tasks import HyperParametersSearchCrossValidationTask
@@ -215,6 +225,8 @@ from skrobot.notification import BaseNotifier
 train_data_set_file_path = 'https://bit.ly/titanic-data-train'
 
 test_data_set_file_path = 'https://bit.ly/titanic-data-test'
+
+new_data_set_file_path = 'https://bit.ly/titanic-data-new'
 
 random_seed = 42
 
@@ -235,15 +247,15 @@ categorical_transformer = Pipeline(steps=[
     ('encoder', OneHotEncoder(handle_unknown='ignore'))])
 
 preprocessor = ColumnTransformer(transformers=[
-    ('numerical_transfomer', numeric_transformer, numerical_features),
-    ('categorical_transfomer', categorical_transformer, categorical_features)])
+    ('numerical_transformer', numeric_transformer, numerical_features),
+    ('categorical_transformer', categorical_transformer, categorical_features)])
 
 classifier = LogisticRegression(solver='liblinear', random_state=random_seed)
 
 search_params = {
     "classifier__C" : [ 1.e-01, 1.e+00, 1.e+01 ],
     "classifier__penalty" : [ "l1", "l2" ],
-    "preprocessor__numerical_transfomer__imputer__strategy" : [ "mean", "median" ]
+    "preprocessor__numerical_transformer__imputer__strategy" : [ "mean", "median" ]
 }
 
 ######### skrobot Code
@@ -254,7 +266,7 @@ class ConsoleNotifier(BaseNotifier):
         print(message)
 
 # Build an Experiment
-experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
+experiment = Experiment('experiments-output').set_source_code_file_path(__file__).set_experimenter('echatzikyriakidis').set_notifier(ConsoleNotifier()).build()
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,
@@ -301,6 +313,12 @@ train_results = experiment.run(TrainTask(estimator=pipe,
                                          label_column=label_column,
                                          random_seed=random_seed))
 
+# Run Prediction Task
+predictions = task_runner.run(PredictionTask(estimator=train_results['estimator'],
+                                             data_set_file_path=new_data_set_file_path,
+                                             id_column=id_column,
+                                             prediction_column=label_column))
+
 # Print in-memory results
 print(features_columns)
 
@@ -317,9 +335,11 @@ print(evaluation_results['cv_splits_threshold_metrics_summary'])
 print(evaluation_results['test_threshold_metrics'])
 
 print(train_results['estimator'])
+
+print(predictions)
 ```
 
-#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-16T17-43-51-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
+#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-21T18-46-50-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
 
 ```python
 from sklearn.pipeline import Pipeline
@@ -329,6 +349,7 @@ from sklearn.linear_model import SGDClassifier
 
 from skrobot.core import Experiment
 from skrobot.tasks import TrainTask
+from skrobot.tasks import PredictionTask
 from skrobot.tasks import EvaluationCrossValidationTask
 from skrobot.tasks import HyperParametersSearchCrossValidationTask
 from skrobot.feature_selection import ColumnSelector
@@ -338,6 +359,8 @@ from skrobot.feature_selection import ColumnSelector
 train_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-train'
 
 test_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-test'
+
+new_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-new'
 
 field_delimiter = '\t'
 
@@ -365,7 +388,7 @@ search_params = {
 ######### skrobot Code
 
 # Build an Experiment
-experiment = Experiment('experiments-output', __file__).set_experimenter('echatzikyriakidis').build()
+experiment = Experiment('experiments-output').set_source_code_file_path(__file__).set_experimenter('echatzikyriakidis').build()
 
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
@@ -396,6 +419,11 @@ train_results = experiment.run(TrainTask(estimator=pipe,
                                          field_delimiter=field_delimiter,
                                          random_seed=random_seed))
 
+# Run Prediction Task
+predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
+                                            data_set_file_path=new_data_set_file_path,
+                                            field_delimiter=field_delimiter))
+
 # Print in-memory results
 print(hyperparameters_search_results['best_params'])
 print(hyperparameters_search_results['best_index'])
@@ -410,6 +438,8 @@ print(evaluation_results['cv_splits_threshold_metrics_summary'])
 print(evaluation_results['test_threshold_metrics'])
 
 print(train_results['estimator'])
+
+print(predictions)
 ```
 
 ### Sample of auto-generated results

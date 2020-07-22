@@ -9,7 +9,7 @@ from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from . import BaseCrossValidationTask
 
 class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
-  def __init__ (self, estimator, search_params, train_data_set_file_path, estimator_params=None, field_delimiter=',', scorers=['roc_auc', 'average_precision', 'f1', 'precision', 'recall'], feature_columns='all', id_column='id', label_column='label', objective_score='f1', random_seed=123456789, verbose=3, n_jobs=1, return_train_score=True):
+  def __init__ (self, estimator, search_params, train_data_set_file_path, estimator_params=None, field_delimiter=',', scorers=['roc_auc', 'average_precision', 'f1', 'precision', 'recall', 'accuracy'], feature_columns='all', id_column='id', label_column='label', objective_score='f1', random_seed=123456789, verbose=3, n_jobs=1, return_train_score=True):
     super(HyperParametersSearchCrossValidationTask, self).__init__(HyperParametersSearchCrossValidationTask.__name__, locals())
 
     self.grid_search()
