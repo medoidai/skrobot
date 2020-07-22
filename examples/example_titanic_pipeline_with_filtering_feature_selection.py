@@ -19,7 +19,7 @@ train_data_set_file_path = path.join('data', 'titanic-train.csv')
 
 test_data_set_file_path = path.join('data', 'titanic-test.csv')
 
-new_data_set_file_path = path.join('data', 'titanic-test.csv')
+new_data_set_file_path = path.join('data', 'titanic-new.csv')
 
 random_seed = 42
 
