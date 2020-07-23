@@ -14,7 +14,7 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
 
     self.grid_search()
 
-    pd.set_option('display.max_colwidth', -1)
+    pd.set_option('display.max_colwidth', None)
 
   def grid_search(self):
     options = self.filter_arguments(locals())

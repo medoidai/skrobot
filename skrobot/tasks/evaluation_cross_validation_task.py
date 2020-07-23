@@ -15,10 +15,10 @@ from plotly import express
 from . import BaseCrossValidationTask
 
 class EvaluationCrossValidationTask(BaseCrossValidationTask):
-  def __init__ (self, estimator, train_data_set_file_path, test_data_set_file_path=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, threshold='best', threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
+  def __init__ (self, estimator, train_data_set_file_path, test_data_set_file_path=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, threshold_selection_by='f1', metric_greater_is_better=True, threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
     super(EvaluationCrossValidationTask, self).__init__(EvaluationCrossValidationTask.__name__, locals())
 
-    pd.set_option('display.max_colwidth', -1)
+    pd.set_option('display.max_colwidth', None)
 
     self.fscore_beta_text = f'f{str(self.fscore_beta)}'
 
@@ -78,12 +78,21 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
     return result
 
   def get_threshold_and_its_metrics (self, splits_threshold_metrics_summary):
-    if self.threshold == 'best':
-      row = splits_threshold_metrics_summary.loc[splits_threshold_metrics_summary[f'validation_{self.fscore_beta_text}_mean'].idxmax()]
-    else:
-      row = splits_threshold_metrics_summary.loc[splits_threshold_metrics_summary['threshold'] == self.threshold].squeeze()
+    if isinstance(self.threshold_selection_by, float):
+      row = splits_threshold_metrics_summary.loc[splits_threshold_metrics_summary['threshold'] == self.threshold_selection_by].squeeze()
+    elif isinstance(self.threshold_selection_by, str):
+      mean_column = f'validation_{self.threshold_selection_by}_mean'
 
-    if row.empty: raise Exception(f"The specified threshold [{self.threshold}] cannot be found!")
+      std_column = f'validation_{self.threshold_selection_by}_std'
+
+      if mean_column not in splits_threshold_metrics_summary.columns or std_column not in splits_threshold_metrics_summary.columns:
+        raise Exception(f"The specified metric [{self.threshold_selection_by}] for threshold selection is invalid.")
+
+      row = splits_threshold_metrics_summary.sort_values([mean_column, std_column], ascending = (not self.metric_greater_is_better, True)).head(1).squeeze()
+    else:
+      raise Exception(f"The specified threshold selection criteria [{self.threshold_selection_by}] is invalid.")
+
+    if row.empty: raise Exception(f"For the specified threshold selection criteria [{self.threshold_selection_by}] no threshold can be selected.")
 
     return self.truncate_number(row['threshold'], 3), row.drop('threshold')
 
@@ -305,25 +314,25 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
     return estimator
 
   def calculate_diagnostic_performance (self, y, y_hat, data_split):
-    y_and_y_hat = np.vstack((y, y_hat)).T
+    true_positives = np.sum(np.logical_and(y_hat == 1, y == 1))
+    true_negatives = np.sum(np.logical_and(y_hat == 0, y == 0))
 
-    y_positives = y_and_y_hat[:, 0] == 1
-    y_negatives = y_and_y_hat[:, 0] == 0
+    false_positives = np.sum(np.logical_and(y_hat == 1, y == 0))
+    false_negatives = np.sum(np.logical_and(y_hat == 0, y == 1))
 
-    y_hat_positives = y_and_y_hat[:, 1] == 1
-    y_hat_negatives = y_and_y_hat[:, 1] == 0
+    accuracy = (true_positives + true_negatives) / (true_positives + true_negatives + false_positives + false_negatives)
 
-    true_positives = y_positives & y_hat_positives
-    true_negatives = y_negatives & y_hat_negatives
+    true_positive_rate = true_positives / (true_positives + false_negatives)
+    false_positive_rate = false_positives / (false_positives + true_negatives)
 
-    sensitivity = np.sum(true_positives) / np.sum(y_positives)
-    specificity = np.sum(true_negatives) / np.sum(y_negatives)
+    sensitivity = true_positive_rate
+    specificity = 1 - false_positive_rate
 
-    true_positive_rate = sensitivity
-    false_positive_rate = 1 - specificity
+    geometric_mean = np.sqrt(sensitivity * specificity)
 
-    precision = np.sum(true_positives) / np.sum(y_hat_positives)
+    precision = true_positives / (true_positives + false_positives)
     recall = sensitivity
+
     fbeta_score = self.calculate_fbeta_score(precision, recall, self.fscore_beta)
 
     performance = {}
@@ -331,8 +340,11 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
     performance[f'{data_split}_sensitivity'] = sensitivity
     performance[f'{data_split}_specificity'] = specificity
 
+    performance[f'{data_split}_accuracy'] = accuracy
+
     performance[f'{data_split}_true_positive_rate'] = true_positive_rate
     performance[f'{data_split}_false_positive_rate'] = false_positive_rate
+    performance[f'{data_split}_geometric_mean'] = geometric_mean
 
     performance[f'{data_split}_precision'] = precision
     performance[f'{data_split}_recall'] = recall
@@ -366,8 +378,10 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
 
       f'{data_split}_sensitivity',
       f'{data_split}_specificity',
+      f'{data_split}_accuracy',
       f'{data_split}_true_positive_rate',
       f'{data_split}_false_positive_rate',
+      f'{data_split}_geometric_mean',
       f'{data_split}_precision',
       f'{data_split}_recall',
       f'{data_split}_{self.fscore_beta_text}'
@@ -380,8 +394,10 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
 
       f'{self.validation_text}_sensitivity',
       f'{self.validation_text}_specificity',
+      f'{self.validation_text}_accuracy',
       f'{self.validation_text}_true_positive_rate',
       f'{self.validation_text}_false_positive_rate',
+      f'{self.validation_text}_geometric_mean',
       f'{self.validation_text}_precision',
       f'{self.validation_text}_recall',
       f'{self.validation_text}_{self.fscore_beta_text}'
@@ -391,8 +407,10 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
       columns.extend([
         f'{self.train_text}_sensitivity',
         f'{self.train_text}_specificity',
+        f'{self.train_text}_accuracy',
         f'{self.train_text}_true_positive_rate',
         f'{self.train_text}_false_positive_rate',
+        f'{self.train_text}_geometric_mean',
         f'{self.train_text}_precision',
         f'{self.train_text}_recall',
         f'{self.train_text}_{self.fscore_beta_text}'

@@ -78,7 +78,8 @@ train_results = experiment.run(TrainTask(estimator=pipe,
 # Run Prediction Task
 predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
                                             data_set_file_path=new_data_set_file_path,
-                                            field_delimiter=field_delimiter))
+                                            field_delimiter=field_delimiter,
+                                            threshold=evaluation_results['threshold']))
 
 # Print in-memory results
 print(hyperparameters_search_results['best_params'])

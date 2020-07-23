@@ -84,7 +84,7 @@ $ python setup.py install
   * False Positives
   * False Negatives
 
-* The evaluation results can be generated either for a specifc provided threshold or for the best one found from threshold tuning
+* The evaluation results can be generated either for a specific provided threshold or for the best one found from threshold tuning
 
 * The threshold used along with its related performance metrics and summary metrics from all CV splits as well as hold-out test set are returned as a result
 
@@ -123,6 +123,10 @@ $ python setup.py install
 * The provided dataset file path can be either a URL or a disk file path
 
 * The predictions are stored in a CSV file and also returned as a result
+
+* The provided estimator needs to be able to predict probabilities through a ``predict_proba`` method
+
+* The predictions can be generated either for a specific provided threshold or for the 0.5 default one
 
 #### Hyperparameters Search Cross Validation Task
 
@@ -200,7 +204,7 @@ Many examples can be found in the [examples](https://github.com/medoidai/skrobot
 
 Below, are some examples that use many of skrobot's components to built a machine learning modelling pipeline. Please try them and we would love to have your feedback!
 
-#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-22T11-42-19-example-titanic-pipeline-with-model-based-feature-selection))
+#### Example on Titanic Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-23T23-01-21-example-titanic-pipeline-with-model-based-feature-selection))
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -315,7 +319,8 @@ train_results = experiment.run(TrainTask(estimator=pipe,
 predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
                                             data_set_file_path=new_data_set_file_path,
                                             id_column=id_column,
-                                            prediction_column=label_column))
+                                            prediction_column=label_column,
+                                            threshold=evaluation_results['threshold']))
 
 # Print in-memory results
 print(features_columns)
@@ -337,7 +342,7 @@ print(train_results['estimator'])
 print(predictions)
 ```
 
-#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-22T11-20-30-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
+#### Example on SMS Spam Collection Dataset ([auto-generated results](https://github.com/medoidai/skrobot/tree/master/examples/experiments-output/echatzikyriakidis-2020-07-23T22-04-14-example-sms-spam-ham-pipeline-with-filtering-feature-selection))
 
 ```python
 from sklearn.pipeline import Pipeline
@@ -420,7 +425,8 @@ train_results = experiment.run(TrainTask(estimator=pipe,
 # Run Prediction Task
 predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
                                             data_set_file_path=new_data_set_file_path,
-                                            field_delimiter=field_delimiter))
+                                            field_delimiter=field_delimiter,
+                                            threshold=evaluation_results['threshold']))
 
 # Print in-memory results
 print(hyperparameters_search_results['best_params'])

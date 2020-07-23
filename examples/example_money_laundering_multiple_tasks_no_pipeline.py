@@ -68,7 +68,8 @@ train_results = experiment.run(TrainTask(estimator=lr_estimator,
 # Run Prediction Task
 predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
                                             data_set_file_path=new_data_set_file_path,
-                                            feature_columns=features_columns))
+                                            feature_columns=features_columns,
+                                            threshold=evaluation_results['threshold']))
 
 # Print in-memory results
 print(features_columns)
