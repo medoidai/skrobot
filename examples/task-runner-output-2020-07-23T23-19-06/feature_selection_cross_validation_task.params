@@ -1,0 +1,22 @@
+{
+ "type": "feature_selection_cross_validation_task",
+ "n_jobs": 1,
+ "verbose": 3,
+ "random_seed": 42,
+ "label_column": "Survived",
+ "id_column": "PassengerId",
+ "feature_columns": "all",
+ "scoring": "f1",
+ "min_features_to_select": 4,
+ "preprocessor_params": null,
+ "preprocessor": "ColumnTransformer(transformers=[('numerical_transformer',\n                                 Pipeline(steps=[('imputer', SimpleImputer()),\n                                                 ('scaler', StandardScaler())]),\n                                 ['Age', 'Fare', 'SibSp', 'Parch']),\n                                ('categorical_transformer',\n                                 Pipeline(steps=[('imputer',\n                                                  SimpleImputer(strategy='most_frequent')),\n                                                 ('encoder',\n                                                  OneHotEncoder(handle_unknown='ignore'))]),\n                                 ['Embarked', 'Sex', 'Pclass'])])",
+ "field_delimiter": ",",
+ "estimator_params": null,
+ "train_data_set_file_path": "data/titanic-train.csv",
+ "estimator": "LogisticRegression(random_state=42, solver='liblinear')",
+ "fold_options": {
+  "shuffle": true,
+  "total_folds": 5
+ },
+ "fold_method": "stratified"
+}

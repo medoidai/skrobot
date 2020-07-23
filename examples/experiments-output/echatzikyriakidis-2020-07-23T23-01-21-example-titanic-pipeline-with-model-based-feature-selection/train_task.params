@@ -1,0 +1,15 @@
+{
+ "type": "train_task",
+ "estimator": "Pipeline(steps=[('preprocessor',\n                 ColumnTransformer(transformers=[('numerical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer()),\n                                                                  ('scaler',\n                                                                   StandardScaler())]),\n                                                  ['Age', 'Fare', 'SibSp',\n                                                   'Parch']),\n                                                 ('categorical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer(strategy='most_frequent')),\n                                                                  ('encoder',\n                                                                   OneHotEncoder(handle_unknown='ignore'))]),\n                                                  ['Embarked', 'Sex',\n                                                   'Pclass'])])),\n                ('selector', ColumnSelector(cols=[0, 6, 7, 8, 9, 11])),\n                ('classifier',\n                 LogisticRegression(random_state=42, solver='liblinear'))])",
+ "train_data_set_file_path": "https://bit.ly/titanic-data-train",
+ "estimator_params": {
+  "preprocessor__numerical_transformer__imputer__strategy": "mean",
+  "classifier__penalty": "l1",
+  "classifier__C": 10.0
+ },
+ "field_delimiter": ",",
+ "feature_columns": "all",
+ "id_column": "PassengerId",
+ "label_column": "Survived",
+ "random_seed": 42
+}

@@ -1,6 +1,0 @@
-Classification report for CV split 1 train data (Threshold = 0.62)
-
-             precision  recall     f1  support
-0            0.997      0.999   0.998  12453  
-1            0.619      0.276   0.382  47     
-avg / total  0.995      0.996   0.995  12500  

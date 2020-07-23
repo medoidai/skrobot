@@ -1,6 +1,0 @@
-False positives report for CV split 3 validation data (Threshold = 0.27)
-
-495
-4283
-1299
-439

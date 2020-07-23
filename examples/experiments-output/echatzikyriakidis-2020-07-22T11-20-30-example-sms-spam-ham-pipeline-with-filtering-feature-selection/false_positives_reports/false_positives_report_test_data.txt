@@ -1,6 +1,0 @@
-False positives report for test data (Threshold = 0.27)
-
-4702
-1082
-450
-5157

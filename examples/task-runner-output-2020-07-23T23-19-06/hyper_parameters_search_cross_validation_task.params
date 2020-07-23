@@ -1,0 +1,47 @@
+{
+ "type": "hyper_parameters_search_cross_validation_task",
+ "return_train_score": true,
+ "n_jobs": 1,
+ "verbose": 3,
+ "random_seed": 42,
+ "objective_score": "f1",
+ "label_column": "Survived",
+ "id_column": "PassengerId",
+ "feature_columns": "all",
+ "scorers": [
+  "roc_auc",
+  "average_precision",
+  "f1",
+  "precision",
+  "recall",
+  "accuracy"
+ ],
+ "field_delimiter": ",",
+ "estimator_params": null,
+ "train_data_set_file_path": "data/titanic-train.csv",
+ "search_params": {
+  "classifier__C": [
+   0.1,
+   1.0,
+   10.0
+  ],
+  "classifier__penalty": [
+   "l1",
+   "l2"
+  ],
+  "preprocessor__numerical_transformer__imputer__strategy": [
+   "mean",
+   "median"
+  ]
+ },
+ "estimator": "Pipeline(steps=[('preprocessor',\n                 ColumnTransformer(transformers=[('numerical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer()),\n                                                                  ('scaler',\n                                                                   StandardScaler())]),\n                                                  ['Age', 'Fare', 'SibSp',\n                                                   'Parch']),\n                                                 ('categorical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer(strategy='most_frequent')),\n                                                                  ('encoder',\n                                                                   OneHotEncoder(handle_unknown='ignore'))]),\n                                                  ['Embarked', 'Sex',\n                                                   'Pclass'])])),\n                ('selector', ColumnSelector(cols=[0, 6, 7, 8, 9, 11])),\n                ('classifier',\n                 LogisticRegression(random_state=42, solver='liblinear'))])",
+ "fold_options": {
+  "shuffle": true,
+  "total_folds": 5
+ },
+ "fold_method": "stratified",
+ "search_options": {
+  "n_iters": 100
+ },
+ "search_method": "random"
+}

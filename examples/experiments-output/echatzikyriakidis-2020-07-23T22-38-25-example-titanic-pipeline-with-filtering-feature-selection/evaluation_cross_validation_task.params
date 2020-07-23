@@ -1,0 +1,37 @@
+{
+ "type": "evaluation_cross_validation_task",
+ "estimator": "Pipeline(steps=[('preprocessor',\n                 ColumnTransformer(transformers=[('numerical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer()),\n                                                                  ('scaler',\n                                                                   StandardScaler())]),\n                                                  ['Age', 'Fare', 'SibSp',\n                                                   'Parch']),\n                                                 ('categorical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer(strategy='most_frequent')),\n                                                                  ('encoder',\n                                                                   OneHotEncoder(handle_unknown='ignore'))]),\n                                                  ['Embarked', 'Sex',\n                                                   'Pclass'])])),\n                ('selection', SelectKBest()),\n                ('classifier',\n                 LogisticRegression(random_state=42, solver='liblinear'))])",
+ "train_data_set_file_path": "data/titanic-train.csv",
+ "test_data_set_file_path": "data/titanic-test.csv",
+ "estimator_params": {
+  "selection__k": 5,
+  "preprocessor__numerical_transformer__imputer__strategy": "mean",
+  "classifier__penalty": "l1",
+  "classifier__C": 0.1
+ },
+ "field_delimiter": ",",
+ "feature_columns": "all",
+ "id_column": "PassengerId",
+ "label_column": "Survived",
+ "random_seed": 42,
+ "threshold_selection_by": "f1",
+ "metric_greater_is_better": true,
+ "threshold_tuning_range": [
+  0.01,
+  1.0,
+  0.01
+ ],
+ "export_classification_reports": true,
+ "export_confusion_matrixes": true,
+ "export_roc_curves": true,
+ "export_pr_curves": true,
+ "export_false_positives_reports": true,
+ "export_false_negatives_reports": true,
+ "export_also_for_train_folds": true,
+ "fscore_beta": 1,
+ "fold_options": {
+  "total_folds": 5,
+  "shuffle": true
+ },
+ "fold_method": "stratified"
+}

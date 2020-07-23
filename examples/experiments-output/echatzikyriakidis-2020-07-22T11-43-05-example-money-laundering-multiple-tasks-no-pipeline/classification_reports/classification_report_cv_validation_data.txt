@@ -1,6 +1,0 @@
-Classification report for CV validation data (Threshold = 0.18)
-
-             precision  recall     f1  support
-0            0.998      0.997   0.997  18680  
-1            0.420      0.521   0.465  71     
-avg / total  0.995      0.995   0.995  18751  

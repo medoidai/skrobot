@@ -1,0 +1,13 @@
+False negatives report for CV split 4 validation data (Threshold = 0.37)
+
+262
+401
+745
+147
+287
+623
+299
+24
+341
+205
+665

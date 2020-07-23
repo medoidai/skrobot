@@ -1,0 +1,10 @@
+False negatives report for CV split 4 validation data (Threshold = 0.25)
+
+2770
+713
+3530
+5449
+5
+4298
+751
+4144

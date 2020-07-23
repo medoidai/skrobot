@@ -1,0 +1,11 @@
+{
+ "type": "train_task",
+ "estimator": "LogisticRegression(random_state=42, solver='liblinear')",
+ "train_data_set_file_path": "data/money-laundering-data-train.csv",
+ "estimator_params": null,
+ "field_delimiter": ",",
+ "feature_columns": "all",
+ "id_column": "id",
+ "label_column": "label",
+ "random_seed": 42
+}

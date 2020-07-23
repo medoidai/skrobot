@@ -1,9 +1,0 @@
-{
- "type": "prediction_task",
- "estimator": "Pipeline(memory=None,\n         steps=[('column_selection',\n                 ColumnSelector(cols=['message'], drop_axis=True)),\n                ('vectorizer',\n                 CountVectorizer(analyzer='word', binary=False,\n                                 decode_error='strict',\n                                 dtype=<class 'numpy.int64'>, encoding='utf-8',\n                                 input='content', lowercase=True, max_df=1.0,\n                                 max_features=None, min_df=1,\n                                 ngram_range=(1, 2), preprocessor=None,\n                                 stop_words=None, strip_a...\n                 SGDClassifier(alpha=1e-06, average=False, class_weight=None,\n                               early_stopping=False, epsilon=0.1, eta0=0.0,\n                               fit_intercept=True, l1_ratio=0.15,\n                               learning_rate='optimal', loss='log', max_iter=80,\n                               n_iter_no_change=5, n_jobs=None,\n                               penalty='elasticnet', power_t=0.5,\n                               random_state=None, shuffle=True, tol=0.001,\n                               validation_fraction=0.1, verbose=0,\n                               warm_start=False))],\n         verbose=False)",
- "data_set_file_path": "https://bit.ly/sms-spam-ham-data-new",
- "field_delimiter": "\t",
- "feature_columns": "all",
- "id_column": "id",
- "prediction_column": "prediction"
-}

@@ -1,0 +1,24 @@
+{
+ "type": "train_task",
+ "estimator": "Pipeline(steps=[('column_selection',\n                 ColumnSelector(cols=['message'], drop_axis=True)),\n                ('vectorizer', CountVectorizer()),\n                ('tfidf', TfidfTransformer()),\n                ('feature_selection',\n                 SelectPercentile(score_func=<function chi2 at 0x7f4205a3a5e0>)),\n                ('classifier', SGDClassifier(loss='log'))])",
+ "train_data_set_file_path": "https://bit.ly/sms-spam-ham-data-train",
+ "estimator_params": {
+  "vectorizer__stop_words": null,
+  "vectorizer__ngram_range": [
+   1,
+   2
+  ],
+  "vectorizer__max_df": 1.0,
+  "tfidf__use_idf": true,
+  "tfidf__norm": "l2",
+  "feature_selection__percentile": 60,
+  "classifier__penalty": "elasticnet",
+  "classifier__max_iter": 80,
+  "classifier__alpha": 1e-06
+ },
+ "field_delimiter": "\t",
+ "feature_columns": "all",
+ "id_column": "id",
+ "label_column": "label",
+ "random_seed": 42
+}
