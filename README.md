@@ -1,5 +1,5 @@
-[![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7-blue?style=plastic)](https://pypi.org/project/skrobot/)
-[![PyPI](https://img.shields.io/badge/pypi_package-1.0.4-blue?style=plastic)](https://pypi.org/project/skrobot/)
+[![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue?style=plastic)](https://pypi.org/project/skrobot/)
+[![PyPI](https://img.shields.io/badge/pypi_package-1.0.5-blue?style=plastic)](https://pypi.org/project/skrobot/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=plastic)](https://github.com/medoidai/skrobot/blob/master/LICENSE.txt)
 [![Status](https://img.shields.io/badge/status-stable-green?style=plastic)](https://pypi.org/project/skrobot/)
 
@@ -181,8 +181,6 @@ Support, testing and features recommendation:
 * Write documentation (e.g., Read the Docs) for the module!
 
 * Add support in the module for multiclass, regression and multitarget problems
-
-* Support Python 3.8
 
 * Build some notifiers (e.g., Slack, Trello and Discord)
 

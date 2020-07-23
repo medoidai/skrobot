@@ -1,3 +1,7 @@
+# 1.0.5
+
+* Support Python 3.8
+
 # 1.0.4
 
 * PredictionTask class is added
