@@ -8,14 +8,14 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f: readme = f.read(
 
 setup(
      name='skrobot',
-     version='1.0.5',
+     version='1.0.6',
      license='MIT',
      author="Medoid AI",
      author_email="info@medoid.ai",
      description="skrobot is a Python module for designing, running and tracking Machine Learning experiments / tasks. It is built on top of scikit-learn framework.",
      long_description=readme,
      platforms=['any'],
-     download_url='https://github.com/medoidai/skrobot/archive/1.0.5.tar.gz',
+     download_url='https://github.com/medoidai/skrobot/archive/1.0.6.tar.gz',
      long_description_content_type='text/markdown',
      url="https://github.com/medoidai/skrobot",
      python_requires='>=3.6',
