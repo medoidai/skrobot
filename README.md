@@ -84,7 +84,7 @@ $ python setup.py install
   * False Positives
   * False Negatives
 
-* The evaluation results can be generated either for a specific provided threshold or for the best one found from threshold tuning
+* The evaluation results can be generated either for a specific provided threshold or for the best threshold found from threshold tuning (based on a specific provided metric)
 
 * The threshold used along with its related performance metrics and summary metrics from all CV splits as well as hold-out test set are returned as a result
 
