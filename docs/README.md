@@ -2,7 +2,7 @@
 
 -----------------
 
-# skrobot Documentation
+# skrobot's Documentation
 
 ## How to setup the documentation environment?
 
