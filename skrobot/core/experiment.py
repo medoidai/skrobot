@@ -6,6 +6,12 @@ from ..notification import BaseNotifier
 
 class Experiment:
   def __init__ (self, experiments_repository):
+    """
+    In order to construct a new :class:`.Experiment` you have to call the constructor and pass value to the below parameter.
+
+    :param experiments_repository: The folder in which the Folder of the Experiment will be created.
+    :type experiments_repository: str
+    """
     self._experiments_repository = experiments_repository
 
     self._experimenter = 'anonymous'
@@ -15,21 +21,42 @@ class Experiment:
     self._notifier = None
 
   def set_notifier(self, notifier : BaseNotifier):
+    """
+    This is a setter method to set the notifier.
+
+    :param notifier: The notifier.
+    :type notifier: :class:`.BaseNotifier`
+    """
     self._notifier = notifier
 
     return self
 
   def set_source_code_file_path(self, source_code_file_path):
+    """
+    This is a setter for the source code file path.
+
+    :param source_code_file_path: The path in which the source code is located.
+    :type source_code_file_path: str
+    """
     self._source_code_file_path = source_code_file_path
 
     return self
 
   def set_experimenter(self, experimenter):
+    """
+    This is a setter for the experimenter.
+
+    :param experimenter: The experimenter who run this experiment.
+    :type experimenter: str
+    """
     self._experimenter = experimenter
 
     return self
 
   def build(self):
+    """
+    This function creates the experiment log, the experiment directory, the log file and copies the source code file to the experiment directory.
+    """
     self._create_experiment_log()
 
     self._create_experiment_directory()
@@ -41,6 +68,12 @@ class Experiment:
     return self
 
   def run(self, task):
+    """
+    It saves the configuration file, run the task and send notifications.
+
+    :param task: The task that will run.
+    :type task: :class:`.BaseTask`
+    """
     task_type = task.get_type()
 
     try:
