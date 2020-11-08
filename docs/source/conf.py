@@ -18,12 +18,12 @@ autoclass_content = 'both'
 
 # -- Project information -----------------------------------------------------
 
-project = 'Skrobot rocks!!!!'
-copyright = '2020, Skrobot subconscious'
-author = 'Skrobot subconscious'
+project = 'skrobot'
+copyright = '2020, Medoid AI'
+author = 'Medoid AI'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+release = '1.0.6'
 
 
 # -- General configuration ---------------------------------------------------

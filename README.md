@@ -180,6 +180,8 @@ Support, testing and features recommendation:
 * [Antonis Markou](https://github.com/anmarkou)
 * [Christina Chrysouli](https://github.com/ChristinaChr)
 
+And last but not least, all the open-source contributors whose work went into [RELEASES](https://github.com/medoidai/skrobot/blob/master/RELEASE.md).
+
 ### Next Priorities?
 
 * Write documentation (e.g., Read the Docs) for the module!
