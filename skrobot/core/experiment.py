@@ -5,12 +5,18 @@ from numpyencoder import NumpyEncoder
 from ..notification import BaseNotifier
 
 class Experiment:
+  """
+  The :class:`.Experiment` class can be used to build and run an experiment.
+
+  It can run :class:`.tasks.BaseTask` tasks in the context of an experiment.
+
+  When building an experiment and/or running tasks, various metadata as well as task-related files are stored on disk which can be used for tracking experiments.
+
+  Lastly, an experiment can be configured to send notifications when running a task, which can be useful for teams who need to get notified for the progress of the experiment.
+  """
   def __init__ (self, experiments_repository):
-    """This is the constructor of :class:`.Experiment` class and can be used to create a new object instance.
-
-    The :class:`.Experiment` class can be used to build and run an experiment.
-
-    It can run :class:`.tasks.BaseTask` tasks in the context of an experiment.
+    """
+    This is the constructor method and can be used to create a new object instance of :class:`.Experiment` class.
 
     :param experiments_repository: This is the root directory path under which a unique directory is created for the experiment.
     :type experiments_repository: str
@@ -25,7 +31,8 @@ class Experiment:
     self._notifier = None
 
   def set_notifier(self, notifier : BaseNotifier):
-    """Optional method.
+    """
+    Optional method.
     
     It is used for setting the experiment's notifier.
 
@@ -41,7 +48,8 @@ class Experiment:
     return self
 
   def set_source_code_file_path(self, source_code_file_path):
-    """Optional method.
+    """
+    Optional method.
     
     It is used for setting the experiment's source code file path.
 
@@ -57,7 +65,8 @@ class Experiment:
     return self
 
   def set_experimenter(self, experimenter):
-    """Optional method.
+    """
+    Optional method.
     
     It is used for setting the experimenter's name.
 
@@ -75,11 +84,12 @@ class Experiment:
     return self
 
   def build(self):
-    """When an :class:`.Experiment` is built, it creates a unique directory under which it stores various metadata and files for tracking reasons.
+    """
+    When an :class:`.Experiment` is built, it creates a unique directory under which it stores various experiment-related metadata and files for tracking reasons.
 
-    The experiment's unique directory name contains the experimenter's name as well as current date & time.
+    Specifically, under the experiment's directory an *experiment.log* JSON file is created, which contains a unique auto-generated experiment ID, the current date & time, and the experimenter's name.
 
-    Also, under the experiment's directory an *experiment.log* JSON file is created, which contains a unique auto-generated experiment ID, the current date & time, and the experimenter's name.
+    Also, the experiment's directory name contains the experimenter's name as well as current date & time.
 
     Lastly, in case :meth:`.set_source_code_file_path` is used, the experiment's source code file is copied also under the experiment's directory.
 
@@ -97,7 +107,8 @@ class Experiment:
     return self
 
   def run(self, task):
-    """When running a :class:`.tasks.BaseTask` task under the experiment, its recorded parameters (e.g: train_task.params) and any other files the task generates are stored under experiment's directory for tracking reasons.
+    """
+    When running a :class:`.tasks.BaseTask` task, its recorded parameters (e.g: train_task.params) and any other task-related generated files are stored under experiment's directory for tracking reasons.
 
     The task's recorded parameters are in JSON format.
 

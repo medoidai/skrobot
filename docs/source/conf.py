@@ -13,8 +13,6 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../skrobot/'))
-autoclass_content = 'both'
-
 
 # -- Project information -----------------------------------------------------
 
@@ -53,3 +51,10 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Set some options for autodoc
+autodoc_default_options = {
+    'member-order': 'bysource', # Order of members same as they appear in the source code
+
+    'special-members': '__init__' # Documentation of __init__ method will be different from class's documentation
+}
