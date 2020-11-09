@@ -6,12 +6,16 @@ from ..notification import BaseNotifier
 
 class Experiment:
   def __init__ (self, experiments_repository):
-    """
-    In order to construct a new :class:`.Experiment` you have to call the constructor and pass value to the below parameter.
+    """This is the constructor of :class:`.Experiment` class and can be used to create a new object instance.
 
-    :param experiments_repository: The folder in which the Folder of the Experiment will be created.
+    The :class:`.Experiment` class can be used to build and run an experiment.
+
+    It can run :class:`.tasks.BaseTask` tasks in the context of an experiment.
+
+    :param experiments_repository: This is the root directory path under which a unique directory is created for the experiment.
     :type experiments_repository: str
     """
+
     self._experiments_repository = experiments_repository
 
     self._experimenter = 'anonymous'
@@ -21,41 +25,66 @@ class Experiment:
     self._notifier = None
 
   def set_notifier(self, notifier : BaseNotifier):
-    """
-    This is a setter method to set the notifier.
+    """Optional method.
+    
+    It is used for setting the experiment's notifier.
 
-    :param notifier: The notifier.
-    :type notifier: :class:`.BaseNotifier`
+    :param notifier: The experiment's notifier.
+    :type notifier: :class:`.notification.BaseNotifier`
+    
+    :return: The experiment's object instance itself
+    :rtype: :class:`.Experiment`
     """
+
     self._notifier = notifier
 
     return self
 
   def set_source_code_file_path(self, source_code_file_path):
-    """
-    This is a setter for the source code file path.
+    """Optional method.
+    
+    It is used for setting the experiment's source code file path.
 
-    :param source_code_file_path: The path in which the source code is located.
+    :param source_code_file_path: The experiment's source code file path.
     :type source_code_file_path: str
+    
+    :return: The experiment's object instance itself
+    :rtype: :class:`.Experiment`
     """
+
     self._source_code_file_path = source_code_file_path
 
     return self
 
   def set_experimenter(self, experimenter):
-    """
-    This is a setter for the experimenter.
+    """Optional method.
+    
+    It is used for setting the experimenter's name.
 
-    :param experimenter: The experimenter who run this experiment.
+    By default the experimenter's name is *anonymous*. However, if you want to override it you can pass a new name.
+
+    :param experimenter: The experimenter's name.
     :type experimenter: str
+    
+    :return: The experiment's object instance itself
+    :rtype: :class:`.Experiment`
     """
+
     self._experimenter = experimenter
 
     return self
 
   def build(self):
-    """
-    This function creates the experiment log, the experiment directory, the log file and copies the source code file to the experiment directory.
+    """When an :class:`.Experiment` is built, it creates a unique directory under which it stores various metadata and files for tracking reasons.
+
+    The experiment's unique directory name contains the experimenter's name as well as current date & time.
+
+    Also, under the experiment's directory an *experiment.log* JSON file is created, which contains a unique auto-generated experiment ID, the current date & time, and the experimenter's name.
+
+    Lastly, in case :meth:`.set_source_code_file_path` is used, the experiment's source code file is copied also under the experiment's directory.
+
+    :return: The experiment's object instance itself
+    :rtype: :class:`.Experiment`
     """
     self._create_experiment_log()
 
@@ -68,12 +97,21 @@ class Experiment:
     return self
 
   def run(self, task):
-    """
-    It saves the configuration file, run the task and send notifications.
+    """When running a :class:`.tasks.BaseTask` task under the experiment, its recorded parameters (e.g: train_task.params) and any other files the task generates are stored under experiment's directory for tracking reasons.
+
+    The task's recorded parameters are in JSON format.
+
+    Also, in case :meth:`.set_notifier` is used to set a notifier, a notification is sent for the success or failure (including the error message) of the task's execution.
+
+    Lastly, in case an exception occurs, a text file (e.g: train_task.errors) is generated under experiment's directory containing the error message.
 
     :param task: The task that will run.
-    :type task: :class:`.BaseTask`
+    :type task: :class:`.tasks.BaseTask`
+
+    :return: The task's results
+    :rtype: Depends on the ``task`` parameter
     """
+
     task_type = task.get_type()
 
     try:
