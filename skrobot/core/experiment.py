@@ -10,10 +10,11 @@ class Experiment:
 
   It can run :class:`.tasks.BaseTask` tasks in the context of an experiment.
 
-  When building an experiment and/or running tasks, various metadata as well as task-related files are stored on disk which can be used for tracking experiments.
+  When building an experiment and/or running tasks, various metadata as well as task-related files are stored for tracking experiments.
 
   Lastly, an experiment can be configured to send notifications when running a task, which can be useful for teams who need to get notified for the progress of the experiment.
   """
+
   def __init__ (self, experiments_repository):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.Experiment` class.

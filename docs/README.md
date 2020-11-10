@@ -17,16 +17,38 @@ $ git clone https://github.com/medoidai/skrobot.git
 ### Create virtual environment and install dependencies
 
 ```sh
-$ cd skrobot/docs
-$ virtualenv -p python venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt
+$ virtualenv -p python docs/venv
+$ source docs/venv/bin/activate
+$ pip install -r docs/requirements.txt
+```
+
+### Install skrobot
+
+#### PyPI
+
+```sh
+$ pip install skrobot
+```
+
+#### Development Version
+
+From the GitHub repository by executing
+
+```sh
+$ pip install git+git://github.com/medoidai/skrobot.git
+```
+
+Or, from your local drive via
+
+```sh
+$ python setup.py install
 ```
 
 ## Generate HTML documentation
 
 ```sh
-make html
+$ cd docs
+$ make html
 ```
 
 **Thank you!**
