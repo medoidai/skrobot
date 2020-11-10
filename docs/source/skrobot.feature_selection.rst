@@ -11,11 +11,3 @@ skrobot.feature\_selection.column\_selector module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: skrobot.feature_selection
-   :members:
-   :undoc-members:
-   :show-inheritance:

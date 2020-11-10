@@ -1,21 +1,16 @@
-.. skrobot documentation master file, created by
-   sphinx-quickstart on Tue Oct 27 20:45:42 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to skrobot's documentation!
 ===================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
 
-   API Reference <api_reference>
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   api_reference
+   what_is_it_about
+   why_does_it_exists
+   how_do_i_install_it
+   which_are_the_components
+   how_do_i_use_it
+   sample_of_generated_results
+   the_people_behind_it
+   can_i_contribute
+   what_license_do_you_use

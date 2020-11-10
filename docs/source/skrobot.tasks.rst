@@ -59,11 +59,3 @@ skrobot.tasks.train\_task module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: skrobot.tasks
-   :members:
-   :undoc-members:
-   :show-inheritance:

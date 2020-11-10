@@ -19,11 +19,3 @@ skrobot.core.task\_runner module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: skrobot.core
-   :members:
-   :undoc-members:
-   :show-inheritance:

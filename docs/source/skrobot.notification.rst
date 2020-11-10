@@ -11,11 +11,3 @@ skrobot.notification.base\_notifier module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: skrobot.notification
-   :members:
-   :undoc-members:
-   :show-inheritance:
