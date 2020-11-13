@@ -6,4 +6,10 @@ class BaseNotifier(ABC):
     """
     @abstractmethod
     def notify(self, message):
+        """
+        The method that must be implemented by the child notifiers.
+	
+        :param message: The message of success or failure the notifier will send to observers.
+        :type message: str
+        """
         pass
