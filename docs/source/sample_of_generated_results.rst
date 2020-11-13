@@ -68,7 +68,7 @@ Features Selected
 
 |Image 25|
 
-Expreriment Source Code
+Experiment Source Code
 -----------------------
 
 |Image 26|

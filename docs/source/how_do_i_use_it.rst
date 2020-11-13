@@ -1,7 +1,7 @@
 How do I use it?
 ================
 
-The following examples use many of skrobot’s components to built a machine learning modelling pipeline. Please try them and we would love to have your feedback! Furthermore, many examples also can be found in the project's `repository <https://github.com/medoidai/skrobot/tree/master/examples>`__.
+The following examples use many of skrobot’s components to built a machine learning modelling pipeline. Please try them and we would love to have your feedback! Furthermore, many examples can be found in the project's `repository <https://github.com/medoidai/skrobot/tree/master/examples>`__.
 
 Example on Titanic Dataset
 --------------------------

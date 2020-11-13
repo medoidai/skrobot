@@ -1,8 +1,8 @@
 Which are the components?
 =========================
 
-For the module users
---------------------
+For the module's users
+----------------------
 
 +---------------------------------+------------------------------------+
 | Component                       | What is this?                      |
@@ -44,8 +44,8 @@ For the module users
 |                                 | modelling pipeline.                |
 +---------------------------------+------------------------------------+
 
-For the module developers
--------------------------
+For the module's developers
+---------------------------
 
 +---------------------------------+------------------------------------+
 | Component                       | What is this?                      |
