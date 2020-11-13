@@ -179,6 +179,7 @@ Support, testing and features recommendation:
 * [Lefteris Kouloubris](https://github.com/lefteris-kouloubris)
 * [Antonis Markou](https://github.com/anmarkou)
 * [Christina Chrysouli](https://github.com/ChristinaChr)
+* [Michalis Chaviaras](https://github.com/michav1510)
 
 And last but not least, all the open-source contributors whose work went into [RELEASES](https://github.com/medoidai/skrobot/blob/master/RELEASE.md).
 
