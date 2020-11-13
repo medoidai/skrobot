@@ -30,18 +30,17 @@ For the module's users
 |                                 | scikit-learn estimator on some     |
 |                                 | data.                              |
 +---------------------------------+------------------------------------+
-| Experiment                      | This is used to build and run      |
-|                                 | experiments. It can run tasks in   |
-|                                 | the context of an experiment and   |
-|                                 | glue everything together to        |
-|                                 | complete a modelling pipeline.     |
+| Experiment                      | This is used to build, track and   |
+|                                 | run an experiment. It can run      |
+|                                 | tasks in the context of an         |
+|                                 | experiment.                        |
 +---------------------------------+------------------------------------+
-| Task Runner                     | This is like the Experiment        |
-|                                 | component but without the          |
-|                                 | “experiment” stuff. It can be used |
-|                                 | to run various tasks and glue      |
-|                                 | everything together to complete a  |
-|                                 | modelling pipeline.                |
+| Task Runner                     | This is a simplified version (in   |
+|                                 | functionality) of the Experiment   |
+|                                 | component. It leaves out all the   |
+|                                 | “experiment” stuff and is focused  |
+|                                 | mostly in the execution and        |
+|                                 | tracking of tasks.                 |
 +---------------------------------+------------------------------------+
 
 For the module's developers

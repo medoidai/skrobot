@@ -6,7 +6,7 @@ from ..notification import BaseNotifier
 
 class Experiment:
   """
-  The :class:`.Experiment` class can be used to build and run an experiment.
+  The :class:`.Experiment` class can be used to build, track and run an experiment.
 
   It can run :class:`.tasks.BaseTask` tasks in the context of an experiment.
 
