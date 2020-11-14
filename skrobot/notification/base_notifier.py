@@ -2,14 +2,16 @@ from abc import ABC, abstractmethod
 
 class BaseNotifier(ABC):
     """
-    All notifiers inherit from the :class:`.BaseNotifier`. A notifier can be used to send success / failure notifications for tasks execution.
+    The :class:`.BaseNotifier` is an abstract base class for implementing notifiers.
+
+    A notifier can be used to send notifications.
     """
     @abstractmethod
     def notify(self, message):
         """
-        The method that must be implemented by the child notifiers.
-	
-        :param message: The message of success or failure the notifier will send to observers.
+        An abstract method for sending notifications.
+
+        :param message: The notification's message.
         :type message: str
         """
         pass
