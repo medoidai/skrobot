@@ -40,7 +40,7 @@ class Experiment:
     :param notifier: The experiment's notifier.
     :type notifier: :class:`.notification.BaseNotifier`
     
-    :return: The experiment's object instance itself
+    :return: The object instance itself
     :rtype: :class:`.Experiment`
     """
 
@@ -57,7 +57,7 @@ class Experiment:
     :param source_code_file_path: The experiment's source code file path.
     :type source_code_file_path: str
     
-    :return: The experiment's object instance itself
+    :return: The object instance itself
     :rtype: :class:`.Experiment`
     """
 
@@ -76,7 +76,7 @@ class Experiment:
     :param experimenter: The experimenter's name.
     :type experimenter: str
     
-    :return: The experiment's object instance itself
+    :return: The object instance itself
     :rtype: :class:`.Experiment`
     """
 
@@ -94,7 +94,7 @@ class Experiment:
 
     Lastly, in case :meth:`.set_source_code_file_path` is used, the experiment's source code file is copied also under the experiment's directory.
 
-    :return: The experiment's object instance itself
+    :return: The object instance itself
     :rtype: :class:`.Experiment`
     """
     self._create_experiment_log()
