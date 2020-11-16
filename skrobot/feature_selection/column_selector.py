@@ -17,7 +17,7 @@ class ColumnSelector(BaseEstimator):
         :param cols: A non-empty list specifying the columns to be selected. For example, [1, 4, 5] to select the 2nd, 5th, and 6th columns, and ['A','C','D'] to select the columns A, C and D.
         :type cols: list
 
-        :param drop_axis: Can be used to reshape the output data set from (n_samples, 1) to (n_samples,) by dropping the last axis. It defaults to False.
+        :param drop_axis: Can be used to reshape the output data set from (n_samples, 1) to (n_samples) by dropping the last axis. It defaults to False.
         :type drop_axis: bool, optional
         """
 
