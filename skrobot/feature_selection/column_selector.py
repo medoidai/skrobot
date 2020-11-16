@@ -8,8 +8,6 @@ class ColumnSelector(BaseEstimator):
 
     It can be used for manual feature selection to select specific columns from an input data set.
 
-    The input data set can be either a scikit-learn's array-like (NumPy array, pandas DataFrame) or a SciPy sparse matrix.
-
     It can select columns either by integer indices or by names.
     """
     def __init__(self, cols, drop_axis=False):
@@ -32,13 +30,13 @@ class ColumnSelector(BaseEstimator):
         Returns a slice of the input data set.
 
         :param X: Input vectors of shape (n_samples, n_features), where n_samples is the number of samples and n_features is the number of features.
-        :type X: {array-like, sparse matrix}
+        :type X: {NumPy array, pandas DataFrame, SciPy sparse matrix}
 
         :param y: Ignored.
         :type y: None
 
         :return: Subset of the input data set of shape (n_samples, k_features), where n_samples is the number of samples and k_features <= n_features.
-        :rtype: {ndarray array, sparse matrix}
+        :rtype: {NumPy array, SciPy sparse matrix}
         """
 
         return self.transform(X=X, y=y)
@@ -48,13 +46,13 @@ class ColumnSelector(BaseEstimator):
         Returns a slice of the input data set.
 
         :param X: Input vectors of shape (n_samples, n_features), where n_samples is the number of samples and n_features is the number of features.
-        :type X: {array-like, sparse matrix}
+        :type X: {NumPy array, pandas DataFrame, SciPy sparse matrix}
 
         :param y: Ignored.
         :type y: None
 
         :return: Subset of the input data set of shape (n_samples, k_features), where n_samples is the number of samples and k_features <= n_features.
-        :rtype: {ndarray array, sparse matrix}
+        :rtype: {NumPy array, SciPy sparse matrix}
         """
 
         if hasattr(X, 'loc') or hasattr(X, 'iloc'):
