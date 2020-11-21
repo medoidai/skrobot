@@ -62,7 +62,7 @@ class BaseCrossValidationTask(BaseTask):
     :param total_folds: Number of folds. It defaults to 3.
     :type total_folds: int, optional
 
-    :param shuffle: Whether to shuffle each class’s samples before splitting into batches. Note that the samples within each split will not be shuffled. It defaults to False.
+    :param shuffle: Whether to shuffle each class's samples before splitting into batches. Note that the samples within each split will not be shuffled. It defaults to False.
     :type shuffle: bool, optional
 
     :return: The object instance itself
