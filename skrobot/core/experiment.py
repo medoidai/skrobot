@@ -19,7 +19,7 @@ class Experiment:
     """
     This is the constructor method and can be used to create a new object instance of :class:`.Experiment` class.
 
-    :param experiments_repository: This is the root directory path under which a unique directory is created for the experiment.
+    :param experiments_repository: The root directory path under which a unique directory is created for the experiment.
     :type experiments_repository: str
     """
 

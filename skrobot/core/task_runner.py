@@ -13,7 +13,7 @@ class TaskRunner:
     """
     This is the constructor method and can be used to create a new object instance of :class:`.TaskRunner` class.
 
-    :param output_directory_path: This is the directory path under which the task-related generated files will be stored.
+    :param output_directory_path: The directory path under which the task-related generated files will be stored.
     :type output_directory_path: str
     """
 

@@ -11,6 +11,7 @@ skrobot.tasks.base\_cross\_validation\_task module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 skrobot.tasks.base\_task module
 -------------------------------
@@ -19,6 +20,7 @@ skrobot.tasks.base\_task module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 skrobot.tasks.evaluation\_cross\_validation\_task module
 --------------------------------------------------------
@@ -27,6 +29,7 @@ skrobot.tasks.evaluation\_cross\_validation\_task module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 skrobot.tasks.feature\_selection\_cross\_validation\_task module
 ----------------------------------------------------------------
@@ -35,6 +38,7 @@ skrobot.tasks.feature\_selection\_cross\_validation\_task module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 skrobot.tasks.hyperparameters\_search\_cross\_validation\_task module
 ---------------------------------------------------------------------
@@ -43,6 +47,7 @@ skrobot.tasks.hyperparameters\_search\_cross\_validation\_task module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 skrobot.tasks.prediction\_task module
 -------------------------------------
@@ -51,6 +56,7 @@ skrobot.tasks.prediction\_task module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 skrobot.tasks.train\_task module
 --------------------------------
@@ -59,3 +65,4 @@ skrobot.tasks.train\_task module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:

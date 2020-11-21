@@ -17,20 +17,20 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
     pd.set_option('display.max_colwidth', None)
 
   def grid_search(self):
-    options = self.filter_arguments(locals())
+    options = self._filter_arguments(locals())
 
-    self.update_arguments({ 'search_options' : options})
+    self._update_arguments({ 'search_options' : options})
 
-    self.update_arguments({ 'search_method': 'grid' })
+    self._update_arguments({ 'search_method': 'grid' })
 
     return self
 
   def random_search(self, n_iters=200):
-    options = self.filter_arguments(locals())
+    options = self._filter_arguments(locals())
 
-    self.update_arguments({ 'search_options' : options})
+    self._update_arguments({ 'search_options' : options})
 
-    self.update_arguments({ 'search_method': 'random' })
+    self._update_arguments({ 'search_method': 'random' })
 
     return self
 
