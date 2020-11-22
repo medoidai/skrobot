@@ -20,7 +20,7 @@ class PredictionTask(BaseTask):
     if self.feature_columns != 'all':
       X = X[self.feature_columns]
 
-    predictions = pd.DataFrame({ self.id_column : ids, self.prediction_column : self._calculate_y_hat_for_threshold(self.estimator, X, self.threshold) })
+    predictions = pd.DataFrame({ self.id_column : ids, self.prediction_column : self._calculate_y_hat_for_threshold(self.estimator, X, self.threshold), "probability" : self._calculate_probability(self.estimator, X)})
 
     predictions.to_csv(os.path.join(output_directory, f'predictions.csv'), index=False)
 
@@ -32,3 +32,8 @@ class PredictionTask(BaseTask):
     y_hat = y_proba[:, 1] >= threshold
 
     return y_hat.astype(int)
+	
+  def _calculate_probability(self, estimator, X):
+    y_proba = estimator.predict_proba(X)
+    return y_proba[:, 1]
+	
