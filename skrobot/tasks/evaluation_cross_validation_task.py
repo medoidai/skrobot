@@ -20,7 +20,7 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
   
   """
   def __init__ (self, estimator, train_data_set_file_path, test_data_set_file_path=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, threshold_selection_by='f1', metric_greater_is_better=True, threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
-     """
+    """
 	This is the constructor method and can be used to create a new object instance of :class:`.EvaluationCrossValidationTask` class.
 	
 	:param estimator : The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator. Also the provided estimator needs to be able to predict probabilities through a predict_proba method
@@ -71,9 +71,37 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
 	
 	:type threshold_tuning_range : 
 	
+	:param export_classification_reports : If this task will export classification reports. The default value is False.
 	
+	:type export_classification_reports : bool 
 	
+	:param export_confusion_matrixes :  If this task will export confusion matrices. The default value is False.
 	
+	:type export_confusion_matrixes : bool
+	
+	:param export_roc_curves :  If this task will export ROC curves. The default value is False.
+	
+	:type export_roc_curves : bool
+	
+	:param export_pr_curves : If this task will export PR curves. The default value is False.
+	
+	:type export_pr_curves : bool 
+	
+	:param export_false_positives_reports : If this task will export false positives reports. The default value is False.
+	
+	:type export_false_positives_reports : bool
+	
+	:param export_false_negatives_reports : If this task will export false negatives reports. The default value is False.
+	
+	:type export_false_negatives_reports : bool
+	
+	:param export_also_for_train_folds : 
+	
+	:type export_also_for_train_folds : bool 
+	
+	:param fscore_beta : 
+	
+	:type fscore_beta: bool
 	"""
 	super(EvaluationCrossValidationTask, self).__init__(EvaluationCrossValidationTask.__name__, locals())
 
