@@ -15,8 +15,67 @@ from plotly import express
 from . import BaseCrossValidationTask
 
 class EvaluationCrossValidationTask(BaseCrossValidationTask):
+  """
+  The :class:`.EvaluationCrossValidationTask` can be used to evaluate a scikit-learn estimator on some data. It extends the :class:`.BaseCrossValidationTask`
+  
+  """
   def __init__ (self, estimator, train_data_set_file_path, test_data_set_file_path=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, threshold_selection_by='f1', metric_greater_is_better=True, threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
-    super(EvaluationCrossValidationTask, self).__init__(EvaluationCrossValidationTask.__name__, locals())
+     """
+	This is the constructor method and can be used to create a new object instance of :class:`.EvaluationCrossValidationTask` class.
+	
+	:param estimator : The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator. Also the provided estimator needs to be able to predict probabilities through a predict_proba method
+
+    :type estimator : object
+	
+	:param train_data_set_file_path : The training data file path.
+	
+	:type train_data_set_file_path : str
+	
+	:param test_data_set_file_path : The test data file path. The default is None.
+	
+	:type test_data_set_file_path : str
+	
+	:param estimator_params : The hyperparameters of the estimator. The default is None.
+	
+	:type : dictionary
+	
+	:param field_delimiter : The delimeter between the fields, it is used to read the features . The default value is ','.
+	
+	:type field_delimeter : char
+	
+	:param feature_columns : The columns to be used in this task. The default value is 'all'.
+	
+	:type feature_columns : str 
+	
+	:param id_column : The column name corresponds to the key feature. The default value is 'id'
+
+    :type id_column : str	
+	
+	:param label_column : The column name corresponds to the label of the training and test examples.
+	
+	:type label_column : str
+	
+	:param random_seed : The random seed used for random number generation. The default value is 123456789
+	
+	:type random_seed : long
+	
+	:param threshold_selection_by :  The threshold selection metric. The default values is 'f1'
+	
+	:type threshold_selection_by : str
+	
+	:param metric_greater_is_better : 
+	
+	:type metric_greater_is_better : bool 
+	
+	:param threshold_tuning_range : 
+	
+	:type threshold_tuning_range : 
+	
+	
+	
+	
+	"""
+	super(EvaluationCrossValidationTask, self).__init__(EvaluationCrossValidationTask.__name__, locals())
 
     pd.set_option('display.max_colwidth', None)
 
