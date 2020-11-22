@@ -23,7 +23,7 @@ class BaseCrossValidationTask(BaseTask):
     :type args: dict
     """
 
-    super(BaseCrossValidationTask, self)._initialize(type_name, args)
+    super(BaseCrossValidationTask, self).__init__(type_name, args)
 
     self.stratified_folds()
 
