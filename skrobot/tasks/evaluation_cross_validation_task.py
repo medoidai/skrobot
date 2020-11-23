@@ -117,7 +117,7 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
 
   def run(self, output_directory):
     """
-	The method must be called for this task to run.
+	A method for running the task.
 	
 	:param output_directory: The output directory path under which task-related generated files are stored for tracking reasons.
 	
