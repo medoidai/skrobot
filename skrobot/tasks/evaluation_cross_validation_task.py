@@ -116,6 +116,14 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
     self.test_text = 'test'
 
   def run(self, output_directory):
+    """
+	The method must be called for this task to run.
+	
+	:param output_directory: The output directory path under which task-related generated files are stored for tracking reasons.
+	
+	:type output_directory: 
+	
+	"""
     self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
     train_ids = self.train_data_set_data_frame[self.id_column]
     train_y = self.train_data_set_data_frame[self.label_column]
