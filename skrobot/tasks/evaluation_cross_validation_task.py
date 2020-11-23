@@ -121,7 +121,7 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
 	
 	:param output_directory: The output directory path under which task-related generated files are stored for tracking reasons.
 	
-	:type output_directory: 
+	:type output_directory: str
 	
 	"""
     self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
