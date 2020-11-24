@@ -29,7 +29,7 @@ class TaskRunner:
 
     Lastly, in case an exception occurs, a text file (e.g: train_task.errors) is generated under output directory containing the error message.
 
-    :param task: The task that will run.
+    :param task: The task to run.
     :type task: :class:`.tasks.BaseTask`
 
     :return: The task's results

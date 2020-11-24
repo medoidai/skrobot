@@ -6,7 +6,7 @@ from . import BaseTask
 
 class BaseCrossValidationTask(BaseTask):
   """
-  The :class:`.BaseCrossValidationTask` is an abstract base class for implementing tasks that use cross-validation functionality.
+  The :class:`.BaseCrossValidationTask` is an abstract base class for implementing tasks that use cross-validation functionality. It extends the :class:`.BaseTask` class.
 
   It can support both stratified k-fold cross-validation as well as cross-validation with user-defined folds.
 
@@ -33,7 +33,7 @@ class BaseCrossValidationTask(BaseTask):
 
     Use cross-validation with user-defined custom folds.
 
-    :param folds_file_path: The path to the file containing the user-defined folds for the samples. The file needs to be formatted with the same separation delimiter (CSV, TSV, etc.) as the one used in the data file provided to the task. The file must contain two data columns and the first row must be the header. The first column is for the sample IDs and needs to be the same as the one used in the data file provided to the task. The second column is for the fold IDs (e.g., 1 through 5, A through D, etc.).
+    :param folds_file_path: The path to the file containing the user-defined folds for the samples. The file needs to be formatted with the same separation delimiter (comma for CSV, tab for TSV, etc.) as the one used in the data set file provided to the task. The file must contain two data columns and the first row must be the header. The first column is for the sample IDs and needs to be the same as the one used in the data set file provided to the task. The second column is for the fold IDs (e.g., 1 through 5, A through D, etc.).
     :type folds_file_path: str
 
     :param fold_column: The column name for the fold IDs. It defaults to 'fold'.
