@@ -11,7 +11,7 @@ from sklearn.pipeline import Pipeline
 from . import BaseCrossValidationTask
 
 class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
-  def __init__ (self, estimator, train_data_set_file_path, estimator_params=None, field_delimiter=',', preprocessor=None, preprocessor_params=None, min_features_to_select=1, scoring='f1', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, verbose=3, n_jobs=1):
+  def __init__ (self, estimator, train_data_set_file_path, estimator_params=None, field_delimiter=',', preprocessor=None, preprocessor_params=None, min_features_to_select=1, scoring='f1', feature_columns='all', id_column='id', label_column='label', random_seed=42, verbose=3, n_jobs=1):
     super(FeatureSelectionCrossValidationTask, self).__init__(FeatureSelectionCrossValidationTask.__name__, locals())
 
   def run(self, output_directory):
