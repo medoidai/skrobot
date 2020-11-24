@@ -17,6 +17,10 @@ from . import BaseCrossValidationTask
 class EvaluationCrossValidationTask(BaseCrossValidationTask):
   """
   The :class:`.EvaluationCrossValidationTask` class can be used to evaluate a scikit-learn estimator on some data. It extends the :class:`.BaseCrossValidationTask` class.
+
+  It can support both stratified k-fold cross-validation as well as cross-validation with user-defined folds.
+
+  By default, stratified k-fold cross-validation is used with the default parameters of :meth:`.stratified_folds` method.
   """
   def __init__ (self, estimator, train_data_set_file_path, test_data_set_file_path=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=42, threshold_selection_by='f1', metric_greater_is_better=True, threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
     """
