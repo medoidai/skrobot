@@ -18,6 +18,15 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
   """
   The :class:`.EvaluationCrossValidationTask` class can be used to evaluate a scikit-learn estimator on some data. It extends the :class:`.BaseCrossValidationTask` class.
 
+  The following evaluation results can be generated on-demand for hold-out test data set as well as train / validation CV folds:
+
+  * PR / ROC Curves
+  * Confusion Matrixes
+  * Classification Reports
+  * Performance Metrics
+  * False Positives
+  * False Negatives
+
   It can support both stratified k-fold cross-validation as well as cross-validation with user-defined folds.
 
   By default, stratified k-fold cross-validation is used with the default parameters of :meth:`.stratified_folds` method.
@@ -53,7 +62,7 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
     :param random_seed: The random seed used in the random number generator. It can be used to reproduce the output. It defaults to 42.
     :type random_seed: int, optional
     
-    :param threshold_selection_by: Either a specific threshold value (e.g., 0.49) for calculating the various evaluation results or a metric (e.g., 'f1', 'f0.55') to use for selecting the best threshold from threshold tuning. It defaults to 'f1'.
+    :param threshold_selection_by: The evaluation results will be generated either for a specific provided threshold value (e.g., 0.49) or for the best threshold found from threshold tuning, based on a specific provided metric (e.g., 'f1', 'f0.55'). It defaults to 'f1'.
     :type threshold_selection_by: {str, float}, optional
 
     :param metric_greater_is_better: This flag will control the direction of searching of the best threshold and it depends on the provided metric in ``threshold_selection_by``. True, means that greater metric values is better and False means the opposite. It defaults to True.
