@@ -52,7 +52,7 @@ class BaseTask(ABC):
     """
     An abstract method for running the task.
 
-    :param output_directory: The output directory path under which task-related generated files are stored for tracking reasons.
+    :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
     """
     pass
