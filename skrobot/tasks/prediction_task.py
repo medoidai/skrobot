@@ -13,7 +13,7 @@ class PredictionTask(BaseTask):
     This is the constructor method and can be used to create a new object instance of :class:`.PredictionTask` class.
 
     :param estimator: It can be either a scikit-learn estimator (e.g., LogisticRegression) or a scikit-learn pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
-    :type estimator: scikit-learn {estimator, pipeline} object
+    :type estimator: scikit-learn {estimator, pipeline}
 
     :param data_set_file_path: The file path of the input data set. It can be either a URL or a disk file path.
     :type data_set_file_path: str

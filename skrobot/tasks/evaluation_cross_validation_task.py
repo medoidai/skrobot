@@ -16,94 +16,87 @@ from . import BaseCrossValidationTask
 
 class EvaluationCrossValidationTask(BaseCrossValidationTask):
   """
-  The :class:`.EvaluationCrossValidationTask` can be used to evaluate a scikit-learn estimator on some data. It extends the :class:`.BaseCrossValidationTask`
-  
+  The :class:`.EvaluationCrossValidationTask` class can be used to evaluate a scikit-learn estimator on some data. It extends the :class:`.BaseCrossValidationTask` class.
+
+  The following evaluation results can be generated on-demand for hold-out test data set as well as train / validation CV folds:
+
+  * PR / ROC Curves
+  * Confusion Matrixes
+  * Classification Reports
+  * Performance Metrics
+  * False Positives
+  * False Negatives
+
+  It can support both stratified k-fold cross-validation as well as cross-validation with user-defined folds.
+
+  By default, stratified k-fold cross-validation is used with the default parameters of :meth:`.stratified_folds` method.
   """
-  def __init__ (self, estimator, train_data_set_file_path, test_data_set_file_path=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=123456789, threshold_selection_by='f1', metric_greater_is_better=True, threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
+  def __init__ (self, estimator, train_data_set_file_path, test_data_set_file_path=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=42, threshold_selection_by='f1', metric_greater_is_better=True, threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
     """
-	This is the constructor method and can be used to create a new object instance of :class:`.EvaluationCrossValidationTask` class.
-	
-	:param estimator : The provided estimator can be either a scikit-learn machine learning model (e.g., LogisticRegression) or a pipeline ending with an estimator. Also the provided estimator needs to be able to predict probabilities through a predict_proba method
+    This is the constructor method and can be used to create a new object instance of :class:`.EvaluationCrossValidationTask` class.
 
-    :type estimator : object
-	
-	:param train_data_set_file_path : The training data file path.
-	
-	:type train_data_set_file_path : str
-	
-	:param test_data_set_file_path : The test data file path. The default is None.
-	
-	:type test_data_set_file_path : str
-	
-	:param estimator_params : The hyperparameters of the estimator. The default is None.
-	
-	:type : dictionary
-	
-	:param field_delimiter : The delimeter between the fields, it is used to read the features . The default value is ','.
-	
-	:type field_delimeter : char
-	
-	:param feature_columns : The columns to be used in this task. The default value is 'all'.
-	
-	:type feature_columns : str 
-	
-	:param id_column : The column name corresponds to the key feature. The default value is 'id'
+    :param estimator: It can be either a scikit-learn estimator (e.g., LogisticRegression) or a scikit-learn pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
+    :type estimator: scikit-learn {estimator, pipeline}
 
-    :type id_column : str	
-	
-	:param label_column : The column name corresponds to the label of the training and test examples.
-	
-	:type label_column : str
-	
-	:param random_seed : The random seed used for random number generation. The default value is 123456789
-	
-	:type random_seed : long
-	
-	:param threshold_selection_by :  The threshold selection metric. The default values is 'f1'
-	
-	:type threshold_selection_by : str
-	
-	:param metric_greater_is_better : 
-	
-	:type metric_greater_is_better : bool 
-	
-	:param threshold_tuning_range : 
-	
-	:type threshold_tuning_range : 
-	
-	:param export_classification_reports : If this task will export classification reports. The default value is False.
-	
-	:type export_classification_reports : bool 
-	
-	:param export_confusion_matrixes :  If this task will export confusion matrices. The default value is False.
-	
-	:type export_confusion_matrixes : bool
-	
-	:param export_roc_curves :  If this task will export ROC curves. The default value is False.
-	
-	:type export_roc_curves : bool
-	
-	:param export_pr_curves : If this task will export PR curves. The default value is False.
-	
-	:type export_pr_curves : bool 
-	
-	:param export_false_positives_reports : If this task will export false positives reports. The default value is False.
-	
-	:type export_false_positives_reports : bool
-	
-	:param export_false_negatives_reports : If this task will export false negatives reports. The default value is False.
-	
-	:type export_false_negatives_reports : bool
-	
-	:param export_also_for_train_folds : 
-	
-	:type export_also_for_train_folds : bool 
-	
-	:param fscore_beta : 
-	
-	:type fscore_beta: bool
-	"""
-	super(EvaluationCrossValidationTask, self).__init__(EvaluationCrossValidationTask.__name__, locals())
+    :param train_data_set_file_path: The file path of the training data set. It can be either a URL or a disk file path.
+    :type train_data_set_file_path: str
+
+    :param test_data_set_file_path: The file path of the test data set. It can be either a URL or a disk file path. It defaults to None.
+    :type test_data_set_file_path: str, optional
+
+    :param estimator_params: The parameters to override in the provided estimator. It can be either a URL or a disk file path. It defaults to None.
+    :type estimator_params: dict, optional
+    
+    :param field_delimiter: The separation delimiter (comma for CSV, tab for TSV, etc.) used in the input data set file. It defaults to ','.
+    :type field_delimiter: str, optional
+
+    :param feature_columns: Either 'all' to use from the input data set file all the columns or a list of column names to select specific columns. It defaults to 'all'.
+    :type feature_columns: {str, list}, optional
+
+    :param id_column: The name of the column in the input data set file containing the sample IDs. It defaults to 'id'.
+    :type id_column: str, optional
+    
+    :param label_column: The name of the column in the input data set file containing the ground truth labels. It defaults to 'label'.
+    :type label_column: str, optional
+    
+    :param random_seed: The random seed used in the random number generator. It can be used to reproduce the output. It defaults to 42.
+    :type random_seed: int, optional
+    
+    :param threshold_selection_by: The evaluation results will be generated either for a specific provided threshold value (e.g., 0.49) or for the best threshold found from threshold tuning, based on a specific provided metric (e.g., 'f1', 'f0.55'). It defaults to 'f1'.
+    :type threshold_selection_by: {str, float}, optional
+
+    :param metric_greater_is_better: This flag will control the direction of searching of the best threshold and it depends on the provided metric in ``threshold_selection_by``. True, means that greater metric values is better and False means the opposite. It defaults to True.
+    :type metric_greater_is_better: bool, optional
+
+    :param threshold_tuning_range: A range in form (start_value, stop_value, step_size) for generating a sequence of threshold values in threshold tuning. It generates the sequence by incrementing the start value using the step size until it reaches the stop value. It defaults to (0.01, 1.0, 0.01).
+    :type threshold_tuning_range: tuple, optional
+
+    :param export_classification_reports: If this task will export classification reports. It defaults to False.
+    :type export_classification_reports: bool, optional
+
+    :param export_confusion_matrixes:  If this task will export confusion matrixes. It defaults to False.
+    :type export_confusion_matrixes: bool, optional
+
+    :param export_roc_curves:  If this task will export ROC curves. It defaults to False.
+    :type export_roc_curves: bool, optional
+
+    :param export_pr_curves: If this task will export PR curves. It defaults to False.
+    :type export_pr_curves: bool, optional
+
+    :param export_false_positives_reports: If this task will export false positives reports. It defaults to False.
+    :type export_false_positives_reports: bool, optional
+
+    :param export_false_negatives_reports: If this task will export false negatives reports. It defaults to False.
+    :type export_false_negatives_reports: bool, optional
+
+    :param export_also_for_train_folds: If this task will export the evaluation results also for the train folds of cross-validation. It defaults to False.
+    :type export_also_for_train_folds: bool, optional
+
+    :param fscore_beta: The beta parameter in F-measure. It determines the weight of recall in the score. *beta < 1* lends more weight to precision, while *beta > 1* favors recall (*beta -> 0* considers only precision, *beta -> +inf* only recall). It defaults to 1.
+    :type fscore_beta: float, optional
+    """
+
+    super(EvaluationCrossValidationTask, self).__init__(EvaluationCrossValidationTask.__name__, locals())
 
     pd.set_option('display.max_colwidth', None)
 
@@ -117,13 +110,15 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
 
   def run(self, output_directory):
     """
-	A method for running the task.
-	
-	:param output_directory: The output directory path under which task-related generated files are stored for tracking reasons.
-	
-	:type output_directory: str
-	
-	"""
+    A method for running the task.
+    
+    :param output_directory: The output directory path under which task-related generated files are stored.
+    :type output_directory: str
+    
+    :return: The task's results. Specifically, the threshold used along with its related performance metrics and summary metrics from all cross-validation splits as well as hold-out test set.
+    :rtype: dict
+  	"""
+
     self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
     train_ids = self.train_data_set_data_frame[self.id_column]
     train_y = self.train_data_set_data_frame[self.label_column]
