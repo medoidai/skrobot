@@ -120,7 +120,7 @@ class Experiment:
     :param task: The task to run.
     :type task: :class:`.tasks.BaseTask`
 
-    :return: The task's results
+    :return: The task's result.
     :rtype: Depends on the ``task`` parameter
     """
 

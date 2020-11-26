@@ -8,37 +8,37 @@ from . import BaseTask
 
 class TrainTask(BaseTask):
   """
-  The :class:`.TrainTask` class can be used to fit an estimator on train data. It extends the :class:`.BaseTask` class.
+  The :class:`.TrainTask` class can be used to fit a scikit-learn estimator/pipeline on train data. It extends the :class:`.BaseTask` class.
   """
   def __init__ (self, estimator, train_data_set_file_path, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=42):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.TrainTask` class.
-	
-	:param estimator: It can be either a scikit-learn estimator (e.g., LogisticRegression) or a scikit-learn pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
+
+    :param estimator: It can be either an estimator (e.g., LogisticRegression) or a pipeline ending with an estimator.
     :type estimator: scikit-learn {estimator, pipeline}
-	
-	:param train_data_set_file_path: The file path of the training data set. It can be either a URL or a disk file path.
+
+    :param train_data_set_file_path: The file path of the input train data set. It can be either a URL or a disk file path.
     :type train_data_set_file_path: str
-	
-	:param estimator_params: The parameters to override in the provided estimator. It can be either a URL or a disk file path. It defaults to None.
+
+    :param estimator_params: The parameters to override in the provided estimator/pipeline. It defaults to None.
     :type estimator_params: dict, optional
-	
-	:param field_delimiter: The separation delimiter (comma for CSV, tab for TSV, etc.) used in the input data set file. It defaults to ','.
+
+    :param field_delimiter: The separation delimiter (comma for CSV, tab for TSV, etc.) used in the input train data set file. It defaults to ','.
     :type field_delimiter: str, optional
-	
-	:param feature_columns: Either 'all' to use from the input data set file all the columns or a list of column names to select specific columns. It defaults to 'all'.
+
+    :param feature_columns: Either 'all' to use from the input train data set file all the columns or a list of column names to select specific columns. It defaults to 'all'.
     :type feature_columns: {str, list}, optional
-	
-	:param id_column: The name of the column in the input data set file containing the sample IDs. It defaults to 'id'.
+
+    :param id_column: The name of the column in the input train data set file containing the sample IDs. It defaults to 'id'.
     :type id_column: str, optional
-	
-	:param label_column: The name of the column in the input data set file containing the ground truth labels. It defaults to 'label'.
+
+    :param label_column: The name of the column in the input train data set file containing the ground truth labels. It defaults to 'label'.
     :type label_column: str, optional
-	
-	:param random_seed: The random seed used in the random number generator. It can be used to reproduce the output. It defaults to 42.
+
+    :param random_seed: The random seed used in the random number generator. It can be used to reproduce the output. It defaults to 42.
     :type random_seed: int, optional
-	"""
-	arguments = copy.deepcopy(locals())
+    """
+    arguments = copy.deepcopy(locals())
 
     super(TrainTask, self).__init__(TrainTask.__name__, arguments)
 
@@ -46,14 +46,15 @@ class TrainTask(BaseTask):
     """
     A method for running the task.
 
-    The estimator is returned as a result in a dictionary.
+    The fitted estimator/pipeline is returned as a result and also stored as a pickle file under the output directory path.
 
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
 
-    :return: The dictionary that contains the estimator.
+    :return: The task's result. Specifically, the fitted estimator/pipeline.
     :rtype: dict
     """
+
     data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
 
     y = data_set_data_frame[self.label_column]

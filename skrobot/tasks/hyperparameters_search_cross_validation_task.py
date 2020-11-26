@@ -10,57 +10,68 @@ from . import BaseCrossValidationTask
 
 class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
   """
-  The :class:`.HyperParametersSearchCrossValidationTask` class can be used to do the feature selection task on some data. It extends the :class:`.BaseCrossValidationTask` class.
+  The :class:`.HyperParametersSearchCrossValidationTask` class can be used to search the best hyperparameters of a scikit-learn estimator/pipeline on some data. It extends the :class:`.BaseCrossValidationTask` class.
 
+  **Cross-Validation**
 
+  It can support both stratified k-fold cross-validation as well as cross-validation with user-defined folds.
+
+  By default, stratified k-fold cross-validation is used with the default parameters of :meth:`.stratified_folds` method.
+
+  **Search**
+
+  It can support both grid search as well as random search.
+
+  By default, grid search is used.
   """
   def __init__ (self, estimator, search_params, train_data_set_file_path, estimator_params=None, field_delimiter=',', scorers=['roc_auc', 'average_precision', 'f1', 'precision', 'recall', 'accuracy'], feature_columns='all', id_column='id', label_column='label', objective_score='f1', random_seed=42, verbose=3, n_jobs=1, return_train_score=True):
     """
-	This is the constructor method and can be used to create a new object instance of :class:`.HyperParametersSearchCrossValidationTask` class.
-	
-	:param estimator: It can be either a scikit-learn estimator (e.g., LogisticRegression) or a scikit-learn pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
+    This is the constructor method and can be used to create a new object instance of :class:`.HyperParametersSearchCrossValidationTask` class.
+
+    :param estimator: It can be either an estimator (e.g., LogisticRegression) or a pipeline ending with an estimator.
     :type estimator: scikit-learn {estimator, pipeline}
-	
-	:param search_params : Dictionary with parameters names (str) as keys and lists of parameter settings to try as values, or a list of such dictionaries, in which case the grids spanned by each dictionary in the list are explored. This enables searching over any sequence of parameter settings. 
-	:type search_params : dict or list of dictionaries
-	
-	:param train_data_set_file_path: The file path of the training data set. It can be either a URL or a disk file path.
+
+    :param search_params: Dictionary with hyperparameters names (str) as keys and lists of hyperparameter settings to try as values, or a list of such dictionaries, in which case the grids spanned by each dictionary in the list are explored. This enables searching over any sequence of hyperparameter settings.
+    :type search_params: {dict, list of dictionaries}
+
+    :param train_data_set_file_path: The file path of the input train data set. It can be either a URL or a disk file path.
     :type train_data_set_file_path: str
-	
-	:param estimator_params: The parameters to override in the provided estimator. It can be either a URL or a disk file path. It defaults to None.
+
+    :param estimator_params: The parameters to override in the provided estimator/pipeline. It defaults to None.
     :type estimator_params: dict, optional
-	
-	:param field_delimiter: The separation delimiter (comma for CSV, tab for TSV, etc.) used in the input data set file. It defaults to ','.
+
+    :param field_delimiter: The separation delimiter (comma for CSV, tab for TSV, etc.) used in the input train data set file. It defaults to ','.
     :type field_delimiter: str, optional
-	
-	:param scorers: The scorers with respect to, to calculate the performance. It defaults to ['roc_auc', 'average_precision', 'f1', 'precision', 'recall', 'accuracy'].
-	:type : str, callable, list/tuple or dict
-	
-	:param feature_columns: Either 'all' to use from the input data set file all the columns or a list of column names to select specific columns. It defaults to 'all'.
+
+    :param scorers: Multiple metrics to evaluate the predictions on the hold out set. Either give a list of (unique) strings or a dict with names as keys and callables as values. The callables should be scorers built using scikit-learn ``make_scorer``). **NOTE:** When using custom scorers, each scorer should return a single value. It defaults to ['roc_auc', 'average_precision', 'f1', 'precision', 'recall', 'accuracy'].
+    :type scorers: {list, dict}, optional
+
+    :param feature_columns: Either 'all' to use from the input train data set file all the columns or a list of column names to select specific columns. It defaults to 'all'.
     :type feature_columns: {str, list}, optional
-	
-	:param id_column: The name of the column in the input data set file containing the sample IDs. It defaults to 'id'.
+
+    :param id_column: The name of the column in the input train data set file containing the sample IDs. It defaults to 'id'.
     :type id_column: str, optional
-	
-	:param label_column: The name of the column in the input data set file containing the ground truth labels. It defaults to 'label'.
+
+    :param label_column: The name of the column in the input train data set file containing the ground truth labels. It defaults to 'label'.
     :type label_column: str, optional
-	
-	:param objective_score : 
-	:type objective_score :
-	
-	:param random_seed: The random seed used in the random number generator. It can be used to reproduce the output. It defaults to 42.
+
+    :param objective_score: The scorer that would be used to find the best hyperparameters for refitting the best estimator/pipeline at the end. It defaults to 'f1'.
+    :type objective_score: str, optional
+
+    :param random_seed: The random seed used in the random number generator. It can be used to reproduce the output. It defaults to 42.
     :type random_seed: int, optional
-	
-	:param verbose : Controls verbosity of output. It defaults to 3.
-	:type verbose : int, optional 
-	
-	:param n_jobs : Number of cores to run in parallel while fitting across folds. It defaults to 1.
-	:type n_jobs : int, optional
-	
-	:param return_train_score : If you want to return the score on train set. It defaults to True.
-	:type return_train_score : bool
-	"""
-	super(HyperParametersSearchCrossValidationTask, self).__init__(HyperParametersSearchCrossValidationTask.__name__, locals())
+
+    :param verbose: Controls the verbosity of output. The higher, the more messages. It defaults to 3.
+    :type verbose: int, optional
+
+    :param n_jobs: Number of jobs to run in parallel. -1 means using all processors. It defaults to 1.
+    :type n_jobs: int, optional
+
+    :param return_train_score: If False, training scores will not be computed and returned. Computing training scores is used to get insights on how different parameter settings impact the overfitting/underfitting trade-off. It defaults to True.
+    :type return_train_score: bool
+  	"""
+
+    super(HyperParametersSearchCrossValidationTask, self).__init__(HyperParametersSearchCrossValidationTask.__name__, locals())
 
     self.grid_search()
 
@@ -68,8 +79,14 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
 
   def grid_search(self):
     """
-	This task performs the grid search on the search parameters and update the arguments.
-	"""
+    Optional method.
+
+    Use the grid search method when searching the best hyperparameters.
+
+    :return: The object instance itself
+    :rtype: :class:`.HyperParametersSearchCrossValidationTask`
+    """
+
     options = self._filter_arguments(locals())
 
     self._update_arguments({ 'search_options' : options})
@@ -80,11 +97,17 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
 
   def random_search(self, n_iters=200):
     """
-	This task performs random search on the search parameters and update the arguments.
-	
-	:param n_iter : The number of iterations. It defaults to 200.
-	:type n_iter : int
-	"""
+    Optional method.
+
+    Use the random search method when searching the best hyperparameters.
+
+    :param n_iters: Number of hyperparameter settings that are sampled. ``n_iters`` trades off runtime vs quality of the solution. It defaults to 200.
+    :type n_iters: int, optional
+
+    :return: The object instance itself
+    :rtype: :class:`.HyperParametersSearchCrossValidationTask`
+    """
+
     options = self._filter_arguments(locals())
 
     self._update_arguments({ 'search_options' : options})
@@ -96,13 +119,16 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
   def run(self, output_directory):
     """
     A method for running the task.
-    
+
+    The search results (``search_results``) are stored also in a file as a static HTML table under the output directory path.
+
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
     
-    :return: A dictionary contains the best estimator, best params, best index, best score and search results. 
-	:rtype: dict
+    :return: The task's result. Specifically: **1)** ``best_estimator``: The estimator/pipeline that was chosen by the search, i.e. estimator/pipeline which gave best score on the left out data. **2)** ``best_params``: The hyperparameters setting that gave the best results on the hold out data. **3)** ``best_score``: Mean cross-validated score of the ``best_estimator``. **4)** ``search_results``: Metrics measured for each of the hyperparameters setting in the search. **5)** ``best_index``: The index (of the ``search_results``) which corresponds to the best candidate hyperparameters setting.
+  	:rtype: dict
   	"""
+
     self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
 
     y = self.train_data_set_data_frame[self.label_column]

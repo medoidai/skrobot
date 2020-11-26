@@ -6,13 +6,13 @@ from . import BaseTask
 
 class PredictionTask(BaseTask):
   """
-  The :class:`.PredictionTask` class can be used to predict new data using a scikit-learn estimator. It extends the :class:`.BaseTask` class.
+  The :class:`.PredictionTask` class can be used to predict new data using a scikit-learn estimator/pipeline. It extends the :class:`.BaseTask` class.
   """
   def __init__ (self, estimator, data_set_file_path, field_delimiter=',', feature_columns='all', id_column='id', prediction_column='prediction', threshold=0.5):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.PredictionTask` class.
 
-    :param estimator: It can be either a scikit-learn estimator (e.g., LogisticRegression) or a scikit-learn pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
+    :param estimator: It can be either an estimator (e.g., LogisticRegression) or a pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
     :type estimator: scikit-learn {estimator, pipeline}
 
     :param data_set_file_path: The file path of the input data set. It can be either a URL or a disk file path.
@@ -47,7 +47,7 @@ class PredictionTask(BaseTask):
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
 
-    :return: The predictions for the input data set. Specifically, the result contains the sample IDs, the predicted binary class labels, and the predicted probabilities for the positive class.
+    :return: The task's result. Specifically, the predictions for the input data set, containing the sample IDs, the predicted binary class labels, and the predicted probabilities for the positive class.
     :rtype: pandas DataFrame
     """
 

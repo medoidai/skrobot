@@ -16,9 +16,9 @@ from . import BaseCrossValidationTask
 
 class EvaluationCrossValidationTask(BaseCrossValidationTask):
   """
-  The :class:`.EvaluationCrossValidationTask` class can be used to evaluate a scikit-learn estimator on some data. It extends the :class:`.BaseCrossValidationTask` class.
+  The :class:`.EvaluationCrossValidationTask` class can be used to evaluate a scikit-learn estimator/pipeline on some data. It extends the :class:`.BaseCrossValidationTask` class.
 
-  The following evaluation results can be generated on-demand for hold-out test data set as well as train / validation CV folds:
+  The following evaluation results can be generated on-demand for hold-out test data set as well as train/validation cross-validation folds:
 
   * PR / ROC Curves
   * Confusion Matrixes
@@ -35,33 +35,33 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.EvaluationCrossValidationTask` class.
 
-    :param estimator: It can be either a scikit-learn estimator (e.g., LogisticRegression) or a scikit-learn pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
+    :param estimator: It can be either an estimator (e.g., LogisticRegression) or a pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
     :type estimator: scikit-learn {estimator, pipeline}
 
-    :param train_data_set_file_path: The file path of the training data set. It can be either a URL or a disk file path.
+    :param train_data_set_file_path: The file path of the input train data set. It can be either a URL or a disk file path.
     :type train_data_set_file_path: str
 
-    :param test_data_set_file_path: The file path of the test data set. It can be either a URL or a disk file path. It defaults to None.
+    :param test_data_set_file_path: The file path of the input test data set. It can be either a URL or a disk file path. It defaults to None.
     :type test_data_set_file_path: str, optional
 
-    :param estimator_params: The parameters to override in the provided estimator. It can be either a URL or a disk file path. It defaults to None.
+    :param estimator_params: The parameters to override in the provided estimator/pipeline. It defaults to None.
     :type estimator_params: dict, optional
-    
-    :param field_delimiter: The separation delimiter (comma for CSV, tab for TSV, etc.) used in the input data set file. It defaults to ','.
+
+    :param field_delimiter: The separation delimiter (comma for CSV, tab for TSV, etc.) used in the input train/test data set files. It defaults to ','.
     :type field_delimiter: str, optional
 
-    :param feature_columns: Either 'all' to use from the input data set file all the columns or a list of column names to select specific columns. It defaults to 'all'.
+    :param feature_columns: Either 'all' to use from the input train/test data set files all the columns or a list of column names to select specific columns. It defaults to 'all'.
     :type feature_columns: {str, list}, optional
 
-    :param id_column: The name of the column in the input data set file containing the sample IDs. It defaults to 'id'.
+    :param id_column: The name of the column in the input train/test data set files containing the sample IDs. It defaults to 'id'.
     :type id_column: str, optional
-    
-    :param label_column: The name of the column in the input data set file containing the ground truth labels. It defaults to 'label'.
+
+    :param label_column: The name of the column in the input train/test data set files containing the ground truth labels. It defaults to 'label'.
     :type label_column: str, optional
-    
+
     :param random_seed: The random seed used in the random number generator. It can be used to reproduce the output. It defaults to 42.
     :type random_seed: int, optional
-    
+
     :param threshold_selection_by: The evaluation results will be generated either for a specific provided threshold value (e.g., 0.49) or for the best threshold found from threshold tuning, based on a specific provided metric (e.g., 'f1', 'f0.55'). It defaults to 'f1'.
     :type threshold_selection_by: {str, float}, optional
 
@@ -111,11 +111,11 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
   def run(self, output_directory):
     """
     A method for running the task.
-    
+
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
-    
-    :return: The task's results. Specifically, the threshold used along with its related performance metrics and summary metrics from all cross-validation splits as well as hold-out test set.
+
+    :return: The task's result. Specifically, the threshold used along with its related performance metrics and summary metrics from all cross-validation splits as well as hold-out test set.
     :rtype: dict
   	"""
 
