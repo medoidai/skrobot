@@ -90,7 +90,7 @@ class ColumnSelector(BaseEstimator):
         :param y: Ignored.
         :type y: None
 
-        :return: The object instance itself
+        :return: The object instance itself.
         :rtype: :class:`.ColumnSelector`
         """
 

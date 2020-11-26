@@ -83,7 +83,7 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
 
     Use the grid search method when searching the best hyperparameters.
 
-    :return: The object instance itself
+    :return: The object instance itself.
     :rtype: :class:`.HyperParametersSearchCrossValidationTask`
     """
 
@@ -104,7 +104,7 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
     :param n_iters: Number of hyperparameter settings that are sampled. ``n_iters`` trades off runtime vs quality of the solution. It defaults to 200.
     :type n_iters: int, optional
 
-    :return: The object instance itself
+    :return: The object instance itself.
     :rtype: :class:`.HyperParametersSearchCrossValidationTask`
     """
 

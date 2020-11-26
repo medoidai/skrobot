@@ -39,7 +39,7 @@ class BaseCrossValidationTask(BaseTask):
     :param fold_column: The column name for the fold IDs. It defaults to 'fold'.
     :type fold_column: str, optional
 
-    :return: The object instance itself
+    :return: The object instance itself.
     :rtype: :class:`.BaseCrossValidationTask`
     """
 
@@ -65,7 +65,7 @@ class BaseCrossValidationTask(BaseTask):
     :param shuffle: Whether to shuffle each class's samples before splitting into batches. Note that the samples within each split will not be shuffled. It defaults to False.
     :type shuffle: bool, optional
 
-    :return: The object instance itself
+    :return: The object instance itself.
     :rtype: :class:`.BaseCrossValidationTask`
     """
 

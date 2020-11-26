@@ -76,7 +76,7 @@ class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
     
-    :return: The task's result. Specifically, the selected features, which can be either column names from the input train data set or column indexes from the preprocessed data set, depending on whether a ``preprocessor`` was used or not
+    :return: The task's result. Specifically, the selected features, which can be either column names from the input train data set or column indexes from the preprocessed data set, depending on whether a ``preprocessor`` was used or not.
   	:rtype: list
   	"""
 

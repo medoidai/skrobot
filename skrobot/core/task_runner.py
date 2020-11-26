@@ -33,7 +33,7 @@ class TaskRunner:
     :type task: :class:`.tasks.BaseTask`
 
     :return: The task's result.
-    :rtype: Depends on the ``task`` parameter
+    :rtype: Depends on the ``task`` parameter.
     """
 
     task_type = task.get_type()
