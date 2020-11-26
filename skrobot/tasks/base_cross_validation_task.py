@@ -59,7 +59,7 @@ class BaseCrossValidationTask(BaseTask):
 
     The folds are made by preserving the percentage of samples for each class.
 
-    :param total_folds: Number of folds. It defaults to 3.
+    :param total_folds: Number of folds. Must be at least 2. It defaults to 3.
     :type total_folds: int, optional
 
     :param shuffle: Whether to shuffle each class's samples before splitting into batches. Note that the samples within each split will not be shuffled. It defaults to False.
