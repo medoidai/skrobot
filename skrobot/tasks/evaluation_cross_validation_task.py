@@ -112,6 +112,8 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
     """
     A method for running the task.
 
+    All of the evaluation results are stored as files under the output directory path.
+
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
 
