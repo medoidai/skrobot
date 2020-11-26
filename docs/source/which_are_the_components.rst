@@ -1,6 +1,8 @@
 Which are the components?
 =========================
 
+**NOTE** : Currently, skrobot can be used only for binary classification problems.
+
 For the module's users
 ----------------------
 
