@@ -46,7 +46,7 @@ class TrainTask(BaseTask):
     """
     A method for running the task.
 
-    The fitted estimator/pipeline is returned as a result and also stored as a pickle file under the output directory path.
+    The fitted estimator/pipeline is returned as a result and also stored in a *trained_model.pkl* pickle file under the output directory path.
 
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str

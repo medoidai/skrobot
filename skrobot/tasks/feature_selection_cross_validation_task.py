@@ -71,7 +71,7 @@ class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
     """
     A method for running the task.
 
-    The selected features are returned as a result and also stored in a text file under the output directory path.
+    The selected features are returned as a result and also stored in a *features_selected.txt* text file under the output directory path.
 
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str

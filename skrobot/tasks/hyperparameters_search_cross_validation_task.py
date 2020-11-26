@@ -120,7 +120,7 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
     """
     A method for running the task.
 
-    The search results (``search_results``) are stored also in a file as a static HTML table under the output directory path.
+    The search results (``search_results``) are stored also in a *search_results.html* file as a static HTML table under the output directory path.
 
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
@@ -148,7 +148,7 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
 
     cv_results.columns = cv_results.columns.str.replace('_test_', '_validation_')
 
-    cv_results.to_html(os.path.join(output_directory, f'search_results_optimized_for_{self.objective_score}.html'), index=False)
+    cv_results.to_html(os.path.join(output_directory, 'search_results.html'), index=False)
 
     return { 'best_estimator': search.best_estimator_, 'best_params': search.best_params_, 'best_index': search.best_index_, 'best_score': search.best_score_, 'search_results': cv_results }
 
