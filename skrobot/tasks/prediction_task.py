@@ -6,7 +6,7 @@ from . import BaseTask
 
 class PredictionTask(BaseTask):
   """
-  The :class:`.PredictionTask` class can be used to predict new data using a scikit-learn estimator/pipeline. It extends the :class:`.BaseTask` class.
+  The :class:`.PredictionTask` class can be used to predict new data using a scikit-learn estimator/pipeline.
   """
   def __init__ (self, estimator, data_set_file_path, field_delimiter=',', feature_columns='all', id_column='id', prediction_column='prediction', threshold=0.5):
     """

@@ -8,7 +8,7 @@ from . import BaseTask
 
 class TrainTask(BaseTask):
   """
-  The :class:`.TrainTask` class can be used to fit a scikit-learn estimator/pipeline on train data. It extends the :class:`.BaseTask` class.
+  The :class:`.TrainTask` class can be used to fit a scikit-learn estimator/pipeline on train data.
   """
   def __init__ (self, estimator, train_data_set_file_path, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=42):
     """

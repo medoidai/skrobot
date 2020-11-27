@@ -12,7 +12,7 @@ from . import BaseCrossValidationTask
 
 class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
   """
-  The :class:`.FeatureSelectionCrossValidationTask` class can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data. It extends the :class:`.BaseCrossValidationTask` class.
+  The :class:`.FeatureSelectionCrossValidationTask` class can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data.
 
   A scikit-learn preprocessor can be used on the input train data set before feature selection runs.
 

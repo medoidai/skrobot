@@ -16,7 +16,7 @@ from . import BaseCrossValidationTask
 
 class EvaluationCrossValidationTask(BaseCrossValidationTask):
   """
-  The :class:`.EvaluationCrossValidationTask` class can be used to evaluate a scikit-learn estimator/pipeline on some data. It extends the :class:`.BaseCrossValidationTask` class.
+  The :class:`.EvaluationCrossValidationTask` class can be used to evaluate a scikit-learn estimator/pipeline on some data.
 
   The following evaluation results can be generated on-demand for hold-out test data set as well as train/validation cross-validation folds:
 

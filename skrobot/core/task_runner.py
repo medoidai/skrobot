@@ -4,9 +4,9 @@ from numpyencoder import NumpyEncoder
 
 class TaskRunner:
   """
-  The :class:`.TaskRunner` class is a simplified version (in functionality) of the :class:`.core.Experiment` class.
+  The :class:`.TaskRunner` class is a simplified version (in functionality) of the :class:`.Experiment` class.
 
-  It leaves out all the "experiment" stuff and is focused mostly in the execution and tracking of :class:`.tasks.BaseTask` tasks.
+  It leaves out all the "experiment" stuff and is focused mostly in the execution and tracking of :class:`.BaseTask` tasks.
   """
 
   def __init__ (self, output_directory_path):
@@ -23,7 +23,7 @@ class TaskRunner:
 
   def run(self, task):
     """
-    Run a :class:`.tasks.BaseTask` task.
+    Run a :class:`.BaseTask` task.
 
     When running a task, its recorded parameters (e.g., *train_task.params*) and any other task-related generated files are stored under output directory for tracking reasons.
 
@@ -32,7 +32,7 @@ class TaskRunner:
     Lastly, in case an exception occurs, a text file (e.g., *train_task.errors*) is generated under output directory containing the error message.
 
     :param task: The task to run.
-    :type task: :class:`.tasks.BaseTask`
+    :type task: :class:`.BaseTask`
 
     :return: The task's result.
     :rtype: Depends on the ``task`` parameter.

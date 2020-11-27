@@ -8,7 +8,7 @@ class Experiment:
   """
   The :class:`.Experiment` class can be used to build, track and run an experiment.
 
-  It can run :class:`.tasks.BaseTask` tasks in the context of an experiment.
+  It can run :class:`.BaseTask` tasks in the context of an experiment.
 
   When building an experiment and/or running tasks, various metadata as well as task-related files are stored for tracking experiments.
 
@@ -38,7 +38,7 @@ class Experiment:
     Set the experiment's notifier.
 
     :param notifier: The experiment's notifier.
-    :type notifier: :class:`.notification.BaseNotifier`
+    :type notifier: :class:`.BaseNotifier`
     
     :return: The object instance itself.
     :rtype: :class:`.Experiment`
@@ -111,7 +111,7 @@ class Experiment:
 
   def run(self, task):
     """
-    Run a :class:`.tasks.BaseTask` task.
+    Run a :class:`.BaseTask` task.
 
     When running a task, its recorded parameters (e.g., *train_task.params*) and any other task-related generated files are stored under experiment's directory for tracking reasons.
 
@@ -122,7 +122,7 @@ class Experiment:
     Lastly, in case an exception occurs, a text file (e.g., *train_task.errors*) is generated under experiment's directory containing the error message.
 
     :param task: The task to run.
-    :type task: :class:`.tasks.BaseTask`
+    :type task: :class:`.BaseTask`
 
     :return: The task's result.
     :rtype: Depends on the ``task`` parameter.

@@ -6,7 +6,7 @@ from . import BaseTask
 
 class BaseCrossValidationTask(BaseTask):
   """
-  The :class:`.BaseCrossValidationTask` is an abstract base class for implementing tasks that use cross-validation functionality. It extends the :class:`.BaseTask` class.
+  The :class:`.BaseCrossValidationTask` is an abstract base class for implementing tasks that use cross-validation functionality.
 
   It can support both stratified k-fold cross-validation as well as cross-validation with user-defined folds.
 

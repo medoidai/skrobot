@@ -10,7 +10,7 @@ from . import BaseCrossValidationTask
 
 class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
   """
-  The :class:`.HyperParametersSearchCrossValidationTask` class can be used to search the best hyperparameters of a scikit-learn estimator/pipeline on some data. It extends the :class:`.BaseCrossValidationTask` class.
+  The :class:`.HyperParametersSearchCrossValidationTask` class can be used to search the best hyperparameters of a scikit-learn estimator/pipeline on some data.
 
   **Cross-Validation**
 
