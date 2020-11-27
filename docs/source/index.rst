@@ -21,7 +21,7 @@ Welcome to skrobot's documentation!
 
 .. |Python| image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue?style=plastic
    :target: https://pypi.org/project/skrobot/
-.. |PyPI| image:: https://img.shields.io/badge/pypi_package-1.0.6-blue?style=plastic
+.. |PyPI| image:: https://img.shields.io/badge/pypi_package-1.0.7-blue?style=plastic
    :target: https://pypi.org/project/skrobot/
 .. |License| image:: https://img.shields.io/badge/license-MIT-blue?style=plastic
    :target: https://github.com/medoidai/skrobot/blob/master/LICENSE.txt
