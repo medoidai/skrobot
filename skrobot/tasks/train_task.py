@@ -44,7 +44,7 @@ class TrainTask(BaseTask):
 
   def run(self, output_directory):
     """
-    A method for running the task.
+    Run the task.
 
     The fitted estimator/pipeline is returned as a result and also stored in a *trained_model.pkl* pickle file under the output directory path.
 

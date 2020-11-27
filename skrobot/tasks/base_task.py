@@ -31,7 +31,7 @@ class BaseTask(ABC):
 
   def get_type(self):
     """
-    It is used for getting the task's type name.
+    Get the task's type name.
 
     :return: The task's type name.
     :rtype: str
@@ -40,7 +40,7 @@ class BaseTask(ABC):
 
   def get_configuration(self):
     """
-    It is used for getting the task's parameters.
+    Get the task's parameters.
 
     :return: The task's parameters as a dictionary of key-value pairs, where the key is the parameter name and the value is the parameter value.
     :rtype: dict

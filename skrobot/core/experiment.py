@@ -35,7 +35,7 @@ class Experiment:
     """
     Optional method.
     
-    It is used for setting the experiment's notifier.
+    Set the experiment's notifier.
 
     :param notifier: The experiment's notifier.
     :type notifier: :class:`.notification.BaseNotifier`
@@ -52,7 +52,7 @@ class Experiment:
     """
     Optional method.
     
-    It is used for setting the experiment's source code file path.
+    Set the experiment's source code file path.
 
     :param source_code_file_path: The experiment's source code file path.
     :type source_code_file_path: str
@@ -69,7 +69,7 @@ class Experiment:
     """
     Optional method.
     
-    It is used for setting the experimenter's name.
+    Set the experimenter's name.
 
     By default the experimenter's name is *anonymous*. However, if you want to override it you can pass a new name.
 
@@ -86,7 +86,9 @@ class Experiment:
 
   def build(self):
     """
-    When an :class:`.Experiment` is built, it creates a unique directory under which it stores various experiment-related metadata and files for tracking reasons.
+    Build the :class:`.Experiment`.
+
+    When an experiment is built, it creates a unique directory under which it stores various experiment-related metadata and files for tracking reasons.
 
     Specifically, under the experiment's directory an *experiment.log* JSON file is created, which contains a unique auto-generated experiment ID, the current date & time, and the experimenter's name.
 
@@ -109,13 +111,15 @@ class Experiment:
 
   def run(self, task):
     """
-    When running a :class:`.tasks.BaseTask` task, its recorded parameters (e.g: train_task.params) and any other task-related generated files are stored under experiment's directory for tracking reasons.
+    Run a :class:`.tasks.BaseTask` task.
+
+    When running a task, its recorded parameters (e.g., *train_task.params*) and any other task-related generated files are stored under experiment's directory for tracking reasons.
 
     The task's recorded parameters are in JSON format.
 
     Also, in case :meth:`.set_notifier` is used to set a notifier, a notification is sent for the success or failure (including the error message) of the task's execution.
 
-    Lastly, in case an exception occurs, a text file (e.g: train_task.errors) is generated under experiment's directory containing the error message.
+    Lastly, in case an exception occurs, a text file (e.g., *train_task.errors*) is generated under experiment's directory containing the error message.
 
     :param task: The task to run.
     :type task: :class:`.tasks.BaseTask`

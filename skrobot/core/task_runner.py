@@ -13,7 +13,7 @@ class TaskRunner:
     """
     This is the constructor method and can be used to create a new object instance of :class:`.TaskRunner` class.
 
-    :param output_directory_path: The directory path under which the task-related generated files will be stored.
+    :param output_directory_path: The output directory path under which task-related generated files are stored.
     :type output_directory_path: str
     """
 
@@ -23,11 +23,13 @@ class TaskRunner:
 
   def run(self, task):
     """
-    When running a :class:`.tasks.BaseTask` task, its recorded parameters (e.g: train_task.params) and any other task-related generated files are stored under output directory for tracking reasons.
+    Run a :class:`.tasks.BaseTask` task.
+
+    When running a task, its recorded parameters (e.g., *train_task.params*) and any other task-related generated files are stored under output directory for tracking reasons.
 
     The task's recorded parameters are in JSON format.
 
-    Lastly, in case an exception occurs, a text file (e.g: train_task.errors) is generated under output directory containing the error message.
+    Lastly, in case an exception occurs, a text file (e.g., *train_task.errors*) is generated under output directory containing the error message.
 
     :param task: The task to run.
     :type task: :class:`.tasks.BaseTask`

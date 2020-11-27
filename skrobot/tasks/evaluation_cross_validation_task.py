@@ -110,16 +110,16 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
 
   def run(self, output_directory):
     """
-    A method for running the task.
+    Run the task.
 
     All of the evaluation results are stored as files under the output directory path.
 
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
 
-    :return: The task's result. Specifically, the threshold used along with its related performance metrics and summary metrics from all cross-validation splits as well as hold-out test set.
+    :return: The task's result. Specifically, the threshold used along with its related performance metrics and summary metrics from all cross-validation splits as well as hold-out test data set.
     :rtype: dict
-  	"""
+    """
 
     self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
     train_ids = self.train_data_set_data_frame[self.id_column]

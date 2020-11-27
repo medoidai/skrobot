@@ -31,7 +31,7 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
     :param estimator: It can be either an estimator (e.g., LogisticRegression) or a pipeline ending with an estimator.
     :type estimator: scikit-learn {estimator, pipeline}
 
-    :param search_params: Dictionary with hyperparameters names (str) as keys and lists of hyperparameter settings to try as values, or a list of such dictionaries, in which case the grids spanned by each dictionary in the list are explored. This enables searching over any sequence of hyperparameter settings.
+    :param search_params: Dictionary with hyperparameters names as keys and lists of hyperparameter settings to try as values, or a list of such dictionaries, in which case the grids spanned by each dictionary in the list are explored. This enables searching over any sequence of hyperparameter settings.
     :type search_params: {dict, list of dictionaries}
 
     :param train_data_set_file_path: The file path of the input train data set. It can be either a URL or a disk file path.
@@ -43,7 +43,7 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
     :param field_delimiter: The separation delimiter (comma for CSV, tab for TSV, etc.) used in the input train data set file. It defaults to ','.
     :type field_delimiter: str, optional
 
-    :param scorers: Multiple metrics to evaluate the predictions on the hold out set. Either give a list of (unique) strings or a dict with names as keys and callables as values. The callables should be scorers built using scikit-learn ``make_scorer``). **NOTE:** When using custom scorers, each scorer should return a single value. It defaults to ['roc_auc', 'average_precision', 'f1', 'precision', 'recall', 'accuracy'].
+    :param scorers: Multiple metrics to evaluate the predictions on the hold-out data. Either give a list of (unique) strings or a dict with names as keys and callables as values. The callables should be scorers built using scikit-learn ``make_scorer``. Note that when using custom scorers, each scorer should return a single value. It defaults to ['roc_auc', 'average_precision', 'f1', 'precision', 'recall', 'accuracy'].
     :type scorers: {list, dict}, optional
 
     :param feature_columns: Either 'all' to use from the input train data set file all the columns or a list of column names to select specific columns. It defaults to 'all'.
@@ -68,8 +68,8 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
     :type n_jobs: int, optional
 
     :param return_train_score: If False, training scores will not be computed and returned. Computing training scores is used to get insights on how different parameter settings impact the overfitting/underfitting trade-off. It defaults to True.
-    :type return_train_score: bool
-  	"""
+    :type return_train_score: bool, optional
+    """
 
     super(HyperParametersSearchCrossValidationTask, self).__init__(HyperParametersSearchCrossValidationTask.__name__, locals())
 
@@ -118,16 +118,16 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
 
   def run(self, output_directory):
     """
-    A method for running the task.
+    Run the task.
 
     The search results (``search_results``) are stored also in a *search_results.html* file as a static HTML table under the output directory path.
 
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
     
-    :return: The task's result. Specifically: **1)** ``best_estimator``: The estimator/pipeline that was chosen by the search, i.e. estimator/pipeline which gave best score on the left out data. **2)** ``best_params``: The hyperparameters setting that gave the best results on the hold out data. **3)** ``best_score``: Mean cross-validated score of the ``best_estimator``. **4)** ``search_results``: Metrics measured for each of the hyperparameters setting in the search. **5)** ``best_index``: The index (of the ``search_results``) which corresponds to the best candidate hyperparameters setting.
-  	:rtype: dict
-  	"""
+    :return: The task's result. Specifically, **1)** ``best_estimator``: The estimator/pipeline that was chosen by the search, i.e. estimator/pipeline which gave best score on the hold-out data. **2)** ``best_params``: The hyperparameters setting that gave the best results on the hold-out data. **3)** ``best_score``: Mean cross-validated score of the ``best_estimator``. **4)** ``search_results``: Metrics measured for each of the hyperparameters setting in the search. **5)** ``best_index``: The index (of the ``search_results``) which corresponds to the best candidate hyperparameters setting.
+    :rtype: dict
+    """
 
     self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
 

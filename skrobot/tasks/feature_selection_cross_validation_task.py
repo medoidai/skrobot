@@ -14,6 +14,8 @@ class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
   """
   The :class:`.FeatureSelectionCrossValidationTask` class can be used to perform feature selection with Recursive Feature Elimination using a scikit-learn estimator on some data. It extends the :class:`.BaseCrossValidationTask` class.
 
+  A scikit-learn preprocessor can be used on the input train data set before feature selection runs.
+
   It can support both stratified k-fold cross-validation as well as cross-validation with user-defined folds.
 
   By default, stratified k-fold cross-validation is used with the default parameters of :meth:`.stratified_folds` method.
@@ -43,7 +45,7 @@ class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
     :param min_features_to_select: The minimum number of features to be selected. This number of features will always be scored. It defaults to 1.
     :type min_features_to_select: int, optional
 
-    :param scoring: A single scikit-learn scorer string (e.g., 'f1') or a callable that is built with scikit-learn ``make_scorer``. **NOTE:** When using custom scorers, each scorer should return a single value. It defaults to 'f1'.
+    :param scoring: A single scikit-learn scorer string (e.g., 'f1') or a callable that is built with scikit-learn ``make_scorer``. Note that when using custom scorers, each scorer should return a single value. It defaults to 'f1'.
     :type scoring: {str, callable}, optional
 
     :param feature_columns: Either 'all' to use from the input train data set file all the columns or a list of column names to select specific columns. It defaults to 'all'.
@@ -63,13 +65,13 @@ class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
 
     :param n_jobs: Number of jobs to run in parallel. -1 means using all processors. It defaults to 1.
     :type n_jobs: int, optional
-  	"""
+    """
 
     super(FeatureSelectionCrossValidationTask, self).__init__(FeatureSelectionCrossValidationTask.__name__, locals())
 
   def run(self, output_directory):
     """
-    A method for running the task.
+    Run the task.
 
     The selected features are returned as a result and also stored in a *features_selected.txt* text file under the output directory path.
 
@@ -77,8 +79,8 @@ class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
     :type output_directory: str
     
     :return: The task's result. Specifically, the selected features, which can be either column names from the input train data set or column indexes from the preprocessed data set, depending on whether a ``preprocessor`` was used or not.
-  	:rtype: list
-  	"""
+    :rtype: list
+    """
 
     self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
 

@@ -40,7 +40,7 @@ class PredictionTask(BaseTask):
 
   def run(self, output_directory):
     """
-    A method for running the task.
+    Run the task.
 
     The predictions are returned as a result and also stored in a *predictions.csv* CSV file under the output directory path.
 

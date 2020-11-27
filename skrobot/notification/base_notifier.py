@@ -9,7 +9,7 @@ class BaseNotifier(ABC):
     @abstractmethod
     def notify(self, message):
         """
-        An abstract method for sending notifications.
+        An abstract method for sending the notification.
 
         :param message: The notification's message.
         :type message: str
