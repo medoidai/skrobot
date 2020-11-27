@@ -27,6 +27,8 @@ Welcome to skrobot's documentation!
    :target: https://github.com/medoidai/skrobot/blob/master/LICENSE.txt
 .. |Status| image:: https://img.shields.io/badge/status-stable-green?style=plastic
    :target: https://pypi.org/project/skrobot/
+.. |Documentation Status| image:: https://img.shields.io/badge/docs-passing-green?style=plastic
+   :target: https://skrobot.readthedocs.io/
 .. |skrobot logo| image:: https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png
    :target: https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png
    :width: 30%
