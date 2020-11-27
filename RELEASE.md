@@ -1,3 +1,12 @@
+# 1.0.7
+
+* Sphinx documentation mechanism added!
+* PredictionTask now outputs also the model's probability (for positive class) for each sample.
+
+## Thanks for supporting contributions
+
+[Michalis Chaviaras](https://github.com/michav1510)
+
 # 1.0.6
 
 * The PredictionTask now works for probabilistic models and a threshold is provided (default value is 0.5)
