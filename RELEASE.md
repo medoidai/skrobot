@@ -1,14 +1,18 @@
-# 1.0.6
+# 1.0.7
 
 * Sphinx documentation mechanism added!
-* The PredictionTask now works for probabilistic models and a threshold is provided (default value is 0.5)
-* Metrics in EvaluationCrossValidationTask now are computed correctly
-* Examples are re-generated
-* The EvaluationCrossValidationTask now supports parameters threshold_selection_by and metric_greater_is_better for selecting the best threshold based either on a threshold or a metric
+* PredictionTask now outputs also the model's probability (for positive class) for each sample.
 
 ## Thanks for supporting contributions
 
 [Michalis Chaviaras](https://github.com/michav1510)
+
+# 1.0.6
+
+* The PredictionTask now works for probabilistic models and a threshold is provided (default value is 0.5)
+* Metrics in EvaluationCrossValidationTask now are computed correctly
+* Examples are re-generated
+* The EvaluationCrossValidationTask now supports parameters threshold_selection_by and metric_greater_is_better for selecting the best threshold based either on a threshold or a metric
 
 # 1.0.5
 
