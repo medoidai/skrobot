@@ -2,6 +2,7 @@
 [![PyPI](https://img.shields.io/badge/pypi_package-1.0.7-blue?style=plastic)](https://pypi.org/project/skrobot/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=plastic)](https://github.com/medoidai/skrobot/blob/master/LICENSE.txt)
 [![Status](https://img.shields.io/badge/status-stable-green?style=plastic)](https://pypi.org/project/skrobot/)
+[![Documentation Status](https://img.shields.io/badge/docs-passing-green?style=plastic)](http://skrobot.readthedocs.io/)
 
 -----------------
 
