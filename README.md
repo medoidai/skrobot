@@ -17,7 +17,7 @@ skrobot is a Python module for designing, running and tracking Machine Learning 
 
 ### Documentation?
 
-The documentation is hosted online to [Read the Docs](https://readthedocs.org/).
+The documentation is hosted online to [Read the Docs](http://skrobot.readthedocs.io/).
 
 ### How do I install it?
 
