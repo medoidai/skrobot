@@ -3,12 +3,41 @@ import json, os
 from numpyencoder import NumpyEncoder
 
 class TaskRunner:
+  """
+  The :class:`.TaskRunner` class is a simplified version (in functionality) of the :class:`.Experiment` class.
+
+  It leaves out all the "experiment" stuff and is focused mostly in the execution and tracking of :class:`.BaseTask` tasks.
+  """
+
   def __init__ (self, output_directory_path):
+    """
+    This is the constructor method and can be used to create a new object instance of :class:`.TaskRunner` class.
+
+    :param output_directory_path: The output directory path under which task-related generated files are stored.
+    :type output_directory_path: str
+    """
+
     self._output_directory_path = output_directory_path
 
     os.makedirs(self._output_directory_path)
 
   def run(self, task):
+    """
+    Run a :class:`.BaseTask` task.
+
+    When running a task, its recorded parameters (e.g., *train_task.params*) and any other task-related generated files are stored under output directory for tracking reasons.
+
+    The task's recorded parameters are in JSON format.
+
+    Lastly, in case an exception occurs, a text file (e.g., *train_task.errors*) is generated under output directory containing the error message.
+
+    :param task: The task to run.
+    :type task: :class:`.BaseTask`
+
+    :return: The task's result.
+    :rtype: Depends on the ``task`` parameter.
+    """
+
     task_type = task.get_type()
 
     try:
