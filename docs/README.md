@@ -22,15 +22,15 @@ $ source docs/venv/bin/activate
 $ pip install -r docs/requirements.txt
 ```
 
-## Generate Sphinx documentation
-
 ### Install skrobot
 
 ```sh
 $ python setup.py install
 ```
 
-### Generate HTML documentation
+## Generate Sphinx documentation
+
+### HTML documentation
 
 ```sh
 $ cd docs
