@@ -1,3 +1,8 @@
+# 1.0.8
+
+* Fixed versions in PyPI, Read the Docs.
+* Update dependencies to latest
+
 # 1.0.7
 
 * Sphinx documentation mechanism added!

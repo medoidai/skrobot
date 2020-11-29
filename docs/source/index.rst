@@ -1,4 +1,4 @@
-|Python| |PyPI| |License| |Status|
+|Python| |PyPI| |License| |Documentation Status|
 
 Welcome to skrobot's documentation!
 ===================================
@@ -20,15 +20,12 @@ Welcome to skrobot's documentation!
    what_license_do_you_use
 
 .. |Python| image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue?style=plastic
-   :target: https://pypi.org/project/skrobot/
-.. |PyPI| image:: https://img.shields.io/badge/pypi_package-1.0.7-blue?style=plastic
-   :target: https://pypi.org/project/skrobot/
+   :target: https://www.python.org/
+.. |PyPI| image:: https://img.shields.io/badge/pypi_package-1.0.8-blue?style=plastic
+   :target: https://pypi.org/project/skrobot/1.0.8/
 .. |License| image:: https://img.shields.io/badge/license-MIT-blue?style=plastic
    :target: https://github.com/medoidai/skrobot/blob/master/LICENSE.txt
-.. |Status| image:: https://img.shields.io/badge/status-stable-green?style=plastic
-   :target: https://pypi.org/project/skrobot/
-.. |Documentation Status| image:: https://img.shields.io/badge/docs-passing-green?style=plastic
-   :target: https://skrobot.readthedocs.io/
+.. |Documentation Status| image:: https://readthedocs.org/projects/skrobot/badge/?version=1.0.8
+   :target: https://skrobot.readthedocs.io/en/1.0.8/
 .. |skrobot logo| image:: https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png
    :target: https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png
-   :width: 30%
