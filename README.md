@@ -1,12 +1,11 @@
-[![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue?style=plastic)](https://pypi.org/project/skrobot/)
-[![PyPI](https://img.shields.io/badge/pypi_package-1.0.7-blue?style=plastic)](https://pypi.org/project/skrobot/)
+[![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue?style=plastic)](https://www.python.org/)
+[![PyPI](https://img.shields.io/badge/pypi_package-1.0.8-blue?style=plastic)](https://pypi.org/project/skrobot/1.0.8/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=plastic)](https://github.com/medoidai/skrobot/blob/master/LICENSE.txt)
-[![Status](https://img.shields.io/badge/status-stable-green?style=plastic)](https://pypi.org/project/skrobot/)
-[![Documentation Status](https://img.shields.io/badge/docs-passing-green?style=plastic)](https://skrobot.readthedocs.io/)
+[![Documentation Status](https://readthedocs.org/projects/skrobot/badge/?version=1.0.8)](https://skrobot.readthedocs.io/en/1.0.8/)
 
 -----------------
 
-<div align="center"><img src="https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png" width="250px;" /></div>
+[![skrobot logo](https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png)](https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png)
 
 -----------------
 
@@ -18,7 +17,7 @@ skrobot is a Python module for designing, running and tracking Machine Learning 
 
 ### Documentation?
 
-The documentation is hosted online to [Read the Docs](https://skrobot.readthedocs.io/).
+The documentation is hosted online to [Read the Docs](https://skrobot.readthedocs.io/en/1.0.8/).
 
 ### How do I install it?
 

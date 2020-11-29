@@ -1,4 +1,4 @@
-<div align="center"><img src="https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png" width="250px;" /></div>
+[![skrobot logo](https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png)](https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png)
 
 -----------------
 
