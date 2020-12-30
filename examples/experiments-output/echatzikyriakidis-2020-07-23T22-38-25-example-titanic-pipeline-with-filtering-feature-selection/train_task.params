@@ -1,7 +1,7 @@
 {
  "type": "train_task",
  "estimator": "Pipeline(steps=[('preprocessor',\n                 ColumnTransformer(transformers=[('numerical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer()),\n                                                                  ('scaler',\n                                                                   StandardScaler())]),\n                                                  ['Age', 'Fare', 'SibSp',\n                                                   'Parch']),\n                                                 ('categorical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer(strategy='most_frequent')),\n                                                                  ('encoder',\n                                                                   OneHotEncoder(handle_unknown='ignore'))]),\n                                                  ['Embarked', 'Sex',\n                                                   'Pclass'])])),\n                ('selection', SelectKBest()),\n                ('classifier',\n                 LogisticRegression(random_state=42, solver='liblinear'))])",
- "train_data_set_file_path": "data/titanic-train.csv",
+ "train_data_set": "data/titanic-train.csv",
  "estimator_params": {
   "selection__k": 5,
   "preprocessor__numerical_transformer__imputer__strategy": "mean",

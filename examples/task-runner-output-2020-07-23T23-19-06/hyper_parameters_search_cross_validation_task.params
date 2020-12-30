@@ -18,7 +18,7 @@
  ],
  "field_delimiter": ",",
  "estimator_params": null,
- "train_data_set_file_path": "data/titanic-train.csv",
+ "train_data_set": "data/titanic-train.csv",
  "search_params": {
   "classifier__C": [
    0.1,

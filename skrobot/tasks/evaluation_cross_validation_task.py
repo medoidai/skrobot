@@ -31,18 +31,18 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
 
   By default, stratified k-fold cross-validation is used with the default parameters of :meth:`.stratified_folds` method.
   """
-  def __init__ (self, estimator, train_data_set_file_path, test_data_set_file_path=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=42, threshold_selection_by='f1', metric_greater_is_better=True, threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
+  def __init__ (self, estimator, train_data_set, test_data_set=None, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=42, threshold_selection_by='f1', metric_greater_is_better=True, threshold_tuning_range=(0.01, 1.0, 0.01), export_classification_reports=False, export_confusion_matrixes=False, export_roc_curves=False, export_pr_curves=False, export_false_positives_reports=False, export_false_negatives_reports=False, export_also_for_train_folds=False, fscore_beta=1):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.EvaluationCrossValidationTask` class.
 
     :param estimator: It can be either an estimator (e.g., LogisticRegression) or a pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
     :type estimator: scikit-learn {estimator, pipeline}
 
-    :param train_data_set_file_path: The file path of the input train data set. It can be either a URL or a disk file path.
-    :type train_data_set_file_path: str
+    :param train_data_set: The input train data set. It can be either a URL, a disk file path or a pandas DataFrame.
+    :type train_data_set: {str or pandas DataFrame}
 
-    :param test_data_set_file_path: The file path of the input test data set. It can be either a URL or a disk file path. It defaults to None.
-    :type test_data_set_file_path: str, optional
+    :param test_data_set: The input test data set. It can be either a URL, a disk file path or a pandas DataFrame. It defaults to None.
+    :type test_data_set: {str or pandas DataFrame}, optional
 
     :param estimator_params: The parameters to override in the provided estimator/pipeline. It defaults to None.
     :type estimator_params: dict, optional
@@ -121,7 +121,13 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
     :rtype: dict
     """
 
-    self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
+    if isinstance(self.train_data_set, str):
+      self.train_data_set_data_frame = pd.read_csv(self.train_data_set, delimiter=self.field_delimiter)
+    else:
+      self.train_data_set_data_frame = self.train_data_set.copy()
+
+      self.train_data_set_data_frame.reset_index(inplace=True, drop=True)
+
     train_ids = self.train_data_set_data_frame[self.id_column]
     train_y = self.train_data_set_data_frame[self.label_column]
     train_X = self.train_data_set_data_frame.drop(columns=[self.label_column, self.id_column])
@@ -143,8 +149,14 @@ class EvaluationCrossValidationTask(BaseCrossValidationTask):
     y_and_y_hat_test = None
     test_threshold_metrics = None
 
-    if self.test_data_set_file_path:
-      self.test_data_set_data_frame = pd.read_csv(self.test_data_set_file_path, delimiter=self.field_delimiter)
+    if self.test_data_set is not None:
+      if isinstance(self.test_data_set, str):
+        self.test_data_set_data_frame = pd.read_csv(self.test_data_set, delimiter=self.field_delimiter)
+      else:
+        self.test_data_set_data_frame = self.test_data_set.copy()
+
+        self.test_data_set_data_frame.reset_index(inplace=True, drop=True)
+
       test_ids = self.test_data_set_data_frame[self.id_column]
       test_y = self.test_data_set_data_frame[self.label_column]
       test_X = self.test_data_set_data_frame.drop(columns=[self.label_column, self.id_column])

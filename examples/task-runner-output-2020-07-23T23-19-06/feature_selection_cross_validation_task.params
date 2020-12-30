@@ -12,7 +12,7 @@
  "preprocessor": "ColumnTransformer(transformers=[('numerical_transformer',\n                                 Pipeline(steps=[('imputer', SimpleImputer()),\n                                                 ('scaler', StandardScaler())]),\n                                 ['Age', 'Fare', 'SibSp', 'Parch']),\n                                ('categorical_transformer',\n                                 Pipeline(steps=[('imputer',\n                                                  SimpleImputer(strategy='most_frequent')),\n                                                 ('encoder',\n                                                  OneHotEncoder(handle_unknown='ignore'))]),\n                                 ['Embarked', 'Sex', 'Pclass'])])",
  "field_delimiter": ",",
  "estimator_params": null,
- "train_data_set_file_path": "data/titanic-train.csv",
+ "train_data_set": "data/titanic-train.csv",
  "estimator": "LogisticRegression(random_state=42, solver='liblinear')",
  "fold_options": {
   "shuffle": true,

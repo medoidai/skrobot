@@ -10,15 +10,15 @@ class TrainTask(BaseTask):
   """
   The :class:`.TrainTask` class can be used to fit a scikit-learn estimator/pipeline on train data.
   """
-  def __init__ (self, estimator, train_data_set_file_path, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=42):
+  def __init__ (self, estimator, train_data_set, estimator_params=None, field_delimiter=',', feature_columns='all', id_column='id', label_column='label', random_seed=42):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.TrainTask` class.
 
     :param estimator: It can be either an estimator (e.g., LogisticRegression) or a pipeline ending with an estimator.
     :type estimator: scikit-learn {estimator, pipeline}
 
-    :param train_data_set_file_path: The file path of the input train data set. It can be either a URL or a disk file path.
-    :type train_data_set_file_path: str
+    :param train_data_set: The input train data set. It can be either a URL, a disk file path or a pandas DataFrame.
+    :type train_data_set: {str, pandas DataFrame}
 
     :param estimator_params: The parameters to override in the provided estimator/pipeline. It defaults to None.
     :type estimator_params: dict, optional
@@ -55,7 +55,12 @@ class TrainTask(BaseTask):
     :rtype: dict
     """
 
-    data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
+    if isinstance(self.train_data_set, str):
+      data_set_data_frame = pd.read_csv(self.train_data_set, delimiter=self.field_delimiter)
+    else:
+      data_set_data_frame = self.train_data_set.copy()
+
+      data_set_data_frame.reset_index(inplace=True, drop=True)
 
     y = data_set_data_frame[self.label_column]
 

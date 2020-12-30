@@ -21,7 +21,7 @@
    7
   ]
  },
- "train_data_set_file_path": "data/titanic-train.csv",
+ "train_data_set": "data/titanic-train.csv",
  "estimator_params": null,
  "field_delimiter": ",",
  "scorers": [

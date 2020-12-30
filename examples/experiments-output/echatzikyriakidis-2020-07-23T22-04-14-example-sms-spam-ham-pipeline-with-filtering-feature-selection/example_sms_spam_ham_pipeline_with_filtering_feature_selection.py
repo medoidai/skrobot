@@ -12,11 +12,11 @@ from skrobot.feature_selection import ColumnSelector
 
 ######### Initialization Code
 
-train_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-train'
+train_data_set = 'https://bit.ly/sms-spam-ham-data-train'
 
-test_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-test'
+test_data_set = 'https://bit.ly/sms-spam-ham-data-test'
 
-new_data_set_file_path = 'https://bit.ly/sms-spam-ham-data-new'
+new_data_set = 'https://bit.ly/sms-spam-ham-data-new'
 
 field_delimiter = '\t'
 
@@ -49,15 +49,15 @@ experiment = Experiment('experiments-output').set_source_code_file_path(__file__
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
                                                                                           search_params=search_params,
-                                                                                          train_data_set_file_path=train_data_set_file_path,
+                                                                                          train_data_set=train_data_set,
                                                                                           field_delimiter=field_delimiter,
                                                                                           random_seed=random_seed).random_search().stratified_folds(total_folds=5, shuffle=True))
 
 # Run Evaluation Task
 evaluation_results = experiment.run(EvaluationCrossValidationTask(estimator=pipe,
                                                                   estimator_params=hyperparameters_search_results['best_params'],
-                                                                  train_data_set_file_path=train_data_set_file_path,
-                                                                  test_data_set_file_path=test_data_set_file_path,
+                                                                  train_data_set=train_data_set,
+                                                                  test_data_set=test_data_set,
                                                                   field_delimiter=field_delimiter,
                                                                   random_seed=random_seed,
                                                                   export_classification_reports=True,
@@ -71,13 +71,13 @@ evaluation_results = experiment.run(EvaluationCrossValidationTask(estimator=pipe
 # Run Train Task
 train_results = experiment.run(TrainTask(estimator=pipe,
                                          estimator_params=hyperparameters_search_results['best_params'],
-                                         train_data_set_file_path=train_data_set_file_path,
+                                         train_data_set=train_data_set,
                                          field_delimiter=field_delimiter,
                                          random_seed=random_seed))
 
 # Run Prediction Task
 predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
-                                            data_set_file_path=new_data_set_file_path,
+                                            data_set=new_data_set,
                                             field_delimiter=field_delimiter,
                                             threshold=evaluation_results['threshold']))
 

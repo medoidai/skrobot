@@ -21,6 +21,11 @@ For the module's users
 | Task                            | a scikit-learn estimator on some   |
 |                                 | data.                              |
 +---------------------------------+------------------------------------+
+| Deep Feature Synthesis Task     | This task can be used to automate  |
+|                                 | feature engineering and create     |
+|                                 | features from temporal and         |
+|                                 | relational datasets.               |
++---------------------------------+------------------------------------+
 | Feature Selection Cross         | This task can be used to perform   |
 | Validation Task                 | feature selection with Recursive   |
 |                                 | Feature Elimination using a        |
@@ -31,6 +36,9 @@ For the module's users
 | Validation Task                 | the best hyperparameters of a      |
 |                                 | scikit-learn estimator on some     |
 |                                 | data.                              |
++---------------------------------+------------------------------------+
+| Email Notifier                  | This notifier can be used to       |
+|                                 | send email notifications.          |
 +---------------------------------+------------------------------------+
 | Experiment                      | This is used to build, track and   |
 |                                 | run an experiment. It can run      |

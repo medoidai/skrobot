@@ -18,8 +18,8 @@ experiment = Experiment('experiments-output').set_source_code_file_path(__file__
 
 # Run Evaluation Task
 results = experiment.run(EvaluationCrossValidationTask(estimator=lr_estimator,
-                                                       train_data_set_file_path=path.join('data','money-laundering-data-train.csv'),
-                                                       test_data_set_file_path=path.join('data','money-laundering-data-test.csv'),
+                                                       train_data_set=path.join('data','money-laundering-data-train.csv'),
+                                                       test_data_set=path.join('data','money-laundering-data-test.csv'),
                                                        export_classification_reports=True,
                                                        export_confusion_matrixes=True,
                                                        export_pr_curves=True,
@@ -27,7 +27,7 @@ results = experiment.run(EvaluationCrossValidationTask(estimator=lr_estimator,
                                                        export_false_positives_reports=True,
                                                        export_false_negatives_reports=True,
                                                        export_also_for_train_folds=True,
-                                                       random_seed=random_seed).custom_folds(folds_file_path=path.join('data','money-laundering-folds.csv')))
+                                                       random_seed=random_seed).custom_folds(folds_data=path.join('data','money-laundering-folds.csv')))
 
 # Print in-memory results
 print(results['threshold'])

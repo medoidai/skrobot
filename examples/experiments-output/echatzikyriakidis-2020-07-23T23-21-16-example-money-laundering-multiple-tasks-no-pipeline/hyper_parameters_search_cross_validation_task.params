@@ -12,7 +12,7 @@
    "l2"
   ]
  },
- "train_data_set_file_path": "data/money-laundering-data-train.csv",
+ "train_data_set": "data/money-laundering-data-train.csv",
  "estimator_params": null,
  "field_delimiter": ",",
  "scorers": [
@@ -86,7 +86,7 @@
  "n_jobs": 1,
  "return_train_score": true,
  "fold_options": {
-  "folds_file_path": "data/money-laundering-folds.csv",
+  "folds_data": "data/money-laundering-folds.csv",
   "fold_column": "fold"
  },
  "fold_method": "custom",

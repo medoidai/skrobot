@@ -19,8 +19,8 @@ experiment = Experiment('experiments-output').set_source_code_file_path(__file__
 # Run Hyperparameters Search Task
 results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=lr_estimator,
                                                                    search_params={ "C" : [1.e-01, 1.e+00, 1.e+01], "penalty" : [ "l1", "l2" ] },
-                                                                   train_data_set_file_path=path.join('data','money-laundering-data-train.csv'),
-                                                                   random_seed=random_seed).grid_search().custom_folds(folds_file_path=path.join('data','money-laundering-folds.csv')))
+                                                                   train_data_set=path.join('data','money-laundering-data-train.csv'),
+                                                                   random_seed=random_seed).grid_search().custom_folds(folds_data=path.join('data','money-laundering-folds.csv')))
 
 # Print in-memory results
 print(results['best_estimator'])

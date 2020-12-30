@@ -1,0 +1,6 @@
+Classification report for test data (Threshold = 0.43)
+
+             precision  recall     f1  support
+0                0.794   0.809  0.801      110
+1                0.686   0.666  0.676       69
+avg / total      0.752   0.754  0.753      179

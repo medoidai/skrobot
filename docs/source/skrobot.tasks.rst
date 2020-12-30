@@ -4,6 +4,15 @@ skrobot.tasks package
 Submodules
 ----------
 
+skrobot.tasks.deep\_feature\_synthesis\_task module
+---------------------------------------------------
+
+.. automodule:: skrobot.tasks.deep_feature_synthesis_task
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
 skrobot.tasks.base\_cross\_validation\_task module
 --------------------------------------------------
 

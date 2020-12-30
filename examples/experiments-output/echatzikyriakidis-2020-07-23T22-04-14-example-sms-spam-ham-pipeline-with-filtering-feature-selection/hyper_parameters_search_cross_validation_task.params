@@ -48,7 +48,7 @@
    50
   ]
  },
- "train_data_set_file_path": "https://bit.ly/sms-spam-ham-data-train",
+ "train_data_set": "https://bit.ly/sms-spam-ham-data-train",
  "estimator_params": null,
  "field_delimiter": "\t",
  "scorers": [

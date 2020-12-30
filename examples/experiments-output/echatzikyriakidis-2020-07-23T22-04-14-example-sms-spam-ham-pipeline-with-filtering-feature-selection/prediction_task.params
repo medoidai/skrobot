@@ -1,7 +1,7 @@
 {
  "type": "prediction_task",
  "estimator": "Pipeline(steps=[('column_selection',\n                 ColumnSelector(cols=['message'], drop_axis=True)),\n                ('vectorizer', CountVectorizer(ngram_range=(1, 2))),\n                ('tfidf', TfidfTransformer()),\n                ('feature_selection',\n                 SelectPercentile(percentile=60,\n                                  score_func=<function chi2 at 0x7f4205a3a5e0>)),\n                ('classifier',\n                 SGDClassifier(alpha=1e-06, loss='log', max_iter=80,\n                               penalty='elasticnet'))])",
- "data_set_file_path": "https://bit.ly/sms-spam-ham-data-new",
+ "data_set": "https://bit.ly/sms-spam-ham-data-new",
  "field_delimiter": "\t",
  "feature_columns": "all",
  "id_column": "id",
