@@ -12,7 +12,7 @@
    "l2"
   ]
  },
- "train_data_set_file_path": "data/money-laundering-data-train.csv",
+ "train_data_set": "data/money-laundering-data-train.csv",
  "estimator_params": null,
  "field_delimiter": ",",
  "scorers": [

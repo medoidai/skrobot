@@ -1,8 +1,8 @@
 {
  "type": "evaluation_cross_validation_task",
  "estimator": "Pipeline(steps=[('column_selection',\n                 ColumnSelector(cols=['message'], drop_axis=True)),\n                ('vectorizer', CountVectorizer()),\n                ('tfidf', TfidfTransformer()),\n                ('feature_selection',\n                 SelectPercentile(score_func=<function chi2 at 0x7f4205a3a5e0>)),\n                ('classifier', SGDClassifier(loss='log'))])",
- "train_data_set_file_path": "https://bit.ly/sms-spam-ham-data-train",
- "test_data_set_file_path": "https://bit.ly/sms-spam-ham-data-test",
+ "train_data_set": "https://bit.ly/sms-spam-ham-data-train",
+ "test_data_set": "https://bit.ly/sms-spam-ham-data-test",
  "estimator_params": {
   "vectorizer__stop_words": null,
   "vectorizer__ngram_range": [

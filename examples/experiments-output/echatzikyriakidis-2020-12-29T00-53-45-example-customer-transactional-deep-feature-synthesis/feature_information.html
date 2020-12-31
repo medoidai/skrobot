@@ -1,0 +1,111 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>feature_name</th>
+      <th>feature_type</th>
+      <th>feature_description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>session_id</td>
+      <td>int64</td>
+      <td>The "session_id".</td>
+    </tr>
+    <tr>
+      <td>product_id</td>
+      <td>category</td>
+      <td>The "product_id".</td>
+    </tr>
+    <tr>
+      <td>DAY(transaction_time)</td>
+      <td>int64</td>
+      <td>The day of the month of the "transaction_time".</td>
+    </tr>
+    <tr>
+      <td>MONTH(transaction_time)</td>
+      <td>int64</td>
+      <td>The month of the "transaction_time".</td>
+    </tr>
+    <tr>
+      <td>WEEKDAY(transaction_time)</td>
+      <td>int64</td>
+      <td>The day of the week of the "transaction_time".</td>
+    </tr>
+    <tr>
+      <td>YEAR(transaction_time)</td>
+      <td>int64</td>
+      <td>The year of the "transaction_time".</td>
+    </tr>
+    <tr>
+      <td>sessions.customer_id</td>
+      <td>int64</td>
+      <td>The "customer_id" for the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>sessions.device</td>
+      <td>object</td>
+      <td>The "device" for the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>products.brand</td>
+      <td>object</td>
+      <td>The "brand" for the instance of "products" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>sessions.COUNT(transactions)</td>
+      <td>int64</td>
+      <td>The number of all instances of "transactions" for each "session_id" in "sessions" for the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>sessions.MODE(transactions.product_id)</td>
+      <td>int64</td>
+      <td>The most frequently occurring value of the "product_id" of all instances of "transactions" for each "session_id" in "sessions" for the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>sessions.NUM_UNIQUE(transactions.product_id)</td>
+      <td>int64</td>
+      <td>The number of unique elements in the "product_id" of all instances of "transactions" for each "session_id" in "sessions" for the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>sessions.DAY(session_start)</td>
+      <td>int64</td>
+      <td>The day of the month of the "session_start" for the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>sessions.MONTH(session_start)</td>
+      <td>int64</td>
+      <td>The month of the "session_start" for the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>sessions.WEEKDAY(session_start)</td>
+      <td>int64</td>
+      <td>The day of the week of the "session_start" for the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>sessions.YEAR(session_start)</td>
+      <td>int64</td>
+      <td>The year of the "session_start" for the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>sessions.customers.zip_code</td>
+      <td>object</td>
+      <td>The "zip_code" for the instance of "customers" associated with the instance of "sessions" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>products.COUNT(transactions)</td>
+      <td>int64</td>
+      <td>The number of all instances of "transactions" for each "product_id" in "products" for the instance of "products" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>products.MODE(transactions.session_id)</td>
+      <td>int64</td>
+      <td>The most frequently occurring value of the "session_id" of all instances of "transactions" for each "product_id" in "products" for the instance of "products" associated with this instance of "transactions".</td>
+    </tr>
+    <tr>
+      <td>products.NUM_UNIQUE(transactions.session_id)</td>
+      <td>int64</td>
+      <td>The number of unique elements in the "session_id" of all instances of "transactions" for each "product_id" in "products" for the instance of "products" associated with this instance of "transactions".</td>
+    </tr>
+  </tbody>
+</table>

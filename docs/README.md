@@ -11,21 +11,21 @@ Make sure you have [Python](https://www.python.org/), [Git](https://git-scm.com/
 ### Clone the project's repository
 
 ```sh
-$ git clone https://github.com/medoidai/skrobot.git
+git clone https://github.com/medoidai/skrobot.git
 ```
 
 ### Create virtual environment and install dependencies
 
 ```sh
-$ virtualenv -p python docs/venv
-$ source docs/venv/bin/activate
-$ pip install -r docs/requirements.txt
+virtualenv -p python docs/venv
+source docs/venv/bin/activate
+pip install -r docs/requirements.txt
 ```
 
 ### Install skrobot
 
 ```sh
-$ python setup.py install
+python setup.py install
 ```
 
 ## Generate Sphinx documentation
@@ -33,8 +33,8 @@ $ python setup.py install
 ### HTML documentation
 
 ```sh
-$ cd docs
-$ make html
+cd docs
+make html
 ```
 
 **Thank you!**

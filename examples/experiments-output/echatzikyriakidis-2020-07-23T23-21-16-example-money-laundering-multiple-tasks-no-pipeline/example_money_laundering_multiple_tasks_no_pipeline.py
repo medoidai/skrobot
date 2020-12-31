@@ -11,13 +11,13 @@ from skrobot.tasks import HyperParametersSearchCrossValidationTask
 
 ######### Initialization Code
 
-train_data_set_file_path = path.join('data','money-laundering-data-train.csv')
+train_data_set = path.join('data','money-laundering-data-train.csv')
 
-test_data_set_file_path = path.join('data','money-laundering-data-test.csv')
+test_data_set = path.join('data','money-laundering-data-test.csv')
 
-new_data_set_file_path = path.join('data','money-laundering-data-new.csv')
+new_data_set = path.join('data','money-laundering-data-new.csv')
 
-folds_file_path = path.join('data', 'money-laundering-folds.csv')
+folds_data = path.join('data', 'money-laundering-folds.csv')
 
 random_seed = 42
 
@@ -33,21 +33,21 @@ experiment = Experiment('experiments-output').set_source_code_file_path(__file__
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=lr_estimator,
-                                                                       train_data_set_file_path=train_data_set_file_path,
-                                                                       random_seed=random_seed).custom_folds(folds_file_path=folds_file_path))
+                                                                       train_data_set=train_data_set,
+                                                                       random_seed=random_seed).custom_folds(folds_data=folds_data))
 
 # Run Hyperparameters Search Task
 hyperparameters_search_results = experiment.run(HyperParametersSearchCrossValidationTask (estimator=lr_estimator,
                                                                                           search_params=search_params,
-                                                                                          train_data_set_file_path=train_data_set_file_path,
+                                                                                          train_data_set=train_data_set,
                                                                                           feature_columns=features_columns,
-                                                                                          random_seed=random_seed).random_search().custom_folds(folds_file_path=folds_file_path))
+                                                                                          random_seed=random_seed).random_search().custom_folds(folds_data=folds_data))
 
 # Run Evaluation Task	
 evaluation_results = experiment.run(EvaluationCrossValidationTask(estimator=lr_estimator,
                                                                   estimator_params=hyperparameters_search_results['best_params'],
-                                                                  train_data_set_file_path=train_data_set_file_path,
-                                                                  test_data_set_file_path=test_data_set_file_path,
+                                                                  train_data_set=train_data_set,
+                                                                  test_data_set=test_data_set,
                                                                   export_classification_reports=True,
                                                                   export_confusion_matrixes=True,
                                                                   export_pr_curves=True,
@@ -56,18 +56,18 @@ evaluation_results = experiment.run(EvaluationCrossValidationTask(estimator=lr_e
                                                                   export_false_negatives_reports=True,
                                                                   export_also_for_train_folds=True,
                                                                   feature_columns=features_columns,
-                                                                  random_seed=random_seed).custom_folds(folds_file_path=folds_file_path))
+                                                                  random_seed=random_seed).custom_folds(folds_data=folds_data))
 
 # Run Train Task
 train_results = experiment.run(TrainTask(estimator=lr_estimator,
                                          estimator_params=hyperparameters_search_results['best_params'],
-                                         train_data_set_file_path=train_data_set_file_path,
+                                         train_data_set=train_data_set,
                                          feature_columns=features_columns,
                                          random_seed=random_seed))
 
 # Run Prediction Task
 predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
-                                            data_set_file_path=new_data_set_file_path,
+                                            data_set=new_data_set,
                                             feature_columns=features_columns,
                                             threshold=evaluation_results['threshold']))
 

@@ -1,7 +1,7 @@
 {
  "type": "prediction_task",
  "estimator": "LogisticRegression(penalty='l1', random_state=42, solver='liblinear')",
- "data_set_file_path": "data/money-laundering-data-new.csv",
+ "data_set": "data/money-laundering-data-new.csv",
  "field_delimiter": ",",
  "feature_columns": [
   "f1",
