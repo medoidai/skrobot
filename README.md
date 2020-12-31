@@ -45,10 +45,6 @@ $ python setup.py install
 
 * Add support in the module for multiclass problems
 
-* Build some notifiers (e.g., Slack, Trello and Discord)
-
-* Add a new task for automatic feature synthesis
-
 ### Can I contribute?
 
 Of course, the project is [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) and you can contribute to it!
