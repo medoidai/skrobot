@@ -1,3 +1,7 @@
+# 1.0.11
+
+* Fix random_seed issue on stratified_folds()
+
 # 1.0.10
 
 * Documentation fixes

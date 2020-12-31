@@ -1,7 +1,7 @@
 [![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue?style=plastic)](https://www.python.org/)
-[![PyPI](https://img.shields.io/badge/pypi_package-1.0.10-blue?style=plastic)](https://pypi.org/project/skrobot/1.0.10/)
+[![PyPI](https://img.shields.io/badge/pypi_package-1.0.11-blue?style=plastic)](https://pypi.org/project/skrobot/1.0.11/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=plastic)](https://github.com/medoidai/skrobot/blob/master/LICENSE.txt)
-[![Documentation Status](https://readthedocs.org/projects/skrobot/badge/?version=1.0.10)](https://skrobot.readthedocs.io/en/1.0.10/)
+[![Documentation Status](https://readthedocs.org/projects/skrobot/badge/?version=1.0.11)](https://skrobot.readthedocs.io/en/1.0.11/)
 
 -----------------
 
@@ -17,7 +17,7 @@ skrobot is a Python module for designing, running and tracking Machine Learning 
 
 ## Documentation?
 
-The documentation is hosted online to [Read the Docs](https://skrobot.readthedocs.io/en/1.0.10/).
+The documentation is hosted online to [Read the Docs](https://skrobot.readthedocs.io/en/1.0.11/).
 
 ## How do I install it?
 
