@@ -2,7 +2,7 @@
 
 * Add DeepFeatureSynthesisTask
 * Add EmailNotifier
-* All tasks can retrieve data as dataframes (instead of URL/file paths)
+* All tasks can retrieve also data as dataframes (instead only as URL/file path)
 * Add examples with DeepFeatureSynthesisTask
 * Upgrade dependencies
 
