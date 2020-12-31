@@ -90,7 +90,7 @@ class BaseCrossValidationTask(BaseTask):
 
       return self._get_cv_splits(self.train_data_set_data_frame.merge(folds_data_frame, how='inner', on=self.id_column))
     else:
-      return StratifiedKFold(n_splits=self.fold_options['total_folds'], shuffle=self.fold_options['shuffle'], random_state=self.random_seed).split(X, y)
+      return StratifiedKFold(n_splits=self.fold_options['total_folds'], shuffle=self.fold_options['shuffle'], random_state=self.random_seed if self.fold_options['shuffle'] else None).split(X, y)
 
   def _get_cv_splits(self, data_set_data_frame_with_folds):
     cv = []
