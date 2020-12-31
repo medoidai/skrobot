@@ -1,3 +1,8 @@
+# 1.0.10
+
+* Documentation fixes
+* Example changes
+
 # 1.0.9
 
 * Add DeepFeatureSynthesisTask
