@@ -1,0 +1,22 @@
+{
+ "type": "feature_selection_cross_validation_task",
+ "estimator": "LogisticRegression(random_state=42, solver='liblinear')",
+ "train_data_set": "     PassengerId  Survived   Age  ...  Fare * Parch  Fare * SibSp  Parch * SibSp\n706          447         1  13.0  ...          19.5         0.000              0\n486          288         0  22.0  ...           0.0         0.000              0\n529          145         0  18.0  ...           0.0         0.000              0\n850          418         1  18.0  ...          26.0         0.000              0\n796          221         1  16.0  ...           0.0         0.000              0\n..           ...       ...   ...  ...           ...           ...            ...\n365          821         1  52.0  ...          93.5        93.500              1\n227          540         1  22.0  ...          99.0         0.000              0\n732          884         0  28.0  ...           0.0         0.000              0\n465           70         0  26.0  ...           0.0        17.325              0\n490          738         1  35.0  ...           0.0         0.000              0\n\n[712 rows x 21 columns]",
+ "estimator_params": null,
+ "field_delimiter": ",",
+ "preprocessor": "ColumnTransformer(transformers=[('numerical_transformer',\n                                 Pipeline(steps=[('imputer', SimpleImputer()),\n                                                 ('scaler', StandardScaler())]),\n                                 ['Age', 'Fare', 'SibSp', 'Parch', 'Age + Fare',\n                                  'Age + Parch', 'Age + SibSp', 'Fare + Parch',\n                                  'Fare + SibSp', 'Parch + SibSp', 'Age * Fare',\n                                  'Age * Parch', 'Age * SibSp', 'Fare * Parch',\n                                  'Fare * SibSp', 'Parch * SibSp']),\n                                ('categorical_transformer',\n                                 Pipeline(steps=[('imputer',\n                                                  SimpleImputer(strategy='most_frequent')),\n                                                 ('encoder',\n                                                  OneHotEncoder(handle_unknown='ignore'))]),\n                                 ['Embarked', 'Sex', 'Pclass'])])",
+ "preprocessor_params": null,
+ "min_features_to_select": 1,
+ "scoring": "f1",
+ "feature_columns": "all",
+ "id_column": "PassengerId",
+ "label_column": "Survived",
+ "random_seed": 42,
+ "verbose": 3,
+ "n_jobs": 1,
+ "fold_options": {
+  "total_folds": 5,
+  "shuffle": true
+ },
+ "fold_method": "stratified"
+}

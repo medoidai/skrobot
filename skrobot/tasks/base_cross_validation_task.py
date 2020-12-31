@@ -27,14 +27,14 @@ class BaseCrossValidationTask(BaseTask):
 
     self.stratified_folds()
 
-  def custom_folds(self, folds_file_path, fold_column='fold'):
+  def custom_folds(self, folds_data, fold_column='fold'):
     """
     Optional method.
 
     Use cross-validation with user-defined custom folds.
 
-    :param folds_file_path: The path to the file containing the user-defined folds for the samples. The file needs to be formatted with the same separation delimiter (comma for CSV, tab for TSV, etc.) as the one used in the input data set files provided to the task. The file must contain two data columns and the first row must be the header. The first column is for the sample IDs and needs to be the same as the one used in the input data set files provided to the task. The second column is for the fold IDs (e.g., 1 through 5, A through D, etc.).
-    :type folds_file_path: str
+    :param folds_data: The input folds data. It can be either a URL, a disk file path or a pandas DataFrame. The folds data contain the user-defined folds for the samples. If a URL or a disk file path is provided the data must be formatted with the same separation delimiter (comma for CSV, tab for TSV, etc.) as the one used in the input data set files provided to the task. The data must contain two columns and the first row must be the header. The first column is for the sample IDs and needs to be the same as the one used in the input data set files provided to the task. The second column is for the fold IDs (e.g., 1 through 5, A through D, etc.).
+    :type folds_data: {str or pandas DataFrame}
 
     :param fold_column: The column name for the fold IDs. It defaults to 'fold'.
     :type fold_column: str, optional
@@ -79,7 +79,14 @@ class BaseCrossValidationTask(BaseTask):
 
   def _build_cv_splits (self, X, y):
     if self.fold_method == 'custom':
-      folds_data_frame = pd.read_csv(self.fold_options['folds_file_path'], delimiter=self.field_delimiter)
+      folds_data = self.fold_options['folds_data']
+
+      if isinstance(folds_data, str):
+        folds_data_frame = pd.read_csv(folds_data, delimiter=self.field_delimiter)
+      else:
+        folds_data_frame = folds_data.copy()
+
+        folds_data_frame.reset_index(inplace=True, drop=True)
 
       return self._get_cv_splits(self.train_data_set_data_frame.merge(folds_data_frame, how='inner', on=self.id_column))
     else:

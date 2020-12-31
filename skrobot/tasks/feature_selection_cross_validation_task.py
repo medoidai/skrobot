@@ -20,15 +20,15 @@ class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
 
   By default, stratified k-fold cross-validation is used with the default parameters of :meth:`.stratified_folds` method.
   """
-  def __init__ (self, estimator, train_data_set_file_path, estimator_params=None, field_delimiter=',', preprocessor=None, preprocessor_params=None, min_features_to_select=1, scoring='f1', feature_columns='all', id_column='id', label_column='label', random_seed=42, verbose=3, n_jobs=1):
+  def __init__ (self, estimator, train_data_set, estimator_params=None, field_delimiter=',', preprocessor=None, preprocessor_params=None, min_features_to_select=1, scoring='f1', feature_columns='all', id_column='id', label_column='label', random_seed=42, verbose=3, n_jobs=1):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.FeatureSelectionCrossValidationTask` class.
 
     :param estimator: An estimator (e.g., LogisticRegression). It needs to provide feature importances through either a ``coef_`` or a ``feature_importances_`` attribute.
     :type estimator: scikit-learn estimator
 
-    :param train_data_set_file_path: The file path of the input train data set. It can be either a URL or a disk file path.
-    :type train_data_set_file_path: str
+    :param train_data_set: The input train data set. It can be either a URL, a disk file path or a pandas DataFrame.
+    :type train_data_set: {str, pandas DataFrame}
 
     :param estimator_params: The parameters to override in the provided estimator. It defaults to None.
     :type estimator_params: dict, optional
@@ -73,7 +73,7 @@ class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
     """
     Run the task.
 
-    The selected features are returned as a result and also stored in a *features_selected.txt* text file under the output directory path.
+    The selected features are returned as a result and also stored in a *features_selected.txt* file under the output directory path.
 
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
@@ -81,8 +81,12 @@ class FeatureSelectionCrossValidationTask(BaseCrossValidationTask):
     :return: The task's result. Specifically, the selected features, which can be either column names from the input train data set or column indexes from the preprocessed data set, depending on whether a ``preprocessor`` was used or not.
     :rtype: list
     """
+    if isinstance(self.train_data_set, str):
+      self.train_data_set_data_frame = pd.read_csv(self.train_data_set, delimiter=self.field_delimiter)
+    else:
+      self.train_data_set_data_frame = self.train_data_set.copy()
 
-    self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
+      self.train_data_set_data_frame.reset_index(inplace=True, drop=True)
 
     y = self.train_data_set_data_frame[self.label_column]
 

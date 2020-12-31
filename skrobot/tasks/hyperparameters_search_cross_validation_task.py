@@ -24,7 +24,7 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
 
   By default, grid search is used.
   """
-  def __init__ (self, estimator, search_params, train_data_set_file_path, estimator_params=None, field_delimiter=',', scorers=['roc_auc', 'average_precision', 'f1', 'precision', 'recall', 'accuracy'], feature_columns='all', id_column='id', label_column='label', objective_score='f1', random_seed=42, verbose=3, n_jobs=1, return_train_score=True):
+  def __init__ (self, estimator, search_params, train_data_set, estimator_params=None, field_delimiter=',', scorers=['roc_auc', 'average_precision', 'f1', 'precision', 'recall', 'accuracy'], feature_columns='all', id_column='id', label_column='label', objective_score='f1', random_seed=42, verbose=3, n_jobs=1, return_train_score=True):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.HyperParametersSearchCrossValidationTask` class.
 
@@ -34,8 +34,8 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
     :param search_params: Dictionary with hyperparameters names as keys and lists of hyperparameter settings to try as values, or a list of such dictionaries, in which case the grids spanned by each dictionary in the list are explored. This enables searching over any sequence of hyperparameter settings.
     :type search_params: {dict, list of dictionaries}
 
-    :param train_data_set_file_path: The file path of the input train data set. It can be either a URL or a disk file path.
-    :type train_data_set_file_path: str
+    :param train_data_set: The input train data set. It can be either a URL, a disk file path or a pandas DataFrame.
+    :type train_data_set: {str, pandas DataFrame}
 
     :param estimator_params: The parameters to override in the provided estimator/pipeline. It defaults to None.
     :type estimator_params: dict, optional
@@ -129,7 +129,12 @@ class HyperParametersSearchCrossValidationTask(BaseCrossValidationTask):
     :rtype: dict
     """
 
-    self.train_data_set_data_frame = pd.read_csv(self.train_data_set_file_path, delimiter=self.field_delimiter)
+    if isinstance(self.train_data_set, str):
+      self.train_data_set_data_frame = pd.read_csv(self.train_data_set, delimiter=self.field_delimiter)
+    else:
+      self.train_data_set_data_frame = self.train_data_set.copy()
+
+      self.train_data_set_data_frame.reset_index(inplace=True, drop=True)
 
     y = self.train_data_set_data_frame[self.label_column]
 

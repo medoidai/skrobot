@@ -18,7 +18,7 @@ experiment = Experiment('experiments-output').set_source_code_file_path(__file__
 
 # Run Train Task
 results = experiment.run(TrainTask(estimator=lr_estimator,
-                                   train_data_set_file_path=path.join('data','money-laundering-data-train.csv'),
+                                   train_data_set=path.join('data','money-laundering-data-train.csv'),
                                    random_seed=random_seed))
 
 # Print in-memory results

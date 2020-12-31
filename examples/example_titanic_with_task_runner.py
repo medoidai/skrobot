@@ -16,11 +16,11 @@ from skrobot.feature_selection import ColumnSelector
 
 ######### Initialization Code
 
-train_data_set_file_path = os.path.join('data', 'titanic-train.csv')
+train_data_set = os.path.join('data', 'titanic-train.csv')
 
-test_data_set_file_path = os.path.join('data', 'titanic-test.csv')
+test_data_set = os.path.join('data', 'titanic-test.csv')
 
-new_data_set_file_path = os.path.join('data', 'titanic-new.csv')
+new_data_set = os.path.join('data', 'titanic-new.csv')
 
 random_seed = 42
 
@@ -59,7 +59,7 @@ task_runner = TaskRunner(f'task-runner-output-{datetime.datetime.now().strftime(
 
 # Run Feature Selection Task
 features_columns = task_runner.run(FeatureSelectionCrossValidationTask (estimator=classifier,
-                                                                        train_data_set_file_path=train_data_set_file_path,
+                                                                        train_data_set=train_data_set,
                                                                         preprocessor=preprocessor,
                                                                         min_features_to_select=4,
                                                                         id_column=id_column,
@@ -73,7 +73,7 @@ pipe = Pipeline(steps=[('preprocessor', preprocessor),
 # Run Hyperparameters Search Task
 hyperparameters_search_results = task_runner.run(HyperParametersSearchCrossValidationTask (estimator=pipe,
                                                                                            search_params=search_params,
-                                                                                           train_data_set_file_path=train_data_set_file_path,
+                                                                                           train_data_set=train_data_set,
                                                                                            id_column=id_column,
                                                                                            label_column=label_column,
                                                                                            random_seed=random_seed).random_search(n_iters=100).stratified_folds(total_folds=5, shuffle=True))
@@ -81,8 +81,8 @@ hyperparameters_search_results = task_runner.run(HyperParametersSearchCrossValid
 # Run Evaluation Task
 evaluation_results = task_runner.run(EvaluationCrossValidationTask(estimator=pipe,
                                                                    estimator_params=hyperparameters_search_results['best_params'],
-                                                                   train_data_set_file_path=train_data_set_file_path,
-                                                                   test_data_set_file_path=test_data_set_file_path,
+                                                                   train_data_set=train_data_set,
+                                                                   test_data_set=test_data_set,
                                                                    id_column=id_column,
                                                                    label_column=label_column,
                                                                    random_seed=random_seed,
@@ -97,14 +97,14 @@ evaluation_results = task_runner.run(EvaluationCrossValidationTask(estimator=pip
 # Run Train Task
 train_results = task_runner.run(TrainTask(estimator=pipe,
                                           estimator_params=hyperparameters_search_results['best_params'],
-                                          train_data_set_file_path=train_data_set_file_path,
+                                          train_data_set=train_data_set,
                                           id_column=id_column,
                                           label_column=label_column,
                                           random_seed=random_seed))
 
 # Run Prediction Task
 predictions = task_runner.run(PredictionTask(estimator=train_results['estimator'],
-                                             data_set_file_path=new_data_set_file_path,
+                                             data_set=new_data_set,
                                              id_column=id_column,
                                              prediction_column=label_column,
                                              threshold=evaluation_results['threshold']))

@@ -1,3 +1,11 @@
+# 1.0.9
+
+* Add DeepFeatureSynthesisTask
+* Add EmailNotifier
+* All tasks can retrieve also data as dataframes (instead only as URL/file path)
+* Add examples with DeepFeatureSynthesisTask
+* Upgrade dependencies
+
 # 1.0.8
 
 * Fixed versions in PyPI, Read the Docs.

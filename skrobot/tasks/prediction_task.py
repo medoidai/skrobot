@@ -8,15 +8,15 @@ class PredictionTask(BaseTask):
   """
   The :class:`.PredictionTask` class can be used to predict new data using a scikit-learn estimator/pipeline.
   """
-  def __init__ (self, estimator, data_set_file_path, field_delimiter=',', feature_columns='all', id_column='id', prediction_column='prediction', threshold=0.5):
+  def __init__ (self, estimator, data_set, field_delimiter=',', feature_columns='all', id_column='id', prediction_column='prediction', threshold=0.5):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.PredictionTask` class.
 
     :param estimator: It can be either an estimator (e.g., LogisticRegression) or a pipeline ending with an estimator. The estimator needs to be able to predict probabilities through a ``predict_proba`` method.
     :type estimator: scikit-learn {estimator, pipeline}
 
-    :param data_set_file_path: The file path of the input data set. It can be either a URL or a disk file path.
-    :type data_set_file_path: str
+    :param data_set: The input data set. It can be either a URL, a disk file path or a pandas DataFrame.
+    :type data_set: {str, pandas DataFrame}
 
     :param field_delimiter: The separation delimiter (comma for CSV, tab for TSV, etc.) used in the input data set file. It defaults to ','.
     :type field_delimiter: str, optional
@@ -51,7 +51,12 @@ class PredictionTask(BaseTask):
     :rtype: pandas DataFrame
     """
 
-    data_set_data_frame = pd.read_csv(self.data_set_file_path, delimiter=self.field_delimiter)
+    if isinstance(self.data_set, str):
+      data_set_data_frame = pd.read_csv(self.data_set, delimiter=self.field_delimiter)
+    else:
+      data_set_data_frame = self.data_set.copy()
+
+      data_set_data_frame.reset_index(inplace=True, drop=True)
 
     ids = data_set_data_frame[self.id_column]
 

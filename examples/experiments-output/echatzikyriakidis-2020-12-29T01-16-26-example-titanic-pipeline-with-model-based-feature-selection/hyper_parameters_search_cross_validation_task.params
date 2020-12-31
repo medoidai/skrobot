@@ -1,0 +1,47 @@
+{
+ "type": "hyper_parameters_search_cross_validation_task",
+ "estimator": "Pipeline(steps=[('preprocessor',\n                 ColumnTransformer(transformers=[('numerical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer()),\n                                                                  ('scaler',\n                                                                   StandardScaler())]),\n                                                  ['Age', 'Fare', 'SibSp',\n                                                   'Parch', 'Age + Fare',\n                                                   'Age + Parch', 'Age + SibSp',\n                                                   'Fare + Parch',\n                                                   'Fare + SibSp',\n                                                   'Parch + SibSp',\n                                                   'Age * Fare', 'Age * Parch',\n                                                   'Age * SibSp',\n                                                   'Fare * Parch',\n                                                   'Fare * SibSp',\n                                                   'Parch * SibSp']),\n                                                 ('categorical_transformer',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer(strategy='most_frequent')),\n                                                                  ('encoder',\n                                                                   OneHotEncoder(handle_unknown='ignore'))]),\n                                                  ['Embarked', 'Sex',\n                                                   'Pclass'])])),\n                ('selector',\n                 ColumnSelector(cols=[3, 6, 10, 11, 13, 15, 19, 20, 21, 23])),\n                ('classifier',\n                 LogisticRegression(random_state=42, solver='liblinear'))])",
+ "search_params": {
+  "classifier__C": [
+   0.1,
+   1.0,
+   10.0
+  ],
+  "classifier__penalty": [
+   "l1",
+   "l2"
+  ],
+  "preprocessor__numerical_transformer__imputer__strategy": [
+   "mean",
+   "median"
+  ]
+ },
+ "train_data_set": "     PassengerId  Survived   Age  ...  Fare * Parch  Fare * SibSp  Parch * SibSp\n706          447         1  13.0  ...          19.5         0.000              0\n486          288         0  22.0  ...           0.0         0.000              0\n529          145         0  18.0  ...           0.0         0.000              0\n850          418         1  18.0  ...          26.0         0.000              0\n796          221         1  16.0  ...           0.0         0.000              0\n..           ...       ...   ...  ...           ...           ...            ...\n365          821         1  52.0  ...          93.5        93.500              1\n227          540         1  22.0  ...          99.0         0.000              0\n732          884         0  28.0  ...           0.0         0.000              0\n465           70         0  26.0  ...           0.0        17.325              0\n490          738         1  35.0  ...           0.0         0.000              0\n\n[712 rows x 21 columns]",
+ "estimator_params": null,
+ "field_delimiter": ",",
+ "scorers": [
+  "roc_auc",
+  "average_precision",
+  "f1",
+  "precision",
+  "recall",
+  "accuracy"
+ ],
+ "feature_columns": "all",
+ "id_column": "PassengerId",
+ "label_column": "Survived",
+ "objective_score": "f1",
+ "random_seed": 42,
+ "verbose": 3,
+ "n_jobs": 1,
+ "return_train_score": true,
+ "fold_options": {
+  "total_folds": 5,
+  "shuffle": true
+ },
+ "fold_method": "stratified",
+ "search_options": {
+  "n_iters": 100
+ },
+ "search_method": "random"
+}

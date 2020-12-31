@@ -21,11 +21,11 @@ Welcome to skrobot's documentation!
 
 .. |Python| image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue?style=plastic
    :target: https://www.python.org/
-.. |PyPI| image:: https://img.shields.io/badge/pypi_package-1.0.8-blue?style=plastic
-   :target: https://pypi.org/project/skrobot/1.0.8/
+.. |PyPI| image:: https://img.shields.io/badge/pypi_package-1.0.9-blue?style=plastic
+   :target: https://pypi.org/project/skrobot/1.0.9/
 .. |License| image:: https://img.shields.io/badge/license-MIT-blue?style=plastic
    :target: https://github.com/medoidai/skrobot/blob/master/LICENSE.txt
-.. |Documentation Status| image:: https://readthedocs.org/projects/skrobot/badge/?version=1.0.8
-   :target: https://skrobot.readthedocs.io/en/1.0.8/
+.. |Documentation Status| image:: https://readthedocs.org/projects/skrobot/badge/?version=1.0.9
+   :target: https://skrobot.readthedocs.io/en/1.0.9/
 .. |skrobot logo| image:: https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png
    :target: https://github.com/medoidai/skrobot/raw/master/static/skrobot-logo.png
