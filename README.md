@@ -22,7 +22,7 @@ The documentation is hosted online to [Read the Docs](https://skrobot.readthedoc
 ## How do I install it?
 
 ```sh
-$ pip install skrobot
+pip install skrobot
 ```
 
 ## Next Priorities?

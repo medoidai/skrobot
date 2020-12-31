@@ -6,7 +6,7 @@ PyPI
 
 .. code:: sh
 
-   $ pip install skrobot
+   pip install skrobot
 
 Graphviz
 --------
