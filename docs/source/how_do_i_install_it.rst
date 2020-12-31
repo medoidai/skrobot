@@ -38,3 +38,18 @@ Windows:
 .. code:: sh
 
     conda install python-graphviz
+
+Development Version
+-------------------
+
+The skrobot version on PyPI may always be one step behind; you can install the latest development version from the GitHub repository by executing
+
+.. code:: sh
+
+    pip install git+git://github.com/medoidai/skrobot.git
+
+Or, you can clone the GitHub repository and install skrobot from your local drive via
+
+.. code:: sh
+
+    python setup.py install
