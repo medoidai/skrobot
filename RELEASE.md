@@ -4,6 +4,7 @@
 * Add EmailNotifier
 * All tasks can retrieve data as dataframes (instead of URL/file paths)
 * Add examples with DeepFeatureSynthesisTask
+* Upgrade dependencies
 
 # 1.0.8
 
