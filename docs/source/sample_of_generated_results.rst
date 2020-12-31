@@ -142,8 +142,8 @@ Synthesized Features Computation Graphs
    :target: https://github.com/medoidai/skrobot/raw/1.0.9/static/image-21.png
 .. |Image 22| image:: https://github.com/medoidai/skrobot/raw/1.0.9/static/image-22.png
    :target: https://github.com/medoidai/skrobot/raw/1.0.9/static/image-22.png
-.. |Image 22B| image:: https://github.com/medoidai/skrobot/raw/1.0.9/static/image-22B.png
-   :target: https://github.com/medoidai/skrobot/raw/1.0.9/static/image-22B.png
+.. |Image 22B| image:: https://github.com/medoidai/skrobot/blob/1.0.9/static/image-22-b.png
+   :target: https://github.com/medoidai/skrobot/blob/1.0.9/static/image-22-b.png
 .. |Image 23| image:: https://github.com/medoidai/skrobot/raw/1.0.9/static/image-23.png
    :target: https://github.com/medoidai/skrobot/raw/1.0.9/static/image-23.png
 .. |Image 24| image:: https://github.com/medoidai/skrobot/raw/1.0.9/static/image-24.png
