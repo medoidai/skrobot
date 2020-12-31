@@ -78,23 +78,23 @@ Predictions
 
 |Image 27|
 
-Calculated Features Information
--------------------------------
+Synthesized Features Information
+--------------------------------
 
 |Image 28|
 
-Calculated Features Definition
-------------------------------
+Synthesized Features Definition
+-------------------------------
 
 |Image 29|
 
-Calculated Feature Matrix
--------------------------
+Synthesized Output Dataset
+--------------------------
 
 |Image 30|
 
-Feature Calculation Graphs
---------------------------
+Synthesized Features Computation Graphs
+---------------------------------------
 
 |Image 31|
 

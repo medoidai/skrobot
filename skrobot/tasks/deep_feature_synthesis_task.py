@@ -49,7 +49,7 @@ class DeepFeatureSynthesisTask(BaseTask):
 
     Most of the arguments are documented here: https://featuretools.alteryx.com/en/stable/generated/featuretools.dfs.html#featuretools.dfs
 
-    :param export_feature_graphs: If this task will export feature calculation graphs. It defaults to False.
+    :param export_feature_graphs: If this task will export feature computation graphs. It defaults to False.
     :type export_feature_graphs: bool, optional
 
     :param export_feature_information: If this task will export feature information. The feature definitions can be used to recalculate features for a different data set. It defaults to False.
@@ -69,21 +69,21 @@ class DeepFeatureSynthesisTask(BaseTask):
     """
     Run the task.
 
-    The calculated feature matrix is returned as a result and also stored in a *feature_matrix.csv* file under the output directory path.
+    The synthesized output dataset is returned as a result and also stored in a *synthesized_dataset.csv* file under the output directory path.
 
     The features information are stored in a *feature_information.html* file as a static HTML table under the output directory path.
 
-    The feature calculation graphs are stored as PNG files under the output directory path.
+    The feature computation graphs are stored as PNG files under the output directory path.
 
     Also, the feature definitions are stored in a *feature_definitions.txt* file under the output directory path.
 
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
 
-    :return: The task's result. Specifically, **1)** ``feature_matrix``: The calculated feature matrix as a pandas DataFrame. **2)** ``feature_definitions``: The definitions of features in the feature matrix. The feature definitions can be used to recalculate features for a different data set.
+    :return: The task's result. Specifically, **1)** ``synthesized_dataset``: The synthesized output dataset as a pandas DataFrame. **2)** ``feature_definitions``: The definitions of features in the synthesized output dataset. The feature definitions can be used to recalculate features for a different data set.
     :rtype: dict
     """
-    feature_matrix, feature_defs = ft.dfs(
+    synthesized_dataset, feature_defs = ft.dfs(
       entities=self.entities,
       relationships=self.relationships,
       entityset=self.entityset,
@@ -118,13 +118,13 @@ class DeepFeatureSynthesisTask(BaseTask):
 
     label_related_columns_to_drop = []
 
-    for column in feature_matrix:
+    for column in synthesized_dataset:
       if column == self.label_column:
         pass
       elif self.label_column in column:
           label_related_columns_to_drop.append(column)
 
-    feature_matrix = feature_matrix[[o for o in feature_matrix if o not in label_related_columns_to_drop]]
+    synthesized_dataset = synthesized_dataset[[o for o in synthesized_dataset if o not in label_related_columns_to_drop]]
 
     feature_defs = [ o for o in feature_defs if o.get_name() != self.label_column and o.get_name() not in label_related_columns_to_drop ]
 
@@ -139,15 +139,15 @@ class DeepFeatureSynthesisTask(BaseTask):
         feature_name = feature_def.get_name()
 
         features['feature_name'].append(feature_name)
-        features['feature_type'].append(feature_matrix.dtypes[feature_name])
+        features['feature_type'].append(synthesized_dataset.dtypes[feature_name])
         features['feature_description'].append(ft.describe_feature(feature_def))
 
       pd.DataFrame(features).to_html(os.path.join(output_directory, 'feature_information.html'), index=False)
 
-    feature_matrix.reset_index(inplace=True)
+    synthesized_dataset.reset_index(inplace=True)
 
-    feature_matrix.to_csv(os.path.join(output_directory, 'feature_matrix.csv'), index=False)
+    synthesized_dataset.to_csv(os.path.join(output_directory, 'synthesized_dataset.csv'), index=False)
 
     ft.save_features(feature_defs, os.path.join(output_directory, 'feature_definitions.txt'))
 
-    return { 'feature_matrix' : feature_matrix, 'feature_definitions': feature_defs }
+    return { 'synthesized_dataset' : synthesized_dataset, 'feature_definitions': feature_defs }

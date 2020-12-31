@@ -11,7 +11,7 @@ PyPI
 Graphviz
 --------
 
-If you want to export feature calculation graphs using the argument ``export_feature_graphs`` in :class:`.DeepFeatureSynthesisTask` class, you need to install Graphviz.
+If you want to export feature computation graphs using the argument ``export_feature_graphs`` in :class:`.DeepFeatureSynthesisTask` class, you need to install Graphviz.
 
 Conda users:
 

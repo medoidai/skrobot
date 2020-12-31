@@ -81,7 +81,7 @@ feature_synthesis_results = experiment.run(DeepFeatureSynthesisTask (entities={ 
                                                                      id_column=id_column,
                                                                      label_column=label_column))
 
-data_set = feature_synthesis_results['feature_matrix']
+data_set = feature_synthesis_results['synthesized_dataset']
 
 feature_defs = feature_synthesis_results['feature_definitions']
 
@@ -152,7 +152,7 @@ predictions = experiment.run(PredictionTask(estimator=train_results['estimator']
                                             threshold=evaluation_results['threshold']))
 
 # Print in-memory results
-print(feature_synthesis_results['feature_matrix'])
+print(feature_synthesis_results['synthesized_dataset'])
 print(feature_synthesis_results['feature_definitions'])
 
 print(features_columns)

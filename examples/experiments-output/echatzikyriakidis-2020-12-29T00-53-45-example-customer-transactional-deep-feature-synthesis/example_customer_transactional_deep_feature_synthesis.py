@@ -40,5 +40,5 @@ feature_synthesis_results = experiment.run(DeepFeatureSynthesisTask (entities=en
                                                                      label_column='amount'))
 
 # Print in-memory results
-print(feature_synthesis_results['feature_matrix'])
+print(feature_synthesis_results['synthesized_dataset'])
 print(feature_synthesis_results['feature_definitions'])

@@ -93,7 +93,7 @@ The following example has generated the following `results <https://github.com/m
                                                                         id_column=id_column,
                                                                         label_column=label_column))
 
-    data_set = feature_synthesis_results['feature_matrix']
+    data_set = feature_synthesis_results['synthesized_dataset']
 
     feature_defs = feature_synthesis_results['feature_definitions']
 
@@ -164,7 +164,7 @@ The following example has generated the following `results <https://github.com/m
                                                 threshold=evaluation_results['threshold']))
 
     # Print in-memory results
-    print(feature_synthesis_results['feature_matrix'])
+    print(feature_synthesis_results['synthesized_dataset'])
     print(feature_synthesis_results['feature_definitions'])
 
     print(features_columns)
