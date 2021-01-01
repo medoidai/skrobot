@@ -4,7 +4,7 @@ sphinx:
   configuration: docs/source/conf.py
 
 conda:
-    environment: docs/environment.yml
+  environment: docs/environment.yml
 
 formats:
   - pdf
@@ -16,6 +16,6 @@ build:
 python:
   version: 3.8
   install:
-    - method: setuptools
+    - method: pip
       path: .
     - requirements: docs/requirements.txt
