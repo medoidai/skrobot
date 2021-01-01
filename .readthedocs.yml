@@ -5,11 +5,8 @@ sphinx:
 
 formats: all
 
-#conda:
-#  environment: docs/environment.yml
-
-build:
-  image: latest
+#build:
+#  image: latest
 
 python:
   version: 3.8
