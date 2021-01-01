@@ -3,8 +3,8 @@ version: 2
 sphinx:
   configuration: docs/source/conf.py
 
-#conda:
-#    environment: docs/environment.yml
+conda:
+    environment: docs/environment.yml
 
 formats:
   - pdf

@@ -1,0 +1,4 @@
+name: skrobot
+dependencies:
+  - python=3.8
+  - numpy
