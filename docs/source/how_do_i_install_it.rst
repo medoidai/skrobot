@@ -52,4 +52,4 @@ Or, you can clone the GitHub repository and install skrobot from your local driv
 
 .. code:: sh
 
-    python setup.py install
+    pip install .

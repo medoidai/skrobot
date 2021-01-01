@@ -25,7 +25,7 @@ pip install -r docs/requirements.txt
 ### Install skrobot
 
 ```sh
-python setup.py install
+pip install .
 ```
 
 ## Generate Sphinx documentation
