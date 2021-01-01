@@ -1,6 +1,0 @@
-name: skrobot
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-  - python=3.8.6=hffdb5ce_4_cpython
