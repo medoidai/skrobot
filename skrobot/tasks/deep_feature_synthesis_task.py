@@ -128,21 +128,20 @@ class DeepFeatureSynthesisTask(BaseTask):
 
     feature_defs = [ o for o in feature_defs if o.get_name() != self.label_column and o.get_name() not in label_related_columns_to_drop ]
 
-    if self.export_feature_graphs:
-      for feature_def in feature_defs:
-        ft.graph_feature(feature_def, to_file=os.path.join(output_directory, 'feature_graphs', f'{feature_def.get_name()}.png'), description=True)
+    features_df = pd.DataFrame({ 'feature_id' : range(len(feature_defs)), 'feature_def' : feature_defs })
 
-    features = { 'feature_name': [], 'feature_type': [], 'feature_description': [] }
+    features_df['feature_name'] = features_df['feature_def'].apply(lambda o: o.get_name())
+    features_df['feature_type'] = features_df['feature_def'].apply(lambda o: synthesized_dataset.dtypes[o.get_name()])
+
+    if self.export_feature_graphs:
+      features_df.apply(lambda o: ft.graph_feature(o['feature_def'], to_file=os.path.join(output_directory, 'feature_graphs', f'{o["feature_id"]}.png'), description=True), axis=1)
 
     if self.export_feature_information:
-      for feature_def in feature_defs:
-        feature_name = feature_def.get_name()
+      features_df['feature_description'] = features_df['feature_def'].apply(lambda o: ft.describe_feature(o))
 
-        features['feature_name'].append(feature_name)
-        features['feature_type'].append(synthesized_dataset.dtypes[feature_name])
-        features['feature_description'].append(ft.describe_feature(feature_def))
+      features_df.drop(columns=['feature_def'], inplace=True)
 
-      pd.DataFrame(features).to_html(os.path.join(output_directory, 'feature_information.html'), index=False)
+      features_df.to_html(os.path.join(output_directory, 'feature_information.html'), index=False)
 
     synthesized_dataset.reset_index(inplace=True)
 
