@@ -141,7 +141,7 @@ train_results = experiment.run(TrainTask(estimator=pipe,
                                          random_seed=random_seed))
 
 # Run Prediction Task
-new_data_set = ft.calculate_feature_matrix(feature_defs, entities={ "passengers" : (new_raw_data_set, id_column, None, variable_types) }, relationships=())
+new_data_set = ft.calculate_feature_matrix(feature_defs, entities={ "passengers" : (new_raw_data_set, id_column, None, variable_types) })
 
 new_data_set.reset_index(inplace=True)
 
