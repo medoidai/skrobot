@@ -1,3 +1,8 @@
+# 1.0.12
+
+* Fix problem of feature graph filenames (in case of Windows)
+* Upgrade to featuretools 0.23.0
+
 # 1.0.11
 
 * Fix random_seed issue on stratified_folds()
