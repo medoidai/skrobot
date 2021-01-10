@@ -6,7 +6,7 @@ The following examples use many of skrobot’s components to built a machine lea
 Example on Titanic Dataset
 --------------------------
 
-The following example has generated the following `results <https://github.com/medoidai/skrobot/tree/1.0.12/examples/experiments-output/echatzikyriakidis-2020-12-29T01-16-26-example-titanic-pipeline-with-model-based-feature-selection>`__.
+The following example has generated the following `results <https://github.com/medoidai/skrobot/tree/1.0.12/examples/experiments-output/example-titanic-pipeline-with-model-based-feature-selection>`__.
 
 .. code:: python
 
@@ -188,7 +188,7 @@ The following example has generated the following `results <https://github.com/m
 Example on SMS Spam Collection Dataset
 --------------------------------------
 
-The following example has generated the following `results <https://github.com/medoidai/skrobot/tree/1.0.12/examples/experiments-output/echatzikyriakidis-2020-07-23T22-04-14-example-sms-spam-ham-pipeline-with-filtering-feature-selection>`__.
+The following example has generated the following `results <https://github.com/medoidai/skrobot/tree/1.0.12/examples/experiments-output/example-sms-spam-ham-pipeline-with-filtering-feature-selection>`__.
 
 .. code:: python
 
