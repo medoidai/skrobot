@@ -1,6 +1,7 @@
 # 1.0.12
 
 * Fix problem of feature graph filenames (in case of Windows)
+* Fix problem of long filenames in examples
 * Upgrade to featuretools 0.23.0
 
 # 1.0.11
