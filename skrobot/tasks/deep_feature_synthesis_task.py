@@ -29,7 +29,6 @@ class DeepFeatureSynthesisTask(BaseTask):
                       drop_exact=None,
                       where_primitives=None,
                       max_features=-1,
-                      cutoff_time_in_index=False,
                       save_progress=None,
                       training_window=None,
                       approximate=None,
@@ -42,7 +41,6 @@ class DeepFeatureSynthesisTask(BaseTask):
                       include_cutoff_time=True,
                       export_feature_graphs=False,
                       export_feature_information=False,
-                      id_column='id',
                       label_column='label'):
     """
     This is the constructor method and can be used to create a new object instance of :class:`.DeepFeatureSynthesisTask` class.
@@ -55,9 +53,6 @@ class DeepFeatureSynthesisTask(BaseTask):
     :param export_feature_information: If this task will export feature information. The feature definitions can be used to recalculate features for a different data set. It defaults to False.
     :type export_feature_information: bool, optional
 
-    :param id_column: The name of the column containing the sample IDs. It defaults to 'id'.
-    :type id_column: str, optional
-
     :param label_column: The name of the column containing the ground truth labels. It defaults to 'label'.
     :type label_column: str, optional
     """
@@ -69,7 +64,7 @@ class DeepFeatureSynthesisTask(BaseTask):
     """
     Run the task.
 
-    The synthesized output dataset is returned as a result and also stored in a *synthesized_dataset.csv* file under the output directory path.
+    The synthesized output data set is returned as a result and also stored in a *synthesized_dataset.csv* file under the output directory path.
 
     The features information are stored in a *feature_information.html* file as a static HTML table under the output directory path.
 
@@ -80,7 +75,7 @@ class DeepFeatureSynthesisTask(BaseTask):
     :param output_directory: The output directory path under which task-related generated files are stored.
     :type output_directory: str
 
-    :return: The task's result. Specifically, **1)** ``synthesized_dataset``: The synthesized output dataset as a pandas DataFrame. **2)** ``feature_definitions``: The definitions of features in the synthesized output dataset. The feature definitions can be used to recalculate features for a different data set.
+    :return: The task's result. Specifically, **1)** ``synthesized_dataset``: The synthesized output data set as a pandas DataFrame. **2)** ``feature_definitions``: The definitions of features in the synthesized output data set. The feature definitions can be used to recalculate features for a different data set.
     :rtype: dict
     """
     synthesized_dataset, feature_defs = ft.dfs(
@@ -103,7 +98,6 @@ class DeepFeatureSynthesisTask(BaseTask):
       drop_exact=self.drop_exact,
       where_primitives=self.where_primitives,
       max_features=self.max_features,
-      cutoff_time_in_index=self.cutoff_time_in_index,
       save_progress=self.save_progress,
       training_window=self.training_window,
       approximate=self.approximate,

@@ -4,10 +4,10 @@ skrobot.tasks package
 Submodules
 ----------
 
-skrobot.tasks.deep\_feature\_synthesis\_task module
----------------------------------------------------
+skrobot.tasks.base\_task module
+-------------------------------
 
-.. automodule:: skrobot.tasks.deep_feature_synthesis_task
+.. automodule:: skrobot.tasks.base_task
    :members:
    :undoc-members:
    :show-inheritance:
@@ -17,15 +17,6 @@ skrobot.tasks.base\_cross\_validation\_task module
 --------------------------------------------------
 
 .. automodule:: skrobot.tasks.base_cross_validation_task
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :inherited-members:
-
-skrobot.tasks.base\_task module
--------------------------------
-
-.. automodule:: skrobot.tasks.base_task
    :members:
    :undoc-members:
    :show-inheritance:
@@ -58,10 +49,19 @@ skrobot.tasks.hyperparameters\_search\_cross\_validation\_task module
    :show-inheritance:
    :inherited-members:
 
-skrobot.tasks.prediction\_task module
--------------------------------------
+skrobot.tasks.deep\_feature\_synthesis\_task module
+---------------------------------------------------
 
-.. automodule:: skrobot.tasks.prediction_task
+.. automodule:: skrobot.tasks.deep_feature_synthesis_task
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
+skrobot.tasks.dataset\_calculation\_task module
+---------------------------------------------------
+
+.. automodule:: skrobot.tasks.dataset_calculation_task
    :members:
    :undoc-members:
    :show-inheritance:
@@ -71,6 +71,15 @@ skrobot.tasks.train\_task module
 --------------------------------
 
 .. automodule:: skrobot.tasks.train_task
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
+skrobot.tasks.prediction\_task module
+-------------------------------------
+
+.. automodule:: skrobot.tasks.prediction_task
    :members:
    :undoc-members:
    :show-inheritance:

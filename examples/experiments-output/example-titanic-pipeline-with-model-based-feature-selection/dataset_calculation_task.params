@@ -1,0 +1,43 @@
+{
+ "type": "dataset_calculation_task",
+ "feature_definitions": [
+  "<Feature: Pclass>",
+  "<Feature: Sex>",
+  "<Feature: Age>",
+  "<Feature: SibSp>",
+  "<Feature: Parch>",
+  "<Feature: Fare>",
+  "<Feature: Embarked>",
+  "<Feature: Age + Fare>",
+  "<Feature: Age + Parch>",
+  "<Feature: Age + SibSp>",
+  "<Feature: Fare + Parch>",
+  "<Feature: Fare + SibSp>",
+  "<Feature: Parch + SibSp>",
+  "<Feature: Age * Fare>",
+  "<Feature: Age * Parch>",
+  "<Feature: Age * SibSp>",
+  "<Feature: Fare * Parch>",
+  "<Feature: Fare * SibSp>",
+  "<Feature: Parch * SibSp>"
+ ],
+ "entityset": null,
+ "cutoff_time": null,
+ "instance_ids": null,
+ "entities": {
+  "passengers": [
+   "   PassengerId Pclass     Sex   Age  SibSp  Parch     Fare Embarked\n0          530      2    male  23.0      2      1  11.5000        S\n1          760      1  female  33.0      0      0  86.5000        S\n2          532      3    male   NaN      0      0   7.2292        C\n3          227      2    male  19.0      0      0  10.5000        S\n4          884      2    male  28.0      0      0  10.5000        S\n5          637      3    male  32.0      0      0   7.9250        S\n6          718      2  female  27.0      0      0  10.5000        S\n7          278      2    male   NaN      0      0   0.0000        S",
+   "PassengerId"
+  ]
+ },
+ "relationships": null,
+ "training_window": null,
+ "approximate": null,
+ "save_progress": null,
+ "verbose": false,
+ "chunk_size": null,
+ "n_jobs": 1,
+ "dask_kwargs": null,
+ "progress_callback": null,
+ "include_cutoff_time": true
+}

@@ -1,6 +1,6 @@
 import os
+
 import pandas as pd
-import featuretools as ft
 
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -16,6 +16,7 @@ from skrobot.tasks import FeatureSelectionCrossValidationTask
 from skrobot.tasks import EvaluationCrossValidationTask
 from skrobot.tasks import HyperParametersSearchCrossValidationTask
 from skrobot.tasks import DeepFeatureSynthesisTask
+from skrobot.tasks import DatasetCalculationTask
 from skrobot.feature_selection import ColumnSelector
 from skrobot.notification import EmailNotifier
 
@@ -31,9 +32,9 @@ categorical_columns = [ 'Embarked', 'Sex', 'Pclass' ]
 
 columns_subset = numerical_columns + categorical_columns
 
-raw_data_set = pd.read_csv('https://bit.ly/titanic-data-set', usecols=[id_column, label_column] + columns_subset)
+raw_data_set = pd.read_csv('https://bit.ly/titanic-data-set', usecols=[id_column, label_column, *columns_subset], dtype={ c: 'category' for c in categorical_columns })
 
-new_raw_data_set = pd.read_csv('https://bit.ly/titanic-data-new', usecols=[id_column] + columns_subset)
+new_raw_data_set = pd.read_csv('https://bit.ly/titanic-data-new', usecols=[id_column, *columns_subset], dtype={ c: 'category' for c in categorical_columns })
 
 random_seed = 42
 
@@ -55,10 +56,6 @@ search_params = {
     "preprocessor__numerical_transformer__imputer__strategy" : [ "mean", "median" ]
 }
 
-variable_types = { c : ft.variable_types.Numeric for c in numerical_columns }
-
-variable_types.update({ c : ft.variable_types.Categorical for c in categorical_columns })
-
 ######### skrobot Code
 
 # Create a Notifier
@@ -73,12 +70,11 @@ notifier = EmailNotifier(email_subject="skrobot notification",
 experiment = Experiment('experiments-output').set_source_code_file_path(__file__).set_experimenter('echatzikyriakidis').set_notifier(notifier).build()
 
 # Run Deep Feature Synthesis Task
-feature_synthesis_results = experiment.run(DeepFeatureSynthesisTask (entities={ "passengers" : (raw_data_set, id_column, None, variable_types) },
+feature_synthesis_results = experiment.run(DeepFeatureSynthesisTask (entities={ "passengers" : (raw_data_set, id_column) },
                                                                      target_entity="passengers",
                                                                      trans_primitives = ['add_numeric', 'multiply_numeric'],
                                                                      export_feature_information=True,
                                                                      export_feature_graphs=True,
-                                                                     id_column=id_column,
                                                                      label_column=label_column))
 
 data_set = feature_synthesis_results['synthesized_dataset']
@@ -93,8 +89,7 @@ categorical_features = [ o.get_name() for o in feature_defs if any([ x in o.get_
 
 preprocessor = ColumnTransformer(transformers=[
     ('numerical_transformer', numeric_transformer, numerical_features),
-    ('categorical_transformer', categorical_transformer, categorical_features)
-])
+    ('categorical_transformer', categorical_transformer, categorical_features)])
 
 # Run Feature Selection Task
 features_columns = experiment.run(FeatureSelectionCrossValidationTask (estimator=classifier,
@@ -140,11 +135,10 @@ train_results = experiment.run(TrainTask(estimator=pipe,
                                          label_column=label_column,
                                          random_seed=random_seed))
 
+# Run Dataset Calculation Task
+new_data_set = experiment.run(DatasetCalculationTask(feature_defs, entities={ "passengers" : (new_raw_data_set, id_column) }))
+
 # Run Prediction Task
-new_data_set = ft.calculate_feature_matrix(feature_defs, entities={ "passengers" : (new_raw_data_set, id_column, None, variable_types) })
-
-new_data_set.reset_index(inplace=True)
-
 predictions = experiment.run(PredictionTask(estimator=train_results['estimator'],
                                             data_set=new_data_set,
                                             id_column=id_column,

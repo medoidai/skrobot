@@ -2,7 +2,7 @@
  "type": "deep_feature_synthesis_task",
  "entities": {
   "customers": [
-   "   customer_id  ... date_of_birth\n0            1  ...    1994-07-18\n1            2  ...    1986-08-18\n2            3  ...    2003-11-21\n3            4  ...    2006-08-15\n4            5  ...    1984-07-28\n\n[5 rows x 4 columns]",
+   "   customer_id zip_code           join_date date_of_birth\n0            1    60091 2011-04-17 10:48:33    1994-07-18\n1            2    13244 2012-04-15 23:31:04    1986-08-18\n2            3    13244 2011-08-13 15:42:34    2003-11-21\n3            4    60091 2011-04-08 20:08:14    2006-08-15\n4            5    60091 2010-07-17 05:27:50    1984-07-28",
    "customer_id"
   ],
   "sessions": [
@@ -11,7 +11,7 @@
    "session_start"
   ],
   "transactions": [
-   "     transaction_id  session_id  ... product_id  amount\n0               298           1  ...          5  127.64\n1                 2           1  ...          2  109.48\n2               308           1  ...          3   95.06\n3               116           1  ...          4   78.92\n4               371           1  ...          3   31.54\n..              ...         ...  ...        ...     ...\n495             112          35  ...          5   55.42\n496             111          35  ...          3   34.87\n497             276          35  ...          1   10.94\n498             266          35  ...          5   19.86\n499             203          35  ...          3  148.31\n\n[500 rows x 5 columns]",
+   "     transaction_id  session_id    transaction_time product_id  amount\n0               298           1 2014-01-01 00:00:00          5  127.64\n1                 2           1 2014-01-01 00:01:05          2  109.48\n2               308           1 2014-01-01 00:02:10          3   95.06\n3               116           1 2014-01-01 00:03:15          4   78.92\n4               371           1 2014-01-01 00:04:20          3   31.54\n..              ...         ...                 ...        ...     ...\n495             112          35 2014-01-01 08:56:15          5   55.42\n496             111          35 2014-01-01 08:57:20          3   34.87\n497             276          35 2014-01-01 08:58:25          1   10.94\n498             266          35 2014-01-01 08:59:30          5   19.86\n499             203          35 2014-01-01 09:00:35          3  148.31\n\n[500 rows x 5 columns]",
    "transaction_id",
    "transaction_time"
   ],
@@ -57,7 +57,6 @@
  "drop_exact": null,
  "where_primitives": null,
  "max_features": -1,
- "cutoff_time_in_index": false,
  "save_progress": null,
  "training_window": null,
  "approximate": null,
@@ -70,6 +69,5 @@
  "include_cutoff_time": true,
  "export_feature_graphs": true,
  "export_feature_information": true,
- "id_column": "transaction_id",
  "label_column": "amount"
 }

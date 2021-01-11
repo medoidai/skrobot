@@ -1,3 +1,8 @@
+# 1.0.13
+
+* Add DatasetCalculationTask
+* Update examples using feature synthesis
+
 # 1.0.12
 
 * Fix problem of feature graph filenames (in case of Windows)

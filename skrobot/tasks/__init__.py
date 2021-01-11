@@ -6,6 +6,7 @@ from .hyperparameters_search_cross_validation_task import HyperParametersSearchC
 from .train_task import TrainTask
 from .prediction_task import PredictionTask
 from .deep_feature_synthesis_task import DeepFeatureSynthesisTask
+from .dataset_calculation_task import DatasetCalculationTask
 
 __all__ = [
     "BaseTask",
@@ -15,5 +16,6 @@ __all__ = [
     "HyperParametersSearchCrossValidationTask",
     "TrainTask",
     "PredictionTask",
-    "DeepFeatureSynthesisTask"
+    "DeepFeatureSynthesisTask",
+    "DatasetCalculationTask"
 ]
