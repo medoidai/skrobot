@@ -59,7 +59,7 @@ skrobot.tasks.deep\_feature\_synthesis\_task module
    :inherited-members:
 
 skrobot.tasks.dataset\_calculation\_task module
----------------------------------------------------
+-----------------------------------------------
 
 .. automodule:: skrobot.tasks.dataset_calculation_task
    :members:
