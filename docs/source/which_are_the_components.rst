@@ -26,6 +26,10 @@ For the module's users
 |                                 | features from temporal and         |
 |                                 | relational datasets.               |
 +---------------------------------+------------------------------------+
+| Dataset Calculation Task        | This task can be used to calculate |
+|                                 | a data set using some feature      |
+|                                 | definitions and input data.        |
++---------------------------------+------------------------------------+
 | Feature Selection Cross         | This task can be used to perform   |
 | Validation Task                 | feature selection with Recursive   |
 |                                 | Feature Elimination using a        |

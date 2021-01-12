@@ -2,18 +2,8 @@
  "type": "deep_feature_synthesis_task",
  "entities": {
   "passengers": [
-   "     PassengerId  Survived  Pclass   Sex   Age  SibSp  Parch      Fare Embarked\n0            833         0       3  male   NaN      0      0    7.2292        C\n1            266         0       2  male  36.0      0      0   10.5000        S\n2            214         0       2  male  30.0      0      0   13.0000        S\n3            680         1       1  male  36.0      0      1  512.3292        C\n4              7         0       1  male  54.0      0      0   51.8625        S\n..           ...       ...     ...   ...   ...    ...    ...       ...      ...\n886          651         0       3  male   NaN      0      0    7.8958        S\n887          523         0       3  male   NaN      0      0    7.2250        C\n888          293         0       2  male  36.0      0      0   12.8750        C\n889          350         0       3  male  42.0      0      0    8.6625        S\n890          815         0       3  male  30.5      0      0    8.0500        S\n\n[891 rows x 9 columns]",
-   "PassengerId",
-   null,
-   {
-    "Age": "<class 'featuretools.variable_types.variable.Numeric'>",
-    "Fare": "<class 'featuretools.variable_types.variable.Numeric'>",
-    "SibSp": "<class 'featuretools.variable_types.variable.Numeric'>",
-    "Parch": "<class 'featuretools.variable_types.variable.Numeric'>",
-    "Embarked": "<class 'featuretools.variable_types.variable.Categorical'>",
-    "Sex": "<class 'featuretools.variable_types.variable.Categorical'>",
-    "Pclass": "<class 'featuretools.variable_types.variable.Categorical'>"
-   }
+   "     PassengerId  Survived Pclass   Sex   Age  SibSp  Parch      Fare Embarked\n0            833         0      3  male   NaN      0      0    7.2292        C\n1            266         0      2  male  36.0      0      0   10.5000        S\n2            214         0      2  male  30.0      0      0   13.0000        S\n3            680         1      1  male  36.0      0      1  512.3292        C\n4              7         0      1  male  54.0      0      0   51.8625        S\n..           ...       ...    ...   ...   ...    ...    ...       ...      ...\n886          651         0      3  male   NaN      0      0    7.8958        S\n887          523         0      3  male   NaN      0      0    7.2250        C\n888          293         0      2  male  36.0      0      0   12.8750        C\n889          350         0      3  male  42.0      0      0    8.6625        S\n890          815         0      3  male  30.5      0      0    8.0500        S\n\n[891 rows x 9 columns]",
+   "PassengerId"
   ]
  },
  "relationships": null,
@@ -37,7 +27,6 @@
  "drop_exact": null,
  "where_primitives": null,
  "max_features": -1,
- "cutoff_time_in_index": false,
  "save_progress": null,
  "training_window": null,
  "approximate": null,
@@ -50,6 +39,5 @@
  "include_cutoff_time": true,
  "export_feature_graphs": true,
  "export_feature_information": true,
- "id_column": "PassengerId",
  "label_column": "Survived"
 }

@@ -36,7 +36,6 @@ feature_synthesis_results = experiment.run(DeepFeatureSynthesisTask (entities=en
                                                                      target_entity="transactions",
                                                                      export_feature_information=True,
                                                                      export_feature_graphs=True,
-                                                                     id_column='transaction_id',
                                                                      label_column='amount'))
 
 # Print in-memory results
