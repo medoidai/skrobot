@@ -50,53 +50,53 @@ Hyperparameters Search Results
 Task Parameters Logging
 -----------------------
 
-|Image 18| |Image 19| |Image 20| |Image 21| |Image 22| |Image 22B|
+|Image 18| |Image 19| |Image 20| |Image 21| |Image 22| |Image 23| |Image 24|
 
 Experiment Logging
 ------------------
 
-|Image 23|
+|Image 25|
 
 Features Selected
 -----------------
 
 *The selected column indexes from the transformed features (this is generated when a preprocessor is used):*
 
-|Image 24|
+|Image 26|
 
 *The selected column names from the original features (this is generated when no preprocessor is used):*
 
-|Image 25|
+|Image 27|
 
 Experiment Source Code
 -----------------------
 
-|Image 26|
+|Image 28|
 
 Predictions
 -----------
 
-|Image 27|
+|Image 29|
 
 Synthesized Features Information
 --------------------------------
 
-|Image 28|
+|Image 30|
 
 Synthesized Features Definition
 -------------------------------
 
-|Image 29|
+|Image 31|
 
 Synthesized Output Dataset
 --------------------------
 
-|Image 30|
+|Image 32|
 
 Synthesized Features Computation Graphs
 ---------------------------------------
 
-|Image 31|
+|Image 33|
 
 .. |Image 1| image:: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-1.png
    :target: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-1.png
@@ -142,8 +142,6 @@ Synthesized Features Computation Graphs
    :target: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-21.png
 .. |Image 22| image:: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-22.png
    :target: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-22.png
-.. |Image 22B| image:: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-22-b.png
-   :target: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-22-b.png
 .. |Image 23| image:: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-23.png
    :target: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-23.png
 .. |Image 24| image:: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-24.png
@@ -162,3 +160,7 @@ Synthesized Features Computation Graphs
    :target: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-30.png
 .. |Image 31| image:: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-31.png
    :target: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-31.png
+.. |Image 32| image:: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-32.png
+   :target: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-32.png
+.. |Image 33| image:: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-33.png
+   :target: https://github.com/medoidai/skrobot/raw/1.0.13/static/image-33.png
