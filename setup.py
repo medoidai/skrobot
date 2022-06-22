@@ -22,7 +22,7 @@ setup(
      install_requires=['featuretools==0.23.0',
                        'joblib==1.0.0',
                        'matplotlib==3.3.3',
-                       'numpy==1.19.4',
+                       'numpy==1.22.0',
                        'numpyencoder==0.3.0',
                        'pandas==1.2.0',
                        'plotly==4.14.1',
