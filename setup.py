@@ -20,7 +20,7 @@ setup(
      url="https://github.com/medoidai/skrobot",
      python_requires='>=3.6',
      install_requires=['featuretools==0.23.0',
-                       'joblib==1.0.0',
+                       'joblib==1.2.0',
                        'matplotlib==3.3.3',
                        'numpy==1.19.4',
                        'numpyencoder==0.3.0',
