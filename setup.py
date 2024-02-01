@@ -26,7 +26,7 @@ setup(
                        'numpyencoder==0.3.0',
                        'pandas==1.2.0',
                        'plotly==4.14.1',
-                       'scikit-learn==0.24.0',
+                       'scikit-learn==1.0.1',
                        'scikit-plot==0.3.7',
                        'stringcase==1.2.0'],
      packages=find_packages(),
